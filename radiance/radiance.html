@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{Title}</title>
+  <link rel="icon" type="image/png" href="{Favicon}">
+
+    <!--GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Source Sans Pro:400,400i,700,700i&amp;subset=cyrillic,greek,hebrew,latin-ext,vietnamese" rel="stylesheet">
+
+    <!--FONT AWESOME ICONS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!--TAB SCRIPT, DON'T TOUCH-->
+    <script>
+      $(document).ready(function() {
+        $('nav ul li').on('click', function(e) {
+          var currentAttrValue = $(this).attr('href');
+          $('.tab' + currentAttrValue).addClass('active').siblings('.tab').removeClass('active');
+          $(this).addClass('active').siblings('nav ul li').removeClass('active');
+        });
+      });
+    </script>
+
+<style>
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  }
+
+body {
+  font: 15px 'Source Sans Pro';
+  background: #fff;
+  line-height: 150%;
+  overflow: auto;
+  }
+
+a {color: #000; text-decoration: none;}
+
+h1 {font-size: 22.5px;}
+h2 {font-size: 15px; margin: 10px 0 10px 0;}
+h2:first-child {margin-top: 0;}
+
+#wrapper {
+  position: absolute;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  }
+
+#content {
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr) 2fr;
+  grid-template-rows: minmax(80px, auto) 1fr;
+  grid-template-areas:
+      "header caption"
+      "nav links";
+  position: relative;
+  margin: 50px auto;
+  padding: 0px 20px;
+  width: 700px;
+  overflow: auto;
+  }
+
+header {
+  grid-area: header;
+  position: relative;
+  width: 100%;
+  padding: 0 0 20px 0;
+  }
+
+header a {color: #bbb; padding: 0 10px 0 0;}
+header p {margin: 10px 0;}
+
+#caption {
+ grid-area: caption;
+ padding: 22px 20px;
+ }
+
+nav {
+  grid-area: nav;
+  position: relative;
+  }
+
+nav li {
+  font-weight: normal;
+  padding-bottom: 5px;
+  cursor: pointer;
+  }
+
+nav li.active {
+  font-weight: bold;
+  padding-bottom: 10px;
+  font-size: 16px;
+  }
+
+nav span {
+    font-size: 13px;
+    color: #666;
+  }
+
+ul {
+  list-style-type: none;
+  }
+
+.subhead {
+    line-height: 250%;
+  }
+
+.tab {
+  grid-area: links;
+  width: auto;
+  padding: 0 20px;
+  height: 100%;
+  opacity: 0;
+  }
+
+.tab.active {
+  opacity: 1;
+  z-index: 9;
+  }
+
+.info {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+  }
+
+.headline,
+.desc {
+  margin-bottom: 10px;
+  }
+
+.headline i {
+    color: #666;
+  }
+
+.desc {
+  text-align: justify;
+  }
+
+.links {
+  margin: 0 0 20px 0;
+  }
+
+.links a {color: #666; padding: 0 5px;}
+.links li {padding: 0 5px;}
+.links li a {padding: 0}
+
+.tab,
+nav ul li {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  }
+
+</style>
+</head>
+<body>
+  <div id="wrapper">
+    <article id="content">
+      <header>
+        <h1>navigation.</h1>
+        <span>
+          <a href="/">home</a>
+          <a href="/ask">message</a>
+          <!--CREDIT. DO NOT REMOVE-->
+          <a href="https://nonspace.tumblr.com">&#169; nnspc</a>
+        </span>
+      </header>
+
+      <div id="caption">short description.</div>
+
+      <!--HOW TO ADD MORE LINKS
+      copy/paste <li href="#one">topic one</li>
+
+      make sure only ONE list item (usually the first) has the
+      'class="active"' (active class means it's the bold link/the first tab
+      that's displayed on the page).
+
+      then change "#one" to the next number. e.g. here: #four
+
+      important here are two things:
+        don't forget the #
+        make sure your corresponding tab div has this same name
+        but WITHOUT the # (e.g. id="four")
+      -->
+
+      <nav>
+        <ul>
+          <li href="#general" class="active">general</li>
+          <li href="#one">topic one</li>
+          <li href="#two">topic two <span>(optional note)</span></li>
+          <li href="#three">topic three</li>
+        </ul>
+      </nav>
+
+      <!--TABS-->
+
+      <!--TAB GENERAL-->
+      <section class="tab active" id="general">
+
+        <!--COPY THIS FOR HEADLINE + TAG LINKS-->
+        <h2>headline one</h2>
+        <div class="links">
+          <a href="/tagged/">#tag one</a>
+          <a href="/tagged/">#tag two</a>
+        </div>
+        <!--SECTION END-->
+
+        <h2>headline two</h2>
+        <div class="links">
+          <a href="/tagged/">#tag one</a>
+          <a href="/tagged/">#tag two</a>
+          <a href="/tagged/">#tag three</a>
+        </div>
+
+        <h2>headline three</h2>
+        <div class="links">
+          <a href="/tagged/">#tag one</a>
+        </div>
+
+        <!--You can copy and paste as many sections as you want.-->
+
+      </section>
+      <!--tab end-->
+
+      <!--HOW TO ADD MORE TABS
+      Copy/paste everything from TAB ONE to TAB END.
+
+      Make sure only ONE (usually the first) tab has the 'class="active"'
+
+      Change the id to the same 'href' you added in the navigation.
+      In this example, the next one would be tab four so: id="four"
+
+      Important here: WITHOUT the #
+
+      Then fill your tab with whichever of the example elements you want.
+
+      <!--TAB ONE-->
+      <section class="tab" id="one">
+        <!--COPY THIS FOR CHARACTER INFO-->
+        <div class="info">
+
+          <div class="headline">
+            <h1>character name</h1>
+            <i>00 - occupation - orientation</i>
+          </div>
+
+          <div class="desc">
+            short description of your character or whatever topic you'd like to add here. below you'll be able to add detailed tags etc.
+          </div>
+
+          <h2>verses</h2>
+          verse one - verse two
+
+        </div><!--info-->
+        <!--CHARACTER INFO END-->
+
+        <h2>tag</h2>
+        <div class="links">
+          <a href="">#link one</a>
+          <a href="">#linke two</a>
+          <a href="">#linke three</a>
+          <a href="">#link four</a>
+        </div>
+
+        <!--COPY THIS FOR LISTS-->
+        <h2>list</h2>
+        <div class="links">
+          <ul>
+            <li>this is a list</li>
+            <li>you can also use it</li>
+            <li><a href="">for links</a></li>
+            <li>in list form, be creative</li>
+            <li>i use it to list & link rp threads</li>
+          </ul>
+        </div>
+        <!--LIST END-->
+
+      </section>
+      <!--tab end-->
+
+      <!--TAB TWO-->
+      <section class="tab" id="two">
+
+        <!--COPY THIS FOR ANY TEXT-->
+        <div class="info">
+        You can really add whatever here. Tags, lists, character info. It's up to you.
+        Just copy/paste the right sections. They're marked in comments in the code.
+        </div>
+        <!--TEXT END-->
+
+        <h2>tag</h2>
+        <div class="links">
+          <a href="">#link one</a>
+          <a href="">#linke two</a>
+          <a href="">#linke three</a>
+          <a href="">#link four</a>
+        </div>
+
+      </section>
+      <!--tab end-->
+
+      <section class="tab" id="three">
+        <h2>tag</h2>
+        <div class="links">
+          <a href="/tagged/">#all</a>
+          <a href="/tagged/d: daire leahy">#tag one</a>
+        </div>
+
+      </section>
+      <!--tab end-->
+
+    </article>
+  </div><!--wrapper-->
+</body>
+</html>
