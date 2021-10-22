@@ -1,0 +1,4417 @@
+<!DOCTYPE html>
+  
+  
+  <!--THEME #3: SODA POP FICTION v. 2.0 by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  I will find and haunt you.
+  Editing for personal use is fine!-->
+  
+  
+  <head>
+  
+  <title>{Title}</title>
+  <link rel="icon" type="image/png" href="{Favicon}">
+  
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i|Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+  
+  <!-- JQUERY --->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  
+  <!-- LIGHTBOX PLUGIN -->
+   <link rel="stylesheet" href="https://static.tumblr.com/fx4xpyt/RtNop2sco/lightbox.css">
+   <script src="https://static.tumblr.com/qbtyvii/vS0op2okj/lightbox.min.js"></script>
+  
+  <!--S-M-TOOLTIPS -->
+  <script src="https://static.tumblr.com/fx4xpyt/VlKom52b7/jquery.style-my-tooltips.js"></script>  
+  
+  <!-- SCRIPTS -->
+  
+  <!---- S-M-TOOLTIPS --->
+    <script>
+     (function($){
+         $(document).ready(function(){
+             $("[title]").style_my_tooltips({ 
+                 tip_follows_cursor:true,
+                 tip_delay_time:50,
+                 tip_fade_speed:300,
+                 attribute:"title"
+             });
+         });
+     })(jQuery);
+   </script>
+  
+  <!--- TAB SCRIPT -->
+  <script>
+    $(document).ready(function(){
+         $('#navigation li a').on('click', function(e) {
+            var currentAttrValue = $(this).attr('href'); 
+            
+            // SHOW / HIDE TABS
+            $('.tabs' + currentAttrValue).fadeIn(600).siblings('.tabs').hide             ();
+            
+            // CHANGE / REMOVE ACTIVE
+            $(this).parent('li').addClass('active').siblings().removeClass              ('active');
+            
+            e.preventDefault();
+         });
+        
+         $('.footerlinks a').on('click', function(e) {
+            var currentAttrValue = $(this).attr('href'); 
+            
+            // SHOW / HIDE TABS
+            $('.tabcontent' + currentAttrValue).fadeIn(600).siblings('                  .tabcontent').hide();
+            
+            // CHANGE / REMOVE ACTIVE
+            $(this).parent('li').addClass('actives').siblings().removeClass              ('actives');
+            
+            e.preventDefault();
+         });
+        
+         var hash = $.trim( window.location.hash );
+         if (hash) $('#navigation li a[href$="'+hash+'"]').trigger('click');
+    });
+    
+</script>
+
+<!-- POP UP source: https://kaushikresearch.wordpress.com/jquery/popup-with-jquery/ (modified)-->
+
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+<script>
+$plugin2 = $.noConflict( true );
+$plugin2(document).ready(function() {
+    var mouseX;
+    var mouseY;
+    
+$plugin2(document).mousemove( function(e) {
+    mouseX = e.clientX; 
+    mouseY = e.clientY;
+});  
+
+$plugin2('a.poplight[href^=#]').click(function() {
+   
+    var popID = $plugin2(this).attr('rel'); //Get Popup Name
+    var popURL = $plugin2(this).attr('href'); //Get Popup href to define size
+    var query= popURL.split('?');
+    var dim= query[1].split('&');
+    var popWidth = dim[0].split('=')[1]; //Gets the first query string value
+
+    $plugin2('#' + popID).fadeIn().css({ 'width': Number( popWidth ) }).prepend('<a href="#" class="close"></a>');
+    
+        var popMargTop = ($plugin2('#' + popID).height() + 80) / 2;
+        var popMargLeft = ($plugin2('#' + popID).width() + 80) / 2;
+
+    //Apply Margin to Popup
+    $plugin2('#' + popID).css({
+        
+        'top' : mouseY - 250,
+        'left' : mouseX - 320
+    });
+
+    $plugin2('body').append('<div id="fade"></div>');
+    $plugin2('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Fade in the fade layer - .css({'filter' : 'alpha(opacity=80)'})
+        return false;
+    });
+
+    $plugin2('a.close, #fade').live('click', function() {
+        $plugin2('#fade , .popup_block').fadeOut(function() {
+            $plugin2('#fade, a.close').remove(); //fade them both out
+        });
+            
+            return false;
+    });
+});
+
+</script>
+    
+    
+    <!-- CSS -->
+    
+    <style type="text/css">
+    
+    /* LIGHTBOX PLUGINS FIRST */
+    
+    .mfp-bottom-bar {
+        display: none;
+    }
+
+	.lb-close {
+        background: none !important;
+    }
+    
+    .lb-close::after {
+        content: "\f00d";
+        font-family: FontAwesome;
+        font-weight: 900;
+        line-height: 15px;
+    }
+    
+    /* POP UP */
+    
+    #fade { /*--Transparent background layer--*/
+	   display: none; /*--hidden by default--*/
+	   background: #000;
+	   position: fixed; left: 0; top: 0;
+	   width: 100%; height: 100%;
+	   opacity: .20;
+	   z-index: 9999;
+    }
+
+    .popup_block{
+	   display: none; /*--hidden by default--*/
+	   padding: 20px;
+	   float: left;
+	   font-size: 11.3px;
+       line-height: 140%;
+       font-family: 'arimo', sans-serif;
+       text-align: justify;
+       overflow-y: hidden;
+       display: none;
+	   position: fixed;
+	   top: 50%; left: 50%;
+	   z-index: 99999;
+	   /*--CSS3 Box Shadows--*/
+       }
+       
+    .popup_txt {
+        z-index: 0;
+       background: #f0f0f0;
+       padding: 20px;
+       border: 4px solid #fff;
+       -webkit-box-shadow: 0px 0px 20px #000;
+	   -moz-box-shadow: 0px 0px 20px #000;
+	   box-shadow: 0px 0px 20px #000;
+	   padding-top: 15px;
+	   height: 210px;
+	   overflow: scroll;
+	   overflow-x: hidden;
+    }
+    
+     .popup_txt a {
+        text-decoration: none;
+        color: #7c182b;
+        transition: ease color 0.5s;
+    }
+    
+    .popup_txt a:hover {
+        color: #555;
+    }
+    
+    section {
+        overflow-y: scroll;
+        margin-bottom: 5px;
+        height: 146px;
+    }
+    
+    .popup_tip {
+        z-index: 9999;
+        float: right;
+        margin-right: -10px;
+        margin-top: -20px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 8px 0 8px 10px;
+        border-color: transparent transparent transparent #ffffff;
+
+    }
+
+    img.btn_close {
+	   float: right;
+	   margin: -55px -55px 0 0;
+       }
+       
+    /*--Making IE6 Understand Fixed Positioning--*/
+    *html #fade {
+    	position: absolute;
+        }
+        
+    *html .popup_block {
+	    position: absolute;
+        }
+    
+    #s-m-t-tooltip {
+        max-width:300px;
+        z-index:10;
+        margin:10px 14px 7px 12px;
+        padding:5px;
+        background:#fff; /* fallback if rgba not supported */
+        background:rgba(255,255,255,0.9);
+        -moz-box-shadow:5px 5px 5px rgba(0,0,0,0.15),-1px -1px 0 rgba(255           ,255,255,0.3);
+        -webkit-box-shadow:2px 2px 5px rgba(0,0,0,0.15),-1px -1px 0 rgba(255         ,255,255,0.3);
+        box-shadow:2px 2px 5px rgba(0,0,0,0.15),-1px -1px 0 rgba(255,255,255         ,0.3);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-family:'arimo', sans-serif;
+        font-size:9px;
+        line-height:16px;
+        color: #7c182b;
+        }
+    
+    body {
+        background: #f8f8f8;
+        font-family: 'arimo', sans-serif;
+        }
+        
+    #container {
+        position: relative;
+        width: 600px;
+        height: 719;
+        margin: 50px auto;
+        }
+        
+    /* BACK BUTTON */
+        
+    #buttons {
+        position: absolute;
+        margin: 265px 0px 0px -100px;
+        z-index: 9;
+        }
+    
+    #buttons ul {
+        list-style-type: none;
+        padding: 15px;
+        
+        }
+    
+    #buttons a {
+        color: #7c182b;
+        }
+    
+    #buttons ul li:hover {
+        background-color: rgba(0,0,0,0.2);
+        }
+        
+    #buttons ul li {
+        padding: 8px;
+        text-align: center;
+        width: 15px;
+        height: 15px;
+        margin-bottom: 5px;
+        background-color: rgba(255,255,255,0.9);
+        border-radius: 50px; 
+        transition: background-color 0.5s ease;
+        box-shadow:1px 1px 0px rgba(200,200,200,0.4);
+        font-size: 13px;
+    }
+    
+   .bigbutton {
+        padding: 13px 19px 20px 16px!important;
+        text-align: center;
+        font-size: 20px!important;
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+    }
+        
+    /* PICTURE NAVIGATION */
+      
+    #navigation {
+        position: absolute;
+        width: 135px;
+        height: 719px;
+        overflow-y: scroll;
+        }
+        
+    #navigation ul {
+        margin-top: 0px;
+        }
+        
+    #navigation li {
+        list-style-type: none;
+        margin-left: -40px;
+        margin-top: 0.5px;
+        }
+        
+    #navigation li img {
+        height: 110px;
+        width: 110px;
+        outline:1px solid #f0f0f0;
+        border:3px solid #fff;
+        cursor: pointer;
+        transition: border 0.5s ease;
+        box-shadow:3px 3px 0px rgba(220,220,220,0.1);
+        }
+        
+    #navigation li img:hover {
+        border: 3px solid #ccc!important; /* PICTURE HOVER COLOR */
+        }  
+        
+    .active img {
+        border: 3px solid #bbb!important; /* ACTIVE PICTURE COLOR */
+        }
+        
+    /* TABS */
+        
+    .tabs {
+        position: relative;
+        background: #fff;
+        margin: 0px 150px;
+        width: 450px;
+        height: 719px;
+        outline: 1px solid #f0f0f0;
+        display: none;
+        box-shadow:3px 3px 0px rgba(220,220,220,0.1);
+        }
+        
+    .tabs.active, .tabcontent.active {
+        display: block;
+        }
+      
+    /* CHARACTER STATS RIGHT SIDE */
+      
+    .stats {
+        position: relative;
+        margin-left: 465px;
+        width: 200px;
+        font-family: 'roboto', sans-serif;
+        font-size: 9px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 180%;
+        }
+        
+    .stats a {
+        text-decoration: none;
+        color: #000;
+        transition: ease color 0.5s;
+    }
+    
+    .stats a:hover {
+        color: #bbb;
+    }
+        
+    .tabcontent {
+        position: absolute;
+        color: #000;
+        margin: 0px 20px;
+        padding: 15px 20px 0px 0px;
+        width: 410px;
+        height: 665px;
+        font-size: 11.3px;
+        line-height: 140%;
+        font-family: 'arimo', sans-serif;
+        text-align: justify;
+        overflow-y: hidden;
+        display: none;
+        overflow-y: scroll;
+        }
+        
+    .tabcontent:hover {
+        overflow-y: scroll;
+        }
+        
+    /* + STYLE FORMATTING IN TABS */
+    
+    .tabcontent a {
+        text-decoration: none;
+        color: #7c182b;  /* LINK COLOR */
+        }
+      
+    .tabcontent ul {
+        list-style-type: none;
+        }
+      
+    .tabcontent li {
+        margin-left: -10px;
+        }
+        
+    .tabcontent li:before { /* LIST STYLE ICONS */
+        content: "\f0da"; /* FontAwesome Unicode */
+        font-family: FontAwesome;
+        display: inline-block;
+        margin-left: -15px;
+        width: 15px;
+        color: #bbb;
+        }
+        
+    /* PAGE LINKS */
+        
+    .footerlinks {
+        position: absolute;
+        bottom: -7px;
+        margin-left: 47%;
+        }
+        
+    .footerlinks a {
+        text-decoration: none;
+        font-size: 16px;
+        padding-right: 1px;
+        color: #bbb;
+        }
+       
+    .footerlinks ul {
+        list-style-type: none;
+        padding: 0px 0px 0px 2px;
+        }
+       
+    .footerlinks li {
+        display: inline-block;
+        }
+       
+    .actives a { /* COLOR OF ACTIVE PAGE TAB */
+        color: #7c182b!important;
+       }
+       
+    /* CONNECTIONS */
+    
+    #connections {
+        position: absolute;
+        bottom: -14px;
+        margin-left: 425px;
+        width: 200px;
+        font-family: 'roboto', sans-serif;
+        font-size: 9px;
+        text-transform: uppercase;
+        line-height: 180%;
+        }
+        
+    #connections ul {
+        list-style-type: none;
+    }
+    
+    #connections ul img {
+        width: 50px;
+        filter: grayscale(100%);
+        border: 3px solid #bbb!important; /* ACTIVE PICTURE COLOR */
+    }
+        
+    /* CREDIT */
+      
+    footer {
+        position: fixed;
+        bottom: 5px;
+        right: 15px;
+        padding: 5px;
+        }
+        
+    footer a {
+        text-decoration: none;
+        font-family: 'arimo', sans-serif;
+        font-size: 10px;
+        color: #7c182b;
+        font-weight: bold;
+        transition: color 0.5s ease;
+        }
+        
+    footer a:hover {
+        color: #aaa;
+        }
+        
+    /* MISC */
+      
+    h1 {
+        font-family: 'roboto', sans-serif;
+        font-size: 20px;
+        text-transform: uppercase;
+        color: #7c182b;
+        letter-spacing: -1px;
+        }
+        
+    h3 {
+        color: #7c182b;
+        font-size: 15px;
+        font-family: 'roboto', sans-serif;
+        letter-spacing: -1px;
+    }
+        
+    h4 {
+        text-transform: uppercase;
+        }  
+        
+    .tw { /* TRIGGER WARNING STYLING */
+        color: #000;
+        font-size: 10px;
+        letter-spacing: 0px;
+        }
+      
+    blockquote {
+        margin-left: 15px;
+        width: 96%;
+        }
+        
+    .fa-hashtag {
+        margin-top: 10px;
+    }
+    .fa-hashtag ~ .fa-hashtag {
+        margin-top: 0px;
+    }
+    
+    .social {
+        margin-top: 10px;
+    }
+    
+    .social a {
+        margin-left: 0px;
+    }
+      
+    .square {
+        width: 7px;
+        height: 7px;
+        display: inline-block;
+        margin-right: 5px;
+        }
+        
+    /* SQUARE COLORS */
+      
+    .red {
+        background-color: #cf1f3c;
+        }
+
+    .green {
+        background-color: #286756;
+        }
+
+    .yellow {
+        background-color: #ffb52f;
+        }
+
+    .black {
+        background-color: #111111;
+        }
+        
+    /* SCROLLBARS */
+        
+    ::-webkit-scrollbar {
+        width: 5px;
+        }
+ 
+    ::-webkit-scrollbar-track {
+        border-radius: 1px;
+        background-color: #f8f8f8;
+        }
+        
+    .tabcontent::-webkit-scrollbar-track {
+        border-radius: 1px;
+        background-color: #fff;
+        }
+ 
+     .tabcontent::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background-color: #fff;
+        transition: background-color 0.5s;
+        }
+        
+    .tabcontent:hover::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background-color: #ddd;
+        }
+ 
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background-color: #ddd;
+        }
+      
+    </style>
+    
+  </head>
+  
+  
+  <body>
+    
+    <!---- OUTLINE CONTAINER ----->
+    <div id="container">
+    
+    <!-- BACK NAVIGATION W/ 1 ADDITIONAL LINK e.g. rules-->
+     <div id="buttons">
+        <ul>
+            <li><a href="/PAGELINK" title="YOURTITLE">
+                <i class="fa fa-book" aria-hidden="true"></i></a></li>
+            <li class="bigbutton"><a href="/" title="BACK">
+                <i class="fa fa-home" aria-hidden="true"></i></a></li>
+            <li><a href="/ask" title="MESSAGE">
+                <i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+        </ul>
+     </div> <!--buttons-->
+     
+     
+    
+      <!----- CHARACTER PICTURE LINKS ------>
+     <div id="navigation">
+        <ul>
+          <li class="active"><a href="#tab1a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab2a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab3a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab4a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab5a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab6a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab7a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab8a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab9a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+          <li><a href="#tab10a" title="CHARACTER NAME">
+          <img src="https://placehold.it/110x110"></a></li>
+          
+        </ul>
+        
+      </div> <!--navigation-->
+      
+      <!------ TABS ------>
+      
+      <!-- For clarification because it is a bit confusing:
+           .tabcontent contains the content for page 1 & 2 for each                    character.
+           sub#a is page 1 (the default page) and sub#b is page 2.-->
+      
+      <!--To add new tabs: 
+          1. Copy everything in "tabs" div (starts after TAB #). 
+          2. Paste it at after the last tab
+          3. Change the div ID's in 
+             Replace # with the corresponding tab number.
+              .tabs (tab#a), 
+              .tabcontent (sub#a and sub#b), 
+              .footerlinks li (sub#a and sub#b). 
+          4. Add an entry to #navigation.
+             Copy/paste a li entry and replace 'href' attribute with the                 right tab ID.
+
+         Help post: https://nonspace.tumblr.com/post/164339901019/hi-im-using-your-page-3-and-ive-tried-to-follow
+             
+        If you run into any trouble with this, send me a message and I'll           try to help you.
+        
+      <!-- If you want to link to another character of yours that                 is in the navigation you need to set the link like 
+      <a href="/YOURPAGENAME/#tabNUMBERa"> 
+      and replace NUMBER with the corresponding tab number of said character       -->
+      
+      <!-- TAB 1 -->
+      
+      <div class="tabs active" id="tab1a">
+      
+         <div class="tabcontent active" id="sub1a">
+              
+                <h1> CHARACTER NAME<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub1b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub1a">&#9632;</a></li>
+             <li><a href="#sub1b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+          
+          <!-- These are a few stats regarding the character such as plot             availability, ship availability, engame ship, development status,           main verse, creation date. but again, you can put your own things.           Could also be character links.-->
+          
+          <!-- The squares are intended to show availability through color            coding. But you can use it differently if you want to. To change            the color of the squares, replace the color name of a class to the           right color (green, yellow, red or black). Replace brackets with            your own info
+          
+          If you want to change the colors to entirely different ones you             need to find the .green, .yellow, .red and/or .black. (just ctrl+f           and search the code)
+          
+          -->
+          
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            <!--An image gallery essentially. Replace YOURIMAGEURL with 
+            the image URL. The 'data-lightbox' value is the galleries. 
+            
+            All images with the same name here will be in the same gallery,
+            no mattter on what page they are. 
+            So if you want all images to be one big gallery, name them all
+            the same.
+            
+            There an image caption as well.
+            
+            Hide or show specific social media per character by deleting 
+            or removing comment tags <!-- these here-->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR1snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          <!-- Straight forward, character connections. You find the 
+          actual content window of the pop up right after this section.
+          Images are 50x50 but scale down if using larger ones.
+          
+          href="#?w=300"    - '300' specifies the size of the popup.
+          rel="CHAR1con1" - Is the id the pop up relates to. A.k.a. it
+                              opens the div with the same name as this.
+                              !!!Make sure these are named properly!!!
+                              
+         Add more by copy/pasting (or delete to remove)-->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR1con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR1con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR1con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR1con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR1con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      <!--Here are the actual content boxes of the connection pop ups. 
+      Make sure the divs here have the right id as the same in the above
+      section.-->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR1con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR1con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR1con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR1con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR1con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- TAB 2 -->
+      
+      <div class="tabs" id="tab2a">
+      
+         <div class="tabcontent active" id="sub2a">
+              
+                <h1> CHARACTER NAME 2<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub2b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub2a">&#9632;</a></li>
+             <li><a href="#sub2b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR2snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR2con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR2con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR2con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR2con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR2con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR2con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR2con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR2con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR2con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR2con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- TAB 3 -->
+      
+      <div class="tabs" id="tab3a">
+      
+         <div class="tabcontent active" id="sub3a">
+              
+                <h1> CHARACTER NAME 3<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub3b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub3a">&#9632;</a></li>
+             <li><a href="#sub3b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR3snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR3con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR3con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR3con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR3con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR3con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR3con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR3con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR3con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR3con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR3con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- TAB 4 -->
+      
+      <div class="tabs" id="tab4a">
+      
+         <div class="tabcontent active" id="sub4a">
+              
+                <h1> CHARACTER NAME 4<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub4b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub4a">&#9632;</a></li>
+             <li><a href="#sub4b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR4snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR4con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR4con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR4con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR4con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR4con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR4con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR4con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR4con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR4con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR4con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- TAB 5 -->
+      
+      <div class="tabs" id="tab5a">
+      
+         <div class="tabcontent active" id="sub5a">
+              
+                <h1> CHARACTER NAME 5<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub5b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub5a">&#9632;</a></li>
+             <li><a href="#sub5b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR5snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR5con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR5con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR5con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR5con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR5con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR5con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR5con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR5con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR5con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR5con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+       <!-- TAB 6 -->
+      
+      <div class="tabs" id="tab6a">
+      
+         <div class="tabcontent active" id="sub6a">
+              
+                <h1> CHARACTER NAME 6<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub6b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub6a">&#9632;</a></li>
+             <li><a href="#sub6b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR6snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR6con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR6con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR6con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR6con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR6con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR6con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR6con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR6con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR6con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR6con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+       <!-- TAB 7 -->
+      
+      <div class="tabs" id="tab7a">
+      
+         <div class="tabcontent active" id="sub7a">
+              
+                <h1> CHARACTER NAME 7<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub7b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub7a">&#9632;</a></li>
+             <li><a href="#sub7b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR7snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR7con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR7con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR7con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR7con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR7con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR7con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR7con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR7con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR7con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR7con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+       <!-- TAB 8 -->
+      
+      <div class="tabs" id="tab8a">
+      
+         <div class="tabcontent active" id="sub8a">
+              
+                <h1> CHARACTER NAME 8<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub8b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub8a">&#9632;</a></li>
+             <li><a href="#sub8b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR8snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR8con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR8con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR8con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR8con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR8con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR8con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR8con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR8con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR8con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR8con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+       <!-- TAB 9 -->
+      
+      <div class="tabs" id="tab9a">
+      
+         <div class="tabcontent active" id="sub9a">
+              
+                <h1> CHARACTER NAME 9<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub9b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub9a">&#9632;</a></li>
+             <li><a href="#sub9b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR9snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR9con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR9con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR9con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR9con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR9con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR9con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR9con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR9con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR9con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR9con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+       <!-- TAB 10 -->
+      
+      <div class="tabs" id="tab10a">
+      
+         <div class="tabcontent active" id="sub10a">
+              
+                <h1> CHARACTER NAME 10<br /> 
+                  <span class="tw">
+                    (tw: trigger warnings if applicable.)
+                  </span>
+                </h1>
+    
+                <!-- BASICS -->
+    
+                <h4>BASIC INFORMATION</h4>
+                
+                <blockquote>
+                  <b>OCCUPATION</b> <span>Occupation</span><br>
+                  <b>AGE</b> <span>00</span><br>
+                  <b>NATIONALITY</b> <span>Nationality</span><br>
+                  <b>GENDER & PRONOUNS</b> <span>Gender / Pron.</span><br>
+                  <b>ORIENTATION</b> <span>Orientation</span><br>
+                </blockquote>
+                <p />
+                  
+                <!--- SHORT BIO -->
+    
+                Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                <br />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                <p />
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                
+                <!-- PLOT POINTS -->
+           
+                <h4>PLOT POINTS</h4>
+                  <ul>
+                   <li> Plot idea #1</li>
+                   <li> Plot idea #2</li>
+                   <li> Plot idea #3</li>
+                   <li> Plot idea #4</li>
+                 </ul>
+
+                <!-- ADD SOMETHING ELSE IF YOU LIKE -->
+
+                <h4>ADDITIONAL ANYTHING</h4>
+          
+               <ul>
+                 <li> Stuff #1</li>
+                 <li> Stuff #2</li>
+               </ul>
+
+            
+          </div> <!--tabcontent-->
+          
+          <!-- PAGE 2 -->
+          
+          <div class="tabcontent" id="sub10b">
+          
+          <h3>BASIC INFORMATION</h3>
+          
+          <blockquote>
+          
+    <p><b>FULL NAME</b> Your info<br>
+    <b>NICKNAME(S)</b> Your info<br>
+    <b>ALIAS(ES)</b> Your info<br>
+    <b>TITLE</b> Your info<br>
+    <b>OCCUPATION</b> Your info<br>
+    <b>AGE</b> Your info<br>
+    <b>DATE OF BIRTH</b> Your info<br>
+    <b>NATIONALITY</b> Your info<br>
+    <b>GENDER & PRONOUNS</b> Your info<br>
+    <b>ORIENTATION</b> Your info<br>
+    <b>LIBIDO</b> Your info<br>
+    <b>RELIGION</b> Your info<br>
+    <b>THREAT LEVEL</b> Your info
+    
+          </blockquote>
+    
+        
+         <p><h3>PHYSICAL INFORMATION</h3>
+                
+         <blockquote>
+        
+    <p><b>FACE CLAIM</b> Your info<br>
+    <b>HEIGHT</b> Your info<br>
+    <b>EYE COLOUR</b> Your info<br>
+    <b>HAIR COLOUR + STYLE</b> Your info<br>
+    <b>DOMINANT HAND</b> Your info<br>
+    <b>DISTINGUISHING FEATURES</b>  Your info<br>
+    <b>ACCENT + INTENSITY</b> Your info<br>
+    <b>TATTOO(S)</b> Your info<br>
+    <b>SCAR(S)</b> Your info<br>
+    <b>PIERCING(S)</b> Your info<br>
+    <b>GLASSES</b> Your info<br>
+    
+               </blockquote>
+    
+    
+    
+        <p><h3>BACKGROUND INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOMETOWN</b> Your info<br>
+    <b>CURRENT RESIDENCE</b> Your info<br>
+    <b>LANGUAGE(S)</b> Your info<br>
+    <b>SOCIAL CLASS</b> Your info<br>
+    <b>BASIC EDUCATION</b> Your info<br>
+    <b>COLLEGE EDUCATION</b> Your info<br>
+    <b>DEGREE(S)</b> Your info<br>
+    <b>PARENT #1</b> Your info<br>
+    <b>PARENT #2</b> Your info<br>
+    <b>SHIP</b> Your info<br>
+    <b>SIBLING(S)</b> Your info<br>
+    <b>CHILD(REN)</b> Your info<br>
+    <b>PET(S)</b> Your info<br>
+    <b>ADOPTED?</b> Your info<br>
+    <b>RAP SHEET?</b> Your info<br>
+    <b>PRISON TIME?</b> Your info<br>
+    
+        </blockquote>
+    
+    
+        <p><h3>PERSONALITY INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>JUNG TYPE</b> Your info<br>
+    <b>SUBTYPE</b> Your info<br>
+    <b>ENNEATYPE</b> Your info<br>
+    <b>MORAL ALIGNMENT</b> Your info<br>
+    <b>TEMPERAMENT</b> Your info<br>
+    <b>ANGER</b> Your info<br>
+    <b>SCHEMATA</b> Your info<br>
+    <b>INTELLIGENCE TYPE</b> Your info<br>
+    <b>NEURODIVERGENCE(S)</b> Your info<br>
+    <b>AT RISK</b> Your info<br>
+    
+        </blockquote>
+    
+            
+        <p><h3>VICES + HABITS</h3>
+        
+        <blockquote>
+                
+    <p><b>SMOKES?</b> Your info<br>
+    <b>DRINKS?</b> Your info<br>
+    <b>DRUGS?</b> Your info<br>
+    <b>VIOLENT?</b> Your info<br>
+    <b>ADDICTION(S)?</b> Your info<br>
+    <b>SELF-DESTRUCTIVE?</b> Your info<br>
+    <b>HABIT(S)</b> Your info<br>
+    <b>HOBBIES</b> Your info<br>
+    <b>LIKES</b> Your info<br>
+    <b>DISLIKES</b> Your info<br>
+    <b>TIC(S)</b> Your info<br>
+    <b>OBSESSION(S)</b> Your info<br>
+    <b>COMPULSION(S)</b> Your info<br>
+    
+        </blockquote>
+            
+            
+        <p><h3>MISCELLANEOUS INFORMATION</h3>
+        
+        <blockquote>
+                
+    <p><b>HOUSE</b> Your info<br>
+    <b>ZODIAC</b> Your info<br>
+    <b>VICE</b> Your info<br>
+    <b>VIRTUE</b> Your info<br>
+    <b>ELEMENT</b> Your info<br>
+    <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+    <b>ANGEL</b> Your info<br>
+    <b>ANIMAL</b> Your info<br>
+    <b>MUTATION</b> Your info<br>
+    
+        </blockquote>
+              
+          </div> <!--tabcontent sub-->
+          
+          <!-- PAGE LINKS -->
+          
+          <div class="footerlinks">
+            <ul>
+             <li class="actives"><a href="#sub10a">&#9632;</a></li>
+             <li><a href="#sub10b">&#9632;</a></li>
+            </ul>
+            
+          </div> <!--footerlinks-->
+          
+          <!-- SIDE STATS -->
+                    
+          <div class="stats">
+            
+            <div class="square green" title="OPEN"></div>STATUS<br>
+            <div class="square green" title="OPEN"></div>SHIPPING<br>
+            <div class="square yellow" title="SELECTIVE"></div>ENDGAME SHIP</b><br>
+            <div class="square red" title="DEVELOPMENT"></div>[DEVELOPMENT STATUS]<br>
+            <div class="square black" title="MAIN VERSE"></div>[MAIN VERSE]<br>
+            <div class="square black" title="CREATION DATE"></div>[CREATION DATE]<br>
+            <!-- LINKS -->
+            <!-- Replace YOURTAG with the correct tag of yours. 
+            You can add more links as you need, just copy paste -->
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">CHARACTER TAG</a><br>
+            
+            <div class="fa fa-hashtag square" aria-hidden="true"></div>
+            <a href="/tagged/YOURTAG">ADDITIONAL TAG</a><br>
+            
+            
+            <!-- SOCIAL -->
+            
+            <div class="social">
+            
+            <!--INSTAGRAM-->
+            <div class="fa fa-instagram square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10instagram" data-title="YOUR CAPTION">INSTAGRAM</a>
+                <br>
+                
+            <!--TWITTER-->
+            <div class="fa fa-twitter square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10twitter" data-title="YOUR CAPTION">TWITTER</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10twitter" data-title="YOUR CAPTION"></a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10twitter" data-title="YOUR CAPTION"></a>
+                <br>
+                
+            <!--YOUTUBE
+            <div class="fa fa-youtube square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10youtube" data-title="YOUR CAPTION">YOUTUBE</a>
+                <br>-->
+                
+            <!--YOUR DATING APP OF CHOICE
+            <div class="fa fa-fire square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10date" data-title="YOUR CAPTION">DATING APP</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10date" data-title="YOUR CAPTION"></a>
+                <br>-->
+                
+            <!--SNAPCHAT
+            <div class="fa fa-snapchat square" aria-hidden="true"></div>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10snapchat" data-title="YOUR CAPTION">SNAPCHAT</a>
+                <a href="YOURIMAGEURL" data-lightbox="CHAR10snapchat" data-title="YOUR CAPTION"></a>
+                <br>-->
+        
+           </div><!--social-->
+            
+          </div> <!--stats-->
+          
+          <!-- CONNECTIONS -->
+          
+          <div id="connections">
+          
+              <ul>
+              
+                <li><a href="#?w=300" rel="CHAR10con1" class="poplight" 
+                     title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+                <li><a href="#?w=300" rel="CHAR10con2" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR10con3" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                <li><a href="#?w=300" rel="CHAR10con4" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+                   
+                 <li><a href="#?w=300" rel="CHAR10con5" class="poplight"
+                    title="CONNECTION NAME">
+                   <img src="http://placehold.it/50x50"></a></li>
+          
+              </ul>
+              
+         </div> <!--connections-->
+          
+      </div> <!--tabs-->
+      
+      <!-- CONNECTIONS -->
+      
+      <!-- CONNECTION 1-->
+      
+      <div id="CHAR10con1" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 1
+         <br /><span class="tw">Relation: Kind of relation here.</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div> <!--this is the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 2-->
+      
+      <div id="CHAR10con2" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 2
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 3-->
+      
+      <div id="CHAR10con3" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 3
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 4-->
+      
+      <div id="CHAR10con4" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 4
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+      <!-- CONNECTION 5-->
+      
+      <div id="CHAR10con5" class="popup_block">
+      
+       <div class="popup_txt">
+         <h1>CONNECTION NAME 5
+         <br /><span class="tw">Relation: Relation</span></h1>
+         
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+         
+         </div> <!--popup_txt-->
+         
+         <div class="popup_tip"></div><!--the little arrow-->
+         
+      </div> <!--popup-->
+      
+      
+    </div> <!--container-->
+    
+    <footer>
+      <a href="https://nonspace.tumblr.com/tagged/nnspc+codes"><i class="fa fa-copyright" aria-hidden="true"></i> NNSPC</a>
+    </footer>
+    
+  </body>
+</html>
