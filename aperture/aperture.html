@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+
+<!--PAGE THEME #10: Aperture by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  Editing for personal use is fine!-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <title>{Title}</title>
+
+  <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Chivo:400,400i,700|Playfair+Display:400,400i,700,700i|Roboto+Slab:400,700|Source+Code+Pro:400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" crossorigin="anonymous">
+
+  <!--JQUERY-->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+  <style>
+  
+/*SETTINGS & COLORS*/
+:root {
+  /*colors*/
+  --accentColorOne: 181,55,73; /*must be in rgb*/
+  --accentTextOne: #fff;
+
+  --sidebar: #eee;
+  --colorTextSidebar: #000;
+
+  --colorSocial: #fff; /*dark back*/
+  --colorSocialLight: #000;
+
+  --colorTitle: #fff; /*dark*/
+  --colorTitleLight: #000; /*dark*/
+
+  --colorTriangle: 0,0,0; /*needs to be rgb*/
+
+  /*fonts*/
+  --fontSize: 16px;
+  --lineHeight: 150%;
+  --fontOne: 'Raleway';
+  --fontTwo: 'Roboto Slab';
+  --fontQuote: 'Playfair Display';
+
+  /*grayscale*/
+  --grayscalePortrait: 0%; /*0 - 100%*/
+  --grayscaleThumbnails: 100%; /*0 - 100%*/
+}
+
+/*GENERAL*/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2 {
+  font-family: var(--fontTwo);
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 10vh;
+  color: var(--colorTitle);
+  line-height: 8vh;
+}
+
+/*ANIMATION KEYFRAMES*/
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+body {
+  font-family: var(--fontOne);
+  font-size: var(--fontSize);
+  color: #1e1e1e;
+}
+
+#wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+nav {
+  min-width: 50px;
+  max-width: 50px;
+  height: 100%;
+  background: #111;
+  padding: 15px 0;
+}
+
+nav li {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 15px;
+}
+
+nav a i {
+  width: 100%;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.9);
+  font-size: 18px;
+}
+
+main {
+  position: relative;
+  flex: 1;
+  /*min-width: 850px;*/
+  background: #f7f7f7;
+  webkit-animation-duration: 0.8s;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+}
+
+aside {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+aside li {
+  list-style-type: none;
+  line-height: 100%;
+  font-size: 0;
+}
+
+aside li img {
+  width: 150px;
+  height: 150px;
+}
+
+aside li img,
+.connections img,
+.popup-inner img {
+  object-fit: cover;
+  o-object-fit: cover;
+  -webkit-filter: grayscale(var(--grayscaleThumbnails));
+  filter: grayscale(var(--grayscaleThumbnails));
+}
+
+/*main content*/
+.tab {
+  position: relative;
+  display: none;
+  width: 100%;
+  height: 100%;
+  webkit-animation-duration: 0.8s;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+  overflow-y: auto;
+}
+
+.tab.current {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.portrait-row {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.portrait-inner {
+  position: relative;
+  height: calc(100vh - 250px);
+}
+
+.portrait-inner img.big {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  o-object-fit: cover;
+  -webkit-filter: grayscale(var(--grayscalePortrait));
+  filter: grayscale(var(--grayscalePortrait));
+}
+
+.overlay {
+  background: url(https://www.transparenttextures.com/patterns/graphy-dark.png);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  opacity: 0.4;
+}
+
+.triangle {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 250px 250px 0 0;
+  border-color: rgb(var(--colorTriangle)) transparent transparent transparent;
+  top: 0;
+  opacity: 0.5
+}
+
+.title {
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.title h1 {
+  text-shadow: 20px 20px 0px rgba(17,17,17,0.5);
+  letter-spacing: 10px
+}
+
+.links {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+  margin: 15px 25px;
+  z-index: 1;
+}
+
+.links a {
+  color: var(--colorSocial);
+  font-size: 25px;
+  text-decoration: none;
+  padding: 0 8px;
+  opacity: 0.5;
+}
+
+.stats {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  padding: 0 15px;
+  display: flex;
+}
+
+.bar {
+  height: 100%;
+  display: flex;
+  margin: 0 0 0 20px;
+  margin-top: auto;
+  align-items: flex-end;
+}
+
+.bar div {
+  position: relative;
+  width: 50px;
+  background: rgba(var(--colorTriangle),0.4);
+}
+
+.bar span {
+  position: absolute;
+  font-family: var(--fontTwo);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  left: 38px;
+  bottom: 10px;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  height: 50px;
+  width: 100vh;
+  color: var(--colorTitle);
+  font-size: 2vh;
+  opacity: 1;
+}
+
+.bar:nth-of-type(1) div {
+  height: 5%;
+}
+.bar:nth-of-type(2) div {
+  height: 5%;
+}
+.bar:nth-of-type(3) div {
+  height: 5%;
+}
+.bar:nth-of-type(4) div {
+  height: 5%;
+}
+
+.bar:nth-of-type(even) div {
+  background: rgba(var(--accentColorOne), 0.4);
+}
+
+/*connections*/
+.connections {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  max-width: 300px;
+  display: flex;
+  flex-wrap: wrap-reverse;
+}
+
+.connections img {
+  width: 10vh;
+  height: 10vh;
+  object-fit: cover;
+  o-object-fit: cover;
+  margin: 10px 10px 0 0;
+  border: 5px solid rgba( var(--colorTriangle),0.5);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+.text-row {
+  position: relative;
+  height: 250px;
+  display: flex;
+  padding: 35px 50px;
+  color: var(--accentTextOne);
+  background: rgb(var(--accentColorOne));
+  -webkit-box-shadow: -1px -10px 0px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: -1px -10px 0px 0px rgba(0,0,0,0.3);
+  box-shadow: -1px -10px 0px 0px rgba(0,0,0,0.3);
+}
+
+.text-title li {
+  list-style-type: none;
+  font-family: var(--fontTwo);
+  letter-spacing: 2px;
+  padding: 5px 0px;
+  font-size: calc(var(--fontSize) - 3px);
+}
+
+.text-title li:first-child {
+  position: relative;
+  padding-bottom: 10px;
+  padding-top: 0;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  font-size: var(--fontSize);
+}
+
+.text-title li:first-child:after {
+  content: '';
+  height: 2px;
+  background: #fff;
+  width: 40%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.text-column {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.text {
+  position: relative;
+  column-count: 2;
+  padding-left: 35px;
+  column-gap: 25px;
+  overflow-y: scroll;
+  font-size: calc(var(--fontSize) - 1px);
+  line-height: var(--lineHeight);
+}
+
+.text p {
+  margin-bottom: 15px;
+}
+
+/*info side*/
+.info-column {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  background: rgb(var(--accentColorOne));
+  z-index: 1;
+  -webkit-box-shadow: 0px 0px 100px -35px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 0px 100px -35px rgba(0,0,0,0.3);
+  box-shadow: -5px 0px 20px 0px rgba(0,0,0,0.2);
+  height: 100vh;
+}
+
+.quote,
+.table,
+.traits,
+.links {
+  width: 100%;
+}
+
+.quote {
+  background: rgba(0,0,0,0.1);
+  padding: 25px 25px;
+  font-family: var(--fontQuote);
+  background: var(--background);
+}
+
+.quote h3 {
+  font-weight: normal;
+  font-style: italic;
+  font-size: calc(var(--fontSize) + 6px);
+  color: rgba(255,255,255,0.8);
+}
+
+.table {
+  position: relative;
+  background: var(--sidebar);
+  color: var(--colorTextSidebar);
+  overflow-y: auto;
+  flex-: 1;
+}
+
+.table table {
+  width: 100%;
+  /*border-collapse: collapse;*/
+}
+
+.table td {
+  width: 50%;
+}
+
+.table td {
+  padding: 15px 25px;
+  list-style-type: none;
+  line-height: calc(var(--fontSize) + 5px);
+}
+
+.table tr td:first-child {
+  font-family: var(--fontTwo);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: calc(var(--fontSize) - 2px);
+}
+
+.table tr td:nth-child(2) {
+  background: rgba(0,0,0,0.05);
+}
+
+.table tr:nth-child(even) td:first-child {
+  background: rgba(0,0,0,0.1);
+}
+
+.table tr:nth-child(odd) td:first-child {
+  background: rgba(0,0,0,0.2);
+}
+
+/*POPUPS*/
+.popup {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  display: none;
+}
+
+.popup-inner {
+  position: relative;
+  width: 500px;
+  height: 280px;
+  display: flex;
+  background: rgb(var(--accentColorOne));
+  color: var(--accentTextOne);
+  margin: auto;
+  border: 10px solid rgba( var(--colorTriangle),0.5);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+.popup-inner img {
+  width: 200px;
+  height: 260px;
+  filter: grayscale(0);
+  filter: grayscale(0);
+}
+
+.con-desc {
+  margin: 25px;
+  overflow: hidden;
+}
+
+.con-text {
+  height: 100%;
+  overflow-y: auto;
+  margin-bottom: 25px;
+}
+
+#nnspc {
+  left: 45px;
+  margin: 20px 0;
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  font-size: 19px;
+}
+
+#nnspc a {
+  text-decoration: none;
+}
+
+/*HOVER*/
+.links a,  aside img, .portrait-inner img {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.links a:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+aside li img:hover,
+.portrait-inner:hover > img,
+.active img, img.active,
+.connections img:hover {
+  cursor: pointer;
+  -webkit-filter: grayscale(0%);
+  filter: grayscale(0%);
+}
+
+/*media queries*/
+@media (max-width: 1036px) {
+  .info-column {
+    width: auto;
+    height: auto;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    min-width: 100%;
+    height: 50px;
+    z-index: 99;
+  }
+
+  aside {
+    position: fixed;
+    width: 100%;
+    top: 50px;
+    height: auto;
+    z-index: 99;
+  }
+
+  aside ul {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #wrapper {
+    margin-top: 200px;
+    height: auto; 
+    overflow-y: auto;
+    flex-direction: column-reverse;
+  }
+
+  #nnspc {
+    z-index: 9999;
+    position: fixed !important;
+  }
+}
+  </style>
+
+  <!--FALL BACK FOR NO JAVASCRIPT-->
+  <noscript>
+  <style type="text/css">
+    #grid {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #nojs {
+      width: 100%;
+      height: 35px;
+      background: red;
+      color: #fff;
+      line-height: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</noscript>
+</head>
+
+<body>
+  <!--NO JS WARNING-->
+  <noscript>
+    <div id="nojs">Warning: Javascript is disabled. This will restrict functionality.</div>
+  </noscript>
+  <div id='wrapper'>
+  <nav>
+    <ul>
+      <li><a href="/" title="home"><i class="fas fa-home"></i></a></li>
+      <li><a href="/ask" title="message"><i class="far fa-envelope"></i></a></li>
+    </ul>
+  </nav>
+  <main>
+  
+    <!--COPY PASTE THIS TAB FOR MORE TABS-->
+    <!--TAB ONE-->
+    <div class='tab'>
+      <div class='portrait-row'>
+        <div class='portrait-inner'>
+        
+          <!--MAIN IMAGE-->
+          <img class='big' src='https://images.unsplash.com/photo-1484240950164-450be1af341f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80'>
+          
+          <div class='overlay'></div>
+          <div class='triangle'></div>
+          
+          <!--TITLE-->
+          <div class='title'>
+            <h1>First<br />Last</h1>
+          </div>
+          
+          <!--LINKS-->
+          <div class='links'>
+            <a href='/' title="tag">
+              <i class='fas fa-hashtag'></i>
+            </a>
+            <a href='/' title="writing">
+              <i class='fas fa-pen'></i>
+            </a>
+            <a href='/' title="pinterest">
+              <i class='fab fa-pinterest'></i>
+            </a>
+            <a href='/' title="instagram">
+              <i class='fab fa-instagram'></i>
+            </a>
+          </div>
+          
+          <!--STATS-->
+          <!--To change the height of the stat bars change the height of the           div here, for each div in percentages 0-100-->
+          <div class='stats'>
+            <div class='bar'>
+              <div style="height: 50%;">
+                <span>Courage</span>
+              </div>
+            </div>
+            <div class='bar'>
+              <div style="height: 70%;">
+                <span>Trait</span>
+              </div>
+            </div>
+            <div class='bar'>
+              <div style="height: 40%;">
+                <span>Courage</span>
+              </div>
+            </div>
+            <div class='bar'>
+              <div style="height: 60%;">
+                <span>Courage</span>
+              </div>
+            </div>
+          </div>
+          
+          <!--CONNECTIONS-->
+          <!--Important: The connection links need to be in the same order            as their respective popup or they will be wrong!-->
+          <div class='connections'>
+            <!--CONNECTION ONE-->
+            <img src='https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80'>
+            <!--CONNECTION TWO-->
+            <img src='https://images.unsplash.com/photo-1446511437394-36cdff3ae1b3?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80'>
+            
+            <!--COPY MORE HERE-->
+          </div>
+        </div>
+        
+        <!--TEXT-->
+        <div class='text-row'>
+          <div class='text-title'>
+            <ul>
+              <li>Background</li>
+              <li>Background</li>
+              <li>Background</li>
+              <li>Background</li>
+            </ul>
+          </div>
+          <div class='text-column'>
+            <div class='text'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class='info-column'>
+      
+        <!--QUOTE-->
+        <div class='quote'>
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+        </div>
+        
+        <!--INFO TABLE-->
+        <div class='table'>
+          <table>
+            <tr>
+              <td>Full Name</td>
+              <td>Name</td>
+            </tr>
+            <tr>
+              <td>Nickname</td>
+              <td>Nick</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td>D.o.B</td>
+              <td>00, Month</td>
+            </tr>
+            <tr>
+              <td>Occupation</td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+              <td>Residence</td>
+              <td>Residence</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>Status</td>
+            </tr>
+            <tr>
+              <td>Affiliation</td>
+              <td>Affiliation</td>
+            </tr>
+            <tr>
+              <td>Other</td>
+              <td>Other</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>Status</td>
+            </tr>
+            <tr>
+              <td>Affiliation</td>
+              <td>Affiliation</td>
+            </tr>
+            <tr>
+              <td>Other</td>
+              <td>Other</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!--CONNECTIONS-->
+
+      <!--CONNECTION POPUP ONE-->
+      <div class="popup">
+        <div class="popup-inner">
+          <!--IMAGE-->
+          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80">
+          <div class="con-desc">
+          
+              <div class='text-title'>
+                <ul>
+                  <!--CONNECTION TITLE-->
+                  <li>Connection</li>
+                </ul>
+              </div>
+              <!--CONNECTION TEXT-->
+              <div class="con-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup">
+        <div class="popup-inner">
+          <img src="https://images.unsplash.com/photo-1446511437394-36cdff3ae1b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
+          <div class="con-desc">
+              <div class='text-title'>
+                <ul>
+                  <li>Connection Two</li>
+                </ul>
+              </div>
+              <div class="con-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!--END COPY HERE-->
+
+    <!--TAB TWO-->
+    <div class='tab'>
+      <div class='portrait-row'>
+        <div class='portrait-inner'>
+          <img class='big' src='https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80'>
+          <div class='overlay'></div>
+          <div class='triangle'></div>
+          <div class='title'>
+            <h1>First<br />Last</h1>
+          </div>
+          <div class='links'>
+            <a href='/'>
+              <i class='fas fa-hashtag'></i>
+            </a>
+            <a href='/'>
+              <i class='fas fa-pen'></i>
+            </a>
+            <a href='/'>
+              <i class='fab fa-pinterest'></i>
+            </a>
+            <a href='/'>
+              <i class='fab fa-instagram'></i>
+            </a>
+          </div>
+          <div class='stats'>
+            <div class='bar'>
+              <div style="height: 50%;">
+                <span>Courage</span>
+              </div>
+            </div>
+            <div class='bar'>
+              <div style="height: 70%;">
+                <span>Trait</span>
+              </div>
+            </div>
+            <div class='bar'>
+              <div style="height: 40%;">
+                <span>Courage</span>
+              </div>
+            </div>
+            <div class='bar'>
+              <div style="height: 60%;">
+                <span>Courage</span>
+              </div>
+            </div>
+          </div>
+          <div class='connections'>
+            <img src='https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80'>
+            <img src='https://images.unsplash.com/photo-1446511437394-36cdff3ae1b3?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80'>
+          </div>
+        </div>
+        <div class='text-row'>
+          <div class='text-title'>
+            <ul>
+              <li>Background</li>
+              <li>Background</li>
+              <li>Background</li>
+              <li>Background</li>
+            </ul>
+          </div>
+          <div class='text-column'>
+            <div class='text'>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+          </div>
+        </div>
+      </div>
+      <div class='info-column'>
+        <div class='quote'>
+          <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h3>
+        </div>
+        <div class='table'>
+          <table>
+            <tr>
+              <td>Full Name</td>
+              <td>Name</td>
+            </tr>
+            <tr>
+              <td>Nickname</td>
+              <td>Nick</td>
+            </tr>
+            <tr>
+              <td>Age</td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td>D.o.B</td>
+              <td>00, Month</td>
+            </tr>
+            <tr>
+              <td>Occupation</td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+              <td>Residence</td>
+              <td>Residence</td>
+            </tr>
+            <tr>
+              <td>Status</td>
+              <td>Status</td>
+            </tr>
+            <tr>
+              <td>Affiliation</td>
+              <td>Affiliation</td>
+            </tr>
+            <tr>
+              <td>Other</td>
+              <td>Other</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="popup">
+        <div class="popup-inner">
+          <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80">
+          <div class="con-desc">
+              <div class='text-title'>
+                <ul>
+                  <li>Connection Tab</li>
+                </ul>
+              </div>
+              <div class="con-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="popup">
+        <div class="popup-inner">
+          <img src="https://images.unsplash.com/photo-1446511437394-36cdff3ae1b3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80">
+          <div class="con-desc">
+              <div class='text-title'>
+                <ul>
+                  <li>Connection Tab Two</li>
+                </ul>
+              </div>
+              <div class="con-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!--PASTE HERE-->
+    
+  </main>
+ 
+  
+  <aside>
+    <ul>
+      <li>
+        <img src='https://images.unsplash.com/photo-1484240950164-450be1af341f?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80'>
+      </li>
+      <li>
+        <img src='https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80'>
+      </li>
+      <li>
+        <img src='https://images.unsplash.com/photo-1480914362564-9f2c2634e266?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80'>
+      </li>
+      <li>
+        <img src='https://images.unsplash.com/photo-1446511437394-36cdff3ae1b3?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80'>
+      </li>
+      <li>
+        <img src='https://images.unsplash.com/photo-1517462964-21fdcec3f25b?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80'>
+      </li>
+      <li>
+        <img src='https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80'>
+      </li>
+      <li>
+        <img src='https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=668&amp;q=80'>
+      </li>
+    </ul>
+  </aside>
+</div>
+
+<script>
+$( document ).ready(function() {
+$('body').append(
+  '<div id="nnspc" style="position: absolute; bottom: 0; padding: 10px; background: #181818;"><a style="font-family: helvetica; font-weight: bold; letter-spacing: -1px; color: #fff;" href="https://nonspace.tumblr.com">nonspace.</a></div>'
+);
+
+  /*TABS*/
+  $('.tab:first-of-type').addClass('current');
+  $('aside li:first-of-type').addClass('active');
+  
+  $('aside li').on('click', function(e) {
+    var currentAttrValue = ':nth-of-type(' + ($(this).index() + 1) + ')';
+
+    window.location.hash = $(this).attr('data-tab');
+
+    $('.tab' + currentAttrValue).addClass('current').siblings('.tab').removeClass('current');
+    $(this).addClass('active').siblings('aside li').removeClass('active');
+  });
+
+  /*POPUP*/
+   /*opens popup on click*/
+   $(".connections img").on('click', function() {
+     var currentIndex = $(this).index() + 3;
+     var currentAttrValue = $(this).parents('.tab').index() + 1;
+
+     var currentLoc = ".tab.current .popup:nth-of-type(" + currentIndex + ')';
+     
+     console.log(currentLoc);
+
+     $(this).addClass('active').siblings('.connections img').removeClass('active');
+
+     $('.popup').fadeOut();
+     $(currentLoc).fadeIn().css('display', 'flex');
+     $(document.body).addClass('noscroll'); /*noscroll on background*/
+    });
+
+   $(".popup").on('click', function() {
+     $(this).fadeOut();
+     $(document.body).removeClass('noscroll');
+     $('.connections img').removeClass('active');
+   });
+   /*prevent closing popup by clicking on it*/
+   $('.popup-inner').click(function (e) {
+     e.stopPropagation();
+   });
+});
+</script>
+
+</body>
+</html>
