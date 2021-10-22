@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+
+<!--THEME #3: CAFFEINE FICTION (Soda Pop Fiction v. 3.0) by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  I will find and haunt you.
+  Editing for personal use is fine!-->
+
+<head>
+  <title>{Title}</title>
+  <link rel="icon" type="image/png" href="{Favicon}">
+
+  <!-- GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Jomolhari:400,400i,700,700i|Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+
+  <!--jQUERY-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+  <!-- LIGHTBOX PLUGIN by Lokesh Dhakar-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+
+  <!--CAFFEINE JS-->
+  <script src="https://dl.dropbox.com/s/qumeibzfeynd743/caffeine-fiction.js"></script>
+
+
+  <!-- CSS -->
+  <style type="text/css">
+
+  /*GENERAL*/
+
+/*variables*/
+:root {
+  --fontSize: 15px;
+  --textColor: #000;
+  --headlineSize: 32px;
+  --lineHeight: 160%;
+  --fontFamily: 'Roboto';
+  --fontFamilySecondary: 'Jomolhari';
+
+  /*main background*/
+  --background: #f5f5f5;
+  --backgroundImage: url('');
+  --backgroundBlend: ;
+
+   --tabBackground: #fff;
+
+  /*navigation images*/
+  --tileWidth: 110px;
+  --tileHeight: 150px;
+
+  /*sidebar w/img, navigation img active border*/
+  --accentColor: #9E8966/*#171717*/;
+  --accentText: #fff;
+
+  /*list icon*/
+  --bulletIcon: "\f00c"
+}
+
+/*reset styles*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+  font-family: var(--fontFamily);
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--textColor);
+  background-image: var(--backgroundImage);
+  background-blend-mode: var(--backgroundBlend);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+}
+
+h1, h3 {
+  font-family: var(--fontFamilySecondary), serif;
+  font-size: var(--headlineSize);
+  margin-bottom: 25px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2, h4 {
+  font-weight: normal;
+  font-size: .9rem;
+  letter-spacing: 8px;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--accentColor);
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--accentText);
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+blockquote {
+  margin: 15px 0 15px 15px;
+  padding-left: 15px;
+  width: 96%;
+  border-left: 3px solid var(--accentColor);
+}
+
+/* FILTER NAVIGATION */
+nav {
+  position: relative;
+  height: 100vh;
+  width: 250px;
+  flex-shrink: 0;
+  background: var(--tabBackground);
+  margin-left: -250px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+
+nav li {
+  list-style-type: none;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  cursor: pointer;
+}
+
+#home-buttons {
+  margin-top: auto;
+  align-self: bottom;
+}
+
+#home-buttons a i {
+  color: var(--textColor);
+  margin-right: 15px;
+  font-size: 1.3rem;
+}
+
+input#sidebar_button {
+  display: none;
+}
+
+#sidebar_controls {
+  position: fixed;
+  top: 15px;
+  left: 20px;
+  z-index: 9;
+  cursor: pointer;
+}
+
+#sidebar_controls::before,
+input#sidebar_button:checked ~ #sidebar_controls::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-size: 21px;
+}
+
+#sidebar_controls::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0c9";
+  color: var(--accentStaticWhite);
+}
+
+input#sidebar_button:checked ~ nav  {
+  margin-left: 0;
+}
+
+input#sidebar_button:checked ~ #sidebar_controls {
+  left: 210px;
+  background: var(--backgroundSecondary);
+}
+
+input#sidebar_button:checked ~ #sidebar_controls::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00d";
+  color: var(--textColor);
+}
+
+#container {
+  position: relative;
+  width: 95vw;
+  min-width: 250px;
+  max-width: 1400px;
+  height: 95vh;
+  min-height: 600px;
+  max-height: 650px;
+  margin: auto;
+  align-self: center;
+  display: flex;
+  overflow: hidden;
+  padding: 0 25px;
+}
+
+.tabpages,
+.stats {
+  padding: 50px;
+}
+
+/* PICTURE NAVIGATION */
+
+#navigation img,
+.stats img {
+  object-fit: cover;
+  o-object-fit: cover;
+}
+
+#navigation {
+  position: relative;
+  width: (--tileWidth);
+  height: auto;
+  overflow-x: auto;
+  padding-top: 0;
+  padding: 0 25px 0 20px;
+}
+
+.card {
+  display: block;
+  position: relative;
+  list-style-type: none;
+  margin-bottom: 25px;
+  line-height: 0;
+  height: var(--tileHeight);
+  width: var(--tileWidth);
+}
+
+.hide {
+  width: 0px;
+  height: 0px;
+  opacity:0;
+  margin:0;
+  padding:0;
+  z-index: -9;
+}
+
+#navigation li img {
+  height: var(--tileHeight);
+  width: var(--tileWidth);
+  border: 5px solid var(--tabBackground);
+  cursor: pointer;
+}
+
+#navigation li img:hover {
+  border: 5px solid var(--accentColor);
+  /* PICTURE HOVER COLOR */
+}
+
+#navigation .active img {
+  border: 5px solid var(--accentColor);
+  /* ACTIVE PICTURE COLOR */
+}
+
+.nav-text {
+  position: absolute;
+  top: 0;
+  left: -20px;
+  font-size: 12px;
+  line-height: 100%;
+  height: 100%;
+  max-height: var(--tileHeight);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  writing-mode: tb;
+  transform: rotate(180deg);
+  text-orientation: sideways;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navigation {
+  margin: 20px;
+}
+
+/* TABS */
+
+.tabs {
+  padding: 20px;
+}
+
+.tabs {
+  position: relative;
+  flex: 1;
+  display: none;
+  max-height: 100%;
+  overflow: hidden;
+  -webkit-animation-duration: 1.2s;
+  animation-name: fadeIn;
+  animation-duration: 1.2s;
+}
+
+.tabs.active {
+  display: flex;
+}
+
+.tabs-inner {
+  position: relative;
+  display: flex;
+  flex: 1;
+}
+
+.tabpages.active {
+  display: block;
+}
+
+/*tab pages*/
+.tabpages {
+  position: relative;
+  background: var(--tabBackground);
+  color: var(--textColor);
+  text-align: justify;
+  overflow-y: hidden;
+  flex: 1;
+  min-width: 400px;
+  display: none;
+  overflow-y: scroll;
+}
+
+.tabpages:hover {
+  overflow-y: scroll;
+}
+
+.page-head {
+  margin-bottom: 35px;
+}
+
+/* text formatting in tabs */
+
+.tabpages a,
+.popup_txt a,
+.tabpages b,
+.popup_txt b,
+.tabpages strong,
+.popup_txt strong {
+  color: var(--accentColor);
+}
+
+.tabpages a:hover,
+.popup_txt a:hover {
+  color: var(--textColor);
+}
+
+.tabpages ul,
+.popup_txt ul {
+  list-style-type: none;
+  margin: 15px 0;
+}
+
+.tabpages li,
+.popup_txt li {
+  margin-left: 25px;
+}
+
+.tabpages li:before,
+.popup_txt li:before {
+  content: var(--bulletIcon);
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: inline-block;
+  margin-left: -15px;
+  width: 15px;
+}
+
+/* CHARACTER STATS RIGHT SIDE */
+
+.stats {
+  position: relative;
+  font-weight: bold;
+  text-transform: uppercase;
+  width: 270px;
+  background: var(--accentColor);
+  display: flex;
+  flex-direction: column;
+}
+
+.stats h2 {
+  color: var(--accentText);
+}
+
+.stats img {
+  height: 170px;
+  width: calc(var(--tileWidth) + 20px);
+  border: 5px solid var(--tabBackground);
+  object-fit: cover;
+  o-object-fit: cover;
+}
+
+.stats a {
+  text-decoration: none;
+  color: var(--accentText);
+  transition: ease color 0.5s;
+}
+
+.stats a:hover i {
+  opacity: 0.5;
+}
+
+.stats-inner {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stats .data {
+  margin: 25px 0;
+}
+
+/* SOCIAL */
+
+.social {
+  display: flex;
+  justify-content: space-between;
+}
+
+.social a[data-lightbox] {
+  display: none;
+}
+
+a[data-lightbox].social-link {
+  display: block;
+}
+
+.social i {
+  color: var(--accentText);
+  font-size: 1.3rem;
+}
+
+/* PAGE LINKS */
+
+.pagelinks {
+  margin-bottom: 50px;
+  text-align: center;
+  color: var(--accentText);
+}
+
+.pagelinks a {
+  text-decoration: none;
+  font-size: 16px;
+  padding-right: 1px;
+  color: var(--accentText);
+  opacity: 0.3;
+}
+
+.pagelinks ul {
+  list-style-type: none;
+  padding: 0px 0px 0px 2px;
+}
+
+.pagelinks li {
+  display: inline-block;
+}
+
+.pagelinks .active a {
+  /* COLOR OF ACTIVE PAGE TAB */
+  color: var(--accentText);
+  opacity: 1;
+}
+
+.pagelinks a:hover {
+  opacity: 0.8;
+}
+
+/*cover img*/
+.cover-img {
+  max-width: 150px;
+  height: 100%;
+  background-size: cover;
+  background-position: 85%;
+  flex-basis: 150px;
+  flex-shrink: 100;
+}
+
+
+/* CONNECTIONS */
+.connections {
+  position: relative;
+  padding-left: 25px;
+  margin-top: auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-shrink: 0;
+}
+
+.connections ul {
+  list-style-type: none;
+  margin-top: auto;
+}
+
+.connections ul img {
+  width: 50px;
+  filter: grayscale(100%);
+  border: 3px solid var(--tabBackground);
+  /* ACTIVE PICTURE COLOR */
+}
+
+.connections li:not(:first-child) {
+  margin-top: 20px;
+}
+
+.connections a {
+  display: block;
+  line-height: 0;
+}
+
+/* TOOLTIPS */
+.tooltip {
+  visibility: hidden;
+  width: auto;
+  max-width: 200px;
+  background-color: var(--accentColor);
+  color: var(--accentText);
+  text-align: center;
+  padding: 3px 8px;
+  position: fixed;
+  font-size: 0.8rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  opacity: 0;
+  left: 0;
+  z-index: 9;
+  transition: visibility 0.3s linear, opacity 0.3s linear;;
+}
+
+.social .tooltip {
+  background: var(--accentText);
+  color: var(--accentColor);
+}
+
+.connections li:hover > .tooltip,
+.social a:hover > .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* MISC */
+
+.tw {
+  /* TRIGGER WARNING STYLING */
+  font-family: var(--fontFamily);
+  font-size: 0.8rem;
+  font-weight: normal;
+  letter-spacing: 0px;
+}
+
+/*POP UP*/
+
+.fade {
+  display: none;
+  background: #000;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .80;
+  z-index: 99;
+}
+
+.popup {
+  display: none;
+  /*--hidden by default--*/
+  text-align: justify;
+  overflow-y: hidden;
+  position: fixed;
+  height: 75vh;
+  max-height: 510px;
+  min-height: 250px;
+  width: 50vw;
+  max-width: 500px;
+  min-width: 300px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  z-index: 999;
+  border: 5px solid var(--accentColor);
+}
+
+.popup_txt {
+  z-index: 0;
+  background: var(--tabBackground);
+  padding: 50px;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  border-bottom: 50px solid var(--tabBackground);
+}
+
+
+#nnspc {
+  color: var(--accentText);
+  background: var(--accent);
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 5px 10px;
+  font-family: helvetica;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#nnspc a {
+  text-decoration: none;
+  color: #000;
+}
+
+#nnspc:hover {
+  background: var(--accentColor);
+}
+
+#nnspc:hover a {
+  color: var(--accentText);
+}
+
+/* SHADOWS */
+
+#navigation li img,
+.tabs-inner,
+.tooltip {
+  box-shadow: 0px 0px 25px 0px rgba(0,0,0,0.15);
+}
+
+/* TRANSITIONS */
+/*ANIMATION KEYFRAMES*/
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#navigation li img,
+.social a,
+.pagelinks a,
+#nnspc,
+#nnspc a,
+.tabpages a,
+nav,
+#sidebar_controls,
+.card {
+  transition: all 0.5s ease;
+}
+
+/* SCROLLBARS */
+
+ ::-webkit-scrollbar {
+  width: 5px;
+}
+
+ ::-webkit-scrollbar-track {
+  border-radius: 1px;
+  background-color: var(--tabBackground);
+}
+
+.connections::-webkit-scrollbar {
+  width: 30px;
+}
+
+.connections::-webkit-scrollbar-track {
+  border-left: 25px solid var(--background);
+  box-shadow: inset 0 0 10px 10px var(--tabBackground);
+}
+
+.connections::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 10px 10px var(--accentColor);
+  border-left: 25px solid var(--background);
+}
+
+.tabpages::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.tabpages::-webkit-scrollbar-thumb {
+  background-color: var(--background);
+}
+
+ ::-webkit-scrollbar-thumb {
+  background-color: var(--accentColor);
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1127px) {
+  .cover-img {
+    display: none;
+  }
+
+  .connections {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1025px) {
+  .stats {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 804px) {
+  #container {
+    flex-direction: column;
+    overflow-y: auto;
+    width: 100%;
+    padding: 0 0px;
+    max-height: unset;
+    height: auto;
+  }
+
+  #navigation {
+    margin: 50px 0 0 0;
+  }
+
+  #navigation ul {
+    display: flex;
+    flex-direction: row;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
+  .card {
+    margin: 0 0px 0 25px;
+  }
+
+  .hide {
+    margin: 0;
+  }
+
+  .tabpages {
+    min-width: 250px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <input id="sidebar_button" type="checkbox" name="mobile_menu" />
+  <label id="sidebar_controls" for="sidebar_button"></label>
+  <!-- BACK NAVIGATION W/ FILTERS-->
+  <!--To filter write the class into the data filter and add it
+    to the respective <li> elements down in the #navigation.
+
+    You can filter by:
+    'Elements with this class': data-filter=".class"
+    'Elements with this OR that class': data-filter=".class, .thatclass"
+    'Elements with this AND that class': data-filter=".class.thatclass"
+
+    Do not use classes that already exist! (.Eg: .activem .hide, .tw etc,       you can ctrl+f to search the code to see if it exists)
+  -->
+
+  <nav>
+    <ul>
+      <li class="filtercat" data-filter="*">all</li>
+      <li class="filtercat" data-filter=".open">open</li>
+      <li class="filtercat" data-filter=".closed">closed</li>
+    </ul>
+    <!--icon navigation-->
+    <!--If you want to add more links, copy/paste and find which icon you           want to use on fontawesome.com
+    -->
+    <div id="home-buttons">
+      <a href="/" title="home"><i class="fas fa-home"></i></a>
+      <a href="/ask" title="message"><i class="fas fa-envelope"></i></a>
+    </div>
+  </nav>
+  <!--buttons-->
+  <!---- OUTLINE CONTAINER ----->
+  <div id="container">
+
+    <!----- CHARACTER PICTURE LINKS ------>
+    <!--Important: if you want to add more links, I advise you to copy the          second link. OR to make sure only ONE <li> has the .active class            (that's the item that will have the border and should correspond to         the tab with the .active class. If you want to change the first tab         /link shown on the page, remove and add the .active class to another         <li> and .tab div
+    -->
+    <div id="navigation">
+      <ul>
+        <!--first character-->
+        <li class="card active open">
+          <a href="#" data-tab="#tab1">
+            <!--character image-->
+            <img src="https://images.unsplash.com/photo-1502585839613-ea89c24eecb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=929&q=80">
+          </a>
+          <!--character name-->
+          <div class="nav-text">Name -<span>00</span></div>
+        </li>
+
+        <!--COPY PASTE THIS FOR MORE LINKS-->
+        <li class="card closed open">
+          <a href="#" data-tab="#tab2">
+            <img src="https://images.unsplash.com/photo-1482501157762-56897a411e05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80">
+          </a>
+          <div class="nav-text">Name -<span>00</span></div>
+        </li>
+        <!--COPY END-->
+
+        <li class="card">
+          <a href="#" data-tab="#tab3">
+            <img src="https://images.unsplash.com/photo-1502585839613-ea89c24eecb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=929&q=80">
+          </a>
+          <div class="nav-text">Name -<span>00</span></div>
+        </li>
+
+        <li class="card">
+          <a href="#" data-tab="#tab4">
+            <img src="https://images.unsplash.com/photo-1482501157762-56897a411e05?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80">
+          </a>
+          <div class="nav-text">Name -<span>00</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <!------ TABS ------>
+    <!-- For clarification because it is a bit confusing:
+      .tabpages contains the content for page 1 & 2 for each                      character.
+      sub#a is page 1 (the default page) and sub#b is page 2.
+      (# representing character number)
+    -->
+    <!--To add new tabs:
+      1. Copy everything in "tabs" div (starts after TAB #).
+      2. Paste it at after the last tab
+      3. Change the div ID's in .tabs, .tabpages & pagelinks
+         Replace # with the corresponding tab number.
+          .tabs (tab#a),
+          .tabpages (tab#page# and tab#page#),
+          .pagelinks li (tab#page# and tab#page#).
+      4. Add an entry to #navigation.
+         Copy/paste a li entry and replace 'data-tab' attribute with the             right tab ID (e.g. data-tab="#tab3").
+
+      Help post: https://nonspace.tumblr.com/post/158471534827/hi-im-using-your-page-3-and-ive-tried-to-follow
+
+      If you run into any trouble with this, send me a message and I'll           try to help you.
+
+      <!-- If you want to link to another character of yours that                 is in the navigation you need to set the link like
+      <a href="/YOURPAGENAME/#tabNUMBERa">
+      and replace NUMBER with the corresponding tab number of said character       -->
+
+    <!-- TAB 1 -->
+    <div class="tabs active" id="tab1">
+      <div class="tabs-inner">
+        <div class="tabpages active" id="tab1page1">
+          <div class="page-head">
+            <h2>Biography</h2>
+          </div>
+          <h1> Character Name<br />
+            <span class="tw">
+            (tw: trigger warnings if applicable.)
+            </span>
+          </h1>
+          <p />
+          <p />
+            <!--- SHORT BIO -->
+            Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore <i>et dolore magna</i> aliqua.
+          <p />Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in <a href="#">voluptate</a> velit esse cillum dolore eu fugiat nulla pariatur.
+          <blockquote>Excepteur sint occaecat cupidatat non proident</blockquote>
+          sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <br />
+          Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <p />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <!-- PLOT POINTS -->
+          <h3>Headline</h3>
+          <ul>
+            <li> Plot idea #1</li>
+            <li> Plot idea #2</li>
+            <li> Plot idea #3</li>
+            <li> Plot idea #4</li>
+          </ul>
+        </div>
+        <!--tabcontent-->
+        <!-- PAGE 2 -->
+        <div class="tabpages" id="tab1page2">
+          <div class="page-head">
+            <h2>Information</h2>
+          </div>
+          <h3>Basic Information</h3>
+          <p><b>FULL NAME</b> Your info<br>
+            <b>NICKNAME(S)</b> Your info<br>
+            <b>ALIAS(ES)</b> Your info<br>
+            <b>TITLE</b> Your info<br>
+            <b>OCCUPATION</b> Your info<br>
+            <b>AGE</b> Your info<br>
+            <b>DATE OF BIRTH</b> Your info<br>
+            <b>NATIONALITY</b> Your info<br>
+            <b>GENDER & PRONOUNS</b> Your info<br>
+            <b>ORIENTATION</b> Your info<br>
+            <b>LIBIDO</b> Your info<br>
+            <b>RELIGION</b> Your info<br>
+            <b>THREAT LEVEL</b> Your info
+          <p>
+          <h3>Physical Information</h3>
+          <p><b>FACE CLAIM</b> Your info<br>
+            <b>HEIGHT</b> Your info<br>
+            <b>EYE COLOUR</b> Your info<br>
+            <b>HAIR COLOUR + STYLE</b> Your info<br>
+            <b>DOMINANT HAND</b> Your info<br>
+            <b>DISTINGUISHING FEATURES</b>  Your info<br>
+            <b>ACCENT + INTENSITY</b> Your info<br>
+            <b>TATTOO(S)</b> Your info<br>
+            <b>SCAR(S)</b> Your info<br>
+            <b>PIERCING(S)</b> Your info<br>
+            <b>GLASSES</b> Your info<br>
+          <p>
+          <h3>Background Information</h3>
+          <p><b>HOMETOWN</b> Your info<br>
+            <b>CURRENT RESIDENCE</b> Your info<br>
+            <b>LANGUAGE(S)</b> Your info<br>
+            <b>SOCIAL CLASS</b> Your info<br>
+            <b>BASIC EDUCATION</b> Your info<br>
+            <b>COLLEGE EDUCATION</b> Your info<br>
+            <b>DEGREE(S)</b> Your info<br>
+            <b>PARENT #1</b> Your info<br>
+            <b>PARENT #2</b> Your info<br>
+            <b>SHIP</b> Your info<br>
+            <b>SIBLING(S)</b> Your info<br>
+            <b>CHILD(REN)</b> Your info<br>
+            <b>PET(S)</b> Your info<br>
+            <b>ADOPTED?</b> Your info<br>
+            <b>RAP SHEET?</b> Your info<br>
+            <b>PRISON TIME?</b> Your info<br>
+          <p>
+          <h3>Personality</h3>
+          <p><b>JUNG TYPE</b> Your info<br>
+            <b>SUBTYPE</b> Your info<br>
+            <b>ENNEATYPE</b> Your info<br>
+            <b>MORAL ALIGNMENT</b> Your info<br>
+            <b>TEMPERAMENT</b> Your info<br>
+            <b>ANGER</b> Your info<br>
+            <b>SCHEMATA</b> Your info<br>
+            <b>INTELLIGENCE TYPE</b> Your info<br>
+            <b>NEURODIVERGENCE(S)</b> Your info<br>
+            <b>AT RISK</b> Your info<br>
+          <p>
+          <h3>Vices & Habits</h3>
+          <p><b>SMOKES?</b> Your info<br>
+            <b>DRINKS?</b> Your info<br>
+            <b>DRUGS?</b> Your info<br>
+            <b>VIOLENT?</b> Your info<br>
+            <b>ADDICTION(S)?</b> Your info<br>
+            <b>SELF-DESTRUCTIVE?</b> Your info<br>
+            <b>HABIT(S)</b> Your info<br>
+            <b>HOBBIES</b> Your info<br>
+            <b>LIKES</b> Your info<br>
+            <b>DISLIKES</b> Your info<br>
+            <b>TIC(S)</b> Your info<br>
+            <b>OBSESSION(S)</b> Your info<br>
+            <b>COMPULSION(S)</b> Your info<br>
+          <p>
+          <h3>Misc</h3>
+          <p><b>HOUSE</b> Your info<br>
+            <b>ZODIAC</b> Your info<br>
+            <b>VICE</b> Your info<br>
+            <b>VIRTUE</b> Your info<br>
+            <b>ELEMENT</b> Your info<br>
+            <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+            <b>ANGEL</b> Your info<br>
+            <b>ANIMAL</b> Your info<br>
+            <b>MUTATION</b> Your info<br>
+        </div>
+        <!--tabcontent sub-->
+
+        <!-- SIDE STATS -->
+        <div class="stats">
+          <div class="page-head">
+            <!--character title-->
+            <h2>Title</h2>
+          </div>
+          <div class="stats-inner">
+            <!--sidebar image-->
+            <img src="https://images.unsplash.com/photo-1507251217843-301ac7bf2afd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1026&q=80">
+            <!--character stats-->
+            <div class="data">
+              <h4>Age / Occupation / Gender / Pron.</h4>
+            </div>
+          </div>
+
+          <!-- PAGE LINKS -->
+          <div class="pagelinks">
+            <ul>
+              <li class="active"><a href="#" data-tab="#tab1page1">1</a></li>
+              <li>- <a href="#" data-tab="#tab1page2">2</a></li>
+            </ul>
+          </div>
+          <!--pagelinks-->
+
+          <!-- SOCIAL -->
+          <!--An image gallery essentially. Replace YOURIMAGEURL with
+            the image URL. The 'data-lightbox' value is the galleries.
+
+            All images with the same 'data-lightbox' will be in the same                gallery, no mattter on what page they are.
+            So if you want all images to be one big gallery, name them all
+            the same.
+
+            There an image caption as well.
+
+            You can also use these as regular links by removing
+            'data-lightbox' and 'data-title'
+
+            The first link for each, wrapped around a font awesome icon <i>
+            NEEDS to have the class .social-link. Make sure to not delete it             or not have double/removed it while copying.
+
+            TOOLTIPS: You can add tooltips to connection images by placing              the following code right after the opening <a> tag             place (See the first two connections for examples).
+           <span class="tooltip">Long tooltip</span>
+
+            -->
+
+          <div class="social">
+
+            <!--INSTAGRAM-->
+            <a href="https://images.unsplash.com/photo-1510362753328-028a0e6b0e9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80" data-lightbox="CHAR1instagram" data-title="YOUR CAPTION" class="social-link"><span class="tooltip">instagram</span><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://images.unsplash.com/photo-1502585839613-ea89c24eecb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=929&q=80" data-lightbox="CHAR1instagram" data-title="YOUR CAPTION"></a>
+
+            <!--TWITTER-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1twitter" data-title="YOUR CAPTION" class="social-link"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1twitter" data-title="YOUR CAPTION"></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1twitter" data-title="YOUR CAPTION"></a>
+
+            <!--YOUTUBE-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1youtube" data-title="YOUR CAPTION" class="social-link"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1youtube" data-title="YOUR CAPTION"></a>
+
+            <!--YOUR DATING APP OF CHOICE-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1date" data-title="YOUR CAPTION" class="social-link"><i class="fas fa-fire square" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1date" data-title="YOUR CAPTION"></a>
+
+            <!--SNAPCHAT-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1snapchat" data-title="YOUR CAPTION" class="social-link"><i class="fab fa-snapchat square" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR1snapchat" data-title="YOUR CAPTION"></a>
+
+          </div>
+          <!--social-->
+        </div>
+        <!--stats-->
+
+        <!--replace url with your background image url-->
+        <div class="cover-img" style="
+          background-image: url('https://images.unsplash.com/photo-1510362753328-028a0e6b0e9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80');
+          "></div>
+
+      </div>
+      <!--tabs-inner-->
+
+      <!-- CONNECTIONS -->
+      <!-- The actual content window of the pop up is end at the end, after            all tabs. This section which is the navigation.
+
+           Images are 50x50 but scale down if using larger ones.
+
+           data-tab="#CHAR1con1" - Is the id the pop up. It opens the div                                      with the same id.
+                                  !!!Make sure these are named properly!!!
+
+           Add more by copy/pasting (or delete to remove).
+
+           TOOLTIPS: You can add tooltips to connection images by placing              the following code within the <li> tag on first             place (See the first two connections for examples).
+           <span class="tooltip">Long tooltip</span>
+
+      -->
+
+      <!--connection navigation-->
+      <div class="connections">
+        <ul>
+          <!--CON NAVI LINK COPY/PASTE HERE-->
+          <li>
+            <span class="tooltip">Long tooltip</span>
+            <a href="#" data-tab="#CHAR1con1">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <!--COPY/PASTE END-->
+          <li>
+            <span class="tooltip">a tooltip</span>
+            <a href="#" data-tab="#CHAR1con2">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con3">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con4">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con5">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con6">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con7">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con8">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con9">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR1con10">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!--connections-->
+    </div>
+    <!--tab1end-->
+
+    <!-- CONNECTION POP UPS -->
+    <!--Here are the actual connection pop ups.
+      Make sure the divs here have the right id as the same in the above
+      section.
+    -->
+
+    <!--TAB 1 CONNECTIONS-->
+    <!--CONNECTION 1-->
+    <!--POPUP COPY PASTE HERE-->
+    <div id="CHAR1con1" class="popup">
+      <div class="popup_txt">
+        <div class="page-head">
+          <h2>Connection</h2>
+        </div>
+        <!--connection headline & tw warnings-->
+        <h1>
+          Connection's name
+          <br /><span class="tw">TW: Any trigger warnings</span>
+        </h1>
+
+        <!--connection text-->
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      </div>
+      <!--popup_txt-->
+    </div>
+    <!--popup-->
+    <!--COPY PASTE END-->
+
+
+    <!-- TAB 2 -->
+    <div class="tabs" id="tab2">
+      <div class="tabs-inner">
+        <div class="tabpages active" id="tab2page1">
+          <div class="page-head">
+            <h2>Biography</h2>
+          </div>
+          <h1> Character Name Two<br />
+            <span class="tw">
+            (tw: trigger warnings if applicable.)
+            </span>
+          </h1>
+          <p />
+          <p />
+            <!--- SHORT BIO -->
+            Short Biography. But you can really put whatever you want                 into this whole thing. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore <i>et dolore magna</i> aliqua.
+          <p />Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in <a href="#">voluptate</a> velit esse cillum dolore eu fugiat nulla pariatur.
+          <blockquote>Excepteur sint occaecat cupidatat non proident</blockquote>
+          sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <br />
+          Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          <p />
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <!-- PLOT POINTS -->
+          <h3>Headline</h3>
+          <ul>
+            <li> Plot idea #1</li>
+            <li> Plot idea #2</li>
+            <li> Plot idea #3</li>
+            <li> Plot idea #4</li>
+          </ul>
+        </div>
+        <!--tabcontent-->
+        <!-- PAGE 2 -->
+        <div class="tabpages" id="tab2page2">
+          <div class="page-head">
+            <h2>Information</h2>
+          </div>
+          <h3>Basic Information</h3>
+          <p><b>FULL NAME</b> Your info<br>
+            <b>NICKNAME(S)</b> Your info<br>
+            <b>ALIAS(ES)</b> Your info<br>
+            <b>TITLE</b> Your info<br>
+            <b>OCCUPATION</b> Your info<br>
+            <b>AGE</b> Your info<br>
+            <b>DATE OF BIRTH</b> Your info<br>
+            <b>NATIONALITY</b> Your info<br>
+            <b>GENDER & PRONOUNS</b> Your info<br>
+            <b>ORIENTATION</b> Your info<br>
+            <b>LIBIDO</b> Your info<br>
+            <b>RELIGION</b> Your info<br>
+            <b>THREAT LEVEL</b> Your info
+          <p>
+          <h3>Physical Information</h3>
+          <p><b>FACE CLAIM</b> Your info<br>
+            <b>HEIGHT</b> Your info<br>
+            <b>EYE COLOUR</b> Your info<br>
+            <b>HAIR COLOUR + STYLE</b> Your info<br>
+            <b>DOMINANT HAND</b> Your info<br>
+            <b>DISTINGUISHING FEATURES</b>  Your info<br>
+            <b>ACCENT + INTENSITY</b> Your info<br>
+            <b>TATTOO(S)</b> Your info<br>
+            <b>SCAR(S)</b> Your info<br>
+            <b>PIERCING(S)</b> Your info<br>
+            <b>GLASSES</b> Your info<br>
+          <p>
+          <h3>Background Information</h3>
+          <p><b>HOMETOWN</b> Your info<br>
+            <b>CURRENT RESIDENCE</b> Your info<br>
+            <b>LANGUAGE(S)</b> Your info<br>
+            <b>SOCIAL CLASS</b> Your info<br>
+            <b>BASIC EDUCATION</b> Your info<br>
+            <b>COLLEGE EDUCATION</b> Your info<br>
+            <b>DEGREE(S)</b> Your info<br>
+            <b>PARENT #1</b> Your info<br>
+            <b>PARENT #2</b> Your info<br>
+            <b>SHIP</b> Your info<br>
+            <b>SIBLING(S)</b> Your info<br>
+            <b>CHILD(REN)</b> Your info<br>
+            <b>PET(S)</b> Your info<br>
+            <b>ADOPTED?</b> Your info<br>
+            <b>RAP SHEET?</b> Your info<br>
+            <b>PRISON TIME?</b> Your info<br>
+          <p>
+          <h3>Personality</h3>
+          <p><b>JUNG TYPE</b> Your info<br>
+            <b>SUBTYPE</b> Your info<br>
+            <b>ENNEATYPE</b> Your info<br>
+            <b>MORAL ALIGNMENT</b> Your info<br>
+            <b>TEMPERAMENT</b> Your info<br>
+            <b>ANGER</b> Your info<br>
+            <b>SCHEMATA</b> Your info<br>
+            <b>INTELLIGENCE TYPE</b> Your info<br>
+            <b>NEURODIVERGENCE(S)</b> Your info<br>
+            <b>AT RISK</b> Your info<br>
+          <p>
+          <h3>Vices & Habits</h3>
+          <p><b>SMOKES?</b> Your info<br>
+            <b>DRINKS?</b> Your info<br>
+            <b>DRUGS?</b> Your info<br>
+            <b>VIOLENT?</b> Your info<br>
+            <b>ADDICTION(S)?</b> Your info<br>
+            <b>SELF-DESTRUCTIVE?</b> Your info<br>
+            <b>HABIT(S)</b> Your info<br>
+            <b>HOBBIES</b> Your info<br>
+            <b>LIKES</b> Your info<br>
+            <b>DISLIKES</b> Your info<br>
+            <b>TIC(S)</b> Your info<br>
+            <b>OBSESSION(S)</b> Your info<br>
+            <b>COMPULSION(S)</b> Your info<br>
+          <p>
+          <h3>Misc</h3>
+          <p><b>HOUSE</b> Your info<br>
+            <b>ZODIAC</b> Your info<br>
+            <b>VICE</b> Your info<br>
+            <b>VIRTUE</b> Your info<br>
+            <b>ELEMENT</b> Your info<br>
+            <b>MYTHOLOGICAL CREATURE</b> Your info<br>
+            <b>ANGEL</b> Your info<br>
+            <b>ANIMAL</b> Your info<br>
+            <b>MUTATION</b> Your info<br>
+        </div>
+        <!--tabcontent sub-->
+
+        <!-- SIDE STATS -->
+        <div class="stats">
+          <div class="page-head">
+            <!--character title-->
+            <h2>Title</h2>
+          </div>
+          <div class="stats-inner">
+            <!--sidebar image-->
+            <img src="https://images.unsplash.com/photo-1507251217843-301ac7bf2afd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1026&q=80">
+            <!--character stats-->
+            <div class="data">
+              <h4>Age / Occupation / Gender / Pron.</h4>
+            </div>
+          </div>
+
+          <!-- PAGE LINKS -->
+          <div class="pagelinks">
+            <ul>
+              <li class="active"><a href="#" data-tab="#tab2page1">1</a></li>
+              <li>- <a href="#" data-tab="#tab2page2">2</a></li>
+            </ul>
+          </div>
+          <!--pagelinks-->
+
+          <!-- SOCIAL -->
+          <!--An image gallery essentially. Replace YOURIMAGEURL with
+            the image URL. The 'data-lightbox' value is the galleries.
+
+            All images with the same 'data-lightbox' will be in the same                gallery, no mattter on what page they are.
+            So if you want all images to be one big gallery, name them all
+            the same.
+
+            There an image caption as well.
+
+            You can also use these as regular links by removing
+            'data-lightbox' and 'data-title'
+
+            The first link for each, wrapped around a font awesome icon <i>
+            NEEDS to have the class .social-link. Make sure to not delete it             or not have double/removed it while copying.
+
+            -->
+
+          <div class="social">
+
+            <!--INSTAGRAM-->
+            <a href="https://images.unsplash.com/photo-1510362753328-028a0e6b0e9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80" data-lightbox="CHAR2instagram" data-title="YOUR CAPTION" class="social-link"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+            <a href="https://images.unsplash.com/photo-1502585839613-ea89c24eecb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=929&q=80" data-lightbox="CHAR2instagram" data-title="YOUR CAPTION"></a>
+
+            <!--TWITTER-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2twitter" data-title="YOUR CAPTION" class="social-link"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2twitter" data-title="YOUR CAPTION"></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2twitter" data-title="YOUR CAPTION"></a>
+
+            <!--YOUTUBE-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2youtube" data-title="YOUR CAPTION" class="social-link"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2youtube" data-title="YOUR CAPTION"></a>
+
+            <!--YOUR DATING APP OF CHOICE-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2date" data-title="YOUR CAPTION" class="social-link"><i class="fas fa-fire square" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2date" data-title="YOUR CAPTION"></a>
+
+            <!--SNAPCHAT-->
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2snapchat" data-title="YOUR CAPTION" class="social-link"><i class="fab fa-snapchat square" aria-hidden="true"></i></a>
+            <a href="YOURIMAGEURL" data-lightbox="CHAR2snapchat" data-title="YOUR CAPTION"></a>
+
+          </div>
+          <!--social-->
+        </div>
+        <!--stats-->
+
+        <!--replace url with your background image url-->
+        <div class="cover-img" style="
+          background-image: url('https://images.unsplash.com/photo-1510362753328-028a0e6b0e9b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1951&q=80');
+          "></div>
+
+      </div>
+      <!--tabs-inner-->
+
+      <!-- CONNECTIONS -->
+      <!-- The actual content window of the pop up is end at the end, after            all tabs. This section which is the navigation.
+
+           Images are 50x50 but scale down if using larger ones.
+
+           data-tab="#CHAR1con1" - Is the id the pop up. It opens the div                                      with the same id.
+                                  !!!Make sure these are named properly!!!
+
+           Add more by copy/pasting (or delete to remove).
+      -->
+
+      <!--connection navigation-->
+      <div class="connections">
+        <ul>
+          <!--CON NAVI LINK COPY/PASTE HERE-->
+          <li>
+            <a href="#" data-tab="#CHAR2con1">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <!--COPY/PASTE END-->
+          <li>
+            <a href="#" data-tab="#CHAR2con2">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR2con3">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR2con4">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+          <li>
+            <a href="#" data-tab="#CHAR2con5">
+            <img src="//placehold.it/50x50">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!--connections-->
+    </div>
+    <!--tab1end-->
+
+    <!-- CONNECTION POP UPS -->
+    <!--Here are the actual connection pop ups.
+      Make sure the divs here have the right id as the same in the above
+      section.
+    -->
+
+    <!--TAB 2 CONNECTIONS-->
+    <!--CONNECTION 1-->
+    <!--POPUP COPY PASTE HERE-->
+    <div id="CHAR2con1" class="popup">
+      <div class="popup_txt">
+        <div class="page-head">
+          <h2>Connection</h2>
+        </div>
+        <!--connection headline & tw warnings-->
+        <h1>
+          Connection's name
+          <br /><span class="tw">TW: Any trigger warnings</span>
+        </h1>
+
+        <!--connection text-->
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      </div>
+      <!--popup_txt-->
+    </div>
+    <!--popup-->
+    <!--COPY PASTE END-->
+
+  <!--DO NOT PASTE AFTER THIS, THE CONTAINER ENDS HERE-->
+  </div>
+  <!--container-->
+  <div id="nnspc"><a href="//nonspace.tumblr.com">n.</a></div>
+
+  <!--popup fade-->
+  <div class="fade"></div>
+
+</body>
+</html>
