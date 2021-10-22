@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+    <!--X-RAY by @nonspace.
+    Find more of my work at https://nonspace.tumblr.com
+
+    Don't steal.
+
+    -->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <link rel="alternate" type="application/rss+xml" href="{RSS}">
+  <title>{Title}{block:SearchPage} / ({lang:Search results for SearchQuery}){/block:SearchPage}{block:TagPage} / #{Tag}{/block:TagPage}{block:PermalinkPage}{block:PostSummary} / {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+  {block:Description}
+  <meta name="description" content="{MetaDescription}" />
+  {/block:Description}
+
+  {block:Hidden}
+  <meta name="theme-color" content="">
+
+  <meta name="image:Background" content="https://static.tumblr.com/hohmoxg/fV4pzube3/photo-1439871657251-7ba69b8f9e5f.jpg" />
+  <meta name="image:Dark Background" content="https://static.tumblr.com/hohmoxg/qQDpzuhjp/harlie-raethel-ouyjdk-kdfy-unsplash.jpg" />
+
+  <meta name="if:Scroll Top" content="0" />
+  <meta name="if:Archive Link" content="0"/>
+  <meta name="if:Dark Mode" content="0"/>
+  <meta name="if:Show Avatar" content="1"/>
+
+  <!--default-->
+  <meta name="color:Text" content="#111" />
+  <meta name="color:Bar Text" content="#111" />
+  <meta name="color:Background" content="#f7f7f7" />
+  <meta name="color:Accent" content="#111" />
+  <meta name="color:Accent Text" content="#fff" />
+  <meta name="color:Highlight" content="#fff" />
+
+  <!--dark mode-->
+  <meta name="color:Dark Text" content="#fff" />
+  <meta name="color:Dark Bar Text" content="#fff" />
+  <meta name="color:Dark Background" content="#111" />
+  <meta name="color:Dark Accent" content="#fff" />
+  <meta name="color:Dark Accent Text" content="#111" />
+  <meta name="color:Dark Highlight" content="#1f1f1f" />
+
+  <meta name="select:Background Blend Mode" title="Color Burn" content="Color-Burn" />
+  <meta name="select:Background Blend Mode" title="Normal" content="Normal" />
+  <meta name="select:Background Blend Mode" title="Multiply" content="Multiply" />
+  <meta name="select:Background Blend Mode" title="Overlay" content="Overlay" />
+  <meta name="select:Background Blend Mode" title="Color" content="Color" />
+  <meta name="select:Background Blend Mode" title="Color Dodge" content="Color-Dodge" />
+  <meta name="select:Background Blend Mode" title="Darken" content="Darken" />
+  <meta name="select:Background Blend Mode" title="Difference" content="Difference" />
+  <meta name="select:Background Blend Mode" title="Exclusion" content="Exclusion" />
+  <meta name="select:Background Blend Mode" title="Hard Light" content="Hard-Light" />
+  <meta name="select:Background Blend Mode" title="Hue" content="Hue" />
+  <meta name="select:Background Blend Mode" title="Lighten" content="Lighten" />
+  <meta name="select:Background Blend Mode" title="Luminosity" content="Luminosity" />
+  <meta name="select:Background Blend Mode" title="Saturation" content="Saturation" />
+  <meta name="select:Background Blend Mode" title="Screen" content="Screen" />
+  <meta name="select:Background Blend Mode" title="Soft Light" content="Soft-Light" />
+
+  <meta name="select:Dark Background Blend Mode" title="Color Dodge" content="Color-Dodge" />
+  <meta name="select:Dark Background Blend Mode" title="Normal" content="Normal" />
+  <meta name="select:Dark Background Blend Mode" title="Multiply" content="Multiply" />
+  <meta name="select:Dark Background Blend Mode" title="Overlay" content="Overlay" />
+  <meta name="select:Dark Background Blend Mode" title="Color" content="Color" />
+  <meta name="select:Dark Background Blend Mode" title="Color Burn" content="Color-Burn" />
+  <meta name="select:Dark Background Blend Mode" title="Darken" content="Darken" />
+  <meta name="select:Dark Background Blend Mode" title="Difference" content="Difference" />
+  <meta name="select:Dark Background Blend Mode" title="Exclusion" content="Exclusion" />
+  <meta name="select:Dark Background Blend Mode" title="Hard Light" content="Hard-Light" />
+  <meta name="select:Dark Background Blend Mode" title="Hue" content="Hue" />
+  <meta name="select:Dark Background Blend Mode" title="Lighten" content="Lighten" />
+  <meta name="select:Dark Background Blend Mode" title="Luminosity" content="Luminosity" />
+  <meta name="select:Dark Background Blend Mode" title="Saturation" content="Saturation" />
+  <meta name="select:Dark Background Blend Mode" title="Screen" content="Screen" />
+  <meta name="select:Dark Background Blend Mode" title="Soft Light" content="Soft-Light" />
+
+  <meta name="select:Post Width" title="540" content="540" />
+  <meta name="select:Post Width" title="700" content="700" />
+  <meta name="select:Post Width" title="500" content="500" />
+  <meta name="select:Post Width" title="450" content="450" />
+  <meta name="select:Post Width" title="400" content="400" />
+
+  <meta name="text:Font" content="Source Code Pro" />
+  <meta name="text:Font Two" content="Source Code Pro" />
+
+  <meta name="text:Font Size" content="14"/>
+  <meta name="text:Headline Size" content="21"/>
+
+  <meta name="text:Dark Mode Start" content="20"/>
+  <meta name="text:Dark Mode End" content="6"/>
+
+  <meta name="text:Social One Icon" content="fab fa-twitter-square"/>
+  <meta name="text:Social One URL" content="/"/>
+
+  <meta name="text:Social Two Icon" content="fab fa-instagram"/>
+  <meta name="text:Social Two URL" content=""/>
+
+  <meta name="text:Social Three Icon" content="fab fa-pinterest-square"/>
+  <meta name="text:Social Three URL" content=""/>
+
+  {/block:Hidden}
+
+   <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family={text:Font}|{text:Font Two}:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+  <!--X-RAY CSS-->
+  <link rel="stylesheet" href="https://dl.dropbox.com/s/yswo9bwez5of8cr/x-ray.css">
+
+  <!--jQUERY-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <!--X-RAY JS-->
+  <script src="https://dl.dropbox.com/s/41jwt0d8zjjqg1q/x-ray.js" defer></script>
+
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+  <!--CSS Photosets by egg.design & annathms-->
+  <link href="https://static.tumblr.com/0podkko/xIbplezmo/modified_photosets.css" rel="stylesheet" defer>
+  <script src="https://static.tumblr.com/0podkko/jfMplm3f8/modified_photosets.js" defer></script>
+
+  <script>
+    {block:ifDarkMode}var darkMode = true;{/block:ifDarkMode}
+    var darkModeStart = {text:dark mode start};
+    var darkModeEnd = {text:dark mode end};
+    var lightColor = '{color:highlight}';
+    var darkColor = '{color:dark highlight}';
+ </script>
+
+<style>
+
+:root {
+  --postWidth: {select:post width}px;
+  --textSize: {text:font size}px;
+  --headlineSize: {text:headline size}px;
+  --googleFont: '{text:font}';
+  --googleFontSecondary: '{text:font two}';
+
+  --barWidth: 50px;
+  --asideWidth: 350px;
+  --asideBottom: 50px;
+  --sideWidth: calc(var(--barWidth) + var(--asideWidth));
+  --mainWidth: calc(100vw - 420px);
+}
+
+[data-theme="light"] {
+  --textColor: {color:text};
+  --barText: {color:bar text};
+
+  --background: {color:background};
+  --backgroundImage: url('{image:background}');
+  --backgroundBlend: {select:background blend mode};
+
+  --highlight: {color:highlight};
+  --accent: {color:accent};
+  --accentText: {color:accent text};
+
+  --border: 1px solid var(--transparentHighlight);
+  --boxShadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] {
+  --textColor: {color:dark text};
+  --barText: {color:dark bar text};
+
+  --background: {color:dark background};
+  --backgroundImage: url('{image:dark background}');
+  --backgroundBlend: {select:dark background blend mode};
+
+  --highlight: {color:dark highlight};
+  --accent: {color:dark accent};
+  --accentText: {color:dark accent text};
+
+  --border: 1px solid var(--transparentHighlight);
+  --boxShadow: 0px 0px 20px 0px rgba(0,0,0,0.12);
+}
+
+nav ul {
+  {block:ifDarkMode}
+  padding-left: 80px;
+  {/block:ifDarkMode}
+}
+
+{block:NoSearchResults}
+.tag_info {
+  border-bottom: none;
+}
+{/block:NoSearchResults}
+
+{block:PermalinkPage}
+.article_wrapper {
+  padding-bottom: 0;
+}
+
+article {
+  max-width: var(--postWidth);
+}
+
+main {
+  margin-bottom: 0;
+}
+
+{/block:PermalinkPage}
+
+{block:AskPage}
+.caption {
+  line-height: 100%;
+  background: none;
+  padding: 0;}
+{/block:AskPage}
+
+{block:SubmitPage}
+.caption {
+  line-height: 100%;
+  background: none;
+  padding: 0;
+}
+{/block:SubmitPage}
+
+{CustomCss}
+
+</style>
+
+</head>
+
+<body>
+  {block:ifScrollTop}
+  <div id="scrolltop" role="button" tabindex="0"><i class="fas fa-arrow-up"></i></div>
+  {/block:ifScrollTop}
+<!--CONTROLS & MOBILE--------------------------------------------------->
+  <!--MOBILE NAVIGATION-->
+
+
+<!--CONTROLS END-------------------------------------------------------->
+
+    <!--
+    <section id="footer">
+
+    </section>-->
+
+   </div>
+  </div>
+
+<!--CONTAINER----------------------------------------------------------->
+  <div id="wrapper">
+
+<!--SIDE---------------------------------------------------------------->
+
+    <!--LEFT BAR-->
+    <nav>
+      <ul>
+        <li><i class="far fa-copyright"></i> <span class="copy_date">{CopyrightYears}</span></li>
+        <li class="main_title"><a href="/">{Name}</a></li>
+      </ul>
+    </nav>
+
+    <!--MOBILE MENU-->
+    <div class="about_img_sub">
+      {block:ifShowAvatar}
+      <a href="/"><img src="{PortraitURL-64}"></a>
+      {/block:ifShowAvatar}
+      <h3><a href="/">{Title}</a></h3>
+    </div>
+    <input id="mobile_button" type="checkbox" name="mobile_menu" />
+    <label id="tumblr_controls" for="mobile_button"><i class="fas fa-bars"></i></label>
+    <!--SIDEBAR-->
+    <aside id="mobile_menu">
+     <div class="side_wrap">
+      <!--PAGE TITLE & ICON-->
+      <div id="about_box" class="side_box">
+        <div class="about_img_sub" id="about_img_sub">
+          {block:ifShowAvatar}
+          <img src="{PortraitURL-64}">
+          {/block:ifShowAvatar}
+          <h3><a href="/">{Title}</a></h3>
+        </div>
+        <div id="description">
+            {Description}
+        </div>
+      </div>
+
+      <!--MENU LINKS-->
+      <div id="link_box" class="side_box">
+        <div>
+          <ul>
+            <li><a href="/" title="{lang:Home}">{lang:Home}</a></li>
+            {block:AskEnabled}
+            <li><a href="/ask" title="{AskLabel}">{AskLabel}</a></li>
+            {/block:AskEnabled}
+            {block:SubmissionsEnabled}
+            <li><a href="/submit" title="{SubmitLabel}">{SubmitLabel}</a></li>
+            {/block:SubmissionsEnabled}
+            {block:HasPages}
+            {block:Pages}
+            <li><a href="{URL}" title="{Label}">{Label}</a></li>
+            {/block:Pages}
+            {/block:HasPages}
+            {block:ifArchiveLink}
+            <li><a href="/archive" title="{lang:Archive}">{lang:Archive}</a></li>
+            {block:ifArchiveLink}
+          </ul>
+        </div>
+      </div>
+
+      <!--SOCIAL-->
+      <div id="social">
+        <ul>
+          {block:IfSocialOneUrl}
+          <li><a href="{text:social one url}"><i class="{text:social one icon}"></i></a></li>
+          {/block:IfSocialOneUrl}
+          {block:IfSocialTwoUrl}
+          <li><a href="{text:social two url}"><i class="{text:social two icon}"></i></a></li>
+          {/block:IfSocialTwoUrl}
+          {block:IfSocialThreeUrl}
+          <li><a href="{text:social three url}"><i class="{text:social three icon}"></i></a></li>
+          {/block:IfSocialThreeUrl}
+        </ul>
+      </div>
+
+      <!--PAGINATION-->
+      {block:Pagination}
+      <div id="pagination">
+        {block:PreviousPage}<a href="{PreviousPage}"><span><</span></i></a>{/block:PreviousPage}
+        {block:JumpPagination length="5"}
+        {block:CurrentPage}<b>{CurrentPage}</b>{/block:CurrentPage}
+        {block:JumpPage}<a class="jump_page" href="{URL}">{PageNumber}</a>{/block:JumpPage}{/block:JumpPagination}
+        {block:NextPage}<a href="{NextPage}"><span>></span></a>{/block:NextPage}
+      </div>
+      {/block:Pagination}
+
+     </div><!--side_wrap-->
+    </aside>
+
+    <!--SEARCH BAR-->
+    <div id="search_bar" class="search">
+      <i class="fas fa-search"></i>
+      <form action="/search" method="get">
+          <input id="search_input" type="text" name="q"
+            value="{SearchQuery}" placeholder="{lang:Search}...">
+      </form>
+    </div>
+
+    <!--DARK MODE-->
+    {block:ifDarkMode}
+      <input type="checkbox" id="mode_input" />
+      <label class="theme-switch" for="mode_input">
+      </label>
+    {/block:ifDarkMode}
+
+<!--POST CONTAINER------------------------------------------------------>
+
+    <main>
+      <!--TAG & SEARCH RESULT INFO-->
+      {block:TagPage}
+      <div class="tag_info">
+        <h2>
+          {lang:Posts tagged Tag 2}
+        </h2>
+      </div>
+      {block:TagPage}
+      {block:SearchPage}
+      <div class="tag_info">
+        <h2>
+          {lang:Found SearchResultCount results for SearchQuery 2}
+          {block:NoSearchResults}
+            {lang:No search results for SearchQuery 2}
+          {/block:NoSearchResults}
+        </h2>
+      </div>
+      {block:SearchPage}
+
+      {block:NoPosts}
+      <div class="tag_info no_post">
+        <h2>{lang:Sorry no posts found}</h2>
+      </div>
+      {/block:NoPosts}
+
+      <!--POSTS-->
+      {block:Posts}
+      <div class="article_wrapper">
+        <article id="{PostID}" class="post {PostType} {TagsAsClasses}">
+          <!--POST BODY-->
+          <div class="post_body">
+          {block:IndexPage}
+          {block:Title}
+          <div class="post_header">
+              <div class="post_title">
+                <h1><span>{Title}</span></h1>
+              </div>
+          </div>
+          {/block:Title}
+          <!--post_header-->
+          {/block:IndexPage}
+            <div class="cpt">
+              <!--TEXT-->
+              {block:Text}
+              {block:NotReblog}
+              <div class="caption">
+                {Body}
+              </div>
+              {block:NotReblog}
+              {/block:Text}
+              <!--PHOTO-->
+              {block:Photo}
+              <div class="post_photo">
+                {LinkOpenTag}
+                <img src="{PhotoURL-HighRes}" alt="{PhotoAlt}">
+                {LinkCloseTag}
+              </div>
+              {/block:Photo}
+              <!--PHOTOSET-->
+              {block:Photoset}
+              <div class="photoset-grid" photoset-layout="{PhotosetLayout}">{block:Photos}<div data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" data-lowres="{PhotoURL-500}" data-highres="{PhotoURL-HighRes}" onclick="lightbox(this)"><img src="{PhotoURL-HighRes}" /></div>{/block:Photos}</div>
+              {/block:Photoset}
+              <!--QUOTE-->
+              {block:Quote}
+              <div class="qh caption">
+                <h3>{Quote}</h3>
+              </div>
+              {block:NotReblog}
+              {block:Source}
+              <div class="caption">
+                <span class="qsrc">{Source}</span>
+              </div>
+              {/block:Source}
+              {/block:NotReblog}
+              {/block:Quote}
+              <!--LINK-->
+              {block:Link}
+              <div class="lh caption">
+                <h3><a title="{URL}" href="{URL}">
+                  <i class="fas fa-link"></i>
+                  {Name}</a>
+                </h3>
+              </div>
+              <!--
+                {block:Thumbnail}
+                  <img class="thumb" src="{Thumbnail-HighRes}"></img>
+                {/block:Thumbnail}-->
+              {block:NotReblog}
+              {block:Description}
+              <div class="caption">
+                {Description}
+              </div>
+              {/block:Description}
+              {/block:NotReblog}
+              {/block:Link}
+              <!--CHAT-->
+              {block:Chat}
+              <div class="post_title">
+                {block:Title}
+                <h1>{Title}</h1>
+                {/block:Title}
+              </div>
+              <div class="caption">
+                {block:Lines}
+                <div class="chat_lines {Alt}">
+                  {block:Label}<b>{Label}</b>{/block:Label} {Line}
+                </div>
+                {/block:Lines}
+              </div>
+              {/block:Chat}
+              <!--AUDIO-->
+              {block:Audio}
+              <div class="audio_post">
+                {block:AudioPlayer}
+                <div class="audio_player">
+                  {block:AlbumArt}
+                  <img src="{AlbumArtURL}">
+                  {/block:AlbumArt}
+                  <div class="play_button">{AudioPlayer}</div>
+                </div>
+                {/block:AudioPlayer}
+                <div class="audio_info">
+                  <ul>
+                    <li><span>Name:</span>{block:TrackName}{TrackName}{/block:TrackName}</li>
+                    <li><span>Artist:</span>{block:Artist}{Artist}{/block:Artist}</li>
+                    <li><span>Album:</span>{block:Album}{Album}{/block:Album}</li>
+                  </ul>
+                </div>
+              </div>
+              {/block:Audio}
+              <!--VIDEO-->
+              {block:Video}
+              <div class="vid">{Video-700}</div>
+              {/block:Video}
+              <!--ASK-->
+              {block:Answer}
+              <div class="question">
+                <div class="asker">
+                  <img src="{AskerPortraitURL-64}">
+                  {lang:Asker asked 2}:
+                </div>
+                <div class="caption">"{Question}"</div>
+              </div>
+              <!--ask-->
+              {block:Answerer}
+              <div class="answerer">
+                <img src="{AnswererPortraitURL-64}">
+                {Answerer}
+              </div>
+              <div class="caption">{Answer}</div>
+              {/block:Answerer}
+              {block:NotReblog}
+              <div class="caption">
+                {Replies}
+              </div>
+              {/block:NotReblog}
+              {/block:Answer}
+              <!--submit-->
+              {block:Submission}
+              <div class="submit pl via">
+                {lang:Source}: <a href="{SubmitterURL}">{Submitter}</a>
+              </div>
+              {block:Submission}
+              {/block:Answer}
+              <!--CAPTION-->
+              {block:NotReblog}
+              {block:Caption}
+              <div class="caption">
+                {Caption}
+              </div>
+              {/block:Caption}
+              {/block:NotReblog}
+              {block:Reblogs}
+              <div class="reblog-list">
+                <div class="reblog_parent">
+                  <div class="reblog_header">
+                    {block:IsActive}
+                    <img src="{PortraitURL-64}">
+                    <a target="_blank" href="{Permalink}">{Username}</a>
+                    {/block:IsActive}
+                    {block:IsDeactivated}
+                    <i class="fas fa-user-times"></i>
+                    {Username}
+                    {block:IsDeactivated}
+                  </div>
+                  <div class="reblog_body caption">
+                    {Body}
+                  </div>
+                </div>
+              </div>
+              {/block:Reblogs}
+            </div>
+          </div>
+          <!--post_body-->
+          {block:IndexPage}
+          <div class="post_footer">
+            {block:Date}
+            <div class="pdate pinfo">
+              <a href="{Permalink}">{DayOfMonthWithZero} {ShortMonth} {Year}</a>
+            </div>
+            {/block:Date}
+            <div class="pnotes pinfo">
+              <a href="{Permalink}">{NoteCountWithLabel}</a>
+            </div>
+            <!--tags-->
+            {block:HasTags}
+            <div class="ptags pinfo">
+              {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+            </div>
+            {/block:HasTags}
+            <!--post buttons-->
+            <div class="buttons pinfo">
+              <a href="{ReblogURL}" title="Reblog this post">reblog</a>
+              <div class="custom_like_button" title="Like this post">
+                {LikeButton}
+                <span>like</span>
+              </div>
+            </div>
+            <!--buttons-->
+          </div>
+          {/block:IndexPage}
+        </article>
+        <!--post-->
+      </div>
+      {block:PermalinkPage}
+      <div class="permalink {TagsAsClasses}">
+        <!--tags-->
+        {block:HasTags}
+        <div class="pl via ptags">
+          <i class="fas fa-tags"></i>
+          {block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}
+        </div>
+        {/block:HasTags}
+        <!--date-->
+        {block:Date}
+        <div class="pl via">
+          <i>{lang:Posted TimeAgo}, {DayofMonthWithSuffix} {Month} & {NoteCountWithLabel}</a>
+        </div>
+        {/block:Date}
+        <!--source-->
+        <!--if reblog-->
+        {block:RebloggedFrom}
+        <div class="pl via">
+          <i>{lang:Source}:</i><a href="{ReblogRootURL}">{ReblogRootName}</a>
+        </div>
+        {/block:RebloggedFrom}
+        {block:NotReblog}
+        {block:Source}
+        <div class="pl via">
+          <i>{lang:Source}:</i>
+          <a href="{Permalink}">
+          {Name}
+          </a>
+        </div>
+        {/block:Source}
+        {/block:NotReblog}
+        <!--post notes-->
+        {block:PostNotes}
+        <div class="plnotes">{PostNotes}</div>
+        {/block:PostNotes}
+      </div>
+      <!--permalink-->
+      {/block:PermalinkPage}
+      <!--HIDE SOURCE & VIA-->
+      {block:ContentSource}
+      <!-- {SourceURL}
+        {block:SourceLogo}
+        <img src="{BlackLogoURL}" width="{LogoWidth}"
+        height="{LogoHeight}" alt="{SourceTitle}" />
+        {/block:SourceLogo}
+        {block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->
+      {/block:ContentSource}
+      <!--{block:NoRebloggedFrom}{block:RebloggedFrom}{ReblogParentName}
+        {/block:RebloggedFrom}{/block:NoRebloggedFrom} -->
+      {/block:Posts}
+    </main>
+<!--POST CONTAINER END-------------------------------------------------->
+
+</div>
+
+<!--CONTAINER END------------------------------------------------------->
+
+<div id="nnspc"><a href="//nonspace.tumblr.com">n.</a></div>
+
+</body>
+
+</html>
