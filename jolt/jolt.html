@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<head>
+
+<!--PAGE #02 JOLT (2.0, revamp) by @nonspace.
+    Don't steal.
+    Don't claim as your own.
+    Don't use as base.
+    Editing for personal use is fine!
+-->
+
+<title>{Title}</title>
+<link rel="icon" type="image/png" href="{Favicon}">
+
+<!--FONTS-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i|Roboto:400,400i,700,700i|Source+Sans+Pro&amp;subset=cyrillic-ext,greek-ext,hebrew,latin-ext,vietnamese" rel="stylesheet">
+
+<style type="text/css">
+
+/*GENERAL BODY STYLES*/
+
+/*CHANGE THE ACCENT COLOUR HERE*/
+:root {
+  --accent: #f0c600;
+  --accent-txt: #000;
+}
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (max-width: 415px) {
+  .data {min-height: 200px;}
+  .cimg {width: 100%;}
+  .data ul {padding: 15px 0 0 0;}
+}
+
+@media screen and (min-width: 416px) {
+  .data {height: 200px;}
+  .data ul {padding: 0px 0 0px 10px;}
+  .c1:nth-child(2n) .data ul {
+  padding: 0px 10px 0px 0;
+  }
+  .cimg {width: 50%;}
+}
+
+body {
+  font: 15px 'Source Sans Pro';
+  background: #f8f8f8;
+}
+
+b {
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu a[aria-disabled], .menu a[aria-disabled]:hover {
+  color: #999;
+  cursor: default;
+}
+
+.bio a, #desc a {
+  letter-spacing: 2px;
+  background: var(--accent);
+  color: var(--accent-txt);
+  padding: 0 5px;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+.bio a:hover {
+  color: #333;
+  background: none;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 28px;
+}
+
+h2 /*CHARACTER NAME*/{
+  letter-spacing: 1px;
+  color: var(--accent-txt);
+  font-weight: normal;
+  font-size: 18px;
+  padding: 10px 10px;
+  line-height: 100%;
+  background-color: var(--accent);
+  text-align: center;
+}
+
+a, .cimg {
+  -ms-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+#desc, nav, article, footer {
+  max-width: 700px;
+}
+#desc, .info {line-height: 150%;}
+
+/*HEADER*/
+header {
+  color: #f8f8f8;
+  position: relative;
+  text-align: center;
+  margin: 0px auto;
+  font-weight: normal;
+  background: #000;
+  padding: 25px 0px 0px 0px;
+  }
+
+header a:hover {
+  color: #ffd200;
+}
+
+#desc {
+  margin: 0px auto;
+  padding: 20px;
+}
+
+nav {
+  background: #111;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+nav a {
+  color: #333;
+  padding: 0 10px;
+  font-size: 18px;
+}
+
+
+/*CHARACTER ENTRIES*/
+article {
+  background: none;
+  position: relative;
+  margin: 0 auto;
+  text-align: justify;
+  padding: 0px;
+}
+
+.c1 {
+  padding: 20px 20px;
+  margin: 20px auto;
+  background: #fff;
+}
+
+
+/*CHARACTER LINKS*/
+.menu {
+  background: #f8f8f8;
+  width: 100%;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.menu a {
+  color: #000;
+  padding: 0px 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+.menu a:hover {
+  color: #ffd200;
+}
+
+
+/*CHARACTER INFO*/
+.data {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.cimg {
+  background-position: center;
+  height: 200px;
+  background-position: center!important;
+  overflow: hidden;
+}
+
+.c1:nth-child(2n) .data {
+  flex-direction: row-reverse;
+}
+
+.data ul {
+  list-style-type: none;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.data ul b {
+  background: var(--accent);
+  color: var(--accent-txt);
+  font-weight: normal;
+  text-transform: capitalize;
+  padding: 4px 10px;
+}
+
+.data ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 2px 0;
+}
+
+.data ul li:first-child {
+  padding-top: 0;
+}
+
+.data ul li:last-child {
+  padding-bottom: 0;
+}
+
+.c1:nth-child(2n) .data ul li {
+  flex-direction: row-reverse;
+}
+
+.bio {position: relative;}
+.bio b {
+  color: #111;
+}
+
+/*SCROLLBAR STYLES*/
+
+article ::-webkit-scrollbar {
+    width: 5px;
+}
+
+article ::-webkit-scrollbar-track {
+    color: #f8f8f8;
+    opacity: 0.5;
+}
+article ::-webkit-scrollbar-thumb {
+    background: #f8f8f8;
+}
+
+/*FOOTER*/
+
+footer {
+  background: #111;
+  text-align: center;
+  margin: 0px auto;
+  padding: 15px 0;
+}
+
+footer a {
+  color: #999;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 12px;
+}
+</style>
+<body>
+
+<div id="container">
+  <header>
+  <!--YOUR HEADLINE-!-->
+    <h1>Character List</h1>
+
+    <div id="desc">
+    <!--YOUR DESCRPTION-!-->
+      Optional Description. <b>bold text</b> Lorem ipsum dolor sit amet,
+      consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et       dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+    </div>
+
+    <!--NAVIGATION-->
+    <nav>
+      <a href="/" title="Return"><i class="fa fa-reply" aria-hidden="true"></i></a>
+      <a href="/ask" title="Message"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+    </nav>
+  </header>
+
+<article>
+<!--CHARACTER ENTRIES BEGIN HERE-!-->
+
+<!--ADD MORE CHARACTERS
+  To add more characters copy/paste everything between and
+  including the c1 div.-->
+
+<!--CHARACTER ONE-->
+<div class="c1">
+  <h2>Last, First. Occupation.</h2>
+
+  <!--CHARACTER LINKS-!-->
+  <!--You can customise these links as much as you like.
+
+      Find more icons here: http://fontawesome.io/icons/ or
+      use another icon font of your choosing.
+
+      Links that are currently not active or relevant, you can
+      disable by putting aria-disabled="true" within the link tag.
+      By default some links may be disabled. To remove it simply delete it.
+  -->
+  <div class="menu">
+    <a href="/tagged/TAG" title="#NAME"><i class="fa fa-user" aria-hidden="true"></i></a>
+    <a href="/tagged/HEADCANONS" title="#HEADCANONS"><i class="fa fa-book" aria-hidden="true"></i></a>
+    <a href="/tagged/INFO" title="#INFO"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+    <a href="/tagged/PICTURES" title="#PICTURES"><i class="fa fa-camera" aria-hidden="true"></i></a>
+    <a href="/tagged/WRITING" title="#WRITING" aria-disabled="true"><i class="fas fa-pen" aria-hidden="true"></i></a>
+    <a href="PINTERESTLINK" title="Pinterest" aria-disabled="true"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+  </div>
+
+  <!--INFO-!-->
+  <div class="info">
+    <div class="data">
+      <!--IMAGE-->
+      <div class="cimg"
+        style="background: url(
+        http://placehold.it/375x200
+        );">
+      </div>
+      <ul>
+        <li><b>nickname</b> nickname </li>
+        <li><b>age</b> 00</li>
+        <li><b>d.o.b</b> date of birth </li>
+        <li><b>gender</b> gender / pron.</li>
+        <li><b>occupation</b> occupation</li>
+        <li><b>residence</b> residence</li>
+      </ul>
+    </div><!--data-->
+
+    <div class="bio">
+      Lorem ipsum dolor sit amet, consectetur <b>bold text</b> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="">link</a> nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div><!--bio-->
+  </div><!--info-->
+</div><!--c1-->
+
+<!--CHARACTER TWO-->
+<div class="c1">
+  <h2>Last, First. Occupation.</h2>
+
+  <!--CHARACTER LINKS-!-->
+  <div class="menu">
+    <a href="/tagged/TAG" title="#NAME"><i class="fa fa-user" aria-hidden="true"></i></a>
+    <a href="/tagged/HEADCANONS" title="#HEADCANONS"><i class="fa fa-book" aria-hidden="true"></i></a>
+    <a href="/tagged/INFO" title="#INFO"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+    <a href="/tagged/PICTURES" title="#PICTURES"><i class="fa fa-camera" aria-hidden="true"></i></a>
+    <a href="/tagged/WRITING" title="#WRITING" aria-disabled="true"><i class="fas fa-pen" aria-hidden="true"></i></a>
+    <a href="PINTERESTLINK" title="Pinterest" aria-disabled="true"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+  </div>
+
+  <!--INFO-!-->
+  <div class="info">
+    <div class="data">
+      <!--IMAGE-->
+      <div class="cimg"
+        style="background: url(
+        http://placehold.it/375x200
+        );">
+      </div>
+      <ul>
+        <li><b>nickname</b> nickname </li>
+        <li><b>age</b> 00</li>
+        <li><b>d.o.b</b> date of birth </li>
+        <li><b>gender</b> gender / pron.</li>
+        <li><b>occupation</b> occupation</li>
+        <li><b>residence</b> residence</li>
+      </ul>
+    </div><!--data-->
+
+    <div class="bio">
+      Lorem ipsum dolor sit amet, consectetur <b>bold text</b> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="">link</a> nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div><!--bio-->
+  </div><!--info-->
+</div><!--c1-->
+
+
+<!--CHARACTER THREE-->
+<div class="c1">
+  <h2>Last, First. Occupation.</h2>
+
+  <!--CHARACTER LINKS-!-->
+  <div class="menu">
+    <a href="/tagged/TAG" title="#NAME"><i class="fa fa-user" aria-hidden="true"></i></a>
+    <a href="/tagged/HEADCANONS" title="#HEADCANONS"><i class="fa fa-book" aria-hidden="true"></i></a>
+    <a href="/tagged/INFO" title="#INFO"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+    <a href="/tagged/PICTURES" title="#PICTURES"><i class="fa fa-camera" aria-hidden="true"></i></a>
+    <a href="/tagged/WRITING" title="#WRITING" aria-disabled="true"><i class="fas fa-pen" aria-hidden="true"></i></a>
+    <a href="PINTERESTLINK" title="Pinterest" aria-disabled="true"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+  </div>
+
+  <!--INFO-!-->
+  <div class="info">
+    <div class="data">
+      <!--IMAGE-->
+      <div class="cimg"
+        style="background: url(
+        http://placehold.it/375x200
+        );">
+      </div>
+      <ul>
+        <li><b>nickname</b> nickname </li>
+        <li><b>age</b> 00</li>
+        <li><b>d.o.b</b> date of birth </li>
+        <li><b>gender</b> gender / pron.</li>
+        <li><b>occupation</b> occupation</li>
+        <li><b>residence</b> residence</li>
+      </ul>
+    </div><!--data-->
+
+    <div class="bio">
+      Lorem ipsum dolor sit amet, consectetur <b>bold text</b> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="">link</a> nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div><!--bio-->
+  </div><!--info-->
+</div><!--c1-->
+
+
+<!--CHARACTER FOUR-->
+<div class="c1">
+  <h2>Last, First. Occupation.</h2>
+
+  <!--CHARACTER LINKS-!-->
+  <div class="menu">
+    <a href="/tagged/TAG" title="#NAME"><i class="fa fa-user" aria-hidden="true"></i></a>
+    <a href="/tagged/HEADCANONS" title="#HEADCANONS"><i class="fa fa-book" aria-hidden="true"></i></a>
+    <a href="/tagged/INFO" title="#INFO"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+    <a href="/tagged/PICTURES" title="#PICTURES"><i class="fa fa-camera" aria-hidden="true"></i></a>
+    <a href="/tagged/WRITING" title="#WRITING" aria-disabled="true"><i class="fas fa-pen" aria-hidden="true"></i></a>
+    <a href="PINTERESTLINK" title="Pinterest" aria-disabled="true"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+  </div>
+
+  <!--INFO-!-->
+  <div class="info">
+    <div class="data">
+      <!--IMAGE-->
+      <div class="cimg"
+        style="background: url(
+        http://placehold.it/375x200
+        );">
+      </div>
+      <ul>
+        <li><b>nickname</b> nickname </li>
+        <li><b>age</b> 00</li>
+        <li><b>d.o.b</b> date of birth </li>
+        <li><b>gender</b> gender / pron.</li>
+        <li><b>occupation</b> occupation</li>
+        <li><b>residence</b> residence</li>
+      </ul>
+    </div><!--data-->
+
+    <div class="bio">
+      Lorem ipsum dolor sit amet, consectetur <b>bold text</b> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="">link</a> nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div><!--bio-->
+  </div><!--info-->
+</div><!--c1-->
+
+
+<!--CHARACTER FIVE-->
+<div class="c1">
+  <h2>Last, First. Occupation.</h2>
+
+  <!--CHARACTER LINKS-!-->
+  <div class="menu">
+    <a href="/tagged/TAG" title="#NAME"><i class="fa fa-user" aria-hidden="true"></i></a>
+    <a href="/tagged/HEADCANONS" title="#HEADCANONS"><i class="fa fa-book" aria-hidden="true"></i></a>
+    <a href="/tagged/INFO" title="#INFO"><i class="fa fa-exclamation-circle" aria-hidden="true"></i></a>
+    <a href="/tagged/PICTURES" title="#PICTURES"><i class="fa fa-camera" aria-hidden="true"></i></a>
+    <a href="/tagged/WRITING" title="#WRITING" aria-disabled="true"><i class="fas fa-pen" aria-hidden="true"></i></a>
+    <a href="PINTERESTLINK" title="Pinterest" aria-disabled="true"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+  </div>
+
+  <!--INFO-!-->
+  <div class="info">
+    <div class="data">
+      <!--IMAGE-->
+      <div class="cimg"
+        style="background: url(
+        http://placehold.it/375x200
+        );">
+      </div>
+      <ul>
+        <li><b>nickname</b> nickname </li>
+        <li><b>age</b> 00</li>
+        <li><b>d.o.b</b> date of birth </li>
+        <li><b>gender</b> gender / pron.</li>
+        <li><b>occupation</b> occupation</li>
+        <li><b>residence</b> residence</li>
+      </ul>
+    </div><!--data-->
+
+    <div class="bio">
+      Lorem ipsum dolor sit amet, consectetur <b>bold text</b> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis <a href="">link</a> nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div><!--bio-->
+  </div><!--info-->
+</div><!--c1-->
+
+<!--END OF CHARACTER ENTRIES-!-->
+</article>
+
+<!--FOOTER-!-->
+<footer>
+  <a href="http://nonspace.tumblr.com/tagged/nnspc+codes">
+    <i class="fa fa-copyright" aria-hidden="true"></i> nonspace
+  </a>
+</footer>
+
+</div><!--container-->
+</body>
+</html>
