@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+
+    <!--FIGMENT by @nonspace.
+    Find more of my work at https://nonspace.tumblr.com
+
+    Don't steal.
+    Don't claim as your own.
+    Don't use as base code.
+    I will find and haunt you.
+    Editing for personal use is fine!-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <link rel="alternate" type="application/rss+xml" href="{RSS}">
+  <title>{Title}</title>
+  <meta name="description" content="{MetaDescription}" />
+
+   <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Chivo:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+
+  <!--jQUERY-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+<style>
+
+/*INSTRUCTIONS*/
+
+
+/*variables*/
+:root {
+  /*layout*/
+  --postWidth: 1200px; /*container*/
+  --barWidth: 80px;
+
+  /*font styles*/
+  --fontSize: 16px;
+  --headlineSize: 32px;
+  --lineHeight: 150%;
+  --textColor: #57565b;
+  --headlines: #5e6060; /*none in the theme but could add them using the existing .headlines class*/
+  --fontFamily: 'Roboto';
+  --fontFamilySecondary: 'Chivo';
+  --fontWeight: 400;
+
+  /*colors*/
+  --background: #f8fafb;
+  --postBackground: #fff; /*tooltips*/
+  --navigationText: #a1a3a3;
+  --navigationBackground: #111;
+
+  --accentColor: #F5C2A2;
+  --accentText: #fff;
+
+  /*misc*/
+  --borderRadius: 20px;
+
+  /*responsive*/
+  --mediaBreak1: var(--barWidth) + var(--postWidth) + 50px);
+}
+
+/*reset styles*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+  font-family: var(--fontFamily);
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--textColor);
+  font-weight: var(--fontWeight);
+}
+
+/*GENERAL STYLES*/
+
+::selection {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+::-moz-selection {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+small, sub {
+  font-size: 0.9rem;
+}
+
+.headlines {
+  text-align: left;
+  font-family: var(--fontFamilySecondary), sans-serif;
+  font-size: var(--headlineSize);
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.headlines a {
+  text-decoration: none;
+}
+
+.headlines,
+.headlines a {
+  color: var(--headlines);
+  font-family: var(--fontFamilySecondary);
+  font-size: 1.55rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+.flex {display: flex;}
+.flex-column {flex-direction: column;}
+.flex-wrap {flex-wrap: wrap;}
+
+
+/* NAVIGATION */
+
+nav {
+  position: fixed;
+  height: 100%;
+  width: 80px;
+  background: var(--navigationBackground);
+  left: -0px;
+}
+
+nav {
+  z-index: 6;
+}
+
+nav li {
+  list-style-type: none;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+nav li a {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-decoration: none;
+  color: var(--navigationText);
+}
+	
+nav a[data-filter] i {
+  opacity: 0.5;
+}
+ 
+nav a.default i {
+  opacity: 1;
+}
+
+nav li i {
+  font-size: 1.3rem;
+}
+
+#icon_nav {
+  position: relative;
+  width: 80px;
+  margin: 40px 0 40px auto;
+  align-items: center;
+  overflow-y: auto;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+  position: relative;
+  width: 100%;
+  min-width: 250px;
+  height: 100vh;
+  margin: auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content_wrapper {
+  position: relative;
+  max-width: 100%;
+  -webkit-animation-duration: 1.2s;
+  animation-name: fadeIn;
+  animation-duration: 1.2s;
+  margin-left: var(--barWidth);
+}
+
+.content_wrapper.grid {
+  padding: 0 80px;
+}
+
+.page_wrapper {
+  position: relative;
+  color: var(--textColor);
+  text-align: justify;
+  min-width: 250px;
+  display: block;
+  width: calc(100% - var(--barWidth));
+  min-height: 100vh;
+  background: var(--background);
+  margin-left: var(--barWidth);
+}
+
+.page_wrapper .article_wrapper {
+   border: none;
+   min-height: 100vh;
+   max-width: var(--postWidth);
+}
+
+.post .headlines:first-of-type {
+  margin-top: 0px;
+}
+
+.row {
+  position: relative;
+  width: 100%;
+  margin-bottom: 65px;
+}
+
+.row.no-margin-bottom {
+  margin-bottom: 40px;
+}
+
+.col {
+  width: 100%;
+}
+
+/*POST HEADER & FOOTER*/
+
+.article_wrapper {
+  margin: 0 auto;
+  padding: 80px 0px;
+  width: 100%;
+  border-bottom: 1px solid var(--postBorders);
+}
+
+.article_wrapper:last-of-type {
+  border-bottom: none;
+}
+
+/*faq*/
+.row .quest, .row .reply {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.row .quest {
+  display: flex;
+  align-items: center;
+  font-size: var(--textSize);
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 25px;
+  border: var(--border);
+  background: var(--sidebarBackground);
+}
+
+.row .quest::before {
+  font-weight: 900;
+  content: "\f128";
+  font-family: "Font Awesome 5 Free";
+  padding: 20px;
+  background: var(--accentColor);
+  color: var(--accentText);
+  margin-right: 10px;
+}
+
+.row .quest span {
+  padding: 11px;
+}
+
+.quest i {
+  margin: 0 25px 0 auto;
+  justify-self: flex-end;
+}
+
+.quest:hover {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+.row .reply {
+  display: none;
+  overflow: hidden;
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+	
+.reply.caption ul,
+.reply.caption ol {
+  margin: 15px 0 15px 25px;
+  text-align: justify;
+}
+
+reply.caption li {
+  margin: 5px 0 5px 15px;
+}
+	
+.reply.caption a {
+  color: var(--accentColor); 
+}
+
+/*SHADOWS & BORDER RADIUS*/
+
+.has-border-radius,
+.row .quest::before,
+.row .quest {
+  border-radius: var(--borderRadius) !important;
+}
+
+.lighter-shadow,
+.row .quest {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+}
+
+.stronger-shadow {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+}
+
+/*TOOLTIPS*/
+.tooltipster-default {
+  border-radius: var(--borderRadius) !important;
+  border: none !important;
+  background: var(--postBackground) !important;
+  color: var(--textColor) !important;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-default .tooltipster-content {
+	font-family: var(--fontFamily) !important;
+	font-size: var(--fontSize) !important;
+	line-height: var(--lineHeight) !important;
+	padding: 8px 10px;
+	overflow: hidden;
+}
+
+/*CREDIT*/
+
+#nnspc {
+  position: absolute;
+  bottom: 0;
+  padding: 5px 10px;
+  font-family: helvetica;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 99;
+}
+
+#nnspc a {
+  text-decoration: none;
+  color: var(--navigationText);
+}
+
+/* TRANSITIONS */
+/*ANIMATION KEYFRAMES*/
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#nnspc,
+#nnspc a,
+nav,
+.row .quest {
+  transition: all 0.5s ease;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 850px) {
+  .content_wrapper {
+    margin: 0 auto;
+    padding: 0 25px !important;
+  }
+
+  nav,
+  .icon_nav,
+  .character_nav {
+    display: none !important;
+  }
+  
+  .page_wrapper {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 25px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!--NAVIGATION---------------------------------------------------------->
+  <nav class="flex">
+
+    <!--icon navigation-->
+    <ul id="icon_nav" class="flex flex-column">
+      <li><a href="/" title="{lang:Home}"><i class="fas fa-home"></i></a></li>
+      <li><a href="ABOUTURL"><i class="far fa-user"></i></a></li>
+      <li><a href="/ask" title="{AskLabel}"><i class="far fa-question-circle"></i></a></li>
+
+      <!--CREDIT-->
+      <div id="nnspc"><a href="//nonspace.tumblr.com" target="_blank">n.</a></div>
+      </ul>
+
+  </nav>
+
+<!--NAVIGATION END------------------------------------------------------>
+
+<!--CONTAINER----------------------------------------------------------->
+     <div id="faq" class="page_wrapper faq_page">
+          <div class="article_wrapper">
+            <article class="post">
+              <h2 class="headlines">FAQ</h2>
+              <!--to add new questions & answers-->
+              <div class="row">
+                <!--COPY HERE-->
+                <div class="quest"><span>Question?</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption"><p />Answer.</div>
+                <!--COPY END-->
+                
+                <div class="quest"><span>Question?</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption"><p />Answer.</div>
+                
+                <div class="quest"><span>Question?</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption"><p />Answer.</div>
+                
+                <!--headlines. copy/paste where you want-->
+                <div class="headlines">
+                    headline
+                </div>
+                
+                <div class="quest"><span>Question?</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption"><p />Answer.</div>
+                
+                <div class="quest"><span>Question?</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption"><p />Answer.</div>
+                
+                <!--PASTE MORE HERE-->
+                
+              </div>
+            </article><!--faq end-->
+          </div><!--faq article wrapper-->
+        </div><!--faq page-->
+
+<!--CONTAINER END------------------------------------------------------->
+
+  <!--TOOLTIPSTER-->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" />
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+
+  <script>
+  /*FAQ ACCORDION*/
+  $('.row .quest').on('click', function () {
+    var reply = $(this).next('.reply');
+    if (reply.is(':hidden')) {
+      $(this).find('i').replaceWith('<i class="fas fa-angle-up"></i>');
+      reply.slideDown();
+    } 
+    else {
+      $(this).find('i').replaceWith('<i class="fas fa-angle-down"></i>');
+      reply.slideUp();
+    }
+  });
+  </script>
+  
+</body>
+</html>

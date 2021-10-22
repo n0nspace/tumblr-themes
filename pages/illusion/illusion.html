@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+    <!--ILLUSION by @nonspace.
+    Find more of my work at https://nonspace.tumblr.com
+
+    Don't steal.
+    Don't claim as your own.
+    Don't use as base code.
+    I will find and haunt you.
+    Editing for personal use is fine!-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <link rel="alternate" type="application/rss+xml" href="{RSS}">
+  <title>{Title}</title>
+  <meta name="description" content="{MetaDescription}" />
+
+   <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Chivo:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+
+  <!--jQUERY-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+<style>
+
+/*INSTRUCTIONS*/
+
+/*1. FILTER OPTIONS*/
+/*Down in the navigation are filter options. You you can set the filter they "link" to through the 'data-filter' attribute. Set it to the classes you want to filter (including the dot to denoate a class) and add the respective class to the .grid-item in the 'class' attribute. E.g.
+
+Your filter group one if called 'f1'
+-> data-filter=".f1"
+-><div class="grid-item f1">
+
+Links:
+  https://isotope.metafizzy.co/filtering.html
+  https://nonspace.io/tagged/theme%20help:%20filters
+*/
+
+/*2. GRID*/
+/*You can add new grid cards by copy/pasting them. I've commented in the code below where you need to copy and paste.
+*/
+
+
+/*variables*/
+:root {
+  /*layout*/
+  --postWidth: 1200px; /*character sheet container*/
+  --barWidth: 80px;
+
+  /*font styles*/
+  --fontSize: 16px;
+  --headlineSize: 32px;
+  --lineHeight: 150%;
+  --textColor: #57565b;
+  --headlines: #5e6060;
+  --fontFamily: 'Roboto';
+  --fontFamilySecondary: 'Chivo';
+  --fontWeight: 400;
+
+  /*colors*/
+  --background: #f8fafb;
+  --postBackground: #fff;
+  --navigationText: #a1a3a3;
+  --navigationBackground: #111;
+  --navigationBorders: #2f2f2f;
+
+  --accentColor: #F5C2A2;
+  --accentText: #fff;
+  --postBorders: #e8e8e8; /*character card border*/
+
+  /*misc*/
+  --borderRadius: 20px;
+
+  /*grid*/
+  --gridItemWidth: 300px;
+  --gridItemImageHeight: 250px;
+
+  /*responsive*/
+  --mediaBreak1: var(--barWidth) + var(--postWidth) + 50px);
+}
+
+/*reset styles*/
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+  font-family: var(--fontFamily);
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--textColor);
+  font-weight: var(--fontWeight);
+}
+
+/*GENERAL STYLES*/
+
+::selection {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+::-moz-selection {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+small, sub {
+  font-size: 0.9rem;
+}
+
+.headlines {
+  text-align: left;
+  font-family: var(--fontFamilySecondary), sans-serif;
+  font-size: var(--headlineSize);
+}
+
+.headlines a {
+  text-decoration: none;
+}
+
+.headlines,
+.headlines a {
+  color: var(--headlines);
+  font-family: var(--fontFamilySecondary);
+  font-size: 1.55rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+.flex {display: flex;}
+.flex-column {flex-direction: column;}
+.flex-wrap {flex-wrap: wrap;}
+
+
+/* NAVIGATION */
+
+nav {
+  position: fixed;
+  height: 100%;
+  width: 80px;
+  background: var(--navigationBackground);
+  left: -0px;
+}
+
+nav {
+  z-index: 6;
+}
+
+nav li {
+  list-style-type: none;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+nav li a {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-decoration: none;
+  color: var(--navigationText);
+}
+	
+nav a[data-filter] i {
+  opacity: 0.5;
+}
+ 
+nav a.default i {
+  opacity: 1;
+}
+
+nav li i {
+  font-size: 1.3rem;
+}
+
+#icon_nav {
+  position: relative;
+  width: 80px;
+  margin: 40px 0 40px auto;
+  align-items: center;
+  overflow-y: auto;
+}
+
+/* MAIN CONTAINER */
+
+.container {
+  position: relative;
+  width: 100%;
+  min-width: 250px;
+  height: 100vh;
+  margin: auto;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.content_wrapper {
+  position: relative;
+  max-width: 100%;
+  -webkit-animation-duration: 1.2s;
+  animation-name: fadeIn;
+  animation-duration: 1.2s;
+  margin-left: var(--barWidth);
+}
+
+.content_wrapper.grid {
+  padding: 0 80px;
+}
+
+.page_wrapper {
+  position: relative;
+  color: var(--textColor);
+  text-align: justify;
+  min-width: 250px;
+  display: block;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.page_wrapper .article_wrapper {
+   border: none;
+   min-height: 100vh;
+}
+
+.page_wrapper .headlines {
+  margin-bottom: 50px;
+}
+
+.row {
+  position: relative;
+  width: 100%;
+  margin-bottom: 65px;
+}
+
+.col-2:last-of-type .row:last-of-type {
+  margin-bottom: 0;
+}
+
+.row.no-margin-bottom {
+  margin-bottom: 40px;
+}
+
+.col {
+  width: 100%;
+}
+
+.col-2 {
+  max-width: 100%;
+}
+
+.outer_col {
+  padding: 0 25px;
+  flex: 1;
+  min-width: 300px;
+}
+
+/*POST HEADER & FOOTER*/
+
+.article_wrapper {
+  margin: 0 auto;
+  padding: 80px 0px;
+  width: 100%;
+  border-bottom: 1px solid var(--postBorders);
+}
+
+.article_wrapper:last-of-type {
+  border-bottom: none;
+}
+
+/*GRID*/
+
+.grid_wrapper {
+  width: 100%;
+  margin: 40px auto;
+}
+
+/*GRID ITEMS*/
+
+.grid-item {
+  width: var(--gridItemWidth);
+  overflow: hidden;
+  margin: 15px;
+  opacity: 0;
+  position: relative;
+  height: auto;
+  line-height: 160%;
+  overflow: hidden;
+  padding: 15px;
+}
+
+.item-content .desc {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+  padding: 15px 25px;
+  background: var(--postBackground);
+}
+
+.item-content .desc li {
+  list-style-type: none;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--postBorders);
+}
+
+.item-content .desc li:last-of-type {
+  border-bottom: none;
+}
+
+.item-content .desc p:not(first-of-type) {
+  margin-top: 15px;
+}
+
+.item-content a {
+  color: var(--textColor);
+  text-decoration: none;
+}
+
+.item-content a:hover {
+  color: var(--accentColor);
+}
+
+.item-head i {
+  color: var(--accentLightColor);
+}
+
+.item-head .headlines {
+  font-size: 1.25rem;
+}
+
+.item-head i {
+  font-size: 1.66rem;
+  margin-left: 10px;
+  padding: 20px;
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+.item-head {
+  justify-content: space-between;
+  align-items: center;
+  background: var(--postBackground);
+  padding-left: 25px;
+  margin-bottom: 10px;
+}
+
+
+/*SHADOWS & BORDER RADIUS*/
+
+.has-border-radius,
+.item-head i {
+  border-radius: var(--borderRadius) !important;
+}
+
+.lighter-shadow {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+}
+
+.stronger-shadow {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+}
+
+/*TOOLTIPS*/
+.tooltipster-default {
+  border-radius: var(--borderRadius) !important;
+  border: none !important;
+  background: var(--postBackground) !important;
+  color: var(--textColor) !important;
+}
+
+/* Use this next selector to style things like font-size and line-height: */
+.tooltipster-default .tooltipster-content {
+	font-family: var(--fontFamily) !important;
+	font-size: var(--fontSize) !important;
+	line-height: var(--lineHeight) !important;
+	padding: 8px 10px;
+	overflow: hidden;
+}
+
+/*CREDIT*/
+
+#nnspc {
+  position: absolute;
+  bottom: 0;
+  padding: 5px 10px;
+  font-family: helvetica;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 99;
+}
+
+#nnspc a {
+  text-decoration: none;
+  color: var(--navigationText);
+}
+
+/* TRANSITIONS */
+/*ANIMATION KEYFRAMES*/
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#nnspc,
+#nnspc a,
+nav,
+.grid-item,
+.item-content a {
+  transition: all 0.5s ease;
+}
+
+.grid-item > a:hover .overlay,
+.grid-item > a:hover .overlay-text,
+.is-visible {
+  opacity: 1;
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 850px) {
+  .content_wrapper {
+    margin: 0 auto;
+    padding: 0 25px !important;
+  }
+
+  nav,
+  .icon_nav,
+  .character_nav {
+    display: none !important;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!--NAVIGATION---------------------------------------------------------->
+  <nav class="flex">
+
+    <!--icon navigation-->
+    <ul id="icon_nav" class="flex flex-column">
+      <li><a href="/" title="{lang:Home}"><i class="fas fa-home"></i></a></li>
+      <li><a href="ABOUTURL"><i class="far fa-user"></i></a></li>
+      <li><a href="/ask" title="{AskLabel}"><i class="far fa-question-circle"></i></a></li>
+
+    <!--filters-->
+    <!--COPY HERE-->
+    <li><a href="#" title="show all" data-filter="*" class="default tooltip">
+      <i class="far fa-star"></i></a></li>
+    <!--COPY END-->
+    <li><a href="#" title="filter 1" data-filter=".f1" class="tooltip">
+      <i class="far fa-star"></i></a></li>
+    <li><a href="#" title="filter 2" data-filter=".f2" class="tooltip">
+      <i class="far fa-star"></i></a></li>
+    <li><a href="#" title="filter 3" data-filter=".f3" class="tooltip">
+      <i class="far fa-star"></i></a></li>
+
+    <!--PASTE MORE FILTERS HERE-->
+
+      <!--CREDIT-->
+      <div id="nnspc"><a href="//nonspace.tumblr.com" target="_blank">n.</a></div>
+      </ul>
+
+  </nav>
+
+<!--NAVIGATION END------------------------------------------------------>
+
+<!--CONTAINER----------------------------------------------------------->
+  <div class="container">
+    <!--CHARACTER GRID-->
+    <div class="content_wrapper grid flex flex-wrap">
+     <div class="grid_wrapper">
+
+      <!--COPY GRID ITEM START-->
+      <!--ITEM 1-->
+      <!--add filter classes here-->
+      <div class="f2 grid-item">
+      <div class="item-content">
+        <div class="item-head has-border-radius lighter-shadow flex">
+          <div class="item-head-left">
+            <div class="headlines">Headline</div>
+          </div>
+          <i class="far fa-user-circle"></i>
+        </div>
+        <div class="desc has-border-radius lighter-shadow">
+          <ul>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+          </ul>
+        </div>
+       </div>
+      </div>
+      <!--END-->
+      
+      <!--ITEM 1-->
+      <!--add filter classes here-->
+      <div class="f1 grid-item">
+      <div class="item-content">
+        <div class="item-head has-border-radius lighter-shadow flex">
+          <div class="item-head-left">
+            <div class="headlines">Headline</div>
+          </div>
+          <i class="far fa-user-circle"></i>
+        </div>
+        <div class="desc has-border-radius lighter-shadow">
+          <ul>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+          </ul>
+        </div>
+       </div>
+      </div>
+      <!--END-->
+      
+      <!--ITEM 1-->
+      <!--add filter classes here-->
+      <div class="f3 grid-item">
+      <div class="item-content">
+        <div class="item-head has-border-radius lighter-shadow flex">
+          <div class="item-head-left">
+            <div class="headlines">Headline</div>
+          </div>
+          <i class="far fa-user-circle"></i>
+        </div>
+        <div class="desc has-border-radius lighter-shadow">
+          <ul>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+          </ul>
+        </div>
+       </div>
+      </div>
+      <!--END-->
+      
+      <!--ITEM 1-->
+      <!--add filter classes here-->
+      <div class="f4 grid-item">
+      <div class="item-content">
+        <div class="item-head has-border-radius lighter-shadow flex">
+          <div class="item-head-left">
+            <div class="headlines">Headline</div>
+          </div>
+          <i class="far fa-user-circle"></i>
+        </div>
+        <div class="desc has-border-radius lighter-shadow">
+          <ul>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+          </ul>
+        </div>
+       </div>
+      </div>
+      <!--END-->
+      
+      <!--ITEM 1-->
+      <!--add filter classes here-->
+      <div class="f3 grid-item">
+      <div class="item-content">
+        <div class="item-head has-border-radius lighter-shadow flex">
+          <div class="item-head-left">
+            <div class="headlines">Headline</div>
+          </div>
+          <i class="far fa-user-circle"></i>
+        </div>
+        <div class="desc has-border-radius lighter-shadow">
+          <ul>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+            <li><a href="">link one</a></li>
+          </ul>
+        </div>
+       </div>
+      </div>
+      <!--END-->
+      <!--COPY GRID ITEM END-->
+
+
+      <!--PASTE NEW GRID ITEMS HERE-->
+
+     </div><!--grid_wrapper end-->
+    </div><!--content_wrapper.grid end-->
+<!--GRID END--------------------------------------------------------------->
+
+  </div><!--container-->
+
+<!--CONTAINER END------------------------------------------------------->
+
+  <!--ISOTOPE PLUGIN https://isotope.metafizzy.co/ (for filtering)-->
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+  <!--TOOLTIPSTER-->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/css/tooltipster.min.css" />
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/3.3.0/js/jquery.tooltipster.min.js"></script>
+	
+   <!--MIRROR IMAGES SCRIPTS-->
+  <script type="text/javascript" src="https://dl.dropbox.com/s/mh07ykoqpbwvdei/mirror-images.js"></script>
+</body>
+</html>
