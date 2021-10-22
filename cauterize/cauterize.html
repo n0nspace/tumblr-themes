@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+
+<!--PAGE THEME #6: CAUTERIZE by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  Editing for personal use is fine!-->
+
+<head>
+
+    <title>{Title}</title>
+    <link rel="icon" type="image/png" href="{Favicon}">
+
+    <!--GOOGLE FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&amp;subset=cyrillic,greek,hebrew,latin-ext,vietnamese" rel="stylesheet">
+
+    <!--FONT AWESOME ICONS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!--JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!--JQUERY UI TOOLTIPS-->
+    <script src="https://static.tumblr.com/vuxbcsk/6FTp5y7g3/jquery-ui.min.js"></script>
+
+    <style>
+    /*SET COLORS*/
+    /*This is where you can set the colours for every group. You can assign
+    character cards groups to set the accent colour for every character or
+    several characters at once.
+
+    These will apply to:
+        Data tiles background.
+        Link hovers.
+
+    /*WANT MORE COLOURS?*/
+    /*This will require a bit of knowledge of mostly CSS. You can add more
+      variables as seen below. You'll also have to add these variables to
+      the respective style groups at the bottom of the style, there's a
+      headline /*GROUP STYLES.*/
+
+    :root {
+        /*GROUP 1*/
+        --g1: #ff9600;
+        --g12: #f7136f;
+        /*GROUP 2*/
+        --g2: #f7136f;
+        --g22: #f7136f;
+        /*GROUP 3*/
+        --g3: #ff9600;
+        --g32: #ff9600;
+        /*GROUP 4*/
+        --g4: #247677;
+        --g42: #247677;
+        /*GROUP 5*/
+        --g5: #ff9600;
+        --g52: #ff9600;
+        /*GROUP 6*/
+        --g6: #f7136f;
+        --g62: #f7136f;
+        /*GROUP 7*/
+        --g7: #ff9600;
+        --g72: #ff9600;
+        /*GROUP 8*/
+        --g8: #247677;
+        --g82: #247677;
+        /*GROUP 9*/
+        --g9: #ff9600;
+        --g92: #ff9600;
+        /*GROUP 10*/
+        --g10: #247677;
+        --g102: #247677;
+    }
+
+    /*STATUS COLOURS*/
+    .open {background-color: #247677;}
+    .closed {background-color: #f7136f;}
+    .select {background-color: #ff9600;}
+
+    html,
+    body {
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Arimo', Helvetica, sans-serif;
+        min-height: 100%;
+    }
+
+    body {
+        overflow: auto;
+        background: -webkit-linear-gradient(left top, #f8f8f8, #f8f8f8);
+        /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(bottom right, #f8f8f8, #f8f8f8);
+        /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(bottom right, #f8f8f8, #f8f8f8);
+        /* For Firefox 3.6 to 15 */
+        background: linear-gradient(to bottom right, #f8f8f8, #f8f8f8);
+        /* Standard syntax */
+    }
+
+    /*TOOLTIPS*/
+    .tooltip {
+        position: absolute;
+        padding: 6px 10px;
+        color: #000;
+        background: #fff;
+        font: normal 10px "Helvetica Neue", Sans-Serif;
+        width: auto;
+        text-transform: uppercase;
+        text-align: right;
+        white-space: nowrap;
+        border-bottom: 2px dashed #eee;
+    }
+
+    .ui-helper-hidden-accessible {display: none;}
+
+    /*LINKS*/
+    #credit {
+        position: absolute;
+        bottom: 200px;
+        line-height: 120%;
+        right: -77px;
+        padding: 3px;
+        text-align: center;
+        transform: rotate(-90deg);
+        background: #ddd;
+        box-shadow: rgba(0,0,0,.1) 1px 1px 3px;
+        border-top:2px dashed #eee;
+    }
+
+    #credit a {
+        font-family: Helvetica;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 9px;
+        margin: 0px 0px;
+        padding: 0 5px;
+        color: #7b7b7b;
+    }
+
+    #credit a .fa {
+        font-size: 12px;
+    }
+
+    #outer {
+       position: absolute;
+       height: 100%;
+       width: 100%;
+       background: -webkit-linear-gradient(left top, #f8f8f8, #f8f8f8);
+       /* For Safari 5.1 to 6.0 */
+       background: -o-linear-gradient(bottom right, #f8f8f8, #f8f8f8);
+       /* For Opera 11.1 to 12.0 */
+       background: -moz-linear-gradient(bottom right, #f8f8f8, #f8f8f8);
+       /* For Firefox 3.6 to 15 */
+       background: linear-gradient(to bottom right, #f8f8f8, #f8f8f8);
+       /* Standard syntax */
+   }
+
+    #container {
+        position: relative;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+        margin: 0% auto;
+        width: 1110px;
+        height: 486px;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: 200px 890px;
+        grid-template-areas:
+          "sidebar content";
+    }
+
+
+    /*HEADER*/
+    header {
+        grid-area: sidebar;
+        position: relative;
+        margin: 0px;
+        padding: 0px 00px 0px;
+        height: auto;
+    }
+
+    h1 {
+        font-family: Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 23px;
+        margin: 5px 0px 10px 0px;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+
+    /*CHARACTER NAV*/
+   nav {
+        position: relative;
+        margin: 0px 0 0 0;
+        padding: 0px 0;
+        width: auto;
+        height: auto;
+    }
+
+    #cnav {
+        position: relative;
+        width: auto;
+        height: 486px;
+        margin: 0 auto;
+        padding: 0 20px 0 10px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        text-align: center;
+        -webkit-mask-image: -webkit-linear-gradient(top, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 0.5%, rgba(255,255,255,1) 95%,rgba(255,255,255,0) 100%);
+    }
+
+    /*CHARACTER NAV LINKS*/
+    .cl {
+        position: relative;
+        height: 10px;
+        font-size: 10px;
+        letter-spacing: 0.5px;
+        padding: 19px 10px;
+        margin: 4.5px 0px;
+        color: #7b7b87;
+        background-color: #fff;
+        font-family: helvetica;
+        text-transform: uppercase;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border:1px solid #eeeeee;
+    }
+
+    .cl:first-child {
+        margin: 0px;
+    }
+
+    /*CHARACTER CARD WRAPPER*/
+    #wrapper {
+        position: relative;
+        grid-area: content;
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 20px;
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+
+
+    /*CONTENT CARDS*/
+    .ccard {
+        display: none;
+        opacity: 0;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        vertical-align: top;
+        -webkit-animation-duration: 0.8s;
+        animation-name: fadeIn;
+        animation-duration: 0.8s;
+        grid-gap: 10px;
+        grid-template-columns: 500px 170px 200px;
+        grid-template-rows: 50px 150px 140px 115px;
+        grid-template-areas:
+          "headline headline image"
+          "data timeline image"
+          "bio timeline image"
+          "bio timeline links";
+    }
+
+    /*HEADLINE*/
+    .headline {
+        grid-area: headline;
+        position: relative;
+        padding: 10px;
+        background: #fff;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border:1px solid #eeeeee;
+    }
+
+    .status {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        right: 10px;
+        bottom: 0;
+        top: -1px;
+        height: 25px;
+        padding: 0px 0;
+        width: auto;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+    }
+
+    .status i {
+        color: #fff;
+        text-decoration: none;
+        width: 35px;
+        height: 30px;
+        margin: 0px 1px;
+        line-height: 30px;
+        text-align: center;
+        font-style: normal;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border:1px solid #eeeeee;
+    }
+
+    .status .fa {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-family: helvetica;
+        font-size: 25px;
+        padding: 0;
+        margin: 0px;
+        color: rgb(46,46,46);
+        font-weight: normal;
+        text-transform: uppercase;
+        display: inline;
+    }
+
+    /*first name*/
+    h2 span {
+        font-weight: bold;
+        color: #000;
+    }
+
+    .tw {
+        font-size: 9px;
+        line-height: 120%;
+        text-transform: uppercase;
+        font-style: normal;
+    }
+
+    /*PROFILE DATA*/
+    .biodata {
+        grid-area: data;
+        padding: 0px;
+    }
+
+    .cell1,
+    .cell2 {
+        height: auto;
+        width: 245px;
+        padding: 0px 0 0 0;
+        margin: 0px;
+        font-size: 13px;
+        overflow: hidden;
+    }
+
+    .cell1 {
+        float: left;
+    }
+
+    .cell2 {
+        float: right;
+    }
+
+    .cell1 ul,
+    .cell2 ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .cell1 li:first-child,
+    .cell2 li:first-child {
+        margin: 0;
+    }
+
+    .cell1 li,
+    .cell2 li {
+        background: #fff;
+        border:1px solid #eeeeee;
+        list-style-type: none;
+        text-align: left;
+        color: #fff;
+        height: 33px;
+        line-height: 250%;
+        margin: 4px 0 0 0;
+        padding-left: 0px;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border-bottom: 1px solid rgb(221,221,221);
+    }
+
+    .cell1 li i,
+    .cell2 li i {
+        font-style: normal;
+        font-size: 11px;
+        padding: 11px 8px;
+        border-radius: 0px;
+        text-transform: uppercase;
+    }
+
+    .cell1 p,
+    .cell2 p {
+        padding: 0.3px;
+    }
+
+    .cell1 span,
+    .cell2 span {
+        color: #000;
+        /*background: #ecedec!important;*/
+        line-height: 345%; /*270*/
+        margin: -1px;
+        padding: 0px 15px 0px;
+        float: right;
+        text-transform: uppercase;
+        font-size: 10px;
+    }
+
+    /*BIO*/
+    .biotxt {
+        grid-area: bio;
+        background: #fff;
+        font-size: 13px;
+        text-align: justify;
+        line-height: 150%;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border:1px solid #eeeeee;
+        padding: 0px 10px 10px 0px;
+        overflow-x: hidden;
+        overflow-y: auto;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        border-left: 10px solid #fff;
+        border-bottom: 10px solid #fff;
+        border-top: 10px solid #fff;
+        -webkit-mask-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 92%,rgba(255,255,255,0) 100%);
+    }
+
+    /*TIMELINE*/
+    .timeline {
+        grid-area: timeline;
+        background: #fff;
+        font-size: 12px;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border:1px solid #eeeeee;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding-bottom: 10px;
+        -webkit-mask-image: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+    }
+
+    .titem {
+        position: relative;
+        display: grid;
+        grid-gap: 0;
+        grid-template-columns: 44px 3fr;
+        grid-template-areas:
+         "year event";
+    }
+
+    .titem:first-child {
+        margin-top: 10px;
+    }
+
+    /*circle*/
+    .titem:before {
+        content: '';
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        top: 0px;
+        left: 40px;
+        background-color: white;
+        border: 2px solid #e7e7e7;
+        border-radius: 50%;
+    }
+
+    .year {
+        grid-area: year;
+        text-align: center;
+        padding: 0px 10px 0 10px;
+        font-size: 11px;
+    }
+
+    .event {
+        grid-area: event;
+        padding: 0px 15px 15px 10px;
+        margin: 0;
+        font-size: 10px;
+        line-height: 130%;
+        text-align: justify;
+        color: #97929a;
+        border-left: 2px solid #e7e7e7;
+    }
+
+    .event h3 {
+        padding: 0px;
+        margin: -1px 0px 5px 0;
+        color: #000;
+        font-size: 10px;
+        text-transform: uppercase;
+    }
+
+    /*IMAGE*/
+    .cimg {
+        grid-area: image;
+        padding: 5px;
+        background-position: center center;
+        background-size: cover!important;
+        background-repeat: no-repeat;
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+        background: #fff;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border:5px solid #dddddd;
+    }
+
+    /*GRID LINKS*/
+    .ctags {
+        grid-area: links;
+        height: 100%;
+        display: grid;
+        grid-gap: 5px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .ctags a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 17px;
+        color: #7a7a7a;
+        background: #dddddd;
+        text-decoration: none;
+        box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+        border:1px solid #eeeeee;
+    }
+
+    .ctags a[aria-disabled] {
+        color: #a5a5a5;
+    }
+
+    /*TRANSITIONS*/
+    header,
+    nav,
+    .ctags a,
+    #credit a .fa {
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    .cl,
+    .ccard {
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 0.5s ease;
+    }
+
+    /*ACTIVE STYLES*/
+    /*CONTENT CARD*/
+    .ccard.active {
+        opacity: 1;
+        display: grid;
+        margin: 0px 0px;
+    }
+
+    .cl.active {
+        color: #000;
+        background: #e7e7e7;
+        font-weight: bold;
+        transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform-origin: bottom right;
+    }
+
+    /*GROUP COLOURS*/
+
+    /*CNAV & TRAITS & INFO DATA*/
+    /*GROUP 1*/
+    #cnav .g1,
+    .cell1.g1 li i,
+    .cell2.g1 li i,
+    .ctags.g1 a:hover {
+        background: var(--g1);
+        background-image: -webkit-linear-gradient(left, var(--g12) 0%, var(--g1) 100%);
+        background-image: -moz-linear-gradient(left, --g12 0%, --g1 100%);
+        background-image: -o-linear-gradient(left, --g12 0%, --g1 100%);
+        background-image: linear-gradient(to right, --g12 0%, --g1 100%);
+    }
+    /*GROUP 2*/
+    #cnav .g2,
+    .cell1.g2 li i,
+    .cell2.g2 li i,
+    .ctags.g2 a:hover {
+        background: var(--g2);
+        background-image: -webkit-linear-gradient(left, var(--g22) 0%, var(--g2) 100%);
+        background-image: -moz-linear-gradient(left, --g22 0%, --g2 100%);
+        background-image: -o-linear-gradient(left, --g22 0%, --g2 100%);
+        background-image: linear-gradient(to right, --g22 0%, --g2 100%);
+    }
+    /*GROUP 3*/
+    #cnav .g3,
+    .cell1.g3 li i,
+    .cell2.g3 li i,
+    .ctags.g3 a:hover {
+        background: var(--g3);
+        background: -webkit-linear-gradient(left, var(--g32) 0%, var(--g3) 100%);
+        background-image: -moz-linear-gradient(left, --g32 0%, --g3 100%);
+        background-image: -o-linear-gradient(left, --g32 0%, --g3 100%);
+        background-image: linear-gradient(to right, --g32 0%, --g3 100%);
+    }
+    /*GROUP 4*/
+    #cnav .g4,
+    .cell1.g4 li i,
+    .cell2.g4 li i,
+    .ctags.g4 a:hover {
+        background: var(--g4);
+        background: -webkit-linear-gradient(left, var(--g42) 0%, var(--g4) 100%);
+        background-image: -moz-linear-gradient(left, --g42 0%, --g4 100%);
+        background-image: -o-linear-gradient(left, --g42 0%, --g4 100%);
+        background-image: linear-gradient(to right, --g42 0%, --g4 100%);
+    }
+    /*GROUP 5*/
+    #cnav .g5,
+    .cell1.g5 li i,
+    .cell2.g5 li i,
+    .ctags.g5 a:hover {
+        background: var(--g5);
+        background: -webkit-linear-gradient(left, var(--g52) 0%, var(--g5) 100%);
+        background-image: -moz-linear-gradient(left, --g52 0%, --g5 100%);
+        background-image: -o-linear-gradient(left, --g52 0%, --g5 100%);
+        background-image: linear-gradient(to right, --g52 0%, --g5 100%);
+    }
+    /*GROUP 6*/
+    #cnav .g6,
+    .cell1.g6 li i,
+    .cell2.g6 li i,
+    .ctags.g6 a:hover {
+        background: var(--g6);
+        background-image: -webkit-linear-gradient(left, var(--g62) 0%, var(--g6) 100%);
+        background-image: -moz-linear-gradient(left, --g62 0%, --g6 100%);
+        background-image: -o-linear-gradient(left, --g62 0%, --g6 100%);
+        background-image: linear-gradient(to right, --g62 0%, --g6 100%);
+    }
+    /*GROUP 7*/
+    #cnav .g7,
+    .cell1.g7 li i,
+    .cell2.g7 li i,
+    .ctags.g7 a:hover {
+        background: var(--g7);
+        background-image: -webkit-linear-gradient(left, var(--g72) 0%, var(--g7) 100%);
+        background-image: -moz-linear-gradient(left, --g72 0%, --g7 100%);
+        background-image: -o-linear-gradient(left, --g72 0%, --g7 100%);
+        background-image: linear-gradient(to right, --g72 0%, --g7 100%);
+    }
+    /*GROUP 8*/
+    #cnav .g8,
+    .cell1.g8 li i,
+    .cell2.g8 li i,
+    .ctags.g8 a:hover {
+        background: var(--g8);
+        background-image: -webkit-linear-gradient(left, var(--g82) 0%, var(--g8) 100%);
+        background-image: -moz-linear-gradient(left, --g82 0%, --g8 100%);
+        background-image: -o-linear-gradient(left, --g82 0%, --g8 100%);
+        background-image: linear-gradient(to right, --g82 0%, --g8 100%);
+    }
+    /*GROUP 9*/
+    #cnav .g9,
+    .cell1.g9 li i,
+    .cell2.g9 li i,
+    .ctags.g9 a:hover {
+        background: var(--g9);
+        background-image: -webkit-linear-gradient(left, var(--g92) 0%, var(--g9) 100%);
+        background-image: -moz-linear-gradient(left, --g92 0%, --g9 100%);
+        background-image: -o-linear-gradient(left, --g92 0%, --g9 100%);
+        background-image: linear-gradient(to right, --g92 0%, --g9 100%);
+
+    }
+    /*GROUP 10*/
+    #cnav .g10,
+    .cell1.g10 li i,
+    .cell2.g10 li i,
+    .ctags.g10 a:hover {
+        background: var(--g10);
+        background-image: -webkit-linear-gradient(left, var(--g102) 0%, var(--g10) 100%);
+        background-image: -moz-linear-gradient(left, --g102 0%, --g10 100%);
+        background-image: -o-linear-gradient(left, --g102 0%, --g10 100%);
+        background-image: linear-gradient(to right, --g102 0%, --g10 100%);
+    }
+
+    /*GROUP 11*/
+    #cnav .g11,
+    .cell1.g11 li i,
+    .cell2.g11 li i,
+    .ctags.g11 a:hover {
+        background: var(--g11);
+        background-image: -webkit-linear-gradient(left, var(--g112) 0%, var(--g11) 100%);
+        background-image: -moz-linear-gradient(left, --g112 0%, --g11 100%);
+        background-image: -o-linear-gradient(left, --g112 0%, --g11 100%);
+        background-image: linear-gradient(to right, --g112 0%, --g11 100%);
+    }
+
+    /*HOVER STYLES*/
+    .status:hover,
+    .cl:hover {
+        cursor: pointer;
+    }
+
+    .cl:hover {
+        color: #000;
+        font-weight: bold;
+        transform: scale(1.1);
+        -moz-transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+        transform-origin: bottom right;
+    }
+
+    .ctags a:hover {
+        color: #fff;
+    }
+
+    .ctags a[aria-disabled]:hover {
+        background: #dbdbdb;
+        color: #a5a5a5;
+        cursor: default;
+    }
+
+    .cimg:hover {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+
+
+    /*ANIMATION KEYFRAMES*/
+    @-webkit-keyframes fadeIn  {
+        0% { opacity: 0; }
+        20% { opacity: 0; }
+        40% { opacity: 0.3; }
+        60% { opacity: 0.5; }
+        80% { opacity: 0.9; }
+        100% { opacity: 1; }
+    }
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        20% { opacity: 0; }
+        40% { opacity: 0.3; }
+        60% { opacity: 0.5; }
+        80% { opacity: 0.9; }
+        100% { opacity: 1; }
+    }
+
+
+    /*SCROLLBAR STYLES*/
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        border-radius: 1px;
+        background-color: #f8f8f8;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background-color: #ddd;
+    }
+
+    .biodata::-webkit-scrollbar-track,
+    .biotxt::-webkit-scrollbar-track,
+    .timeline::-webkit-scrollbar-track {
+        border-radius: 1px;
+        width: 10px!important;
+        background: -webkit-linear-gradient(bottom, #fff, #fff 100%)!important;
+    }
+
+    .biodata::-webkit-scrollbar-thumb,
+    .biotxt::-webkit-scrollbar-thumb,
+    .timeline::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        width: 10px!important;
+        background: -webkit-linear-gradient(top, #fff, #eee, #fff 100%)!important;
+        /*background: -webkit-linear-gradient(top, #edeeed, #eceeec 100%);          if transparent*/
+    }
+
+    #cnav::-webkit-scrollbar-thumb {
+        background-image: rgb(204, 204, 204);
+        background-image: -webkit-linear-gradient(top, #f8f8f8 2%, #ff9600 35%, #f7136f 50%, #247677 65%, #f8f8f8 98%);
+        background-image: -moz-linear-gradient(top, #f8f8f8 2%, #ff9600 35%, #f7136f 50%, #247677 65%, #f8f8f8 98%);
+        background-image: -o-linear-gradient(top, #f8f8f8 2%, #ff9600 35%, #f7136f 50%, #247677 65%, #f8f8f8 98%);
+        background-image: linear-gradient(to bottom, #f8f8f8 2%, #ff9600 35%, #f7136f 50%, #247677 65%, #f8f8f8 98%);
+    }
+
+    #cnav::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    </style>
+</head>
+<body>
+ <div id="outer">
+  <div id="container">
+
+    <div id="credit">
+      <a href="/"><i class="fa fa-home" style="font-size: 14px;" aria-hidden="true" title="home"></i>
+       </a>
+      <a href="/a">
+       <i class="fa fa-user" aria-hidden="true" title="about"></i></a>
+      <a href="/ask">
+       <i class="fa fa-envelope" aria-hidden="true" title="message"></i></a>
+      <!--CREDIT, DON'T CHANGE!!!)-->
+      <a href="https://nonspace.tumblr.com">
+       <i class="fa fa-copyright" aria-hidden="true"></i> NNSPC</a>
+    </div>
+
+    <!--HEADER-->
+    <header>
+      <!--CHARACTER LINKS-->
+      <nav id="cnav">
+        <div class="cl active" href="#one">character one</div>
+        <div class="cl" href="#two">character two</div>
+        <div class="cl" href="#three">character three</div>
+        <div class="cl" href="#four">character four</div>
+        <div class="cl" href="#five">character five</div>
+        <div class="cl" href="#six">character six</div>
+        <div class="cl" href="#seven">character seven</div>
+        <div class="cl" href="#eight">character eight</div>
+        <div class="cl" href="#nine">character nine</div>
+        <div class="cl" href="#ten">character ten</div>
+      </nav>
+    </header>
+
+
+    <!--TABS & TAB LINKS-->
+    <!--The href attribute in the .cl div is what links to the
+    corresponding ccard (content card).
+    You can link to these tabs using the URL
+    (http://YOURURL.com/YOURPAGE/#TABNAME) so if you want to change them
+    to the character name you need to edit the cl href and give the
+    right ccard div the same id.
+
+    For example:
+
+    Your character's name is Musterman.
+
+    In the cbox:
+       <div class="cl" href="#MUSTERMAN">
+       take note to not leave out the hashtag(#).
+    In the ccard:
+       <div class="ccard" id="MUSTERMAN">
+       no hashtag(#) here.
+
+
+    <!--CHARACTER CARDS-->
+    <section id="wrapper">
+
+    <!--Every character can have an individual colour scheme (with gradient)
+    The data tiles & links on hover have colours. The colour variables are
+    at the very start of this theme (e.g. - -g1). There you can set the
+    colours for a two colour gradient. Or if both are the same, a flat
+    colour.
+
+    There are tiles (.status) to indicate (ship-)availability & development     status of every character.
+    By default: Green - Open, Yellow - Selective, Red - Closed.
+    You can change these at the top of this theme two. The classes are
+    called .open, .select and .closed.
+
+      <!--CHARACTER ONE-->
+      <div class="ccard g1 active" id="one">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by removing "aria-disabled".-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER TWO-->
+      <div class="ccard g2" id="two">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER THREE-->
+      <div class="ccard g3" id="three">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER FOUR-->
+      <div class="ccard g4" id="four">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER FIVE-->
+      <div class="ccard g5" id="five">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER SIX-->
+      <div class="ccard g6" id="six">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER SEVEN-->
+      <div class="ccard g7" id="seven">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER EIGHT-->
+      <div class="ccard g8" id="eight">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER NINE-->
+      <div class="ccard g9" id="nine">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+      <!--CHARACTER TEN-->
+      <div class="ccard g10" id="ten">
+        <div class="headline">
+
+          <!--CHARACTER NAME-->
+          <h2><span>First</span>Last</h2>
+
+          <!--TRIGGER WARNINGS-->
+          <i class="tw">(tw: trigger warnings)</i>
+
+          <!--STATUS-->
+          <div class="status">
+            <i class="fa fa-power-off open" aria-hidden="true"
+             title="plotting: open"></i>
+            <i class="fa fa-heart select" aria-hidden="true"
+             title="shipping: selective"></i>
+            <i class="fa fa-cogs closed" aria-hidden="true"
+             title="dev.: undev."></i>
+          </div>
+        </div><!--headline-->
+
+        <!--PROFILE-->
+        <div class="biodata">
+
+          <!--LEFT-->
+          <ul class="cell1">
+            <li> <i>Full name:</i>  <span> First Last </span> </li>
+            <li> <i>Nickname:</i>   <span> Nick </span> </li>
+            <li> <i>Age:</i>        <span> 00 </span> </li>
+            <li> <i>D.o.B:</i>      <span> Month, 00th </span> </li>
+          </ul>
+
+          <!--RIGHT-->
+          <ul class="cell2">
+            <li> <i>Occupation:</i> <span> Occupation </span> </li>
+            <li> <i>Residence:</i>  <span> Country </span> </li>
+            <li> <i>Status:</i><span> Status </span> </li>
+            <li> <i>Affiliation:</i><span> None </span> </li>
+          </ul>
+        </div><!--biodata-->
+
+        <!--BIOGRAPHY-->
+        <div class="biotxt">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div><!--biotxt-->
+
+        <!--TIMELINE-->
+        <div class="timeline">
+
+          <!--EVENT ONE-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <!--EVENT TWO-->
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Lorem ipsum dolor sit amet, conse ctetur adipiscing elit, sed do eiusmod tempor.
+            </div>
+          </div>
+
+          <div class="titem">
+            <div class="year">2018</div>
+            <div class="event">
+              <h3>title</h3>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            </div>
+          </div>
+
+        </div><!--timeline-->
+
+        <!--CHARACTER IMAGE-->
+        <div class="cimg" style="background-image:
+          url('https://placehold.it/200x360');">
+        </div>
+
+        <div class="ctags">
+          <!--You can customise these links as much as you like.
+          You can find more icons here: http://fontawesome.io/icons/
+          By default all links are disabled. Enable the ones you're
+          using by setting "aria-disabled" to false.-->
+          <a href="/tagged/TAG" aria-disabled="true">
+            <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+          <a href="/tagged/HEADCANONS" aria-disabled="true">
+            <i class="fa fa-book" aria-hidden="true"></i></a>
+          <a href="/tagged/PICTURES" aria-disabled="true">
+            <i class="fa fa-camera" aria-hidden="true"></i></a>
+          <a href="/tagged/WRITING" aria-disabled="true">
+            <i class="fa fa-pencil" aria-hidden="true"></i></a>
+          <a href="PLAYLIST" aria-disabled="true">
+            <i class="fa fa-music" aria-hidden="true"></i></a>
+          <a href="PINTEREST" aria-disabled="true">
+            <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+        </div><!--ctags-->
+
+      </div> <!--ccard-->
+
+
+    </section><!--wrapper-->
+  </div><!--container-->
+</div><!--outer-->
+
+
+ <!--SCRIPTS
+ DON'T MESS WITH THE SCRIPTS UNLESS YOU KNOW WHAT YOU'RE DOING-->
+ <script>
+   $(document).ready(function() {
+
+        /*CCARD COLORS*/
+        $('.ccard').each(function() {
+            var groupClass = $(this).attr('class').split(" ")[1];
+
+            $(this).find('.cell1').addClass(groupClass);
+            $(this).find('.cell2').addClass(groupClass);
+            $(this).find('.ctags').addClass(groupClass);
+        });
+
+        /*CARDS*/
+        $('.cl').on('click', function(e) {
+            var currentAttrValue = $(this).attr('href');
+            var groupClass = $('.ccard' + currentAttrValue).attr('class').split(" ")[1];
+
+            window.location.hash = $(this).attr('href');
+            $('.ccard' + currentAttrValue).addClass('active').siblings('.ccard').removeClass('active');
+           $(this).addClass('active').siblings('.cl').removeClass('active');
+        });
+
+        /*HASH SCRIPT*/
+        var hash = $.trim(window.location.hash);
+
+        if (hash) {
+            $('.cl[href$="' + hash + '"]').trigger('click');
+         };
+
+
+        /*TOOLTIPS*/
+        $(function() {
+            $(".ccard").tooltip({
+               classes: {
+                 "ui-tooltip": "tooltip"},
+               position: {
+                 my: "right bottom",
+                 at: "right top",
+                 collision: "none"
+               },
+            });
+         });
+
+    }); //DOCUMENT READY
+
+   </script>
+ </body>
+</html>
