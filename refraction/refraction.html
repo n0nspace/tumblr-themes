@@ -1,0 +1,2835 @@
+<!DOCTYPE html>
+
+<!--THEME #1 (2.5): REFRACTION by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  Editing for personal use is fine!-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>{Title}</title>
+  <link rel="icon" type="image/png" href="{Favicon}">
+
+  <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i" rel="stylesheet">
+
+  <!--FONT AWESOME ICONS-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css" integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k" crossorigin="anonymous">
+
+  <!--JQUERY-->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  <!--JQUERY UI TOOLTIPS-->
+  <script src="https://static.tumblr.com/vuxbcsk/6FTp5y7g3/jquery-ui.min.js"></script>
+  <!--ISOTOPE PLUGIN https://isotope.metafizzy.co/ (for filtering)-->
+  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+
+
+  <!--VARIABLES-->
+  <!--COLOR CODING TOGGLE-->
+  <script type="text/javascript">
+    /*These two variables let you enable/disable the colour coding of
+    the title backgrounds (colorCoding) and the filter links (colorNav)
+    respectively. true = enabled, false =disabled*/
+    var colorCoding = true;
+    var colorNav = false;
+
+  /*POPUP TOGGLE*/
+    /*Set true if you want the additional information popup.
+     Set false if you don't.*/
+    var popup = true;
+  </script>
+
+
+  <!--FALL BACK FOR NO JAVASCRIPT-->
+  <noscript>
+  <style type="text/css">
+    #grid {
+      display: flex;
+      flex-flow: wrap;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #nojs {
+      width: 100%;
+      height: 35px;
+      background: red;
+      color: #fff;
+      line-height: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+  </style>
+</noscript>
+
+<style type="text/css">
+  :root {
+  /*GROUP 1*/
+  --g1: #ff9600;
+  /*GROUP 2*/
+  --g2: #f7136f;
+  /*GROUP 3*/
+  --g3: #247677;
+  /*GROUP 4*/
+  --g4: #247677;
+  /*GROUP 5*/
+  --g5: #ff9600;
+
+  /*ADDITIONAL COLOURS
+  --g6: #ff9600;
+  --g7: #ff9600;
+  --g8: #ff9600;
+  --g9: #ff9600;
+  --g10: #ff9600;*/
+  }
+
+/*MEDIA QUERIES*/
+/*SCREENS SMALLER OR EQUAL TO 899px*/
+@media screen and (max-width: 899px) {
+
+  body > iframe:first-child {display: none !important;}
+
+  .tooltips {
+    visibility: none;
+    }
+
+  #wrapper {
+    width: 100%;
+    }
+
+  #links {
+    position: relative!important;
+    background: #111;
+    text-align: center;
+    height: 35px;
+    }
+
+  #links a {
+    font-size: 18px;
+    }
+
+  }
+
+/*SCREENS BIGGER OR EQUAL TO 900px*/
+@media screen and (min-width: 900px) {
+
+  .noscroll {
+    overflow: hidden;
+  }
+
+  .tooltips {
+    visibility: visible;
+    }
+
+  #wrapper {
+    width: 900px;
+    }
+
+  #links {
+    padding: 0px 20px 0px 0px;
+    top: 0;
+    right: 0;
+    }
+
+  #links a {
+    box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+    border-top: 2px solid #111;
+    }
+  }
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  }
+
+html {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+body {
+  height: 100%;
+  background: -webkit-linear-gradient(left top, #f8f8f8, #f8f8f8);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom right, #f8f8f8, #f8f8f8);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom right, #f8f8f8, #f8f8f8);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom right, #f8f8f8, #f8f8f8);
+  /* Standard syntax */
+  font: 13px 'Open Sans', Helvetica, sans-serif;
+  }
+
+a {text-decoration: none;}
+
+/*HEADLINES*/
+h1, h2, h2 a, h3, #filters li, .tooltip {
+  text-transform: uppercase;
+  }
+
+h1, h2, h2 a, h3 {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  padding: 5px;
+  }
+
+h1 {font-size: 20px;}
+h2 {font-size: 13px;}
+h3 {
+  letter-spacing: 1px;
+  font-size: 10px;
+  margin: -4px 0px 0px 0px;
+  }
+
+/*TOOLTIPS*/
+.tooltip {
+  position: absolute;
+  padding: 6px 10px;
+  color: #fff;
+  background: #111;
+  font: normal 10px "Open Sans", Sans-Serif;
+  width: auto;
+  letter-spacing: 1px;
+  text-align: right;
+  white-space: nowrap;
+  border-bottom: 2px dashed #eee;
+  }
+
+.ui-helper-hidden-accessible {display: none;}
+
+#wrapper, header, #desc, nav, article, #links {
+  position: relative;
+  }
+
+header, .cbox p {
+  text-align: justify;
+  }
+
+#wrapper {
+  margin: 50px auto;
+  }
+
+/*HEADER*/
+header {
+  max-height: auto;
+  width: auto;
+  margin: 0px auto 20px;
+  background: #fff;
+  }
+
+#links {
+  position: absolute;
+  list-style-type: none;
+  }
+
+#links a {
+  display: inline-block;
+  background: #111;
+  color: #fff;
+  min-width: 35px;
+  padding: 0 5px;
+  height: 30px;
+  margin: 0px 1px;
+  line-height: 30px;
+  text-align: center;
+  font-style: normal;
+  }
+
+#desc {
+  max-height: 150px;
+  padding: 0px 20px 0px 20px;
+  margin: 20px 10px 0 0;
+  line-height: 150%;
+  overflow-y: auto;
+  border-bottom: 20px solid #fff;
+  }
+
+/*FILTER NAVIGATION*/
+nav {
+  width: auto;
+  min-height: 50px;
+  margin: 0 auto;
+  padding: 10px;
+  text-align: center;
+  background: #fff;
+  }
+
+#filters li { /*filter links*/
+  display: inline-block;
+  padding: 5px 5px;
+  margin: 5px 5px;
+  border-radius: 5px;
+  font-size: 11px;
+  color: #444;
+  text-transform: uppercase;
+  background: #eee;
+  list-style-type: none;
+  line-height: 100%;
+  }
+
+#filters li:hover {
+  cursor: pointer;
+  background: #000;
+  color: #fff;
+  }
+
+#filters .active {
+  background: #000;
+  color: #fff
+  }
+
+/*GRID*/
+#grid {
+  margin: 50px auto;
+  width: auto;
+  }
+
+/*CHARACTER TILES*/
+.cbox {
+  width: 200px;
+  max-height: 450px;
+  margin-bottom: 35px;
+  font-size: 13px;
+  background: #fff;
+  overflow: hidden;
+  }
+
+.cbox img {
+  width: 200px;
+  height: 150px;
+  }
+
+table {
+  width: 100%;
+  line-height: 140%;
+  }
+
+.cinfo {padding: 5px}
+.cinfo td:nth-child(2n) {text-align: right;}
+.cinfo td:nth-child(odd) {font-weight: bold; text-transform: uppercase;}
+
+.cinfo p {
+  max-height: 140px;
+  margin: 10px 0px;
+  padding: 0 5px 0 5px;
+  line-height: 145%;
+  font-size: 12px;
+  font-style: italic;
+  overflow-y: auto;
+  }
+
+/*POPUP*/
+
+.info {
+  -webkit-box-shadow:  0px 0px 0px 9px rgba(0, 0, 0, 0.5);
+  box-shadow:  0px 0px 0px 9px rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  position: fixed;
+  display: none;
+  visibility: visible;
+  background: rgba(0,0,0,0.8);
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999999;
+}
+
+.xclose { /*popup close button*/
+  position: absolute;
+  right: 0;
+  top: 10px;
+  content: "\f00d";
+  font-family: "Font Awesome 5 Free;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  width: 50px;
+  height: 50px;
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.info {
+  display: grid;
+  background: rgba(0,0,0,0.5);
+  grid-template-columns: 500px 200px;
+  grid-template-rows: 50px 220px 1fr;
+  grid-template-areas:
+    "headline image"
+    "data image"
+    "bio bio";
+  width: auto;
+  grid-gap: 5px;
+  height: 500px;
+  margin: auto;
+}
+
+.headline {
+  grid-area: headline;
+  position: relative;
+  background: rgba(0,0,0,1);
+  padding: 12px 15px;
+  color: #fff;
+}
+
+/*POPUP LINKS*/
+.clinks {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  width: 230px;
+  height: 40px;
+  padding: 5px;
+  }
+
+.clinks a {
+  font-size: 15px;
+  color: #aaa;
+  background: #111111;
+  text-decoration: none;
+  width: 40px;
+  margin: 0px 1px;
+  line-height: 30px;
+  text-align: center;
+  }
+
+.clinks a:hover {
+  color: #fff;
+  background: #333;
+  }
+
+.clinks a[aria-disabled] {
+  color: #555;
+  }
+
+.clinks a[aria-disabled]:hover {
+  color: #555;
+  background: #111;
+  }
+
+.status {
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  top: -1px;
+  height: 25px;
+  padding: 0px 0;
+  width: auto;
+  box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+  }
+
+.status i {
+  color: #fff;
+  text-decoration: none;
+  width: 35px;
+  height: 30px;
+  margin: 0px 1px;
+  line-height: 30px;
+  text-align: center;
+  font-style: normal;
+  box-shadow: rgba(0,0,0,.03) 1px 1px 3px;
+  border:1px solid #eeeeee;
+  }
+
+.status .fa {
+  font-size: 15px;
+  }
+
+.headline h2 {
+  font-size: 20px;
+  padding: 0;
+  margin: 0px;
+  font-weight: normal;
+  text-transform: uppercase;
+  display: inline;
+  }
+
+/*first name*/
+.headline h2 span {
+  font-weight: bold;
+  }
+
+.tw {
+  font-size: 9px;
+  line-height: 120%;
+  text-transform: uppercase;
+  font-style: normal;
+  }
+
+.image {
+  grid-area: image;
+  background: rgba(255,255,255,1);
+  }
+
+.image img {
+  width: 200px;
+  height: 275px;
+  }
+
+.data {
+  grid-area: data;
+  display: flex;
+  overflow: hidden;
+  min-width: 300px;
+  }
+
+.cell {
+  flex-grow: 2;
+  justify-content: space-between;
+  flex-basis: 20%;
+  padding: 0px 0;
+  }
+
+.cell:first-child {
+  margin-right: 5px;
+  }
+
+.cell li:first-child {
+  margin-top: 0px;
+  }
+
+.cell ul li {
+  list-style-type: none;
+  line-height: 100%;
+  background: rgba(255,255,255,1);
+  margin: 5px 0;
+  padding: 10px 10px;
+  }
+
+li span {
+  float: right;
+  }
+
+.bio {
+  grid-area: bio;
+  background: rgba(255,255,255,1);
+  padding: 10px;
+  text-align: justify;
+  line-height: 155%;
+  overflow-y: scroll;
+  border-bottom: 10px solid rgba(255,255,255,1)
+  }
+
+
+/*COLOURS*/
+.g1 a:hover {color: var(--g1);}
+.g2 a:hover {color: var(--g2);}
+.g3 a:hover {color: var(--g3);}
+.g4 a:hover {color: var(--g4);}
+.g5 a:hover {color: var(--g5);}
+.g6 a:hover {color: var(--g6);}
+.g7 a:hover {color: var(--g7);}
+.g8 a:hover {color: var(--g8);}
+.g9 a:hover {color: var(--g9);}
+.g10 a:hover {color: var(--g10);}
+
+/*TRANSITIONS*/
+#filters li, a {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  }
+
+/*SCROLLBAR STYLES*/
+
+::-webkit-scrollbar {
+  width: 6px;
+  }
+
+.cbox p::-webkit-scrollbar-track,
+#desc::-webkit-scrollbar-track {
+  background: -webkit-linear-gradient(bottom, #fff, #eee 100%);
+  }
+
+.cbox p::-webkit-scrollbar-thumb,
+#desc::-webkit-scrollbar-thumb {
+  background: -webkit-linear-gradient(top, #eee, #fff 100%);
+  }
+
+</style>
+
+</head>
+<body>
+
+  <!--NO JS WARNING-->
+  <noscript>
+    <div id="nojs">Warning: Javascript is disabled. This will restrict functionality.</div>
+  </noscript>
+
+  <div id="wrapper">
+    <header>
+      <h1>Refraction</h1>
+      <div id="links">
+        <a href="/" title="home">
+          <i class="fa fa-home" aria-hidden="true"></i></a>
+        <a href="/YOURABOUTPAGE" title="about">
+          <i class="fa fa-user" aria-hidden="true"></i></a>
+        <a href="/ask" title="message">
+          <i class="fa fa-envelope" aria-hidden="true"></i></a>
+        <!--CREDIT, DON'T CHANGE!!!-->
+        <a href="https://nonspace.tumblr.com" title="@nonspace">
+          <i class="fa fa-copyright" aria-hidden="true"></i></a>
+      </div><!--links-->
+
+      <div id="desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+        enim ad minim veniam, quis nostrud exercitation <b>bold text
+        example</b> ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit
+        anim id est laborum.
+      </div>
+
+    </header>
+    <nav>
+      <!--GROUP LEGEND-->
+      <!--This is the data filter navigation. On click, it will show
+      only the tiles with the corresponding filter class. To add a filter
+      to the character tiles, add the right class e.g. "g1" (without the .)
+      to the cbox class (e.g. class="cbox g1")
+
+      You can add several groups to a link: group AND group, group OR group etc. You can
+      read more here: https://isotope.metafizzy.co/filtering.html
+      Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i -->
+      <ul id="filters">
+        <li class="active" data-filter="*">all</li>
+        <li data-filter=".g1">group</li>
+        <li data-filter=".g2">group</li>
+        <li data-filter=".g3">group</li>
+        <li data-filter=".g4">group</li>
+        <li data-filter=".g5">group</li>
+        <!--ADDITIONAL GROUPS
+        <li data-filter=".g6">group</li>
+        <li data-filter=".g7">group</li>
+        <li data-filter=".g8">group</li>
+        <li data-filter=".g9">group</li>
+        <li data-filter=".g10">group</li>-->
+      </ul>
+    </nav>
+
+    <article id="grid">
+
+      <!--ONE-->
+      <div class="cbox g1" href="#one">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
+            Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr, sed diam nonumy
+            Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
+            Lorem ipsum dolor sit amet,
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--TWO-->
+      <div class="cbox g2" href="#two">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--THREE-->
+      <div class="cbox g3" href="#three">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--FOUR-->
+      <div class="cbox g4" href="#four">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--FIVE-->
+      <div class="cbox g5" href="#five">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--SIX-->
+      <div class="cbox g1" href="#six">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--SEVEN-->
+      <div class="cbox g2" href="#seven">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--EIGHT-->
+      <div class="cbox g3" href="#eight">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--NINE-->
+      <div class="cbox g4" href="#nine">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--TEN-->
+      <div class="cbox g5" href="#ten">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--ELEVEN-->
+      <div class="cbox g1" href="#eleven">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
+            Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr, sed diam nonumy
+            Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut."
+            Lorem ipsum dolor sit amet,
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--TWELVE-->
+      <div class="cbox g2" href="#twelve">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--THIRTEEN-->
+      <div class="cbox g3" href="#thirteen">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--FOURTEEN-->
+      <div class="cbox g4" href="#fourteen">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--FIVTEEN-->
+      <div class="cbox g5" href="#fivteen">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--SIXTEEN-->
+      <div class="cbox g1" href="#sixteen">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--SEVENTEEN-->
+      <div class="cbox g2" href="#seventeen">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--EIGHTEEN-->
+      <div class="cbox g3" href="#eighteen">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--NINETEEN-->
+      <div class="cbox g4" href="#nineteen">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--TWENTY-->
+      <div class="cbox g5" href="#twenty">
+        <h2><a href="/tagged/YOURTAG">First Last</a></h2>
+        <!--CHARACTER IMAGE-->
+        <img src="https://placehold.it/200x150" alt="character image">
+        <h3>The Title</h3>
+
+        <div class="cinfo">
+          <table>
+            <tr>
+              <td><b>AGE:</b></td>
+              <td>00</td>
+            </tr>
+            <tr>
+              <td><b>GENDER:</b></td>
+              <td>Gen. / Pron.</td>
+            </tr>
+            <tr>
+              <td><b>OCCUP.:</b></td>
+              <td>Occupation</td>
+            </tr>
+            <tr>
+               <td><b>NATION.:</b></td>
+               <td>Nationality</td>
+            </tr>
+          </table>
+
+          <p>
+            "Lorem ipsum dolor sit amet, bla blaconsetetur sadipscing elitr,
+            sed diam nonumy eirmod tempor invidunt ut."
+          </p>
+        </div><!--cinfo-->
+      </div><!--cbox-->
+
+
+      <!--POPUP INFO BOXES-->
+      <!--Every popup relates to one of the boxes above.
+          They're sorted by numbers matching the above. The way these
+          work is that every ".cbox"'s "href" attribute links
+          to the id of one of the follow divs.
+
+          e.g. href="#one" links to id="one" etc.
+
+          I recommend adding comments above every popup box
+          e.g. (<!--POPUP ONE-- >)
+          so you can navigate the code by searching (ctrl+f) for
+          the respective number words.
+      -->
+
+
+      <!--POPUP ONE-->
+      <div class="popup" id="one">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+            <!--You can customise these links as much as you like.
+            You can find more icons here: http://fontawesome.io/icons/
+            Depending on how long your character's name is you may have
+            to remove some links or adjust the width for the .clinks class
+            Links that are currently not active or relevant, you can
+            disable by putting aria-disabled="true" within the link tag
+            -->
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP TWO-->
+      <div class="popup" id="two">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP THREE-->
+      <div class="popup" id="three">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP FOUR-->
+      <div class="popup" id="four">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup
+
+
+
+      <!--POPUP FIVE-->
+      <div class="popup" id="five">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP SIX-->
+      <div class="popup" id="six">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP SEVEN-->
+      <div class="popup" id="seven">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP EIGHT-->
+      <div class="popup" id="eight">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP NINE-->
+      <div class="popup" id="nine">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP TEN-->
+      <div class="popup" id="ten">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP ELEVEN-->
+      <div class="popup" id="eleven">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+            <!--You can customise these links as much as you like.
+            You can find more icons here: http://fontawesome.io/icons/
+            Depending on how long your character's name is you may have
+            to remove some links or adjust the width for the .clinks class
+            Links that are currently not active or relevant, you can
+            disable by putting aria-disabled="true" within the link tag
+            -->
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP TWELFE-->
+      <div class="popup" id="twelfe">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP THIRTEEN-->
+      <div class="popup" id="thirteen">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP FOURTEEN-->
+      <div class="popup" id="fourteen">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup
+
+
+
+      <!--POPUP FIVTEEN-->
+      <div class="popup" id="fivteen">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP SIXTEEN-->
+      <div class="popup" id="sixteen">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP SEVENTEEN-->
+      <div class="popup" id="seventeen">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP EIGHTEEN-->
+      <div class="popup" id="eighteen">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP NINETEEN-->
+      <div class="popup" id="nineteen">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+      <!--POPUP TWENTY-->
+      <div class="popup" id="twenty">
+        <div class="xclose"><i class="fa fa-times"></i></div>
+        <div class="info">
+          <div class="headline">
+            <!--CHARACTER NAME-->
+            <h2><span>First</span>Last</h2>
+
+            <!--TRIGGER WARNINGS-->
+            <i class="tw">(tw:)</i>
+
+            <div class="clinks">
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-hashtag" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-pen" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fas fa-music" aria-hidden="true"></i></a>
+              <a href="#" aria-disabled="true">
+                <i class="fab fa-pinterest" aria-hidden="true"></i></a>
+            </div><!--clinks-->
+          </div><!--headline-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="image"><img src="https://placehold.it/200x275"></img></div>
+
+          <!--INFO-->
+          <div class="data">
+            <!--LEFT-->
+            <div class="cell">
+              <ul>
+                <li><b>FULL NAME:</b> <span>First Last</span></li>
+                <li><b>NICK/ALIAS:</b> <span>00</span> </li>
+                <li><b>AGE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>D.o.B:</b> <span>Occupation</span> </li>
+                <li><b>GENDER:</b> <span>Nationality</span></li>
+                <li><b>SEXUALITY:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+
+            <div class="cell">
+              <ul>
+                <li><b>NATIONALITY:</b> <span>First Last</span></li>
+                <li><b>HOMETOWN:</b> <span>00</span> </li>
+                <li><b>RESIDENCE:</b> <span>Gender / Pronoun</span></li>
+                <li><b>HOBBIES:</b> <span>Occupation</span> </li>
+                <li><b>LIKES:</b> <span>Nationality</span></li>
+                <li><b>DISLIKES:</b> <span>Residence</span> </li>
+              </ul>
+            </div>
+          </div><!--data-->
+
+          <!--BIO-->
+          <div class="bio">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </div>
+        </div><!--info-->
+      </div><!--popup-->
+
+
+
+
+    </article><!--grid-->
+  </div><!--wrapper-->
+
+  <!--JQUERY SCRIPTS-->
+  <script>
+  $( document ).ready(function() {
+
+  /*GROUP COLOUR DISTRIBUTION*/
+  /*Group : Colour table*/
+  var colorTable = {
+    "g1" : 'var(--g1)',
+    "g2" : 'var(--g2)',
+    "g3" : 'var(--g3)',
+    "g4" : 'var(--g4)',
+    "g5" : 'var(--g5)',
+    "g6" : 'var(--g6)',
+    "g7" : 'var(--g7)',
+    "g8" : 'var(--g8)',
+    "g9" : 'var(--g9)',
+    "g10" : 'var(--g10)',
+  };
+
+  /*TITLE & HOVER COLOURS*/
+  /*Adds h2 title backgrounds & hover colours
+  based on sorting group*/
+
+  if( colorCoding === true ) {
+
+    $('.cbox').each(function() {
+      var group = $(this).attr('class').split(" ")[1];
+      var gColor = colorTable[group];
+
+      $(this).children('h2 a').addClass(group);
+
+      $(this).children('h3').css('background', gColor );
+      });
+    }
+
+  /*if colour filter links enabled*/
+  if( colorNav === true) {
+    $('#filters li').each(function(){
+      var group = $(this).attr('data-filter').split('.')[1];
+      var gColor = colorTable[group];
+
+      $(this).css({
+        'background' : gColor,
+        'color' : '#fff'
+        });
+      });
+    }
+
+  //JQUERY UI TOOLTIPS//
+  $(function() {
+    $("header").tooltip({
+      classes: {
+        "ui-tooltip": "tooltip"},
+      position: {
+        my: "right bottom",
+        at: "right top",
+        collision: "none"
+        },
+     });
+   });
+
+  /*ISOTOPE*/
+  /*FILTER*/
+  var $grid = $('#grid').isotope({
+    itemSelector: '.cbox',
+    stagger: 30,
+    layoutMode: 'masonry',
+    masonry: {
+      fitWidth: true,
+      columnWidth: '.cbox',
+      gutter: 33.6
+      }
+    });
+
+  $('#filters li').on('click', function() {
+    $('#filters li').each(function() {
+      $(this).removeClass('active');
+    });
+      $(this).addClass('active');
+
+    var filterValue = $(this).attr('data-filter');
+    $grid.isotope({
+      filter: filterValue
+      });
+      e.preventDefault();
+    });
+
+  /*FIX LEGEND ON SCROLL*/
+  $(function($) {
+     function fixedLegend() {
+         var headerSize = $('header').height();
+         if ($(window).scrollTop() > 50) {
+           $('nav').css({
+             'position': 'fixed',
+             'width': '100%',
+             'z-index': '9999999',
+             'margin': '0 auto',
+             'left': '0',
+             'background': 'rgba(255, 255, 255, 0.9)',
+             'top': headerSize
+             });
+           $('header').css({
+             'position': 'fixed',
+             'width': '100%',
+             'z-index': '9999999',
+             'margin': '0 auto',
+             'left': '0',
+             'top': '0px'
+             });
+           $('#desc').css({
+             'display' : 'none',
+             'border' : 'none'
+             });
+           $('#grid').css({
+             'margin-top' : '280px',
+             });
+         }
+          else {
+            $('nav').css({
+              'position': 'relative',
+              'background': 'rgba(255, 255, 255, 1)',
+              'margin': '30px 0 0 0',
+              'top': 'auto'
+              });
+            $('header').css({
+              'position': 'relative',
+              'margin': '0px auto 20px;',
+              'top': 'auto'
+              });
+            $('#desc').css({
+             'display' : 'block',
+             'border-bottom' : '20px solid #fff'
+             });
+            $('#grid').css({
+             'margin-top' : '50px',
+             });
+          }
+ }
+
+  $(window).scroll(fixedLegend);
+    fixedLegend();
+  });
+
+  /*POPUP*/
+  function popupC() {
+   /*enables popup for widths > 899*/
+   if($(window).width() > 899) {
+     /*enables cursor hover*/
+     $(".cbox img").hover(function() {
+       $(this).css("cursor","pointer");
+     });
+     /*opens popup on click*/
+     $(".cbox img").on('click', function() {
+       var currentAttrValue = $(this).parent('.cbox').attr('href');
+
+       $(".popup" + currentAttrValue).fadeIn().css('display', 'grid');
+       $(document.body).addClass('noscroll'); /*noscroll on background*/
+      });
+
+     $(".popup").on('click', function() {
+       $(this).fadeOut();
+       $(document.body).removeClass('noscroll');
+     });
+     /*prevent closing popup by clicking on it*/
+     $('.info, h2 a').click(function (e) {
+       e.stopPropagation();
+     });
+    }
+    /*width <= 899? disable popup*/
+    else {
+      $(".cbox img").off('click');
+      $(".cbox img").hover(function() {
+       $(this).css("cursor","default");
+     });
+    }
+  }
+  /*popup enabled? load function on load & resize*/
+  if(popup == true) {
+    $( window ).resize(popupC);
+    popupC();
+  }
+
+  });/*document ready*/
+  </script>
+</body>
+</html>
