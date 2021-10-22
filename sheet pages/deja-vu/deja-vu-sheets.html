@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+
+<!--PAGE THEME #08: DEJA VU w/ spreadsheets by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  Editing for personal use is fine!-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <title>{Title}</title>
+
+  <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Chivo:400,400i,700|Playfair+Display:400,400i,700,700i|Roboto+Slab:400,700|Source+Code+Pro:400,700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+  <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" crossorigin="anonymous">
+
+  <!--JQUERY-->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+  <!--HANDLEBARS.JS-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+
+  <!--PAPA PARSE.JS-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+
+  <!--You can find all color settings at the beginning of the style tag.
+  All of the colors and some other details are changeable through this
+  variables.
+  Hopefully that makes it easier to customise!
+
+  If you want individual colors per tab/character you will need to
+  enable it below in "Color per tab toggle". This is disabled by default.
+
+  -->
+
+  <!--PAGE SETTINGS-->
+  <script>
+    /*TO GET THE SHEET ID:
+    1. Go to your spreadsheet > File > Publish to web.
+    2. Click on "Entire Document" and select the speficic sheet (in the
+       example it is called "MAIN") > publish, ignore the URL.
+    3. File > Share > Anyone with link can share. This URL is important.
+    4. Copy the following string from the URL and paste it in sheetID:
+       Example:
+       https://docs.google.com/spreadsheets/d/
+         1jKi9Knw7e5qr4bXr_zQib8FwpGM7E6eqRx1tH3JruIA (this part)
+      /edit?usp=sharing
+      
+    TO GET API KEY:
+    1. Go to https://console.cloud.google.com/projectselector2/apis/dashboard 
+    (of the account the sheet is under)
+    2. Create new project
+    3. Create credentials, choose API key (copy this)
+    4. Restrict application access to HTTP referrer and add the wildcard yoururl.tumblr.com/* (or for multipe sites if needed)
+    5. Libraries > search for Google Sheets > Enable*/
+
+    const sheetID = 'YourSheetID';
+    const sheetTab = 'SheetTabName';
+    const APIkey = 'APIKey';
+
+    /*1. NAVIGATION
+    In the HTML you will find the template for the navigation items within a script tag
+    with the ID: handlebars-template-nav. This will be the base of all generated items.
+
+    The content in it is replace by variables that look like this:
+      {{this.spreadsheetcolumnname}}
+    They are placeholders for the content of each item. You can customise the html
+    as you usually would. Any content you want to pull from the spreadsheet needs
+    to be written like the above. "spreadsheetcolumnname" is what you replace with
+    the column name in your spreadsheet. Important: The it needs to be in all
+    lowercase and without the spaces. Special characters may cause problems.
+
+    Example:
+
+    You want to add a character's age to the grid item. The headline of the column
+    in your spreadsheet with the info is "AGE". Where you would usually write the
+    age in the html you instead put: {{this.age}}
+
+    HTML IN SPREADSHEET
+
+    If you want to be able to use HTML tags in the spreadsheet and have them carry
+    over to the theme (for example paragraphs for biography text) you can do that
+    by wrapping the variables in 3 curly bracketsinstead of 2.
+
+    {{{this.bio}}} will escape HTML {{this.bio}} will write HTML tags as text.
+
+    2. TABS
+    Same as the above. The template ID is: handlebars-template-tab.
+
+    */
+
+    /*This lets you enable/disable different colors per tab.
+      true = enabled, false = disabled*/
+    var colorPerTab = false;
+
+    /*To turn the image gallery into connection popups
+    IMPORTANT: The popups (in the code) need to be in the same order
+    as the corresponding gallery image otherwise it will open the
+    wrong one! */
+    var connectionPopup = true;
+  </script>
+
+  <!--SHEET INTEGRATION-->
+  <script type="text/javascript" src="https://www.dl.dropboxusercontent.com/s/wlxk3q4wkqxescn/nnspc-sheets.js"></script>
+
+  <style>
+/*SETTINGS & COLORS*/
+:root {
+  /*colors*/
+  --accentColorOne: #FF4B2B;
+  --accentColorTwo: #FF416C;
+
+  /*color per tab if enabled above*/
+  --accentColorOne-1: #FFF;
+  --accentColorTwo-1: #FFF;
+  --accentColorOne-2: #FFF;
+  --accentColorTwo-2: #FFF;
+  --accentColorOne-3: #FFF;
+  --accentColorTwo-3: #FFF;
+  --accentColorOne-4: #FFF;
+  --accentColorTwo-4: #FFF;
+  --accentColorOne-5: #FFF;
+  --accentColorTwo-5: #FFF;
+
+  --colorOne: #1e1e1e;
+  --colorTwo: #111;
+  --fontColor: #1e1e1e;
+  --borderColor: #bbb;
+
+  /*navigation  sidebar*/
+  --sidebar: #1e1e1e;
+  --sidebarFont: #fff;
+  --sidebarSubtitle: #999;
+  --characterSelection: #222;
+  --activeCharacter: #f8f8f8;
+
+  /*Link bar*/
+  --barLinks: #fff;
+
+  /*tab content*/
+  --textColor: #1e1e1e;
+  --detailBackground: #eee;
+  --cardBackground: #fff;
+
+  /*misc*/
+  --whiteHeadline: #fff;
+  --fontOne: 'Montserrat';
+  --fontTwo: 'Chivo';
+  --sidebarPrefix: 'x ';
+  --gallery: 100px; /*to disable gallery on all tabs set to 0*/
+  --closeX: #fff;
+  --scrollbar: #f8f8f8;
+  --credit: #555;
+  --creditLink: #ccc;
+
+  /*status*/
+  /*by adding active, other or closed as a class to the
+    nav li you can change the color of the right border.
+    e.g. to indicate the status of the item*/
+  --active: #36b276;
+  --other: #ffab33;
+  --closed: #dd4b39;
+}
+
+nav ul li.active {
+  border-color: var(--active);
+}
+nav ul li.other {
+  border-color: var(--other);
+}
+nav ul li.closed {
+  border-color: var(--closed);
+}
+
+/*GENERAL*/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--fontOne);
+  color: var(--fontColor);
+}
+
+.chivo-dark {
+  font-family: var(--fontTwo);
+  text-transform: uppercase;
+  background: #111;
+  color: var(--whiteHeadline);
+}
+
+/*titles*/
+h2, h3 {
+  font-weight: normal;
+  letter-spacing: 4px;
+  font-size: 16px;
+  text-align: center;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 18px;
+  border-bottom: 5px solid #222;
+}
+
+.content h3 {
+  background: none;
+  color: var(--fontColor);
+  text-align: left;
+  padding: 0 20px 0 0;
+}
+
+
+/*LAYOUT*/
+#wrapper {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow-y: hidden;
+}
+
+nav {
+  background: var(--sidebar);
+  color: var(--sidebarFont);
+  font-size: 16px;
+  width: 250px;
+  min-width: 250px;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+/*menu button*/
+#close {
+  position: absolute;
+  top: 0;
+  left: 245px;
+  color: var(--fontColor);
+  padding: 10px 20px;
+  background: #fff;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 999;
+}
+
+#close:before {
+  position: relative;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00d";
+}
+
+#close.x {
+  background: none;
+  color: var(--closeX);
+}
+
+#close.x:before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f054";
+}
+
+nav h2 {
+    position: relative;
+    z-index: 99;
+}
+
+/*navigation*/
+nav ul {
+  padding-top: 65px;
+  position: absolute;
+  width: 335px;
+  top: 0px;
+  height: calc(100% - 40px);
+  overflow-y: auto;
+  padding-bottom: 40px;
+  z-index: 3;
+}
+
+nav ul::-webkit-scrollbar {
+  position: relative;
+  margin-top: -65px;
+  width: 5px;
+  height: 8px;
+  background-color: var(--scrollbar);
+}
+
+nav ul::-webkit-scrollbar-thumb {
+  background: var(-accentColorOne);
+  background: -webkit-linear-gradient(to bottom, var(--accentColorOne), var(--accentColorTwo));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, var(--accentColorOne), var(--accentColorTwo)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+nav ul li {
+  list-style-type: none;
+  background: #222;
+  display: flex;
+  padding: 0 0px;
+  width: 250px;
+  height: 60px;
+  margin: 10px 0;
+  border-right: 5px solid var(--sidebar);
+}
+
+nav ul li span:before, .headline ul li:before {
+  content: var(--sidebarPrefix);
+  text-transform: lowercase;
+}
+
+/*current list item*/
+nav ul li.current, nav ul li:hover {
+  position: relative;
+  background: #f8f8f8;
+  color: var(--fontColor);
+  cursor: pointer;
+  transform: scale(1.03,1.05);
+  transform-origin: left;
+  border: none;
+}
+
+nav ul li:last-of-type {
+  margin-bottom: 45px;
+}
+
+nav ul li img {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+nav ul li div {
+  padding: 0 10px;
+  align-self: center;
+}
+
+nav ul li span {
+  display: block;
+  font-style: italic;
+  color: var(--sidebarSubtitle);
+  font-size: 14px;
+}
+
+main {
+  position: relative;
+  background: #f8f8f8;
+  flex: 1;
+}
+
+/*tab*/
+.tab {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: none;
+  -webkit-animation-duration: 0.8s;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+}
+
+.tab.current,
+.popup.current {
+  display: flex;
+}
+
+/*tab link bar*/
+.bar {
+  position: relative;
+  width: 80px;
+  height: 100%;
+  background: #FF416C;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, var(--accentColorOne), var(--accentColorTwo));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, var(--accentColorOne), var(--accentColorTwo)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  flex-direction: column;
+}
+
+.bar-links {
+  position: relative;
+  flex: 2;
+  margin: 80px auto 10px;
+  z-index: 4;
+}
+
+.bar-links li {
+  list-style-type: none;
+  padding-bottom: 20px;
+}
+
+.bar-links li a {
+  color: var(--barLinks);
+  font-size: 21px;
+}
+
+.bar-bottom {
+  position: relative;
+  flex: 1;
+  text-align: center;
+  color: var(--barLinks);
+  font-size: 12px;
+  margin: 20px auto 20px;
+}
+
+.rotate {
+  position: absolute;
+  bottom: 0;
+  font-family: var(--fontTwo);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  display: block;
+  width: 100%;
+  transform: rotate(-90deg);
+}
+
+/*detail bar*/
+.stats {
+  position: relative;
+  width: 250px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.stats span {
+    text-align: right;
+}
+
+.picture {
+  position: relative;
+  height: 250px;
+}
+
+.picture img {
+  object-fit: cover;
+  height: 250px;
+  width: 250px;
+}
+
+.details {
+  position: relative;
+  background: var(--detailBackground);
+  flex: 1;
+  overflow: hidden;
+}
+
+.details ul {
+  padding: 10px 20px;
+  height: 90%;
+  overflow: auto;
+}
+
+.details ul li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0px;
+  border-bottom: 1px dashed #1e1e1e;
+}
+
+.details ul li:last-child {
+  border-bottom: none;
+}
+
+.details i {
+  font-family: var(--fontTwo);
+  font-style: normal;
+  text-transform: uppercase;
+  font-size: 15px;
+  width: 80px;
+  word-break: break-word;
+}
+
+/*inner tab content*/
+.info {
+  position: relative;
+  background: var(--cardBackground);
+  height: 600px;
+  max-width: 950px;
+  align-self: center;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+  margin: auto 0;
+}
+
+.content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  padding: 25px 40px;
+  flex-direction: column;
+}
+
+.row-1, .row-2 {
+  position: relative;
+  display: flex;
+  padding: 15px 0;
+  flex: 1;
+  overflow: hidden;
+  align-items: center;
+}
+
+.row-1 {
+  border-bottom: 1px dashed var(--borderColor);
+}
+
+.headline {
+  min-width: 150px;
+  word-break: break-word;
+}
+
+.headline ul {
+  margin: 15px 0px;
+}
+
+.headline li {
+  list-style-type: none;
+  padding: 2px;
+  margin: 3px;
+  font-size: 12px;
+  width: auto;
+  letter-spacing: 2px;
+}
+
+.text {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  height: 100%;
+  padding: 0 0px 10px 0px;
+}
+
+.text .txt {
+  position: relative;
+  overflow-y: auto;
+  height: 100%;
+  line-height: 150%;
+}
+
+.text .txt p {
+  margin: 10px 0;
+}
+
+.quote, .bubbles {
+  margin: auto;
+}
+
+.quote {
+  position: relative;
+  flex: 1;
+  font-family: 'Playfair Display';
+  font-size: 28px;
+  line-height: 100%;
+  font-style: italic;
+  color: var(--fontColor);
+  padding: 10px 0px 10px 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+.quote span {
+  display: block;
+  text-align: right;
+  font-style: normal;
+  font-size: 13px;
+  font-family: var(--fontTwo);
+  margin-top: 8px;
+  text-transform: uppercase;
+  color: var(--fontColor);
+}
+
+.bubbles {
+  flex: 1;
+  padding: 10px 20px 10px 0px;
+  border-right: 1px dashed var(--borderColor);
+  height: 100%;
+}
+
+.bubbles ul {
+  list-style-type: none;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.bubbles ul li {
+  display: inline-block;
+  word-break: break-all;
+  font-family: var(--fontTwo);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0px;
+  color: var(--barLinks);
+  width: auto;
+  padding: 5px;
+  margin: 5px 2.5px 5px;
+  background: var(--accentColorOne);  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, var(--accentColorOne), var(--accentColorTwo));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, var(--accentColorOne), var(--accentColorTwo)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.gallery {
+  width: var(--gallery);
+  overflow: auto;
+}
+
+.gallery ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.gallery ul li {
+  list-style-type: none;
+  line-height: 0;
+  font-size: 0;
+  flex: 1;
+  background: var(--colorTwo);
+  height: 100px;
+}
+
+.gallery li img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  filter: grayscale(100%);
+}
+
+.side-title {
+  background: var(--sidebar);
+  color: var(--whiteHeadline);
+  height: 600px;
+}
+
+.side-title .rotate {
+  margin: 50px auto 50px;
+}
+
+#credit {
+  position: absolute;
+  bottom: 0;
+  width: 250px;
+  text-align: center;
+  padding: 15px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--credit);
+  z-index: 10;
+}
+
+#credit a {
+  color: var(--creditLink);
+  text-decoration: none;
+}
+
+/*transitions*/
+nav ul li, nav, #close {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+/*shadows*/
+.stats, .info, .bar, #close {
+  -webkit-box-shadow: 0px 0px 100px -35px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 0px 100px -35px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 100px -35px rgba(0,0,0,0.3);
+}
+nav {
+  -webkit-box-shadow: inset 0px 0px 53px -17px rgba(0,0,0,1);
+  -moz-box-shadow: inset 0px 0px 53px -17px rgba(0,0,0,1);
+  box-shadow: inset 0px 0px 53px -17px rgba(0,0,0,1);
+}
+
+/*ANIMATION KEYFRAMES*/
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+/*POPUP*/
+.popup {
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+}
+
+.popup-inner {
+  position: relative;
+  width: 500px;
+  height: 280px;
+  display: flex;
+  background: var(--cardBackground);
+  color: var(--textColor);
+  margin: auto;
+  border: 10px solid rgba( var(--colorTriangle),0.5);
+  -webkit-background-clip: padding-box; /* for Safari */
+  background-clip: padding-box; /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+.popup-inner img {
+  width: 200px;
+  height: 100%;
+  filter: grayscale(0);
+  object-fit: cover;
+  o-object-fit: cover;
+}
+
+.con-desc {
+  overflow: hidden;
+  width: 100%;
+  border-bottom: 25px solid var(--cardBackground);
+}
+
+.con-text {
+  margin: 25px;
+  height: calc(100% - 60px - 25px);
+  overflow-y: auto;
+  margin-bottom: 25px;
+}
+  </style>
+
+  <!--MOBILE STYLES-->
+  <link rel="stylesheet" type="text/css" href="https://drive.google.com/uc?export=view&id=1YhHjX9QD1fzQ03jjOrSqN1oTWJOAcyy3" />
+
+</head>
+<body>
+  <div id="wrapper">
+    <nav class="hidden">
+      <span id="close"></span>
+      <h2 class="chivo-dark">Characters</h2>
+      <ul>
+        <script id="handlebars-template-sidebar" type="text/x-handlebars-template">
+        {{#each []}}
+        <li class="" data-tab="#{{this.first}}">
+          <img src="{{this.image}}">
+          <div>
+            {{this.first}}
+            <span>{{this.title}}</span>
+          </div>
+        </li>
+       {{/each}}
+       </script>
+      </ul>
+      <div id="credit" class="chivo-dark">Design & Code by <a href="https://nonspace.tumblr.com">NNSPC</a></div>
+    </nav>
+
+    <main>
+      <!--TAB-->
+      <script id="handlebars-template-tab" type="text/x-handlebars-template">
+      {{#each []}}
+      <div class="tab" id="{{this.first}}">
+        <div class="bar colored">
+          <div class="bar-links">
+            <ul>
+              <li><a href="{{this.generaltag}}" >
+                <i class="fas fa-hashtag" ></i></a></li>
+              <li><a href="{{this.headcanontag}}" >
+                <i class="fas fa-book" ></i></a></li>
+              <li><a href="{{this.gallerytag}}" >
+                <i class="fas fa-camera" ></i></a></li>
+              <li><a href="{{this.writingtag}}" >
+                <i class="fas fa-pen" ></i></a></li>
+              <li><a href="{{this.playlist}}" >
+                <i class="fas fa-music" ></i></a></li>
+              <li><a href="{{this.pinterest}}" >
+                <i class="fab fa-pinterest-p" ></i></a></li>
+            </ul>
+          </div>
+          <div class="bar-bottom">
+            <div class="rotate">{{this.status}} {{this.verse}}</div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="picture">
+            <img src="{{this.image}}">
+          </div>
+          <div class="details">
+            <h3 class="chivo-dark">{{this.first}} {{this.last}}</h3>
+            <ul>
+              <li> <i>Full name</i>  <span> {{this.first}} {{this.last}} </span> </li>
+              <li> <i>Nickname</i>   <span> {{this.nick}} </span> </li>
+              <li> <i>Age</i>        <span> {{this.age}} </span> </li>
+              <li> <i>D.o.B</i>      <span> {{this.birth}} </span> </li>
+              <li> <i>Occupation</i> <span> {{this.occupation}} </span> </li>
+              <li> <i>Residence</i>  <span> {{this.residence}} </span> </li>
+              <li> <i>Status</i><span> {{this.status}} </span> </li>
+              <li> <i>Affiliation</i><span> {{this.affiliation}} </span> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="info">
+          <div class="content">
+
+            <div class="row-1">
+              <div class="text">
+                <div class="headline">
+                  <h3 class="chivo-dark">{{this.bioheadline}}</h3>
+                  <ul>
+                    <li>{{this.keywordone}}</li>
+                    <li>{{this.keywordtwo}}</li>
+                    <li>{{this.keywordthree}}</li>
+                    <li>{{this.keywordfour}}</li>
+                  </ul>
+                </div>
+                <div class="txt">
+                  {{{this.bio}}}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row-2">
+              <div class="bubbles">
+                <ul>
+                  <li>{{this.traitone}}</li>
+                  <li>{{this.traittwo}}</li>
+                  <li>{{this.traitthree}}</li>
+                  <li>{{this.traitfour}}</li>
+                  <li>C{{this.traitfive}}</li>
+                  <li>{{this.traitsix}}</li>
+                  <li>{{this.traitseven}}</li>
+                  <li>{{this.traiteight}}</li>
+                  <li>{{this.traitnine}}</li>
+                  <li>{{this.traitten}}</li>
+                </ul>
+              </div>
+              <div class="quote">
+                <div>
+                  {{{this.quote}}}
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="gallery">
+            <ul>
+              <li><img src="{{this.galleryone}}"></li>
+              <li><img src="{{this.gallerytwo}}"></li>
+              <li><img src="{{this.gallerythree}}"></li>
+              <li><img src="{{this.galleryfour}}"></li>
+              <li><img src="{{this.galleryfive}}"></li>
+              <li><img src="{{this.gallerysix}}"></li>
+            </ul>
+          </div>
+          <div class="bar side-title">
+            <div class="rotate">{{this.first}} {{this.last}}</div>
+          </div>
+        </div>
+
+        <div class="popup">
+          <div class="popup-inner">
+            <!--IMAGE-->
+            <img src="{{this.connectiononeimage}}">
+            <div class="con-desc">
+
+              <h3 class="chivo-dark">{{this.connectionone}}</h3>
+              <!--CONNECTION TEXT-->
+              <div class="con-text">
+                {{{this.connectiononetext}}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup">
+          <div class="popup-inner">
+            <!--IMAGE-->
+            <img src="{{this.connectiontwoimage}}">
+            <div class="con-desc">
+
+              <h3 class="chivo-dark">{{this.connectiontwo}}</h3>
+              <!--CONNECTION TEXT-->
+              <div class="con-text">
+                {{{this.connectiontwotext}}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup">
+          <div class="popup-inner">
+            <!--IMAGE-->
+            <img src="{{this.connectionthreeimage}}">
+            <div class="con-desc">
+
+              <h3 class="chivo-dark">{{this.connectionthree}}</h3>
+              <!--CONNECTION TEXT-->
+              <div class="con-text">
+                {{{this.connectionthreetext}}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup">
+          <div class="popup-inner">
+            <!--IMAGE-->
+            <img src="{{this.connectionfourimage}}">
+            <div class="con-desc">
+
+              <h3 class="chivo-dark">{{this.connectionfour}}</h3>
+              <!--CONNECTION TEXT-->
+              <div class="con-text">
+                {{{this.connectionfourtext}}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup">
+          <div class="popup-inner">
+            <!--IMAGE-->
+            <img src="{{this.connectionfiveimage}}">
+            <div class="con-desc">
+
+              <h3 class="chivo-dark">{{this.connectionfive}}</h3>
+              <!--CONNECTION TEXT-->
+              <div class="con-text">
+                {{{this.connectionfivetext}}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup">
+          <div class="popup-inner">
+            <!--IMAGE-->
+            <img src="{{this.connectionsiximage}}">
+            <div class="con-desc">
+
+              <h3 class="chivo-dark">{{this.connectionsix}}</h3>
+              <!--CONNECTION TEXT-->
+              <div class="con-text">
+                {{{this.connectionsixtext}}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!--tab one end-->
+      {{/each}}
+      </script>
+
+    </main>
+  </div>
+  
+  <script>
+  //TEMPLATE LIST
+  //id + html selector
+  var templateList = [
+    ['#handlebars-template-sidebar', 'nav ul'],
+    ['#handlebars-template-tab', 'main']
+  ];
+ </script>
+ 
+ <script type="text/javascript" src="https://www.dl.dropboxusercontent.com/s/emx8z9qjie1xa6u/deja-vu-sheets-2-0-pp.js">
+     
+ </script>
+
+</body>
+</html>
