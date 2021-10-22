@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+
+<!--PAGE THEME #5: PHOTON by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  Editing for personal use is fine!-->
+
+<html>
+
+<head>
+
+  <title>{Title}</title>
+  <link rel="icon" type="image/png" href="{Favicon}">
+
+  <link href="https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&amp;subset=cyrillic,greek,hebrew,latin-ext,vietnamese" rel="stylesheet">
+
+  <!--FONT AWESOME ICONS-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!--JQUERY-->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+
+  <style type="text/css">
+    /*SET GROUP COLORS*/
+
+    /*WANT MORE GROUPS/COLOURS?*/
+
+    /*This will require a bit of knowledge of mostly CSS. You can add more
+      variables as seen below. You'll also have to add these variables to
+      the respective style groups at the bottom of the style, there's a
+      headline /*GROUP STYLES.
+
+      --gx2 is the colour variable for the second part of the gradient.*/
+
+    :root {
+      /*GROUP 1*/
+      --g1: #ff9600;
+      --g12: #f7136f;
+      /*GROUP 2*/
+      --g2: #f7136f;
+      --g22: #f7136f;
+      /*GROUP 3*/
+      --g3: #ff9600;
+      --g32: #ff9600;
+      /*GROUP 4*/
+      --g4: #247677;
+      --g42: #247677;
+      /*GROUP 5*/
+      --g5: #ff9600;
+      --g52: #ff9600;
+
+      /*ADDITIONAL COLOURS*/
+      --g6: #f7136f;
+      --g62: #f7136f;
+
+      --g7: #ff9600;
+      --g72: #ff9600;
+
+      --g8: #247677;
+      --g82: #247677;
+
+      --g9: #ff9600;
+      --g92: #ff9600;
+
+      --g10: #f7136f;
+      --g102: #f7136f;
+    }
+
+    html,
+    body {
+      padding: 0px;
+      margin: 0px;
+      font-family: 'Arimo', Helvetica, sans-serif;
+      min-height: 100%;
+    }
+
+    body {
+      overflow: auto;
+      background: -webkit-linear-gradient(left top, #f1f1f1, #d6d9d6);
+      /* For Safari 5.1 to 6.0 */
+      background: -o-linear-gradient(bottom right, #f1f1f1, #d6d9d6);
+      /* For Opera 11.1 to 12.0 */
+      background: -moz-linear-gradient(bottom right, #f1f1f1, #d6d9d6);
+      /* For Firefox 3.6 to 15 */
+      background: linear-gradient(to bottom right, #f1f1f1, #d6d9d6);
+      /* Standard syntax */
+    }
+    article#desctxt a, .biocontent a {
+        text-decoration: none;
+        color: #7a7a7a;
+        letter-spacing: 0.5px;
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+    }
+
+    article#desctxt a:hover, .biocontent a:hover {
+        color: #000;
+    }
+
+    #container {
+      position: relative;
+      margin: 3% auto;
+      width: 700px;
+      height: auto;
+      vertical-align: center;
+    }
+
+
+    /*HEADER*/
+
+    header {
+      margin: 0px;
+      padding: 15px 10px 25px;
+      position: relative;
+      height: auto;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    header:after {
+      content: "";
+      position: absolute;
+      bottom: -0px;
+      left: -0px;
+    }
+
+    header:after {
+      right: 0px;
+      height: 5px;
+      background-image: rgb(204, 204, 204);
+      background-image: -webkit-linear-gradient(left, transparent 20%, #ff9600 35%, #f7136f 50%, #247677 65%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, #ff9600 35%, #f7136f 50%, #247677 65%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, #ff9600 35%, #f7136f 50%, #247677 65%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, #ff9600 35%, #f7136f 50%, #247677 65%, transparent 80%);
+      /*GREY GRADIENT
+        background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#000), to(transparent));
+        background-image: -webkit-linear-gradient(left, transparent 20%, rgb(204,204,204) 50%, transparent 80%);
+        background-image: -moz-linear-gradient(left, transparent 20%, rgb(204,204,204) 50%, transparent 80%);
+        background-image: -o-linear-gradient(left, transparent 20%, rgb(204,204,204) 50%, transparent 80%);*/
+    }
+
+    h1 {
+      font-family: Helvetica, sans-serif;
+      font-weight: bold;
+      font-size: 23px;
+      margin: 5px 0px 10px 0px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    article#desc {
+      height: 100%;
+      width: auto;
+      margin: 0px auto;
+      text-align: center;
+    }
+
+    /*LINKS*/
+
+    nav a {
+      font-family: 'Helvetica';
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 10px;
+      margin: 0px 0px;
+      padding: 0 15px;
+      color: #000;
+    }
+
+    nav a:first-child {
+      padding-left: 0px;
+    }
+
+    article#desctxt {
+      width: 650px;
+      max-height: auto;
+      margin: 15px auto 0px;
+      text-align: center;
+      line-height: 140%;
+      font-size: 12px;
+    }
+
+    article#desctxt b {
+      text-transform: uppercase;
+    }
+
+    /*CHARACTER NAV*/
+
+    footer {
+      position: relative;
+      margin: 20px 0 0 0;
+      padding: 10px 0;
+      width: auto;
+      height: auto;
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    #legend {
+      position: relative;
+      width: 650px;
+      height: auto;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /*GROUP LINK SQUARES*/
+
+    .square {
+      position: relative;
+      height: 10px;
+      font-size: 9px;
+      letter-spacing: 0.5px;
+      padding: 5px 5px;
+      display: inline-block;
+      margin: 5px 5px;
+      border-radius: 5px;
+      color: #000;
+      background-color: #f8f8f8;
+      font-family: helvetica;
+      text-transform: uppercase;
+    }
+
+
+    /*CHARACTER CARD GALLERY*/
+
+    #gallery {
+      position: relative;
+      padding: 20px 0px 20px;
+      overflow-x: hidden;
+      overflow-y: hidden;
+      height: auto;
+      margin: 0px 0px 25px 0px;
+    }
+
+    #gallery-track {
+      position: relative;
+      width: auto;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      /* Safari */
+      -webkit-flex-wrap: wrap;
+      /* Safari 6.1+ */
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      padding-right: 0px;
+      margin: -15px -25px;
+      height: auto;
+      display: none;
+    }
+
+    /*CONTENT CARDS*/
+
+    .ccard {
+      display: none;
+      opacity: 0;
+      width: 100%;
+      height: auto;
+      padding: 0;
+      vertical-align: top;
+      webkit-animation-name: fadeIn;
+      -webkit-animation-duration: 0.5s;
+      animation-name: fadeIn;
+      animation-duration: 0.5s;
+    }
+
+    .ccontent {
+      position: relative;
+      width: auto;
+      height: 370px;
+      margin: 0px auto;
+      display: none;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+
+    /*BIO*/
+
+    .cbio {
+      position: relative;
+      width: 480px;
+      height: 360px;
+    }
+
+    .headline {
+      position: relative;
+      width: 465px;
+      height: 50px;
+      background: rgb(236, 237, 236);
+      line-height: 50px;
+      padding: 0px 0px 0px 15px;
+      color: #999;
+    }
+
+    h2 {
+      font-family: helvetica;
+      font-size: 25px;
+      margin: 0px;
+      color: rgb(46, 46, 46);
+      font-weight: normal;
+      text-transform: uppercase;
+      display: inline;
+    }
+
+    /*first part of title*/
+
+    h2 span {
+      font-weight: bold;
+      color: #000;
+    }
+
+    .flavorimg {
+      position: absolute;
+      bottom: 0px;
+      right: 0px;
+      width: 200px;
+      height: 365px;
+      border: 3px solid rgb(236, 237, 236);
+      background-position: bottom right;
+      background-size: 100%;
+      background-repeat: no-repeat;
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+    }
+
+    .biocontent {
+      position: relative;
+      height: auto;
+      font-size: 14px;
+      text-align: justify;
+      line-height: 145%;
+      margin-top: 10px;
+      white-space: normal;
+      width: 480px;
+      padding: 0px 0px;
+    }
+
+    .biodata {
+      background: rgb(236, 237, 236);
+      padding: 0px 10px;
+      height: 130px;
+      overflow: hidden;
+    }
+
+    .biotxt {
+      background: rgb(236, 237, 236);
+      margin: 10px 0px 0px;
+      padding: 0px 10px 0px;
+      height: 160px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      font-size: 12px;
+      line-height: 150%;
+      border-bottom: 5px solid rgb(236, 237, 236);
+      border-top: 5px solid rgb(236, 237, 236);
+    }
+
+    /*GRID LINKS*/
+
+    .clinks {
+        display: flex;
+        justify-content: flex-end;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        width: 230px;
+        height: 30px;
+        padding: 5px;
+    }
+
+    .clinks a {
+        font-size: 15px;
+        color: #7a7a7a;
+        background: #dbdbdb;
+        text-decoration: none;
+        width: 40px;
+        margin: 0px 1px;
+        line-height: 30px;
+        text-align: center;
+    }
+
+    .clinks a[aria-disabled] {
+        color: #a5a5a5;
+    }
+
+    /*INFO*/
+
+    .cell1,
+    .cell2 {
+      height: auto;
+      width: 220px;
+      padding: 8px 0 0 0;
+      margin: 2px;
+      font-size: 12px;
+      overflow: hidden;
+    }
+
+    .cell1 {
+      float: left;
+    }
+
+    .cell2 {
+      float: right;
+    }
+
+    .cell1 ul,
+    .cell2 ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    .cell1 li:first-child,
+    .cell2 li:first-child {
+      margin: 0;
+    }
+
+    .cell1 li,
+    .cell2 li {
+      list-style-type: none;
+      text-align: left;
+      color: #fff;
+      line-height: 180%;
+      margin: 8px 0 0 0;
+      padding-left: 0px;
+      border-bottom: 1px solid rgb(221, 221, 221);
+    }
+
+    .cell1 li i,
+    .cell2 li i {
+      font-style: normal;
+      padding: 5px;
+      border-radius: 5px;
+    }
+
+    .cell1 p,
+    .cell2 p {
+      padding: 0.3px;
+    }
+
+    .cell1 span,
+    .cell2 span {
+      color: #000;
+      background: #ecedec!important;
+      line-height: 186%;
+      margin: -1px;
+      padding: 0px 15px 0px;
+      float: right;
+    }
+
+    /*ACTIVE STYLES*/
+
+    /*CONTENT CARD*/
+
+    .ccard.active {
+      opacity: 1;
+      display: block;
+      margin: 0px 0px;
+    }
+
+    /*CONTENT CARD INNER TABS*/
+
+    .ccontent.active,
+    .connections.active {
+      display: block;
+    }
+
+    .square.active {
+      color: #fff;
+      background: #ccc;
+    }
+
+    /*GROUP COLOURS*/
+
+    /*IF YOU WANT GRADIENT COLOURS
+      you'll need to uncomment the gradient code. You can either use the already existing colour variables or add different ones.
+      Note: for the moz and linear-gradient, as well as opera you will need to write the variable as just --g#.
+      For an easy gradient generator, you can head to http://www.colorzilla.com/gradient-editor/*/
+
+    /*LEGEND & TRAITS & INFO DATA*/
+
+    /*GROUP 1*/
+
+    #legend .g1,
+    .cell1.g1 li i,
+    .cell2.g1 li i,
+    .clinks.g1 a:hover {
+      background: var(--g1);
+      background-image: -webkit-linear-gradient(left, var(--g1) 0%, var(--g12) 100%);
+      background-image: -moz-linear-gradient(left, --g1 0%, --g12 100%);
+      background-image: -o-linear-gradient(left, --g1 0%, --g12 100%);
+      background-image: linear-gradient(to right, --g1 0%, --g12 100%);
+    }
+
+    /*GROUP 2*/
+
+    #legend .g2,
+    .cell1.g2 li i,
+    .cell2.g2 li i,
+    .clinks.g2 a:hover {
+      background: var(--g2);
+      background-image: -webkit-linear-gradient(left, var(--g2) 0%, var(--g22) 100%);
+      background-image: -moz-linear-gradient(left, --g2 0%, --g22 100%);
+      background-image: -o-linear-gradient(left, --g2 0%, --g22 100%);
+      background-image: linear-gradient(to right, --g2 0%, --g22 100%);
+    }
+
+    /*GROUP 3*/
+
+    #legend .g3,
+    .cell1.g3 li i,
+    .cell2.g3 li i,
+    .clinks.g3 a:hover {
+      background: var(--g3);
+      background-image: -webkit-linear-gradient(left, var(--g3) 0%, var(--g32) 100%);
+      background-image: -moz-linear-gradient(left, --g3 0%, --g32 100%);
+      background-image: -o-linear-gradient(left, --g3 0%, --g32 100%);
+      background-image: linear-gradient(to right, --g3 0%, --g32 100%);
+    }
+
+    /*GROUP 4*/
+
+    #legend .g4,
+    .cell1.g4 li i,
+    .cell2.g4 li i,
+    .clinks.g4 a:hover {
+      background: var(--g4);
+      background-image: -webkit-linear-gradient(left, var(--g4) 0%, var(--g42) 100%);
+      background-image: -moz-linear-gradient(left, --g4 0%, --g42 100%);
+      background-image: -o-linear-gradient(left, --g4 0%, --g42 100%);
+      background-image: linear-gradient(to right, --g4 0%, --g42 100%);
+    }
+
+    /*GROUP 5*/
+
+    #legend .g5,
+    .cell1.g5 li i,
+    .cell2.g5 li i,
+    .clinks.g5 a:hover {
+      background: var(--g5);
+      background-image: -webkit-linear-gradient(left, var(--g5) 0%, var(--g52) 100%);
+      background-image: -moz-linear-gradient(left, --g5 0%, --g52 100%);
+      background-image: -o-linear-gradient(left, --g5 0%, --g52 100%);
+      background-image: linear-gradient(to right, --g5 0%, --g52 100%);
+    }
+
+    /*GROUP 6*/
+
+    #legend .g6,
+    .cell1.g6 li i,
+    .cell2.g6 li i,
+    .clinks.g6 a:hover {
+      background: var(--g6);
+      background-image: -webkit-linear-gradient(left, var(--g6) 0%, var(--g62) 100%);
+      background-image: -moz-linear-gradient(left, --g6 0%, --g62 100%);
+      background-image: -o-linear-gradient(left, --g6 0%, --g62 100%);
+      background-image: linear-gradient(to right, --g6 0%, --g62 100%);
+    }
+
+    /*GROUP 7*/
+
+    #legend .g7,
+    .cell1.g7 li i,
+    .cell2.g7 li i,
+    .clinks.g7 a:hover {
+      background: var(--g7);
+      background-image: -webkit-linear-gradient(left, var(--g7) 0%, var(--g72) 100%);
+      background-image: -moz-linear-gradient(left, --g7 0%, --g72 100%);
+      background-image: -o-linear-gradient(left, --g7 0%, --g72 100%);
+      background-image: linear-gradient(to right, --g7 0%, --g72 100%);
+    }
+
+    /*GROUP 8*/
+
+    #legend .g8,
+    .cell1.g8 li i,
+    .cell2.g8 li i,
+    .clinks.g8 a:hover {
+      background: var(--g8);
+      background-image: -webkit-linear-gradient(left, var(--g8) 0%, var(--g82) 100%);
+      background-image: -moz-linear-gradient(left, --g8 0%, --g82 100%);
+      background-image: -o-linear-gradient(left, --g8 0%, --g82 100%);
+      background-image: linear-gradient(to right, --g8 0%, --g82 100%);
+    }
+
+    /*GROUP 9*/
+
+    #legend .g9,
+    .cell1.g9 li i,
+    .cell2.g9 li i,
+    .clinks.g9 a:hover {
+      background: var(--g9);
+      background-image: -webkit-linear-gradient(left, var(--g9) 0%, var(--g92) 100%);
+      background-image: -moz-linear-gradient(left, --g9 0%, --g92 100%);
+      background-image: -o-linear-gradient(left, --g9 0%, --g92 100%);
+      background-image: linear-gradient(to right, --g9 0%, --g92 100%);
+    }
+
+    /*GROUP 5*/
+
+    #legend .g10,
+    .cell1.g10 li i,
+    .cell2.g10 li i,
+    .clinks.g10 a:hover {
+      background: var(--g10);
+      background-image: -webkit-linear-gradient(left, var(--g10) 0%, var(--g102) 100%);
+      background-image: -moz-linear-gradient(left, --g10 0%, --g102 100%);
+      background-image: -o-linear-gradient(left, --g10 0%, --g102 100%);
+      background-image: linear-gradient(to right, --g10 0%, --g102 100%);
+    }
+
+    /*HEADER GRADIENTS*/
+
+    header.g1:after {
+      right: 0px;
+      height: 5px;
+      background: --g1;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g1) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g1 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g1 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g1 50%, transparent 80%);
+    }
+
+    header.g2:after {
+      right: 0px;
+      height: 5px;
+      background: --g2;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g2) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g2 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g2 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g2 50%, transparent 80%);
+    }
+
+    header.g3:after {
+      right: 0px;
+      height: 5px;
+      background: --g3;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g3) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g3 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g3 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g3 50%, transparent 80%);
+    }
+
+    header.g4:after {
+      right: 0px;
+      height: 5px;
+      background: --g4;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g4) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g4 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g4 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g4 50%, transparent 80%);
+    }
+
+    header.g5:after {
+      right: 0px;
+      height: 5px;
+      background: --g1;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g5) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g5 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g5 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g5 50%, transparent 80%);
+    }
+
+    header.g6:after {
+      right: 0px;
+      height: 5px;
+      background: --g6;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g6) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g6 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g6 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g6 50%, transparent 80%);
+    }
+
+    header.g7:after {
+      right: 0px;
+      height: 5px;
+      background: --g7;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g7) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g7 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g7 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g7 50%, transparent 80%);
+    }
+
+    header.g8:after {
+      right: 0px;
+      height: 5px;
+      background: --g8;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g8) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g8 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g8 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g8 50%, transparent 80%);
+    }
+
+    header.g9:after {
+      right: 0px;
+      height: 5px;
+      background: --g9;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g9) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g9 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g9 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g9 50%, transparent 80%);
+    }
+
+    header.g10:after {
+      right: 0px;
+      height: 5px;
+      background: --g10;
+      background-image: -webkit-linear-gradient(left, transparent 20%, var(--g10) 50%, transparent 80%);
+      background-image: -moz-linear-gradient(left, transparent 20%, --g10 50%, transparent 80%);
+      background-image: -o-linear-gradient(left, transparent 20%, --g10 50%, transparent 80%);
+      background-image: linear-gradient(to right, transparent 20%, --g10 50%, transparent 80%);
+    }
+
+
+    /*HOVER STYLES*/
+
+    .square:hover {
+      cursor: pointer;
+    }
+
+    .clinks a {
+      -webkit-transition: all 0.5s ease;
+      -moz-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+      transition: all 0.5s ease;
+    }
+
+    .clinks a:hover {
+      color: #fff;
+    }
+
+    .clinks a[aria-disabled]:hover {
+        background: #dbdbdb;
+        color: #a5a5a5;
+        cursor: default;
+    }
+
+    .flavorimg:hover {
+      -webkit-filter: grayscale(0%);
+      filter: grayscale(0%);
+    }
+
+
+    /*ANIMATION KEYFRAMES*/
+
+    @-webkit-keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 0;
+      }
+      40% {
+        opacity: 0.3;
+      }
+      60% {
+        opacity: 0.5;
+      }
+      80% {
+        opacity: 0.9;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      20% {
+        opacity: 0;
+      }
+      40% {
+        opacity: 0.3;
+      }
+      60% {
+        opacity: 0.5;
+      }
+      80% {
+        opacity: 0.9;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+
+    /*SCROLLBAR STYLES*/
+
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      border-radius: 1px;
+      background-color: #f8f8f8;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      border-radius: 1px;
+      background-color: #ddd;
+    }
+
+    .biodata::-webkit-scrollbar-track,
+    .biotxt::-webkit-scrollbar-track {
+      border-radius: 1px;
+      width: 10px!important;
+      background: -webkit-linear-gradient(bottom, #ecedee, #eceeec 100%);
+    }
+
+    .biodata::-webkit-scrollbar-thumb,
+    .biotxt::-webkit-scrollbar-thumb {
+      border-radius: 1px;
+      width: 10px!important;
+      background: -webkit-linear-gradient(top, #ddd, #eee 100%);
+      /*background: -webkit-linear-gradient(top, #edeeed, #eceeec 100%);          if transparent*/
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="container">
+
+    <!--HEADER-->
+    <header>
+
+      <!--TITLE & LINKS-->
+      <article id="desc">
+        <h1>photon</h1>
+
+        <!--HEADER LINKS-->
+        <!--enter URL for your about page-->
+        <nav>
+          <a href="/">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Home</a>
+          <a href="/YOURABOUTPAGE">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                About</a>
+          <a href="/ask">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                Message</a>
+          <!--CREDIT, DON'T CHANGE!!!-->
+          <a href="https://nonspace.tumblr.com">
+                <i class="fa fa-copyright" aria-hidden="true"></i>
+                NNSPC</a>
+        </nav>
+      </article>
+
+      <!--DESCRIPTION-->
+      <article id="desctxt">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et <b>dolore magna</b> aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim
+        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      </article>
+
+    </header>
+
+    <footer>
+      <div id="legend">
+
+        <!-- The href attribute in the .square div is what links
+        (#c1 etc.) links to the corresponding div id
+        (e.g. 'div id="#c1"). You can rename this to match the
+        characters name if you also change the div id in the
+        character card.
+
+        You can link to these tabs using the URL
+        (http://YOURURL.com/YOURPAGE/#TABNAME)
+
+        For example:
+
+        Your character's name is Musterman.
+        <div class="square" href="#MUSTERMAN">
+        take note to not leave out the hashtag(#)
+
+        In the ccard:
+            <div class="ccard" id="MUSTERMAN">
+            note: there's no #
+        -->
+
+        <div class="square active" href="#c1">one</div>
+        <div class="square" href="#c2">two</div>
+        <div class="square" href="#c3">three</div>
+        <div class="square" href="#c4">four</div>
+        <div class="square" href="#c5">five</div>
+        <div class="square" href="#c6">six</div>
+        <div class="square" href="#c7">seven</div>
+        <div class="square" href="#c8">eight</div>
+        <div class="square" href="#c9">nine</div>
+        <div class="square" href="#c10">ten</div>
+
+
+      </div>
+      <!--legend-->
+    </footer>
+
+
+      <!--CHARACTER CARDS-->
+    <section id="gallery">
+
+      <div class="ccard g1 active" id="c1">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class
+                Links that are currently not active or relevant, you can
+                disable by putting aria-disabled="true" within the link tag
+                -->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+      <!--CHARACTER 2-->
+      <div class="ccard g2" id="c2">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+
+      <!--CHARACTER 3-->
+      <div class="ccard g3" id="c3">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+      <!--CHARACTER 4-->
+      <div class="ccard g4" id="c4">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+
+      <!--CHARACTER 5-->
+      <div class="ccard g5" id="c5">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+
+      <!--CHARACTER 6-->
+      <div class="ccard g6" id="c6">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+
+      <!--CHARACTER 7-->
+      <div class="ccard g7" id="c7">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+
+      <!--CHARACTER 8-->
+      <div class="ccard g8" id="c8">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+
+      <!--CHARACTER 9-->
+      <div class="ccard g9" id="c9">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+
+      <!--CHARACTER 10-->
+      <div class="ccard g10" id="c10">
+
+        <div class="ccontent active">
+          <div class="cbio">
+
+            <div class="headline">
+              <h2><span>first</span>last</h2>
+
+              <div class="clinks">
+                <!--You can customise these links as much as you like.
+                You can find more icons here: http://fontawesome.io/icons/
+                Depending on how long your character's name is you may have
+                to remove some links or adjust the width for the .clinks
+                class-->
+                <a href="#">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-book" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-music" aria-hidden="true"></i></a>
+                <a href="#">
+                    <i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+              </div>
+              <!--clinks-->
+            </div>
+            <!--headline-->
+
+            <div class="biocontent">
+
+              <div class="biodata">
+                <!--LEFT DATA-->
+                <ul class="cell1">
+                  <li> <i>Full name:</i> <span> First Last </span> </li>
+                  <li> <i>Nickname:</i> <span> Nick </span> </li>
+                  <li> <i>Age:</i> <span> 00 </span> </li>
+                  <li> <i>D.o.B:</i> <span> 00 Month </span> </li>
+                </ul>
+
+                <!--RIGHT DATA-->
+                <ul class="cell2">
+                  <li> <i>Occupation:</i> <span> Occupation </span> </li>
+                  <li> <i>Nationality:</i><span> Nation </span> </li>
+                  <li> <i>Residence:</i> <span> Unkown </span> </li>
+                  <li> <i>Affiliation:</i><span> Unknown </span> </li>
+                </ul>
+              </div>
+              <!--biodata-->
+
+              <div class="biotxt">
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur
+                adipiscing elit, sed do eiusmod tempor incididunt ut labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation
+                ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+                ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et DOLORE MAGNA aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              </div>
+              <!--biotxt-->
+
+            </div>
+            <!--biocontent-->
+
+          </div>
+          <!--cbio-->
+
+          <!--CHARACTER IMAGE-->
+          <div class="flavorimg" style="background-image:
+              url('https://placehold.it/200x365');">
+          </div>
+
+        </div>
+        <!--ccontent-->
+      </div>
+      <!--ccard-->
+
+
+  </div>
+  <!--gallery-track-->
+  </section>
+
+
+  </div>
+  <!--container-->
+
+  <!--DON'T MESS WITH THE SCRIPTS UNLESS YOU KNOW WHAT YOU'RE DOING-->
+  <script type="text/javascript">
+    $(document).ready(function() {
+
+      /*CCARD COLORS*/
+      $('.ccard').each(function() {
+        var groupClass = $(this).attr('class').split(" ")[1];
+
+        $(this).find('.cell1').addClass(groupClass);
+        $(this).find('.cell2').addClass(groupClass);
+        $(this).find('.clinks').addClass(groupClass);
+
+      });
+
+
+      /*CARDS*/
+      $('.square').on('click', function(e) {
+
+        var currentAttrValue = $(this).attr('href');
+        var groupClass = $('.ccard' + currentAttrValue).attr('class').split(" ")[1];
+
+        $('header').removeClass();
+
+        window.location.hash = $(this).attr('href');
+        $('.ccard' + currentAttrValue).addClass('active').siblings('.ccard').removeClass('active');
+        $(this).addClass('active').siblings('.square').removeClass('active');
+
+
+        /*HEADER GRADIENT*/
+        $('header').addClass(groupClass);
+
+      });
+
+      /*FIX LEGEND ON SCROLL*/
+
+       $(function($) {
+           function fixedLegend() {
+               if ($(window).scrollTop() > 190)
+                   $('footer').css({
+                      'position': 'fixed',
+                      'width': '100%',
+                      'z-index': '3',
+                      'margin': '0 auto',
+                      'left': '0',
+                      'background': 'rgba(255, 255, 255, 0.8)',
+                      'top': '0px'
+                   });
+
+
+
+               else
+                   $('footer').css({
+                      'position': 'relative',
+                      'background': 'rgba(255, 255, 255, 0.0)',
+                      'margin': '20px 0 0 0',
+                      'top': 'auto'
+                   });
+           }
+
+           $(window).scroll(fixedLegend);
+               fixedLegend();
+           });
+
+
+      /*HASH SCRIPT*/
+      var hash = $.trim(window.location.hash);
+      if (hash) {
+        //time out to prevent jumping of div
+        $('.square[href$="' + hash + '"]').trigger('click');
+      }
+
+    }); //DOCUMENT READY
+  </script>
+</body>
+
+</html>
