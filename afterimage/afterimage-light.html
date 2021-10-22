@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+<!--THEME #4: AFTERIMAGE (Light) by @nonspace.
+  Don't steal.
+  Don't claim as your own.
+  Don't use as base code.
+  Editing for personal use is fine!-->
+
+<html>
+
+<head>
+
+    <title>{Title}</title>
+    <link rel="icon" type="image/png" href="{Favicon}">
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Libre+Barcode+128|Libre+Barcode+39+Text" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Arimo:400,400i,700,700i&amp;subset=cyrillic,greek,hebrew,latin-ext,vietnamese" rel="stylesheet">
+
+    <!--FONT AWESOME ICONS-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!--JQUERY-->
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <!--ISOTOPE PLUGIN https://isotope.metafizzy.co/ (for filtering)-->
+    <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+
+
+    <style type="text/css">
+    /*SET GROUP COLORS*/
+    /*This is where you can set the colours for every group. These will
+      apply to:
+        the triangles on the front card
+        info card: traits & character data background
+        the group legend at the bottom
+
+    /*WANT MORE GROUPS/COLOURS?*/
+    /*This will require a bit of knowledge of mostly CSS. You can add more
+      variables as seen below. You'll also have to add these variables to
+      the respective style groups at the bottom of the style, there's a
+      headline. If you're having trouble with this let me know!*/
+
+    :root {
+        /*GROUP 1*/
+        --g1: #ff9600;
+        /*GROUP 2*/
+        --g2: #f7136f;
+        /*GROUP 3*/
+        --g3: #ff9600;
+        /*GROUP 4*/
+        --g4: #247677;
+        /*GROUP 5*/
+        --g5: #ff9600;
+
+        /*ADDITIONAL COLOURS
+        --g6: #ff9600;
+        --g7: #ff9600;
+        --g8: #ff9600;
+        --g9: #ff9600;
+        --g10: #ff9600;*/
+    }
+    html,
+    body {
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Arimo', Helvetica, sans-serif;
+        min-height: 100%;
+    }
+    body {
+        overflow: auto;
+        background: -webkit-linear-gradient(left top, #f1f1f1, #d6d9d6);
+        /* For Safari 5.1 to 6.0 */
+
+        background: -o-linear-gradient(bottom right, #f1f1f1, #d6d9d6);
+        /* For Opera 11.1 to 12.0 */
+
+        background: -moz-linear-gradient(bottom right, #f1f1f1, #d6d9d6);
+        /* For Firefox 3.6 to 15 */
+
+        background: linear-gradient(to bottom right, #f1f1f1, #d6d9d6);
+        /* Standard syntax */
+    }
+    #container {
+        position: relative;
+        margin: 5% auto;
+        width: 891px;
+        height: auto;
+        vertical-align: center;
+    }
+
+
+    /*HEADER*/
+
+    header {
+        margin: 0px;
+        position: relative;
+        height: 150px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    h1 {
+        font-family: Helvetica, sans-serif;
+        font-size: 50px;
+        margin: 10px 0px;
+    }
+    header .sub {
+        font-size: 30px;
+        font-family: 'Libre Barcode 128';
+    }
+    article#desc {
+        float: left;
+        height: 100%;
+        width: auto;
+        left: 0;
+        right: 0;
+        margin: 0px auto;
+        text-align: left;
+        padding-left: 20px;
+    }
+    /*LINKS*/
+    nav a {
+        font-family: 'Helvetica';
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 11px;
+        padding: 0 15px;
+        color: #000;
+    }
+    nav a:first-child {
+        padding-left: 0px;
+    }
+    article#desctxt {
+        float: right;
+        width: 450px;
+        max-height: 96px;
+        margin: 25px 17px;
+        padding-right: 15px;
+        text-align: justify;
+        line-height: 140%;
+        font-size: 12px;
+        overflow-y: scroll;
+    }
+    article#desctxt b {
+        text-transform: uppercase;
+    }
+
+    /*CHARACTER CARD GALLERY*/
+    #gallery {
+        position: relative;
+        padding: 45px 0px 20px;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        height: auto;
+        margin: 0px 0px 25px 0px;
+        text-align: justify;
+    }
+    #gallery-track {
+        position: relative;
+        width: auto;
+        display: -webkit-flex; /* Safari */
+        -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        padding-right: -10px;
+        margin: -10px;
+        height: auto;
+    }
+    /*CHARACTER BOXES*/
+    .cbox {
+        position: relative;
+        height: 160px;
+        width: 160px;
+        flex: 0 0 0px;
+        margin: 11px 11.1px;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+    .cbox img {
+        height: 160px;
+        width: 160px;
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    .cbox {}
+    /*CHARACTER NAME*/
+    .cname {
+        position: absolute;
+        height: 90px;
+        width: 160px;
+        right: 0;
+        transform: rotate(-90deg) translate(0, -100%);
+        transform-origin: 100% 0;
+        display: table;
+        z-index: 2;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .cname span {
+        font-family: Helvetica;
+        line-height: 78%;
+        color: rgba(0, 0, 0, 0.4);
+        font-weight: bold;
+        text-transform: uppercase;
+        display: table-cell;
+        vertical-align: bottom;
+        /*padding-bottom: 0px; adjust for positioning*/
+    }
+    .triangle {
+        position: absolute;
+        width: 0px;
+        height: 0px;
+        bottom: 0px;
+        border-style: solid;
+        border-width: 0px 0px 160px 160px;
+        border-color: transparent transparent transparent transparent;
+        z-index: 1;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    /*GROUP SELECTION STYLES*/
+
+    footer {
+        position: relative;
+        margin: 30px 0 0 0;
+        padding: 0px;
+        width: auto;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.3);
+    }
+    #legend {
+        position: relative;
+        width: auto;
+        height: 50px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    /*GROUP LINK SQUARES*/
+    .square {
+        position: relative;
+        height: 10px;
+        font-size: 9px;
+        padding: 5px 5px;
+        display: inline-block;
+        margin: 15px 5px;
+        border-radius: 5px;
+        color: #fff;
+        font-family: helvetica;
+        text-transform: uppercase;
+    }
+
+    /*GROUP COLOURS*/
+
+    /*LEGEND & TRAITS & INFO DATA*/
+    /*GROUP 1*/
+    #legend .g1,
+    .ctraits.g1 span,
+    .cell1.g1 li,
+    .cell2.g1 li {
+        background: var(--g1);
+    }
+    /*GROUP 2*/
+    #legend .g2,
+    .ctraits.g2 span,
+    .cell1.g2 li,
+    .cell2.g2 li {
+        background: var(--g2);
+    }
+    /*GROUP 3*/
+    #legend .g3,
+    .ctraits.g3 span,
+    .cell1.g3 li,
+    .cell2.g3 li {
+        background: var(--g3);
+    }
+    /*GROUP 4*/
+    #legend .g4,
+    .ctraits.g4 span,
+    .cell1.g4 li,
+    .cell2.g4 li {
+        background: var(--g4);
+    }
+    /*GROUP 5*/
+    #legend .g5,
+    .ctraits.g5 span,
+    .cell1.g5 li,
+    .cell2.g5 li {
+        background: var(--g5);
+    }
+
+    /*TRIANGLE*/
+    /*GROUP 1*/
+    .triangle.g1 {
+        border-color: transparent /*var(--g1) var(--g1)*/ transparent;
+    }
+    /*GROUP 2*/
+    .triangle.g2 {
+        border-color: transparent /*var(--g2) var(--g2)*/ transparent;
+    }
+    /*GROUP 3*/
+    .triangle.g3 {
+        border-color: transparent /*var(--g3) var(--g3)*/ transparent;
+    }
+    /*GROUP 4*/
+    .triangle.g4 {
+        border-color: transparent /*var(--g4) var(--g4)*/ transparent;
+    }
+    /*GROUP 5*/
+    .triangle.g5 {
+        border-color: transparent /*var(--g5) var(--g5)*/ transparent;
+    }
+
+
+    /*HOVER STYLES*/
+
+    #legend:hover {
+        cursor: pointer;
+    }
+    .cbox:hover > img {
+        -webkit-filter: grayscale(0%);
+        filter: grayscale(0%);
+    }
+
+
+    /*SCROLLBAR STYLES*/
+
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+        border-radius: 1px;
+        background-color: #f8f8f8;
+    }
+    ::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background-color: #ddd;
+    }
+    article#desctxt::-webkit-scrollbar-track {
+        border-radius: 1px;
+        background: -webkit-linear-gradient(bottom, #ecedee, #eceeec 100%);
+    }
+    article#desctxt::-webkit-scrollbar-thumb {
+        border-radius: 1px;
+        background: -webkit-linear-gradient(top, #ddd, #eee 100%);
+        /*background: -webkit-linear-gradient(top, #edeeed, #eceeec 100%);          if transparent*/
+    }
+
+    </style>
+</head>
+<body>
+
+  <div id="container">
+
+    <!--HEADER-->
+      <header>
+
+        <!--TITLE & LINKS-->
+        <article id="desc">
+          <h1>afterimage.</h1>
+          <span class="sub">sdkjglskjdglsjkglsjglskjdlgjsklj</span>
+
+          <!--HEADER LINKS-->
+          <!--enter URL for your about page-->
+          <nav>
+            <a href="/">
+                <i class="fa fa-home" aria-hidden="true"></i>
+                Home</a>
+            <a href="/YOURABOUTPAGE">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                About</a>
+            <a href="/ask">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+                Message</a>
+            <!--CREDIT, DON'T CHANGE!!!-->
+            <a href="https://nonspace.tumblr.com">
+                <i class="fa fa-copyright" aria-hidden="true"></i>
+                NNSPC</a>
+          </nav>
+        </article>
+
+        <!--DESCRIPTION-->
+        <article id="desctxt">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et <b>dolore magna</b> aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+        </article>
+
+      </header>
+
+      <footer>
+        <div id="legend">
+
+          <!--GROUP LEGEND-->
+          <!--The 'g#' in the 'square' class sets the color for the group
+          (see variables at the top of CSS).
+          The data-filter is for sorting on click. You can add several
+          groups to a link: group AND group, group OR group etc. You can
+          read more here: https://isotope.metafizzy.co/filtering.html-->
+          <div class="square" data-filter="*" style="background: #7a7a7a;">               all</div>
+          <div class="square g1" data-filter=".g1">group</div>
+          <div class="square g2" data-filter=".g2">group</div>
+          <div class="square g3" data-filter=".g3">group</div>
+          <div class="square g4" data-filter=".g4">group</div>
+          <div class="square g5" data-filter=".g5">group</div>
+          <!--ADDITIONAL GROUPS
+          <div class="square g6" data-filter=".g6">group</div>
+          <div class="square g7" data-filter=".g7">group</div>
+          <div class="square g8" data-filter=".g8">group</div>
+          <div class="square g9" data-filter=".g9">group</div>
+          <div class="square g10" data-filter=".g10">group</div>-->
+
+        </div><!--legend-->
+      </footer>
+
+      <!--HOW TO ADD GROUPS-->
+      <!--To add a group (g1-g5) you need to add the respective group as a
+      second class to the cbox (class="cbox GROUPNUMBER").
+      You can add several groups to one card, however, the first group
+      determines the card colour.-->
+
+
+      <!--CHARACTER BOXES-->
+      <section id="gallery">
+        <div id="gallery-track">
+
+        <!--CHARACTER ONE-->
+
+        <div class="cbox g1" href="#c1">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER TWO-->
+
+        <div class="cbox g2" href="#c2">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER THREE-->
+
+        <div class="cbox g3" href="#c3">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FOUR-->
+
+        <div class="cbox g4" href="#c4">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FIVE-->
+
+        <div class="cbox g5" href="#c5">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+
+        <!--CHARACTER SIX-->
+
+        <div class="cbox g2" href="#c6">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER SEVEN-->
+
+        <div class="cbox g3" href="#c7">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER EIGHT-->
+
+        <div class="cbox g4" href="#c8">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER NINE-->
+
+        <div class="cbox g5" href="#c9">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER TEN-->
+
+        <div class="cbox g2" href="#c10">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+
+         <!--CHARACTER ELEVEN-->
+
+        <div class="cbox g2" href="#c11">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER TWELVE-->
+
+        <div class="cbox g3" href="#c12">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER THIRTEEN-->
+
+        <div class="cbox g4" href="#c13">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FOURTREEN-->
+
+        <div class="cbox g5" href="#c14">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER FIFTEEN-->
+
+        <div class="cbox g2" href="#c15">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+
+         <!--CHARACTER SIXTEEN-->
+
+        <div class="cbox g2" href="#c16">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER SEVENTEEN-->
+
+        <div class="cbox g3" href="#c17">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER EIGHTTEEN-->
+
+        <div class="cbox g4" href="#c18">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER NINETEEN-->
+
+        <div class="cbox g5" href="#c19">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+        <!--CHARACTER TWENTY-->
+
+        <div class="cbox g2" href="#c20">
+          <div class="cname">
+            <!--You will have to adjust the font-size for every character               name manually, depending on how long their name is. You can
+            change the opacity of the names in the CSS-->
+            <span style="font-size: 45px;">
+            FIRST <br />
+            LASTN
+            </span>
+          </div> <!--cname-->
+          <div class="triangle"></div>
+
+          <img src="https://placehold.it/160x160"></img>
+        </div> <!--cbox-->
+
+
+
+       </div> <!--gallery-track-->
+      </section>
+
+
+    </div><!--container-->
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+
+        /*TRIANGLE COLOR*/
+        $('.cbox').each(function() {
+            var groupClass = $(this).attr('class').split(" ")[1];
+
+            $(this).find('.triangle').addClass(groupClass);
+
+        });
+
+
+        /*ISOTOPE*/
+        /*NO LAYOUT*/
+        Isotope.Item.prototype._create = function() {
+            // assign id, used for original-order sorting
+            this.id = this.layout.itemGUID++;
+            // transition objects
+            this._transn = {
+                ingProperties: {},
+                clean: {},
+                onEnd: {}
+            };
+            this.sortData = {};
+        };
+
+        Isotope.prototype.arrange = function(opts) {
+            // set any options pass
+            this.option(opts);
+            this._getIsInstant();
+            // just filter
+            this.filteredItems = this._filter(this.items);
+            // flag for initalized
+            this._isLayoutInited = true;
+        };
+
+
+        /*FILTER*/
+        var $grid = $('#gallery-track').isotope({
+            itemSelector: '.cbox',
+            stagger: 30,
+            layoutMode: 'none'
+        });
+
+        $('.square').on('click', function() {
+            $('.ccard').each(function() {
+                $(this).removeClass('active');
+            });
+
+            $('#gallery').animate({
+                scrollLeft: 0
+            }, 800);
+
+            var filterValue = $(this).attr('data-filter');
+            $grid.isotope({
+                filter: filterValue
+            });
+
+            e.preventDefault();
+        });
+
+         /*FIX LEGEND ON SCROLL*/
+
+        $(function($) {
+            function fixedLegend() {
+                if ($(window).scrollTop() > 190)
+                    $('footer').css({
+                       'position': 'fixed',
+                       'width': '100%',
+                       'z-index': '3',
+                       'margin': '0 auto',
+                       'left': '0',
+                       'background': 'rgba(255, 255, 255, 0.8)',
+                       'top': '0px'
+                    });
+
+
+
+                else
+                    $('footer').css({
+                       'position': 'relative',
+                       'background': 'rgba(255, 255, 255, 0.3)',
+                       'margin': '30px 0 0 0',
+                       'top': 'auto'
+                    });
+            }
+
+            $(window).scroll(fixedLegend);
+                fixedLegend();
+            });
+
+
+    }); //DOCUMENT READY
+    </script>
+ </body>
+</html> 
