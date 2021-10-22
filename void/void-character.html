@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+
+<!--VOID-c (Theme #09) by @nonspace.      
+    Find more of my work at https://nonspace.tumblr.com   
+
+    Don't steal.  
+    Don't claim as your own. 
+    Don't use as base code.
+    Editing for personal use is fine! 
+
+    Need help? Have a look at this themes FAQ:
+    https://nonspace.tumblr.com/tagged/theme-help:+void-c
+    Or my general FAQ: https://nonspace.tumblr.com/help/support
+
+    If you find any bugs please report them to me.
+    -->
+    
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{Title}</title>
+    <link rel="icon" type="image/png" href="{Favicon}">
+
+    <!--FONTS-->
+    <link href="https://fonts.googleapis.com/css?family=Open Sans|Chivo:300,300i,400,400i,700,700i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+    <link href="//dl.dropbox.com/s/vpi3f9s7nhpe7v7/honeybee.css" rel="stylesheet">
+
+    <!--jQUERY-->
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://www.dl.dropboxusercontent.com/s/2ob91mnz4zil9lq/scrollTop.js"></script>
+
+    <!--ISOTOPE PLUGIN https://isotope.metafizzy.co/ (for filtering)-->
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+    <noscript>
+      <style type="text/css">
+        #copyright {display: block;}
+      </style>
+    </noscript>
+
+    <style>
+/*SETTINGS & COLORS */
+:root {
+  /*color*/
+  --color-text: #222;
+  --color-accent: #F36752;
+  --color-accent-text: #fff;
+  --color-background: #f7f7f7;
+  --color-description: #eee;
+
+  /*activity colors*/
+  --color-green: #43CC75;
+  --color-yellow: #EDB438;
+  --color-red: #C44B40;
+
+  /*settings*/
+  --display-filters: flex; /*none (off), flex (on)*/
+  --display-activity: none; /*none (off), flex (on)*/
+}
+
+/*GENERAL */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body,html {
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+a, #menu i, .col a, .heading i {
+  transition: all 0.5s ease;
+}
+
+#menu > i:hover {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+
+.heading > i:first-of-type:hover {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+/*LAYOUT */
+#wrapper {
+  width: 100vw;
+  height: auto;
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+/*header*/
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 15px solid var(--color-background);
+  z-index: 1;
+}
+
+/*top menu bar*/
+#menu {
+  background: var(--color-accent);
+}
+
+#menu, #menu a, #filter-nav, #filter-nav a {
+  display: flex;
+  align-items: center;
+  height: 50px;
+}
+
+#filter-nav {
+  display: var(--display-filters);
+}
+
+#menu a, #filter-nav a {
+  padding: 0 25px;
+  color: var(--color-accent-text);
+  font-family: "Chivo";
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+#menu a:hover, .links a:hover {
+  background: rgba(172, 172, 172, 0.3);
+}
+
+#social {
+  width: auto;
+  display: flex;
+  justify-self: flex-end;
+  margin-left: auto;
+  background: var(--color-description);
+}
+
+#social a.tiles {
+  padding: 0;
+}
+
+/*description*/
+
+#desc {
+  height: auto;
+  min-height: 150px;
+  width: 100%;
+  background: var(--color-description);
+  padding: 40px;
+  display: flex;
+}
+
+#desc h1 {
+  padding: 0 40px 0 0;
+}
+
+#desc h1 {
+  font-size: 28px;
+}
+
+/*filter navigation*/
+#filter-nav {
+  background: var(--color-accent-text);
+}
+
+#filter-nav a {
+  color: var(--color-accent);
+  flex: 1;
+}
+
+#filter-nav a:nth-of-type(2n - 1) {
+  background: rgba(172,172,172,0.2);
+}
+#filter-nav a:nth-of-type(2n) {
+  background: rgba(172,172,172,0.1);
+}
+
+/*ICON TILE STYLE*/
+.tiles, .fab, .far, .fas, .th {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background: var(--color-accent-text);
+  justify-content: center;
+  flex-direction: row;
+  font-size: 20px;
+  color: var(--color-accent);
+}
+
+.tiles i {
+  color: var(--color-accent);
+  font-size: 20px;
+}
+
+#social :nth-of-type(2n - 1) {
+  background: rgba(172,172,172,0.05);
+}
+
+/*MAIN*/
+main {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  flex-wrap: wrap;
+  height: auto;
+}
+
+/*item box*/
+main .col {
+  flex: 1;
+  position: relative;
+  min-width: 250px;
+  flex: 1 0 25%;
+  height: auto;
+}
+
+main .col:nth-of-type(2n-1) {background: rgba(172,172,172,0.1);}
+main .col:nth-of-type(2n-1) li {background: var(--color-background);}
+
+.heading {
+  display: flex;
+  align-items: center;
+  background: rgba(172,172,172,0.2);
+}
+
+.heading .fab, .heading .far, .heading .fas, .heading .th {
+  color: var(--color-accent-text);
+  background: var(--color-accent);
+}
+
+.heading h2 {
+  padding: 0 25px;
+  color: var(--color-accent);
+  font-family: 'Chivo';
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.heading i:last-of-type{
+  justify-self: flex-end;
+  margin-left: auto;
+}
+
+.heading i:only-of-type {
+  margin-left: 0 !important;
+}
+
+.green .heading i:last-of-type:not(first-of-type) {
+  background: var(--color-green);
+}
+.yellow .heading i:last-of-type:not(first-of-type) {
+  background: var(--color-yellow);
+}
+.red .heading i:last-of-type:not(first-of-type) {
+  background: var(--color-red);
+}
+
+.green .heading i:last-of-type:not(first-of-type),
+.yellow .heading i:last-of-type:not(first-of-type),
+.red .heading i:last-of-type:not(first-of-type) {
+  display: var(--display-activity);
+}
+
+.col img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.details {
+  max-height: 500px;
+  padding: 25px 0;
+  overflow-y: auto;
+  margin-bottom: 50px;
+}
+
+.blurb {
+  padding: 0 25px 25px;
+  text-align: center;
+}
+
+.blurb > *:not(first-of-type){
+  margin-bottom: 10px;
+}
+
+.blurb h3 {
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.spread {
+  width: 100%;
+  padding: 0 25px;
+}
+
+.spread td {
+  width: 50%;
+  height: 35px;
+  background: rgba(172,172,172,0.1);
+  padding: 0 15px;
+}
+
+.spread td:nth-child(2n-1) {
+  text-transform: uppercase;
+  font-family: 'Chivo';
+  color: var(--color-accent);
+}
+
+.links {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+}
+
+.links a {
+  flex: 1;
+}
+
+.links i {
+  width: 100%;
+  background: rgba(172,172,172,0.2);
+  color: var(--color-accent);
+}
+
+.links a:nth-of-type(2n) {
+  background: rgba(172,172,172,0.2);
+}
+
+.col ul {
+  padding: 50px;
+}
+
+.col li {
+  margin: 5px 0;
+}
+
+.col li {
+  background: rgba(172,172,172,0.1);
+}
+
+.col li a {
+  color: var(--color-text);
+  display: block;
+  padding: 10px 20px;
+}
+
+.col li a:hover {
+  color: var(--color-description);
+  background: var(--color-accent);
+}
+
+#nnspc, #copyright {
+    position: fixed !important;
+    bottom: 50px;
+}
+
+#copyright {
+  display: none;
+}
+
+    </style>
+
+  </head>
+  <body>
+    <div id='wrapper'>
+      <header>
+        <div id='menu'>
+          <i class='far fa-moon'></i>
+          <a href='/' title='Home'>Home</a>
+          <a href='/' title='Message'>Message</a>
+          <div id='social'>
+            <a class='tiles' href='/' title='Twitter'>
+              <i class='fab fa-twitter'></i>
+            </a>
+            <a class='tiles' href='/' title='Instagram'>
+              <i class='fab fa-instagram'></i>
+            </a>
+            <a class='tiles' href='/' title='Pinterest'>
+              <i class='fab fa-pinterest-p'></i>
+            </a>
+          </div>
+        </div>
+        <div id='desc'>
+          <h1>Navigation</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        </div>
+
+        <!--FILTER NAVIGATION-->
+        <!--This is where you set your filters.
+          The data-filter attribute is what you'll also be adding to the boxes that belong to
+          the respective category. E.g. data-filter '.f1' is your first filter group.
+          Every box belonging to that filter group needs to get the class 'f1', like:
+
+            <div class="col f1">
+
+          You can add several groups to a link: group AND group, group OR group etc. You can
+          read more here: https://isotope.metafizzy.co/filtering.html
+          Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i
+
+          If you don't want filters at all, you can turn them off in the beginning (search for 'root').
+        !-->
+        <div id="filter-nav">
+          <a href='#' data-filter='*' title='All'>All</a>
+          <a href='#' data-filter='.f1' title='Filter One'>Filter One</a>
+          <a href='#' data-filter='.f2' title='Filter Two'>Filter Two</a>
+          <a href='#' data-filter='.f3' title='Filter Three'>Filter Three</a>
+          <a href='#' data-filter='.f4' title='Filter Four'>Filter Four</a>
+          <a href='#' data-filter='.f5' title='Filter Five'>Filter Five</a>
+        </div>
+      </header>
+      <main>
+        <!--CHARACTER ONE-->
+
+        <!--Activity colors. For green, yellow or red, simply add those words as class
+        to the div with the col class, just like you do with the filters. See below:-->
+        <div class='col f1 green'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1503631285924-e1544dce8b28?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!--CHARACTER TWO-->
+        <div class='col f2 yellow'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1520538254843-27a40bae5e3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!--CHARACTER THREE-->
+        <div class='col f3 red'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1473668180200-06051ecc08cd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!--CHARACTER FOUR-->
+        <div class='col f3 green'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1484626753559-5fa3ea273ae8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!--CHARACTER FIVE-->
+        <div class='col f1 green'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1479150928156-423a69d91fe0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!--CHARACTER SIX-->
+        <div class='col f1 green'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1532360910909-7110703a48f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!--CHARACTER SEVEN-->
+        <div class='col f1 green'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1531354755998-195b9eca7061?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!--CHARACTER EIGHT-->
+        <div class='col f1 green'>
+          <div class='heading'>
+            <i class='fas fa-user tiles'></i>
+            <h2>Character Name</h2>
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <img src="https://images.unsplash.com/photo-1521567784523-aaf2bbe9b8c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1328&q=80">
+          <div class="details">
+            <div class="blurb">
+              <h3>Title + Something + More</h3>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+              <p />sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </div>
+            <table class="spread">
+              <tr>
+                <td>Nickname</td>
+                <td>Nick</td>
+              </tr>
+              <tr>
+                <td>Age</td>
+                <td>00</td>
+              </tr>
+              <tr>
+                <td>D.o.B.</td>
+                <td>00, Month</td>
+              </tr>
+              <tr>
+                <td>Occupation</td>
+                <td>Work</td>
+              </tr>
+              <tr>
+                <td>Residence</td>
+                <td>Place</td>
+              </tr>
+            </table>
+          </div>
+          <div class="links">
+            <a href="/" title="Tag"><i class="fas fa-hashtag"></i></a>
+            <a href="/" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <div id="copyright" style="position: fixed; bottom: 0; right: 0; padding: 10px; background: var(--color-accent); z-index: 8;"><a style="font-family: helvetica; font-weight: bold; letter-spacing: -1px; color: var(--color-accent-text);" href="https://nonspace.tumblr.com">nonspace.</a></div>
+
+    <script>
+      /*ISOTOPE*/
+      /*NO LAYOUT*/
+      Isotope.Item.prototype._create = function() {
+      // assign id, used for original-order sorting
+        this.id = this.layout.itemGUID++;
+        // transition objects
+        this._transn = {
+          ingProperties: {},
+          clean: {},
+          onEnd: {}
+        };
+        this.sortData = {};
+      };
+
+      Isotope.prototype.arrange = function(opts) {
+        // set any options pass
+        this.option(opts);
+        this._getIsInstant();
+        // just filter
+        this.filteredItems = this._filter(this.items);
+        // flag for initalized
+        this._isLayoutInited = true;
+      };
+
+
+      /*FILTER*/
+      var $grid = $('main').isotope({
+        itemSelector: '.col',
+        stagger: 30,
+        layoutMode: 'none'
+      });
+
+      $('#filter-nav a').on('click', function() {
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({
+          filter: filterValue
+        });
+        e.preventDefault();
+      });
+
+      function calcMainMargin() {
+        var headerHeight = $('header').outerHeight();
+        var boxWidth = $('.col').outerWidth();
+
+        $('main').css({
+          'margin-top' : headerHeight,
+        })
+        
+        $('.col').each(function() {
+          var jQthis = $(this);
+          var boxWidth = jQthis.outerWidth();
+          
+          jQthis.find('img').css({
+            'height' : boxWidth * 0.8,      
+          })
+        });
+      }
+
+      calcMainMargin();
+
+      $(window).resize(function() {
+        calcMainMargin();
+      });
+
+      if (typeof window.iExist == 'undefined') {
+        $('#copyright').css({
+          'display' : 'block',
+        });
+      }
+      
+      if (typeof window.iExist == 'undefined') {
+        $('#copyright').css({
+          'display' : 'block',
+        });
+      }
+    </script>
+  </body>
+</html>
