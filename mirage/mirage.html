@@ -1,0 +1,2803 @@
+<!DOCTYPE html>
+
+    <!--MIRAGE by @nonspace.
+    Find more of my work at https://nonspace.tumblr.com
+
+    Don't steal.
+    Don't claim as your own.
+    Don't use as base code.
+    I will find and haunt you.
+    Editing for personal use is fine!-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <link rel="alternate" type="application/rss+xml" href="{RSS}">
+  <title>{Title}{block:SearchPage} / ({lang:Search results for SearchQuery}){/block:SearchPage}{block:TagPage} / #{Tag}{/block:TagPage}{block:PermalinkPage}{block:PostSummary} / {PostSummary}{/block:PostSummary}{/block:PermalinkPage}</title>
+  {block:Description}
+  <meta name="description" content="{MetaDescription}" />
+  {/block:Description}
+
+  <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family={text:Font}:300,300i,400,400i,500,500i,700,700i|{text:Font Two}:300,300i,400,400i,700,700i&amp;subset=latin-ext" rel="stylesheet">
+
+   <!--FONT AWESOME-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
+  {block:Hidden}
+  <meta name="theme-color" content="">
+
+  <meta name="image:Background" content="" />
+  <meta name="image:Sidebar Portrait" content="https://static.tumblr.com/hohmoxg/CNrq62kqs/photo-1504834636679-cd3acd047c06.jpg" />
+
+  <meta name="if:Archive Link" content="0"/>
+  <meta name="if:Shadows" content="1"/>
+  <meta name="if:Wrap Post Info" content="0"/>
+  <meta name="if:Updates" content="1"/>
+  <meta name="if:About Page" content="0"/>
+  <meta name="if:FAQ Page" content="0"/>
+  <meta name="if:Character Page" content="0"/>
+
+  <!--default-->
+  <meta name="color:Text" content="#57565b" />
+  <meta name="color:Headline Color" content="#5e6060" />
+  <meta name="color:Background" content="#f8fafb" />
+  <meta name="color:Sidebar Background" content="#fff" />
+  <meta name="color:Sidebar Text" content="#57565b" />
+  <meta name="color:Navigation Background" content="#111" />
+  <meta name="color:Navigation Text" content="#a1a3a3" />
+  <meta name="color:Navigation Borders" content="#2f2f2f" />
+  <meta name="color:Accent" content="#4e626d" />
+  <meta name="color:Accent Text" content="#fff" />
+  <meta name="color:Accent Light" content="#d8d9d9" />
+  <meta name="color:Post Borders" content="#e8e8e8" />
+
+  <meta name="select:Post Width" title="540" content="540" />
+  <meta name="select:Post Width" title="700" content="700" />
+  <meta name="select:Post Width" title="500" content="500" />
+  <meta name="select:Post Width" title="450" content="450" />
+  <meta name="select:Post Width" title="400" content="400" />
+
+  <meta name="text:Sidebar Width" content="350"/>
+
+  <meta name="text:Font" content="Roboto" />
+  <meta name="text:Font Two" content="Chivo" />
+
+  <meta name="text:Font Size" content="16"/>
+  <meta name="text:Headline Size" content="32"/>
+  <meta name="text:Line Height" content="150%"/>
+  <meta name="text:Font Weight" content="300" />
+  <meta name="text:Border Radius" content="20"/>
+
+  <meta name="text:Custom List Icon" content="f111" />
+
+  <meta name="text:Custom Link 1 URL" content=""/>
+  <meta name="text:Custom Link 1" content=""/>
+
+  <meta name="text:Custom Link 2 URL" content=""/>
+  <meta name="text:Custom Link 2" content=""/>
+
+  <meta name="text:Custom Link 3 URL" content=""/>
+  <meta name="text:Custom Link 3" content=""/>
+
+  <meta name="text:Custom Link 4 URL" content=""/>
+  <meta name="text:Custom Link 4" content=""/>
+
+  <meta name="text:Social One URL" content="/"/>
+  <meta name="text:Social One Icon" content="fab fa-twitter-square"/>
+
+  <meta name="text:Social Two URL" content=""/>
+  <meta name="text:Social Two Icon" content="fab fa-instagram"/>
+
+  <meta name="text:Social Three URL" content=""/>
+  <meta name="text:Social Three Icon" content="fab fa-pinterest-square"/>
+
+  <meta name="text:Updates Title" content="updates"/>
+
+  <meta name="text:Updates Icon" content="f00c"/>
+
+  <meta name="text:Update 1" content=""/>
+  <meta name="text:Update 1 Sub" content=""/>
+
+  <meta name="text:Update 2" content=""/>
+  <meta name="text:Update 2 Sub" content=""/>
+
+  <meta name="text:Update 3" content=""/>
+  <meta name="text:Update 3 Sub" content=""/>
+
+  <meta name="text:Update 4" content=""/>
+  <meta name="text:Update 4 Sub" content=""/>
+
+  <meta name="text:Update 5" content=""/>
+  <meta name="text:Update 5 Sub" content=""/>
+
+  <meta name="text:About Quote" content=""/>
+  <meta name="text:About Cell 1 Icon" content="f005"/>
+  <meta name="text:About Cell 1 Title" content="name"/>
+  <meta name="text:About Cell 1 Content" content=""/>
+  <meta name="text:About Cell 2 Icon" content="f005"/>
+  <meta name="text:About Cell 2 Title" content="age"/>
+  <meta name="text:About Cell 2 Content" content=""/>
+  <meta name="text:About Cell 3 Icon" content="f005"/>
+  <meta name="text:About Cell 3 Title" content="pronouns"/>
+  <meta name="text:About Cell 3 Content" content=""/>
+  <meta name="text:About Cell 4 Icon" content="f005"/>
+  <meta name="text:About Cell 4 Title" content="location"/>
+  <meta name="text:About Cell 4 Content" content=""/>
+  <meta name="text:About Cell 5 Icon" content="f005"/>
+  <meta name="text:About Cell 5 Title" content="likes"/>
+  <meta name="text:About Cell 5 Content" content=""/>
+  <meta name="text:About Cell 6 Icon" content="f005"/>
+  <meta name="text:About Cell 6 Title" content="dislikes"/>
+  <meta name="text:About Cell 6 Content" content=""/>
+  <meta name="text:About Text" content=""/>
+
+  <meta name="text:FAQ Page Title" content=""/>
+  <meta name="text:FAQ Question 1" content=""/>
+  <meta name="text:FAQ Answer 1" content=""/>
+  <meta name="text:FAQ Question 2" content=""/>
+  <meta name="text:FAQ Answer 2" content=""/>
+  <meta name="text:FAQ Question 3" content=""/>
+  <meta name="text:FAQ Answer 3" content=""/>
+  <meta name="text:FAQ Question 4" content=""/>
+  <meta name="text:FAQ Answer 4" content=""/>
+
+  <meta name="text:Ask Page Text" content=""/>
+  <meta name="text:Submission Page Text" content=""/>
+
+  <meta name="image:Character Image" content=""/>
+  <meta name="text:Character Name" content=""/>
+  <meta name="text:Character Quote" content=""/>
+  <meta name="text:Character Link 1 Icon" content="fab fa-twitter-square"/>
+  <meta name="text:Character URL 1" content="/"/>
+  <meta name="text:Character Link 2 Icon" content="fab fa-instagram"/>
+  <meta name="text:Character URL 2" content=""/>
+  <meta name="text:Character Link 3 Icon" content="fab fa-pinterest-square"/>
+  <meta name="text:Character URL 3" content=""/>
+  <meta name="text:Character Cell 1 Icon" content="f005"/>
+  <meta name="text:Character Cell 1 Title" content="name"/>
+  <meta name="text:Character Cell 1 Content" content=""/>
+  <meta name="text:Character Cell 2 Icon" content="f005"/>
+  <meta name="text:Character Cell 2 Title" content="age"/>
+  <meta name="text:Character Cell 2 Content" content=""/>
+  <meta name="text:Character Cell 3 Icon" content="f005"/>
+  <meta name="text:Character Cell 3 Title" content="pronouns"/>
+  <meta name="text:Character Cell 3 Content" content=""/>
+  <meta name="text:Character Cell 4 Icon" content="f005"/>
+  <meta name="text:Character Cell 4 Title" content="location"/>
+  <meta name="text:Character Cell 4 Content" content=""/>
+  <meta name="text:Character Cell 5 Icon" content="f005"/>
+  <meta name="text:Character Cell 5 Title" content="likes"/>
+  <meta name="text:Character Cell 5 Content" content=""/>
+  <meta name="text:Character Cell 6 Icon" content="f005"/>
+  <meta name="text:Character Cell 6 Title" content="dislikes"/>
+  <meta name="text:Character Cell 6 Content" content=""/>
+  <meta name="text:Character Text 1" content=""/>
+  <meta name="text:Character Trait Pos 1" content=""/>
+  <meta name="text:Character Trait Pos 2" content=""/>
+  <meta name="text:Character Trait Pos 3" content=""/>
+  <meta name="text:Character Trait Neg 1" content=""/>
+  <meta name="text:Character Trait Neg 2" content=""/>
+  <meta name="text:Character Trait Neg 3" content=""/>
+  <meta name="text:Character Skills 1 Label" content=""/>
+  <meta name="text:Character Skills 1 Percent" content=""/>
+  <meta name="text:Character Skills 2 Label" content=""/>
+  <meta name="text:Character Skills 2 Percent" content=""/>
+  <meta name="text:Character Skills 3 Label" content=""/>
+  <meta name="text:Character Skills 3 Percent" content=""/>
+  <meta name="text:Character Skills 4 Label" content=""/>
+  <meta name="text:Character Skills 4 Percent" content=""/>
+  <meta name="text:Character Text 2" content=""/>
+  <meta name="text:Pinterest Board URL" content=""/>
+  <meta name="text:Pinterest Board Height" content=""/>
+  <meta name="text:Connection 1 IMG" content=""/>
+  <meta name="text:Connection 1 Text" content=""/>
+  <meta name="text:Connection 2 IMG" content=""/>
+  <meta name="text:Connection 2 Text" content=""/>
+  <meta name="text:Connection 3 IMG" content=""/>
+  <meta name="text:Connection 3 Text" content=""/>
+  <meta name="text:Connection 4 IMG" content=""/>
+  <meta name="text:Connection 4 Text" content=""/>
+
+  {/block:Hidden}
+
+
+  <!--jQUERY-->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+  <!--PXU PHOTOSETS-->
+  <script async type="text/javascript" src="https://static.tumblr.com/hohmoxg/7D6q63tqk/pxuphotoset.min.js"></script>
+  <link rel="stylesheet" href="https://static.tumblr.com/hohmoxg/pPfq63scf/style.css">
+	
+  <script>
+      const customBorderRadius = {text:border radius} + 'px';
+  </script>
+
+<style>
+
+/*GENERAL*/
+
+/*variables*/
+:root {
+  --postWidth: calc({select:post width}px + 180px + 50px + 50px);
+  --sidebarWidth: {text:sidebar width}px;
+  --barWidth: 80px;
+
+  --fontSize: {text:font size}px;
+  --headlineSize: {text:headline size}px;
+  --lineHeight: {text:line height};
+  --textColor: {color:text};
+  --headlines: {color:headline color};
+  --fontFamily: '{text:font}';
+  --fontFamilySecondary: '{text:font two}';
+  --fontWeight: {text:font weight};
+
+  --background: {color:background};
+  --backgroundImage: url('{image:background}');
+  --sidebarBackground: {color:sidebar background};
+  --sidebarText: {color:sidebar text};
+  --navigationText: {color:navigation text};
+  --navigationBackground: {color:navigation background};
+  --navigationBorders: {color:navigation borders};
+
+  --accentColor: {color:accent};
+  --accentText: {color:accent text};
+  --accentLightColor: {color:accent light};
+  --postBorders: {color:post borders};
+
+  /*list icon*/
+  --bulletIcon: "\{text:custom list icon}";
+
+  /*images*/
+  --sidebarImage: url('{image:full sidebar image}');
+
+  --photosetGutter: 10px;
+
+  --mediaBreak1: calc(var(--sidebarWidth) + var(--barWidth) + var(--postWidth) + 50px);
+}
+
+/*reset styles*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  position: relative;
+  font-size: var(--fontSize);
+  line-height: var(--lineHeight);
+  font-family: var(--fontFamily);
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--textColor);
+  background-image: var(--backgroundImage);
+  background-blend-mode: var(--backgroundBlend);
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: var(--fontWeight);
+}
+	
+b, strong {
+  font-weight: bold;
+}
+
+::selection {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+::-moz-selection {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+strike {}
+
+pre {
+  margin 20px 10px;
+  background: var(--accentColor);
+  padding: 10px 10px;
+  font: var(--fontSize) monospace;
+  letter-spacing: 0px;
+  text-align: left;
+  width: 100%;
+  line-height: var(--lineHeight);
+  overflow: wrap;
+  color: var(--accentText);
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;
+}
+
+code {
+  font-family: monospace;
+}
+
+small, sub {
+  font-size: 0.9rem;
+}
+
+.npf_color_joey {
+color:#ff492f;
+}
+
+.npf_color_monica {
+color:#ff8a00;
+}
+
+.npf_color_chandler {
+color:#973ff4;
+}
+
+.npf_color_phoebe {
+color:#fcf01d;
+}
+
+.npf_color_rachel {
+color:#00b8ff;
+}
+
+.npf_color_ross {
+color:#00cf35;
+}
+
+.npf_color_niles {
+color:#ff62ce;
+}
+
+.npf_color_frasier {
+color:#001935;
+}
+
+.npf_color_mr_big {
+color:#000c1a;
+}
+
+.permalink blockquote {
+  margin: 10px 0;
+}
+
+.caption ul {
+  margin: 20px 0 20px 35px;
+  text-align: justify;
+}
+
+.caption li {
+  margin: 10px 0 10px 15px;
+  list-style-type: none;
+}
+
+h3, h2 {
+  font-family: var(--fontFamilySecondary), sans-serif;
+  font-size: var(--headlineSize);
+  margin-bottom: 25px;
+}
+
+h1, h2, .headlines {
+  text-align: left;
+}
+
+h1, h4 {
+
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--accentText);
+}
+
+.headlines,
+.headlines a {
+  color: var(--headlines);
+  font-family: var(--fontFamilySecondary);
+  font-size: 1.55rem;
+  font-weight: normal;
+  letter-spacing: 2px;
+}
+
+p {
+  margin-bottom: 25px;
+}
+
+blockquote {
+  margin: 15px 0 15px 15px;
+  padding-left: 15px;
+  width: 96%;
+  border-left: 3px solid var(--accentColor);
+}
+
+.flex {display: flex;}
+.flex-column {flex-direction: column;}
+.flex-wrap {flex-wrap: wrap;}
+
+/* NAVIGATION */
+nav {
+  position: fixed;
+  height: 100%;
+  width: 320px;
+  background: var(--navigationBackground);
+  left: -240px;
+  z-index: 8;
+}
+
+nav li {
+  list-style-type: none;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+nav li a {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-decoration: none;
+  color: var(--navigationText);
+}
+
+nav li i,
+.pagelinks i {
+  font-size: 1.3rem;
+}
+
+#icon_nav {
+  position: relative;
+  width: 80px;
+  margin: 40px 0 40px auto;
+  {block:IfUpdates}
+  margin: 120px 0 40px auto;
+  {/block:IfUpdates}
+  align-items: center;
+}
+
+#nav_updates {
+  flex: 1;
+  background: rgba(255,255,255,0.025);
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+
+#nav_updates .headlines {
+  height: 80px;
+  align-items: center;
+  padding: 0 25px;
+  background: var(--navigationBackground);
+  color: var(--navigationText);
+  border-bottom: 1px solid var(--navigationBorders);
+}
+
+#nav_updates ul {
+  height: 100%;
+  overflow-y: auto;
+  border-bottom: 80px solid transparent;
+}
+
+#nav_updates ul li {
+  list-style-type: none;
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  padding: 0 0px;
+  min-height: 60px;
+  margin: 10px 0;
+  border-right: 5px solid var(--accentColor);
+  color: var(--navigationText);
+}
+
+#nav_updates ul li::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\{text:updates icon}";
+  color: var(--navigationText);
+  height: 60px;
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border-right: 1px solid var(--navigationBorders);
+}
+
+#nav_updates ul li span:before {
+  content: 'x ';
+  text-transform: lowercase;
+}
+
+#nav_updates ul li div {
+  padding: 0 10px;
+  align-self: center;
+  text-align: left;
+}
+
+#nav_updates ul li span {
+  display: block;
+  font-style: italic;
+  color: var(--accentColor);
+  font-family: var(--fontFamilySecondary);
+  font-size: 0.9rem;
+}
+
+#copy_year {
+  position: absolute;
+  bottom: 0;
+  width: 250px;
+  text-align: center;
+  padding: 15px;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--credit);
+  z-index: 10;
+}
+
+#copy_year a {
+  color: var(--creditLink);
+  text-decoration: none;
+}
+
+input#sidebar_button {
+  display: none;
+}
+
+#sidebar_controls {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 9;
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--navigationBorders);
+  display: none;
+  {block:IfUpdates}
+  display: flex;
+  {/block:IfUpdates}
+}
+
+#sidebar_controls::before,
+input#sidebar_button:checked ~ #sidebar_controls::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-size: 1.3rem;
+}
+
+#sidebar_controls::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f0c9";
+  color: var(--navigationText);
+}
+
+input#sidebar_button:checked ~ nav  {
+  left: 0;
+}
+
+input#sidebar_button:checked ~ #sidebar_controls {
+  left: 240px;
+}
+
+input#sidebar_button:checked ~ #sidebar_controls::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f00d";
+  color: var(--navigationText);
+}
+
+/* MAIN CONTAINER */
+
+#container {
+  position: relative;
+  width: 100%;
+  min-width: 250px;
+  height: 100vh;
+  margin: auto;
+  height: 100%;
+  overflow-y: auto;
+}
+
+#content_wrapper {
+  position: relative;
+  max-width: 100%;
+  margin-right: var(--sidebarWidth);
+  margin-left: var(--barWidth);
+}
+
+#post_wrapper,
+.page_wrapper {
+  position: relative;
+  color: var(--textColor);
+  text-align: justify;
+  min-width: 250px;
+  display: block;
+}
+
+.page_wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--background);
+  display: none;
+}
+
+/* SIDEBAR */
+
+aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: var(--sidebarWidth);
+  background: var(--sidebarBackground);
+  color: var(--sidebarText);
+  -webkit-animation: slideIn 1.5s forwards;
+  -moz-animation: slideIn 1.5s forwards;
+  animation: slideIn 1.5s forwards;
+}
+
+aside a {
+  text-decoration: none;
+  color: var(--accentColor);
+  transition: ease color 0.5s;
+}
+
+aside a:hover,
+.social a:hover {
+  opacity: 0.5;
+}
+
+aside .headlines {
+  margin-top: 10px;
+}
+
+aside .side_head {
+  justify-content: space-between;
+  align-items: center;
+}
+
+aside .side_head i {
+  color: var(--accentLightColor);
+  font-size: 1.66rem;
+}
+
+aside .side_head_left div {
+  color: var(--accentLightColor);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+aside img {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+aside .side-inner {
+  padding: 35px 35px;
+  font-size: 0.93rem;
+  flex: 1;
+  display: inline-flex;
+  overflow: hidden;
+}
+
+aside .side_desc {
+  padding: 20px 0;
+  overflow-y: auto;
+}
+
+aside .side_menu {
+  min-height: 50px;
+  overflow-y: auto;
+  margin-bottom: 25px;
+}
+
+aside .side_menu ul {
+  flex-wrap: wrap;
+}
+
+aside .side_menu li {
+  list-style-type: none;
+  width: 50%;
+}
+
+aside .side_menu a {
+  font-family: var(--fontFamilySecondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 0.8rem;
+  color: var(--headlines);
+  font-weight: 500;
+}
+
+/* SOCIAL */
+
+.social {
+  margin: auto 0 0 0;
+}
+
+.social i {
+  font-size: 1.55rem;
+  margin-right: 25px;
+}
+
+.social a {
+  color: var(--accentLightColor);
+}
+
+/* PAGINATION */
+
+.pagelinks {
+  color: var(--navigationText);
+  position: absolute;
+  top: 353px;
+  left: 0;
+}
+
+.pagelinks a {
+  padding: 25px;
+  background: var(--navigationBackground);
+  opacity: 0.8;
+}
+
+.pagelinks a i {
+  color: var(--navigationText);
+}
+
+.pagelinks ul {
+  list-style-type: none;
+  padding: 0px 0px 0px 2px;
+}
+
+.pagelinks li {
+  display: inline-block;
+}
+
+.pagelinks a:hover {
+  opacity: 0.8;
+}
+
+.pagelinks .previous_page {
+  border-right: 1px solid var(--navigationBorders);
+}
+
+.headlines a {
+  text-decoration: none;
+}
+
+/*POST HEADER & FOOTER*/
+
+.article_wrapper {
+  margin: 0 auto;
+  padding: 80px 0px;
+  width: 100%;
+  border-bottom: 1px solid var(--postBorders);
+}
+
+.article_wrapper:last-of-type {
+  border-bottom: none;
+}
+
+.post {
+  position: relative;
+  height: auto;
+  margin: auto;
+  padding: 0 25px;
+  max-width: var(--postWidth);
+  flex-wrap: wrap;
+  -webkit-animation: slideUp 1.2s forwards;
+  -moz-animation: slideUp 1.2s forwards;
+  animation: slideUp 1.2s forwards;
+}
+
+.post_header {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 180px;
+  padding: 0 50px 0 0;
+  border-right: 1px solid var(--postBorders);
+
+}
+
+.pinfo > img {
+  width: 50px;
+}
+
+.post_body {
+  max-width: {select:post width}px;
+  padding-left: 50px;
+  width: 100%;
+}
+
+.cpt {
+  max-width: var(--postWidth);
+}
+
+.post_footer {
+
+}
+
+/*CAPTIONS & UNNEST*/
+.caption {
+  margin-top: 0px;
+  line-height: var(--lineHeight);
+  text-align: justify;
+  font-size: var(--fontSize);
+  color: var(--textColor);
+}
+
+.reblog_body, .caption {
+  padding: 15px 0 25px;
+}
+
+.caption h2 {
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: left;
+  font-size: 1.55rem;
+}
+
+.caption p a,
+.caption ul a,
+.caption a,
+.pl a,
+.plnotes ol li a,
+.like_button.liked + span i,
+.custom_like_button:hover {
+  padding: 0 0px;
+  color: var(--accentColor);
+}
+
+.caption a:hover,
+.caption ul a:hover,
+.caption p a:hover,
+.pl a:hover {
+  box-shadow: none;
+  color: var(--accentColor);
+}
+
+.caption li:before,
+.caption li:before {
+  content: var(--bulletIcon);
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  display: inline-block;
+  width: 15px;
+  margin-right: 10px;
+}
+
+.caption a b {
+  color: var(--accentText);
+}
+
+.caption a b:hover {
+  color: var(--textColor);
+}
+
+.caption * {
+  margin: 15px 0;
+}
+
+.caption code * {
+  margin: 0px 0 !important;
+}
+
+.caption p:empty {margin: 0;}
+.post_body .caption p:only-child {margin: 0;}
+.post_body .caption :first-child {margin-top: 0;}
+.caption :last-child {margin-bottom: 0;}
+.post_body .caption > :only-child {margin: 0 auto;}
+.post_body .caption :first-child:not(:empty) {
+  margin-top: 0;
+}
+
+.caption blockquote p {
+  margin: 0 auto;
+}
+
+.caption img {
+  max-width: 100%;
+  height: auto;
+}
+	
+.caption br {
+  margin: 0;
+}
+
+.caption figure:not(.tmblr-full) {
+  display: inline-block !important;
+}
+
+.caption em {
+  white-space: break-spaces !important;
+}
+
+.reblog_parent {
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px;
+}
+
+.reblog_parent:first-child {
+  margin-top: 0;
+}
+
+.reblog_parent:last-child {
+  margin-bottom: 0;
+}
+
+.reblog_header,
+.asker,
+.answerer {
+  align-items: center;
+  margin-top: 15px;
+  color: var(--accentLightColor);
+  font-weight: 500;
+}
+
+.answerer {
+  margin-top: 0;
+}
+
+.reblog_header img,
+.reblog_header i,
+.asker img,
+.answerer img {
+  height: 32px;
+  margin-right: 15px;
+}
+
+/*deactivated user*/
+.reblog_header i {
+  align-items: center;
+  display: flex;
+}
+
+.reblog_body {
+  margin-top: 0px;
+}
+
+.reblog_header a,
+.answerer a,
+.asker a,
+.pnotes a,
+.buttons a,
+.submit a {
+  text-decoration: none;
+}
+
+.reblog_header a,
+.answerer a {
+  color: var(--accentColor);
+}
+
+.answerer a::before,
+.asker a::before {
+  content: "@";
+}
+
+.reblog .qh,
+.reblog .lh,
+.reblog .audio_post,
+.reblog .spotify_audio_player,
+.reblog .soundcloud_audio_player  {
+  margin-bottom: 20px;
+}
+
+.reblog.chat .reblog_list  {
+
+}
+
+/*POST TYPES*/
+
+/*photo*/
+.post_photo img {
+  max-width: 100%;
+  line-height: 100%;
+  display: block;
+}
+
+/*photoset*/
+.photo-slideshow .count-2 {
+  width: calc(50% - (var(--photosetGutter)/2));
+}
+
+.photo-slideshow .count-3 {
+  width: calc(33.33% - (var(--photosetGutter)/2));
+}
+
+.photo-slideshow .count-4 {
+  width: calc(25% - (var(--photosetGutter)/2));
+}
+
+.photo-slideshow .count-5 {
+  width: calc(20% - (var(--photosetGutter)/2));
+}
+
+.pxu-photo:hover {
+  cursor: pointer;
+}
+
+/*link*/
+.lh a {
+  padding: 15px;
+  background: var(--accentColor);
+  color: var(--accentText);
+  text-decoration: none;
+  line-height: 260%;
+}
+
+.lh a:hover {
+  color: var(--accentColor);
+  background: var(--accentText);
+}
+
+.lh a i {
+  margin-right: 15px;
+}
+
+/*chat*/
+.chat_lines,
+p.npf_chat {
+  padding: 5px;
+  font-family: var(--fontFamily) !important;
+}
+
+.chat_lines.odd,
+p.npf_chat:nth-of-type(2n + 1) {
+  background: var(--sidebarBackground);
+  padding: 15px;
+}
+
+p.npf_chat b {
+  font-weight: bold;
+}
+
+/*video*/
+.tumblr_video_container {
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+  width: 100%!important;
+  height: 100%!important;
+}
+
+.tumblr_video_iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%!important;
+  height: 100%!important;
+  border: 0;
+}
+
+.tumblr_video_container {
+  max-height: 540px!important;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+#youtube_iframe {
+  width: 100%!important;
+}
+
+.video .vid {
+  position: relative;
+  overflow: hidden;
+}
+
+.video .vid iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.spotify .vid {
+  display: inline;
+  font-size: 0;
+}
+
+.vid iframe.spotify_audio_player {
+  height: 80px;
+  width: 100%;
+}
+
+.tumblr_video_container {
+  margin-bottom: 0 !important;
+}
+
+/*audio*/
+.audio_post {
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.audio_player {
+  position: relative;
+}
+
+.audio_player img {
+  width: 150px;
+}
+
+.play_button {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  top: 0px;
+  left: 0px;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.tumblr_audio_player {
+  width: 150px;
+  height: 150px;
+  transform: scale(2.1);
+  padding: 37px 33.5px;
+}
+
+.audio_info ul {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 25px;
+}
+
+.audio_info ul span {
+  background: var(--sidebarBackground);
+  font-weight: normal;
+  font-family: var(--fontFamilySecondary);
+  margin: 0px 20px 0 0;
+  padding: 0 10px;
+  letter-spacing: 2px;
+  color: var(--headlines);
+}
+
+.audio_info ul li {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  line-height: 200%;
+}
+
+.audio_info ul li:first-of-type {padding-top: 0;}
+.audio_info ul li:last-of-type {padding-bottom: 0;}
+.audio_info ul li:only-of-type {padding: 0;}
+
+/*ask*/
+.asker a {
+  padding: 5px;
+  color: var(--accentColor);
+}
+
+.question {
+  margin-bottom: 15px;
+  padding: 5px 25px;
+  background: var(--sidebarBackground);
+}
+
+.question .caption,
+.question .caption a {
+  margin-bottom: 0;
+}
+
+.answerer .caption {
+  margin-top: 5px;
+}
+
+.answerer ~ .caption,
+.submit {
+  margin-bottom: 25px;
+}
+
+/*quote*/
+.quote h3 {
+  font-weight: 300;
+}
+
+/*neue post format*/
+.npf_row {
+  margin: 0 !important;
+  padding: 20px 20px;
+  box-sizing: content-box;
+}
+
+.npf_row figure,
+.caption figure {
+  display: inherit !important;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/*POST INFO*/
+
+.post_header i,
+.pnotes a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pinfo img {
+  height: 50px;
+  width: 50px;
+}
+
+.ptags {
+  margin: 5px 0 0 0;
+  line-height: 150%;
+  width: 100%;
+}
+
+.ptags a {
+  color: var(--accentLightColor);
+  display: inline-block;
+  text-decoration: none;
+  margin: 0 5px 0px 0;
+}
+
+.pdate {
+  margin-bottom: 0;
+}
+
+.pdate a {
+  font-size: 1.12rem;
+  text-transform: uppercase;
+  color: var(--headlines);
+}
+
+.date_wrapper::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 15px;
+  color: var(--accentLightColor);
+  font-size: 2rem;
+  vertical-align: middle;
+  line-height: var(--lineHeight);
+}
+
+.text:not(.link) .date_wrapper::before,
+.answer .date_wrapper::before,
+.photo .date_wrapper::before,
+.chat .date_wrapper::before {
+  font-weight: 400;
+}
+
+.text .date_wrapper::before {content: "\f044";}
+.photo .date_wrapper::before {content: "\f03e";}
+.quote .date_wrapper::before {content: "\f10e";}
+.link .date_wrapper::before {content: "\f0c1";}
+.chat .date_wrapper::before {content: "\f086";}
+.audio .date_wrapper::before {content: "\f001";}
+.video .date_wrapper::before {content: "\f008";}
+.answer .date_wrapper::before {content: "\f059";}
+
+.date_wrapper,
+.buttons {
+  justify-content: flex-end;
+}
+
+.date_wrapper {
+  margin-bottom: 25px;
+}
+
+.pnotes {
+  margin-top: 5px;
+  letter-spacing: 2px;
+}
+
+.pnotes a {
+  color: var(--textColor);
+  padding: 0;
+  height: 100%;
+  word-break: break-all;
+}
+
+.answer .rblg {
+  display: none;
+}
+
+/*BUTTONS & CONTROLS*/
+.buttons {
+  align-items: center;
+  margin: auto 0 0 0;
+}
+
+.buttons a,
+.buttons i,
+.custom_like_button {
+  color: var(--accentLightColor);
+  font-size: 1.25rem;
+}
+
+.buttons a:hover,
+.buttons i:hover {
+  color: var(--accentColor);
+}
+
+.custom_like_button {
+  position: relative;
+  margin-left: 10px;
+}
+
+.custom_like_button i {
+  font-weight: 400;
+}
+
+.custom_like_button:hover {cursor: pointer;}
+.like_button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  opacity: 0.0001;
+}
+
+.like_button.liked + span,
+.custom_like_button:hover {
+  text-decoration: none;
+}
+
+.post_footer .buttons {
+  margin: 0 0 0 auto;
+  display: none;
+}
+
+/*tags, search, etc headlines*/
+.tag_info h2 span {
+  font-weight: normal;
+  font-style: italic;
+}
+
+.tag_info {
+  padding: 0 40px;
+}
+
+
+/*PERMALINK*/
+.permalink {
+  position: relative;
+  max-width: {select:post width}px;
+  margin: 50px auto 100px auto;
+  padding: 0 25px;
+}
+
+.permalink .pl.via {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.pl i,
+.pl a {
+  margin: 0 5px 5px 0;
+}
+
+.permalink .pl i {
+  font-style: normal;
+}
+
+.article_wrapper .fa-tags,
+.article_wrapper svg.feather {
+  margin-right: 15px;
+}
+
+nav svg.feather {
+  margin-right: 0;
+}
+
+.plnotes {
+  margin: 25px 0;
+  max-width: var(--postWidth);
+  text-align: left;
+}
+
+.plnotes ol {
+  margin: 50px 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.plnotes ol li {
+  margin: 5px 0;
+  padding: 0;
+  font-weight: normal;
+  font-style: normal;
+  font-size: var(--fontSize);
+  color: var(--textColor);
+}
+
+.plnotes ol li a {
+  text-transform: lowercase;
+  margin: 0 5px;
+  font-weight: bold;
+}
+
+.plnotes ol li blockquote a {
+  text-transform: none;
+  font-weight: normal;
+}
+
+.plnotes img {
+  display: none;
+  vertical-align: middle;
+}
+
+.plnotes img,
+.plnotes a {
+  margin: 0 5px 0 0;
+}
+
+.notes .action {
+  font-style: normal;
+}
+
+.avatar_frame {
+  display: none;
+}
+
+.more_notes_link_container {
+  margin-top: 50px!important;
+}
+
+.more_notes_link_container a {
+  font-style: normal!important;
+}
+
+.note.like::before,
+.note.reblog::before,
+.note.reply::before {
+  font-family: 'Font Awesome 5 Free','Font Awesome 5 Brands';
+  font-weight: 900;
+  display: inline-block;
+}
+
+.note.reblog::before {
+  content: "\f079";
+  display: inline;
+  width: 1.25em;
+  margin-right: 15px;
+}
+
+.note.like::before {
+  content: "\f004";
+  display: inline;
+  width: 1.25em;
+  margin-right: 18px;
+}
+
+.note.reply::before {
+  width: 1.25em;
+  display: inline-block;
+  text-align:center;
+  content: "\f075";
+  margin-right: 15px;
+}
+
+/*xkit*/
+.note div.retags a {
+  display: none;
+}
+
+/*ALL IN ONE PAGES*/
+.page_wrapper .article_wrapper {
+   border: none;
+   min-height: 100vh;
+}
+.page_wrapper .post {
+  max-width: {select:post width}px;
+}
+
+.page_wrapper .headlines {
+  margin-bottom: 50px;
+}
+
+.row {
+  position: relative;
+  width: 100%;
+  margin-bottom: 65px;
+}
+
+.row:last-of-type {
+  margin-bottom: 0;
+}
+
+.row.no-margin-bottom {
+  margin-bottom: 40px;
+}
+
+.row.caption {
+  padding: 0;
+}
+
+.col {
+  width: 100%;
+}
+
+.col-2 {
+  max-width: 100%;
+}
+
+.intro_quote {
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.qt {
+  font-style: italic;
+  font-size: 0.9rem;
+  padding: 0 25px;
+  overflow-y: auto;
+}
+
+/*about*/
+.about_page table {
+  flex: 1;
+  display: block;
+}
+
+.about_page tbody {
+  display: block;
+  width: 100%;
+}
+
+.about_page tr {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--sidebarBackground);
+  overflow: hidden;
+  margin: 0 5px 25px 5px;
+}
+
+.about_page td {
+  padding: 14px 0;
+}
+
+.about_page td:first-of-type {
+  background: rgba({RGBcolor:accent}, 0.05);
+  padding-right: 14px;
+  font-weight: bold;
+  border-right: 1px solid var(--accentText);
+}
+
+.about_page td:last-of-type {
+  padding-right: 20px;
+  width: 100%;
+  margin-left: 15px;
+}
+
+.about_page img {
+  width: 128px;
+  height: 128px;
+}
+
+.about_page table:nth-of-type(1) tr:nth-of-type(1) td:nth-of-type(1)::before,
+.about_page table:nth-of-type(1) tr:nth-of-type(2) td:nth-of-type(1)::before,
+.about_page table:nth-of-type(1) tr:nth-of-type(3) td:nth-of-type(1)::before,
+.about_page table:nth-of-type(2) tr:nth-of-type(1) td:nth-of-type(1)::before,
+.about_page table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(1)::before,
+.about_page table:nth-of-type(2) tr:nth-of-type(3) td:nth-of-type(1)::before,
+.row .quest::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 400;
+  padding: 20px;
+  background: var(--accentColor);
+  color: var(--accentText);
+  margin-right: 10px;
+}
+
+.about_page table:nth-of-type(1) tr:nth-of-type(1) td:nth-of-type(1)::before {
+  content: "\{text:about cell 1 icon}";
+}
+.about_page table:nth-of-type(1) tr:nth-of-type(2) td:nth-of-type(1)::before {
+  content: "\{text:about cell 2 icon}";
+}
+.about_page table:nth-of-type(1) tr:nth-of-type(3) td:nth-of-type(1)::before {
+  content: "\{text:about cell 3 icon}";
+}
+.about_page table:nth-of-type(2) tr:nth-of-type(1) td:nth-of-type(1)::before {
+  content: "\{text:about cell 4 icon}";
+}
+.about_page table:nth-of-type(2) tr:nth-of-type(2) td:nth-of-type(1)::before {
+  content: "\{text:about cell 5 icon}";
+}
+.about_page table:nth-of-type(2) tr:nth-of-type(3) td:nth-of-type(1)::before {
+  content: "\{text:about cell 6 icon}";
+}
+
+/*faq*/
+.row .quest, .row .reply {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.row .quest {
+  display: flex;
+  align-items: center;
+  font-size: var(--textSize);
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 25px;
+  border: var(--border);
+  background: var(--sidebarBackground);
+}
+
+.row .quest::before {
+  font-weight: 900;
+  content: "\f128";
+}
+
+.row .quest span {
+  padding: 11px;
+}
+
+.quest i {
+  margin: 0 25px 0 auto;
+  justify-self: flex-end;
+}
+
+.quest:hover {
+  background: var(--accentColor);
+  color: var(--accentText);
+}
+
+.quest:hover, .quest:hover i {
+
+}
+
+.row .reply {
+  display: none;
+  overflow: hidden;
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+
+/*character*/
+.character_page .intro_quote {
+  min-height: 128px;
+  height: 100%;
+}
+
+.cinfo_wrap {
+  flex: 1;
+}
+
+.character_page .intro_quote img {
+  height: 100%;
+  object-fit: cover;
+  o-object-fit: cover;
+}
+
+.character_page .headlines,
+.character_page .clinks {
+  margin-bottom: 25px;
+  padding: 0 25px;
+}
+
+.character_page .clinks {
+  align-self: flex-end;
+  margin: auto 0 0 0;
+  padding-top: 25px;
+}
+
+
+.pos_traits, .neg_traits {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.ctraits ul:last-of-type {
+  margin-bottom: 0px;
+}
+
+.pos_traits li, .neg_traits li {
+  margin: 5px;
+  background: var(--accentColor);
+  color: var(--accentText);
+  padding: 15px;
+  list-style-type: none;
+  font-weight: bold;
+}
+
+.cskills .bar {
+  height: 20px;
+  display: flex;
+  margin: 35px 0;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.cskills .bar:first-of-type {margin-top: 0;}
+.cskills .bar:last-of-type {margin-bottom: 0;}
+
+.cskills .track {
+  width: 100%;
+  background: var(--sidebarBackground);
+  border: 1px solid var(--postBorders);
+}
+
+.cskills .track span {
+  display: block;
+  background: var(--accentColor);
+  height: 100%;
+}
+
+.cskills .track_label {
+  padding: 0px 10px;
+  margin: 0 0px 0 10px;
+  color: var(--textColor);
+  text-transform: lowercase;
+  width: 150px;
+  font-weight: bold;
+  text-align: right;
+  font-size: calc(var(--textSize) + 2px);
+  align-self: center;
+}
+
+/*pinterest board*/
+.cpinterest > span > span[data-pin-log="embed_grid"]:first-of-type,
+.cpinterest span[data-pin-log="embed_user_ft"] {
+  display: none;
+}
+
+.cpinterest > span {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: var(--background) !important;
+}
+
+.cpinterest > span > span[data-pin-log="embed_grid"]:first-of-type,
+.cpinterest span[data-pin-log="embed_user_ft"] {
+  display: none;
+}
+
+.cpinterest > span span:nth-child(2) {
+  padding: 0;
+}
+
+.cpinterest span[class$="_img"] {
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+/*connections*/
+.cconnections {
+  justify-content: space-between;
+}
+
+.cconnections li {
+  position: relative;
+  list-style-type: none;
+  margin: 5px 2.5px;
+}
+
+.cconnections li:nth-child(1) {margin-left: 0;}
+.cconnectiona li:nth-child(2) {margin-right: 0;}
+
+.cconnections li img {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  o-object-fit: cover;
+}
+
+.overlay {
+  background: rgba({RGBcolor:accent},0.3);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.overlay-text {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  opacity: 0;
+  font-size: 0.85rem;
+  padding: 8px;
+  color: var(--accentText);
+  text-align: center;
+  line-height: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  height: 100%;
+}
+
+.cconnections li:hover .overlay,
+.cconnections li:hover .overlay-text {
+  opacity: 1;
+}
+
+/*SHADOWS*/
+{block:IfBorderRadius}
+.has-border-radius,
+.chat_lines.odd,
+.audio_info ul span,
+.row .quest,
+.pos_traits li,
+.neg_traits li,
+.cskills .track,
+.cskills .track span,
+.cconnections img,
+.cconnections .overlay,
+.npf_row figure,
+.caption figure,
+.row .quest::before,
+.about_page tr,
+.cpinterest span[class$="_img"],
+p.npf_chat:nth-of-type(2n + 1) {
+  border-radius: {text:border radius}px !important;
+}
+{/block:IfBorderRadius}
+
+{block:IfShadows}
+.lighter-shadow,
+.chat_lines.odd,
+.audio_info ul span,
+.about_page tr,
+.row .quest,
+.pos_traits li,
+.neg_traits li,
+p.npf_chat:nth-of-type(2n + 1) {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.1);
+}
+
+.stronger-shadow,
+.cconnections img,
+.caption figure {
+  -webkit-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+  -moz-box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+  box-shadow: 0px 0px 20px 0px rgba(17,17,17,0.2);
+}
+{/block:IfShadows}
+
+/*CREDIT*/
+
+#nnspc {
+  position: absolute;
+  bottom: 0;
+  padding: 5px 10px;
+  font-family: helvetica;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 99;
+}
+
+#nnspc a {
+  text-decoration: none;
+  color: var(--navigationText);
+}
+
+.animate-content {
+  -webkit-animation-duration: 1.5s;
+  animation-name: fadeIn;
+  animation-duration: 1.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-content,
+  aside,
+  #sidebar_controls {
+    animation: none;
+  }
+}
+
+/* TRANSITIONS */
+/*ANIMATION KEYFRAMES*/
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/*slide left
+@-webkit-keyframes slideIn {
+  0% {transform: translateX(400px);}
+  100% {transform: translateX(0);}
+}
+@-moz-keyframes slideIn {
+  0% {transform: translateX(400px);}
+  100% {transform: translateX(0);}
+}
+@keyframes slideIn {
+  0% {transform: translateX(400px);}
+  100% {transform: translateX(0);}
+}
+
+@-webkit-keyframes slideInLeft {
+  0% {transform: translateX(-400px);}
+  100% {transform: translateX(0);}
+}
+@-moz-keyframes slideInLeft {
+  0% {transform: translateX(-400px);}
+  100% {transform: translateX(0);}
+}
+@keyframes slideInLeft {
+  0% {transform: translateX(-400px);}
+  100% {transform: translateX(0);}
+}
+
+@-webkit-keyframes slideUp {
+  0% {transform: translateY(200px);}
+  100% {transform: translateY(0);}
+}
+@-moz-keyframes slideUp {
+  0% {transform: translateY(200px);}
+  100% {transform: translateY(0);}
+}
+@keyframes slideUp {
+  0% {transform: translateY(200px);}
+  100% {transform: translateY(0);}
+}*/
+
+.social a,
+.pagelinks a,
+#nnspc,
+#nnspc a,
+nav,
+#sidebar_controls,
+.card,
+.lh a,
+.row .quest,
+.cconnections .overlay,
+.cconnections .overlay-text,
+aside a {
+  transition: all 0.5s ease;
+}
+
+/* SCROLLBARS */
+
+ ::-webkit-scrollbar {
+  width: 5px;
+}
+
+ ::-webkit-scrollbar-track {
+  border-radius: 1px;
+  background-color: var(--sidebarBackground);
+}
+
+#post_wrapper::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+#post_wrapper::-webkit-scrollbar-thumb {
+  background-color: var(--background);
+}
+
+ ::-webkit-scrollbar-thumb {
+  background-color: var(--accentColor);
+}
+
+/* MEDIA QUERIES */
+
+.mobile_comp {
+  display: none !important;
+}
+
+/*< sidebar + bar + post one column*/
+.wrapped .post {
+  max-width: {select:post width}px;
+}
+
+.wrapped .post_header {
+  border-right: none;
+  margin-bottom: 25px;
+}
+
+.wrapped .date_wrapper {
+  justify-content: flex-start;
+}
+
+.wrapped .post_header .buttons {
+  display: none;
+}
+.wrapped .post_footer .buttons {
+  display: flex;
+}
+
+.wrapped .post_body {
+  padding-left: 0;
+}
+
+@media only screen and (max-width: 850px) {
+  #content_wrapper {
+    margin: 0 auto;
+  }
+
+  aside {
+    visibility: hidden;
+    animation: none;
+  }
+
+  .pagelinks a {
+    visibility: visible;
+    position: fixed;
+    left: 80px;
+    top: 0px;
+    z-index: 8;
+  }
+
+  #sidebar_controls {
+    border-bottom: none;
+    display: flex;
+  }
+
+  #sidebar_controls::before {
+    color: var(--headlines);
+  }
+
+  nav {
+    left: -320px;
+  }
+
+  #nav_updates li,
+  #nav_updates h4 {
+    display: none !important;
+  }
+
+  #nav_updates .mobile_comp {
+    align-items: center;
+    display: flex !important;
+  }
+
+  #nav_updates .mobile_comp a {
+    letter-spacing: 0;
+    text-transform: none;
+    padding: 0 10px;
+  }
+
+  #nav_updates ul li::before {
+    content: "\f0c1";
+  }
+
+  .about_page table:first-of-type {
+    margin-right: 0px;
+  }
+
+}
+
+{block:NoSearchResults}
+.tag_info {
+  border-bottom: none;
+}
+{/block:NoSearchResults}
+
+{block:PermalinkPage}
+.article_wrapper {
+  padding-bottom: 25px;
+}
+
+.post {
+  max-width: {select:post width}px;
+}
+
+.post_body {
+  padding: 0;
+}
+
+{/block:PermalinkPage}
+
+{block:AskPage}
+.caption {
+  line-height: 100%;
+  background: none;
+  padding: 0;}
+{/block:AskPage}
+
+{block:SubmitPage}
+.caption {
+  line-height: 100%;
+  background: none;
+  padding: 0;
+}
+{/block:SubmitPage}
+
+{CustomCss}
+
+</style>
+
+</head>
+
+<body>
+
+<!--CONTROLS END-------------------------------------------------------->
+
+  <input id="sidebar_button" type="checkbox" name="mobile-menu" />
+  <label id="sidebar_controls" for="sidebar_button"></label>
+
+<!--NAVIGATION---------------------------------------------------------->
+  <nav class="flex">
+    <!--updates wrap-->
+    <ul id="nav_updates">
+      <h4 class="headlines flex">{text:updates title}</h4>
+      <h4 class="headlines flex mobile_comp">{lang:Navigate}</h4>
+      <ul>
+        <!--To add more updates, copy here & insert below.
+            Replace the tumblr ariables.
+        -->
+        {block:IfUpdates}
+        {block:IfUpdate1}
+        <!--COPY HERE-->
+        <li>
+          <div>
+            {text:update 1}
+            <span>{text:update 1 sub}</span>
+          </div>
+        </li>
+        <!--TO HERE-->
+        {/block:IfUpdate1}
+        {block:IfUpdate2}
+        <li>
+          <div>
+            {text:update 2}
+            <span>{text:update 2 sub}</span>
+          </div>
+        </li>
+        {/block:IfUpdate2}
+        {block:IfUpdate3}
+        <li>
+          <div>
+            {text:update 3}
+            <span>{text:update 3 sub}</span>
+          </div>
+        </li>
+        {/block:IfUpdate3}
+        {block:IfUpdate4}
+        <li>
+          <div>
+            {text:update 4}
+            <span>{text:update 4 sub}</span>
+          </div>
+        </li>
+        {/block:IfUpdate4}
+        {block:IfUpdate5}
+        <li>
+          <div>
+            {text:update 5}
+            <span>{text:update 5 sub}</span>
+          </div>
+        </li>
+        {/block:IfUpdate5}
+        {/block:IfUpdates}
+
+        <!--INSER HERE-->
+
+        <!--mobile navigation-->
+        <!--if you add more links add them here too!-->
+       {block:IfCustomLink1URL}
+       <li class="mobile_comp"><a href="{text:custom link 1 url}">{text:custom link 1}</a></li>
+       {/block:IfCustomLink1URL}
+       {block:IfCustomLink2URL}
+       <li class="mobile_comp"><a href="{text:custom link 2 url}">{text:custom link 2}</a></li>
+       {/block:IfCustomLink2URL}
+       {block:IfCustomLink3URL}
+       <li class="mobile_comp"><a href="{text:custom link 3 url}">{text:custom link 3}</a></li>
+       {/block:IfCustomLink3URL}
+       {block:IfCustomLink4URL}
+       <li class="mobile_comp"><a href="{text:custom link 4 url}">{text:custom link 4}</a></li>
+       {/block:IfCustomLink4URL}
+       {block:HasPages}
+       {block:Pages}
+        <li class="mobile_comp"><a href="{URL}" title="{Label}">{Label}</a></li>
+       {/block:Pages}
+       {/block:HasPages}
+
+      </ul><!--updates content-->
+
+      <!--copyright year-->
+      <div id="copy_year">
+        <i class="far fa-copyright"></i> <span class="copy_date">{CopyrightYears}</span>
+      </div>
+
+    </ul><!--updates wrap end-->
+
+    <!--icon navigation-->
+    <ul id="icon_nav" class="flex flex-column animate-content">
+      <li><a href="/" title="{lang:Home}"><i class="fas fa-redo-alt"></i></a></li>
+      {block:IfAboutPage}
+      <li><a href="#info"><i class="far fa-user"></i></a></li>
+      {/block:IfAboutPage}
+      {block:IfCharacterPage}
+      <li><a href="#character" title="{text:character name}"><i class="far fa-star"></i></a></li>
+      {/block:IfCharacterPage}
+      {block:AskEnabled}
+      <li><a href="#ask" title="{AskLabel}"><i class="far fa-comment"></i></a></li>
+      {/block:AskEnabled}
+      {block:SubmissionsEnabled}
+      <li><a href="#submission" title="{SubmitLabel}"><i class="far fa-edit"></i></a></li>
+      {/block:SubmissionsEnabled}
+      {block:IfFAQPage}
+      <li><a href="#faq" title="{text:faq page title}"><i class="far fa-question-circle"></i></a></li>
+      {/block:IfFAQPage}
+      {block:ifArchiveLink}
+      <li><a href="/archive" title="{lang:Archive}"><i class="far fa-clock"></i></a></li>
+      {/block:ifArchiveLink}
+
+      <!--CREDIT-->
+      <div id="nnspc"><a href="//nonspace.tumblr.com" target="_blank">n.</a></div>
+      </ul>
+
+  </nav>
+
+<!--NAVIGATION END------------------------------------------------------>
+
+<!--CONTAINER----------------------------------------------------------->
+  <div id="container">
+    <div id="content_wrapper" class="animate-content">
+        <div id="post_wrapper">
+          <!--TAG & SEARCH RESULT INFO-->
+          {block:TagPage}
+          <div class="article_wrapper query_info">
+            <div class="tag_info post">
+              <h3 class="headlines">{lang:Posts tagged Tag 2}</h3>
+            </div>
+          </div><!--query info-->
+          {/block:TagPage}
+          {block:SearchPage}
+          <div class="article_wrapper query_info">
+            <div class="tag_info post">
+              <h3 class="headlines">{lang:Found SearchResultCount results for SearchQuery 2}{block:NoSearchResults}{lang:No search results for SearchQuery 2}{/block:NoSearchResults}</h3>
+            </div>
+          </div><!--query info-->
+          {/block:SearchPage}
+
+          {block:NoPosts}
+          <div class="article_wrapper query_info">
+            <div class="tag_info no_post post">
+              <h3 class="headlines">{lang:Sorry no posts found}</h3>
+            </div>
+          </div><!--query info-->
+          {/block:NoPosts}
+
+          <!--POSTS-->
+          {block:Posts}
+          <div class="article_wrapper {block:IfWrapPostInfo}wrapped{/block:IfWrapPostInfo}">
+            <article id="{PostID}" class="post flex {PostType} {TagsAsClasses}">
+              {block:IndexPage}
+              <div class="post_header flex flex-column">
+                <!--DATE & POST NOTES-->
+                <div class="date_wrapper flex">
+                  <div class="date_notes">
+                    {block:Date}
+                    <div class="headlines pdate">
+                      <a href="{Permalink}">{DayOfMonthWithZero}{ShortMonth}<br />{Year}</a>
+                    </div>
+                    {/block:Date}
+                    <div class="pnotes pinfo">
+                      <a href="{Permalink}">{NoteCount}</a>
+                    </div>
+                  </div><!--date notes wrapper-->
+                </div><!--date wrapper-->
+                <!--post buttons-->
+                <div class="buttons flex pinfo">
+                  <a href="{ReblogURL}" title="Reblog this post"><i class="fas fa-sync-alt"></i></a>
+                  <div class="custom_like_button" title="Like this post">{LikeButton}<span><i class="far fa-heart"></i></span></div>
+                </div><!--buttons-->
+              </div><!--post header end-->
+              {block:IndexPage}
+              <!--POST BODY-->
+              <div class="post_body">
+                <!--post title-->
+                {block:Title}
+                <div class="post_title">
+                  <h2 class="headlines"><span>{Title}</span></h2>
+                </div>
+                {/block:Title}
+                <div class="cpt"><!--caption wrapper-->
+                <!--TEXT-->{block:Text}{block:NotReblog}<div class="caption">{Body}</div>{block:NotReblog}{/block:Text}
+                <!--PHOTO-->{block:Photo}<div class="post_photo">{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="has-border-radius stronger-shadow">{LinkCloseTag}</div>{/block:Photo}
+                <!--(PXU) PHOTOSET-->{block:Photoset}<div class="photo-slideshow" id="photoset_{PostID}" data-layout="{PhotosetLayout}">{block:Photos}<div class="photo-data"><div class="pxu-photo has-border-radius lighter-shadow"><img class="tumblr-box" href="{PhotoURL-HighRes}" alt="{PhotoAlt}" src="{PhotoURL-500}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" data-highres="{PhotoURL-HighRes}" data-width="{PhotoWidth-HighRes}" data-height="{PhotoHeight-HighRes}" class="{block:Exif}exif-yes {/block:Exif}{block:Caption}caption-yes{/block:Caption}" {block:Exif}data-camera="{block:Camera}{Camera}{/block:Camera}" data-iso="{block:ISO}{ISO}{/block:ISO}" data-aperture="{block:Aperture}{Aperture}{/block:Aperture}" data-exposure="{block:Exposure}{Exposure}{/block:Exposure}" data-focal="{block:FocalLength}{FocalLength}{/block:FocalLength}"{/block:Exif} {block:Caption}data-caption="{Caption}"{/block:Caption}></div></div>{/block:Photos}</div><!-- close SLIDESHOW -->{/block:Photoset}
+                <!--QUOTE-->{block:Quote}<div class="qh caption"><h3>{Quote}</h3></div>{block:NotReblog}{block:Source}<div class="caption"><span class="qsrc">{Source}</span></div>{/block:Source}{/block:NotReblog}{/block:Quote}
+                <!--LINK-->{block:Link}<div class="lh caption"><h3><a title="{URL}" href="{URL}" class="has-border-radius lighter-shadow"><i class="fas fa-link"></i>{Name}</a></h3></div><!--{block:Thumbnail} <img class="thumb" src="{Thumbnail-HighRes}"></img>{/block:Thumbnail}-->{block:NotReblog}{block:Description}<div class="caption">{Description}</div>{/block:Description}{/block:NotReblog}{/block:Link}
+                <!--CHAT-->{block:Chat}<div class="post_title">{block:Title}<h2>{Title}</h2>{/block:Title}</div><div class="caption">{block:Lines}<div class="chat_lines {Alt}">{block:Label}<b>{Label}</b>{/block:Label} {Line}</div>{/block:Lines}</div>{/block:Chat}
+                <!--AUDIO-->{block:Audio}<div class="audio_post flex">{block:AudioPlayer}<div class="audio_player">{block:AlbumArt}<img src="{AlbumArtURL}" class="has-border-radius stronger-shadow">{/block:AlbumArt}<div class="play_button">{AudioPlayer}</div></div>{/block:AudioPlayer}<div class="audio_info"><ul><li><span>Name:</span>{block:TrackName}{TrackName}{/block:TrackName}</li><li><span>Artist:</span>{block:Artist}{Artist}{/block:Artist}</li><li><span>Album:</span>{block:Album}{Album}{/block:Album}</li></ul></div></div>{/block:Audio}
+                <!--VIDEO-->{block:Video}<div class="vid has-border-radius stronger-shadow">{Video-700}</div>{/block:Video}
+                <!--ASK-->{block:Answer}<div class="question has-border-radius lighter-shadow"><div class="asker flex"><img src="{AskerPortraitURL-64}">{lang:Asker asked 2}: </div><div class="caption">"{Question}"</div></div>{block:Answerer}<div class="answerer flex"><img src="{AnswererPortraitURL-64}">{Answerer}</div><div class="caption">{Answer}</div>{/block:Answerer}{block:NotReblog}<div class="caption">{Replies}</div>{/block:NotReblog}{/block:Answer}
+                <!--SUBMIT-->{block:Submission}<div class="submit pl via">{lang:Source}: <a href="{SubmitterURL}">{Submitter}</a></div>{block:Submission}{/block:Answer}
+                <!--CAPTION-->{block:NotReblog}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:NotReblog}{block:Reblogs}<div class="reblog_list"><div class="reblog_parent"><div class="reblog_header flex">{block:IsActive}<img src="{PortraitURL-64}"><a target="_blank" href="{Permalink}">@{Username}</a>{/block:IsActive}{block:IsDeactivated}<i class="fas fa-user-times"></i>@{Username}{block:IsDeactivated}</div><div class="reblog_body caption">{Body}</div></div></div>{/block:Reblogs}
+             </div><!--cpt wrapper end-->
+             {block:IndexPage}
+             <div class="post_footer flex">
+              <!--tags-->{block:HasTags}<div class="ptags pinfo">{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
+              <!--post buttons-->
+              <div class="buttons flex pinfo">
+                <a href="{ReblogURL}" title="Reblog this post"><i class="fas fa-sync-alt"></i></a>
+                <div class="custom_like_button" title="Like this post">{LikeButton}<span><i class="far fa-heart"></i></span></div>
+              </div><!--buttons-->
+          </div><!--post footer-->
+          {/block:IndexPage}
+        </div><!--post_body-->
+      </article><!--post-->
+     </div>
+     <!--PERMALINK-->
+     {block:PermalinkPage}<div class="permalink {TagsAsClasses}">
+        <!--tags-->{block:HasTags}<div class="pl via ptags"><i class="fas fa-tags"></i>{block:Tags}<a href="{TagURL}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
+        <!--date-->{block:Date}<div class="pl via"><i>{lang:Posted TimeAgo}, {DayofMonthWithSuffix} {Month} & {NoteCountWithLabel}</a></div>{/block:Date}
+        <!--source-->
+        <!--if reblog-->
+        {block:RebloggedFrom}<div class="pl via"><i>{lang:Source}:</i><a href="{ReblogRootURL}">{ReblogRootName}</a></i></div>{/block:RebloggedFrom}
+        {block:NotReblog}{block:Source}<div class="pl via"><i>{lang:Source}:</i><a href="{Permalink}">{Name}</a></div>{/block:Source}{/block:NotReblog}
+        <!--post notes-->
+        {block:PostNotes}<div class="plnotes">{PostNotes}</div>{/block:PostNotes}
+      </div><!--permalink-->{/block:PermalinkPage}
+
+      <!--HIDE SOURCE & VIA-->{block:ContentSource}<!-- {SourceURL}{block:SourceLogo}<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />{/block:SourceLogo}{block:NoSourceLogo}{SourceLink}{/block:NoSourceLogo} -->{/block:ContentSource}<!--{block:NoRebloggedFrom}{block:RebloggedFrom}{ReblogParentName}{/block:RebloggedFrom}{/block:NoRebloggedFrom} -->{/block:Posts}
+
+        </div><!--post wrapper-->
+
+<!----POSTS END--------------------------------------------------------->
+
+<!----PAGES------------------------------------------------------------->
+        {block:IfAboutPage}
+        <!--ABOUT PAGE-->
+        <div id="info" class="page_wrapper about_page">
+          <div class="article_wrapper">
+            <article class="post flex">
+              <div class="row flex intro_quote">
+                <img src="{PortraitURL-128}" class="has-border-radius stronger-shadow">
+                {block:IfAboutQuote}
+                <div class="col qt">
+                  {text:about quote}
+                </div>
+                {/block:IfAboutQuote}
+              </div>
+              {block:IfAboutCell1Title}
+              <div class="row flex flex-wrap no-margin-bottom">
+                <table class="col-2">
+                  <!--to add more rows to the left side copy paste-->
+                  <tbody>
+                      <!--COPY HERE-->
+                      <tr>
+                        <td>{text:about cell 1 title}</td>
+                        <td>{text:about cell 1 content}</td>
+                      </tr>
+                      <!--COPY END-->
+                      {block:IfAboutCell2Title}
+                      <tr>
+                        <td>{text:about cell 2 title}</td>
+                        <td>{text:about cell 2 content}</td>
+                      </tr>
+                      {/block:IfAboutCell2Title}
+                      {block:IfAboutCell3Title}
+                      <tr>
+                        <td>{text:about cell 3 title}</td>
+                        <td>{text:about cell 3 content}</td>
+                      </tr>
+                      {/block:IfAboutCell3Title}
+                      <!--PASTE HERE-->
+                  </tbody>
+                </table>
+                {block:IfAboutCell4Title}
+                <table class="col-2">
+                  <!--to add more rows to the right side copy paste-->
+                  <tbody>
+                      <tr>
+                        <td>{text:about cell 4 title}</td>
+                        <td>{text:about cell 4 content}</td>
+                      </tr>
+                      {block:IfAboutCell5Title}
+                      <tr>
+                        <td>{text:about cell 5 title}</td>
+                        <td>{text:about cell 5 content}</td>
+                      </tr>
+                      {/block:IfAboutCell5Title}
+                      {block:IfAboutCell6Title}
+                      <tr>
+                        <td>{text:about cell 6 title}</td>
+                        <td>{text:about cell 6 content}</td>
+                      </tr>
+                      {/block:IfAboutCell6Title}
+                      <!--PASTE HERE-->
+                  </tbody>
+                </table>
+                {/block:IfAboutCell4Title}
+              </div>
+              {/block:IfAboutCell1Title}
+              {block:IfAboutText}
+              <div class="row caption">
+                {text:about text}
+              </div>
+              {/block:IfAboutText}
+            </article>
+          </div>
+        </div><!--about page-->
+        {/block:IfAboutPage}
+
+        <!--FAQ PAGE-->
+        {block:IfFAQPage}
+        <div id="faq" class="page_wrapper faq_page">
+          <div class="article_wrapper">
+            <article class="post flex">
+              <h2 class="headlines">{text:faq title}</h2>
+              <!--to add new questions & answers-->
+              <div class="row">
+                {block:IfFAQQuestion1}
+                <!--COPY HERE-->
+                <div class="quest"><span>{text:faq question 1}</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption"><p />{text:faq answer 1}</div>
+                <!--COPY END-->
+                {/block:IfFAQQuestion1}
+                {block:IfFAQQuestion2}
+                <div class="quest"><span>{text:faq question 2}</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption">{text:faq answer 2}</div>
+                {/block:IfFAQQuestion2}
+                {block:IfFAQQuestion3}
+                <div class="quest"><span>{text:faq question 3}</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption">{text:faq answer 3}</div>
+                {/block:IfFAQQuestion3}
+                {block:IfFAQQuestion4}
+                <div class="quest"><span>{text:faq question 4}</span><i class="fas fa-angle-down"></i></div>
+                <div class="reply caption">{text:faq question 5}</div>
+                {/block:IfFAQQuestion4}
+                <!--PASTE HERE-->
+              </div>
+            </article><!--faq end-->
+          </div><!--faq article wrapper-->
+        </div><!--faq page-->
+        {/block:IfFAQPage}
+
+        {block:IfCharacterPage}
+        <!--CHARACTER PAGE-->
+        <div id="character" class="page_wrapper character_page about_page">
+          <div class="article_wrapper">
+            <article class="post flex">
+              <!--intro-->
+              <div class="row flex flex-wrap intro_quote">
+                {block:IfCharacterImageImage}
+                <img src="{image:character image}" class="has-border-radius stronger-shadow">
+                {/block:IfCharacterImageImage}
+                <div class="cinfo_wrap">
+                  <!--character name-->
+                  {block:IfCharacterName}
+                  <h2 class="headlines">{text:character name}</h2>
+                  {/block:IfCharacterName}
+                  <!--character quote-->
+                  {block:IfCharacterQuote}
+                  <div class="col qt">
+                    {text:character quote}
+                  </div>
+                  {/block:IfCharacterQuote}
+                  <!--character links-->
+                  <!--add more links-->
+                  {block:IfCharacterUrl1}
+                  <div class="clinks social">
+                    <!--COPY HERE-->
+                    <a href="{text:character url 1}"><i class="{text:character link 1 icon}"></i></a><!--COPY END-->
+                    {block:IfCharacterUrl2}
+                    <a href="{text:character url 2}"><i class="{text:character link 2 icon}"></i></a>{/block:IfCharacterUrl2}
+                    {block:IfCharacterUrl3}
+                    <a href="{text:character url 3}"><i class="{text:character link 3 icon}"></i></a>{/block:IfCharacterUrl3}
+                    <!--PASTE HERE-->
+                  </div>
+                  {/block:IfCharacterUrl1}
+                </div>
+              </div>
+              <!--table-->
+              {block:IfCharacterCell1Title}
+              <div class="row flex flex-wrap no-margin-bottom">
+                <!--left-->
+                <table class="col-2">
+                  <tbody>
+                      <tr>
+                        <td>{text:character cell 1 title}</td>
+                        <td>{text:character cell 1 content}</td>
+                      </tr>
+                      {block:IfCharacterCell2Title}
+                      <tr>
+                        <td>{text:character cell 2 title}</td>
+                        <td>{text:character cell 2 content}</td>
+                      </tr>
+                      {/block:IfCharacterCell2Title}
+                      {block:IfCharacterCell3Title}
+                      <tr>
+                        <td>{text:character cell 3 title}</td>
+                        <td>{text:character cell 3 content}</td>
+                      </tr>
+                      {/block:IfCharacterCell3Title}
+                  </tbody>
+                </table>
+                <!--right-->
+                {block:IfCharacterCell4Title}
+                <table class="col-2">
+                  <tbody>
+                      <tr>
+                        <td>{text:character cell 4 title}</td>
+                        <td>{text:character cell 4 content}</td>
+                      </tr>
+                      {block:IfCharacterCell5Title}
+                      <tr>
+                        <td>{text:character cell 5 title}</td>
+                        <td>{text:character cell 5 content}</td>
+                      </tr>
+                      {/block:IfCharacterCell5Title}
+                      {block:IfCharacterCell6Title}
+                      <tr>
+                        <td>{text:character cell 6 title}</td>
+                        <td>{text:character cell 6 content}</td>
+                      </tr>
+                      {/block:IfCharacterCell6Title}
+                  </tbody>
+                </table>
+                {/block:IfCharacterCell4Title}
+              </div>
+              {/block:IfCharacterCell1Title}
+              <!--text-->
+              {block:IfCharacterText1}
+              <div class="row caption">
+                {text:character text 1}
+              </div>
+              {/block:IfCharacterText1}
+              <!--traits-->
+              <!--add new traits-->
+              {block:IfCharacterTraitPos1}
+              <div class="ctraits row">
+                <ul class="pos_traits flex flex-wrap">
+                  <!--COPY HERE-->
+                  <li>{text:character trait pos 1}</li>
+                  <!--COPY END-->
+                  {block:IfCharacterTraitPos2}
+                  <li>{text:character trait pos 2}</li>
+                  {/block:IfCharacterTraitPos2}
+                  {block:IfCharacterTraitPos3}
+                  <li>{text:character trait pos 3}</li>
+                  {/block:IfCharacterTraitPos3}
+                  <!--PASTE HERE-->
+                </ul>
+                {block:IfCharacterTraitNeg1}
+                <ul class="neg_traits flex flex-wrap">
+                  <!--COPY HERE-->
+                  <li>{text:character trait neg 1}</li>
+                  <!--COPY END-->
+                  {block:IfCharacterTraitNeg2}
+                  <li>{text:character trait neg 2}</li>
+                  {/block:IfCharacterTraitNeg2}
+                  {block:IfCharacterTraitNeg3}
+                  <li>{text:character trait neg 3}</li>
+                  {/block:IfCharacterTraitNeg3}
+                  <!--PASTE HERE-->
+                </ul>
+                {/block:IfCharacterTraitNeg1}
+              </div>
+              {/block:IfCharacterTraitPos1}
+              <!--skills-->
+              <!--add new skills-->
+              {block:IfCharacterSkills1Label}
+              <div class="row cskills">
+                <!--COPY HERE-->
+                <div class="bar">
+                  <div class="track_label">{text:character skills 1 label}</div>
+                  <div class="track"><span style="width: {text:character skills 1 percent}%;"></span></div>
+                </div>
+                <!--COPY END-->
+                {block:IfCharacterSkills2Label}
+                <div class="bar">
+                  <div class="track_label">{text:character skills 2 label}</div>
+                  <div class="track"><span style="width: {text:character skills 2 percent}%;"></span></div>
+                </div>
+                {/block:IfCharacterSkills2Label}
+                {block:IfCharacterSkills3Label}
+                <div class="bar">
+                  <div class="track_label">{text:character skills 3 label}</div>
+                  <div class="track"><span style="width: {text:character skills 3 percent}%;"></span></div>
+                </div>
+                {/block:IfCharacterSkills3Label}
+                {block:IfCharacterSkills4Label}
+                <div class="bar">
+                  <div class="track_label">{text:character skills 4 label}</div>
+                  <div class="track"><span style="width: {text:character skills 4 percent}%;"></span></div>
+                </div>
+                {/block:IfCharacterSkills4Label}
+                <!--PASTE HERE-->
+              </div><!--skills-->
+              {/block:IfCharacterSkills1Label}
+              <!--text-->
+              {block:IfCharacterText2}
+              <div class="row caption">
+                {text:character text 2}
+              </div>
+              {/block:IfCharacterText2}
+              <!--connections-->
+              {block:IfConnection1IMG}
+              <div class="row">
+                <ul class="cconnections flex flex-wrap">
+                  <!--COPY HERE-->
+                  <li><div class="overlay"></div><img src="{text:connection 1 img}"><div class="overlay-text">{text:connection 1 text}</div></li>
+                  <!--COPY END-->
+                  {block:IfConnection2IMG}
+                  <li><div class="overlay"></div><img src="{text:connection 2 img}"><div class="overlay-text">{text:connection 2 text}</div></li>
+                  {/block:IfConnection2IMG}
+                  {block:IfConnection3IMG}
+                  <li><div class="overlay"></div><img src="{text:connection 3 img}"><div class="overlay-text">{text:connection 3 text}</div></li>
+                  {/block:IfConnection3IMG}
+                  {block:IfConnection4IMG}
+                  <li><div class="overlay"></div><img src="{text:connection 4 img}"><div class="overlay-text">{text:connection 4 text}</div></li>
+                  {/block:IfConnection4IMG}
+                  <!--PASTE HERE-->
+                </ul>
+              </div>
+              {/block:IfConnection1IMG}
+              {block:IfPinterestBoardUrl}
+              <div class="row cpinterest">
+                <a data-pin-do="embedBoard" data-pin-board-width="{select:post width}" data-pin-scale-height="{text:pinterest board height}" data-pin-scale-width="60" href="{text:pinterest board url}">|</a>
+              </div>
+              {/block:IfPinterestBoardUrl}
+            </article>
+          </div>
+        </div><!--character page-->
+        {/block:IfCharacterPage}
+
+        {block:AskEnabled}
+        <!--ASK PAGE-->
+        <div id="ask" class="page_wrapper ask_page">
+          <div class="article_wrapper">
+            <article class="post flex">
+              <h2 class="headlines">{AskLabel}</h2>
+              {block:IfAskPageText}
+              <div class="row caption">
+                {text:ask page text}
+              </div>
+              {/block:IfAskPageText}
+              <div class="row">
+                  <iframe frameborder="0" scrolling="no" width="100%" height="190" src="https://www.tumblr.com/ask_form/{Name}.tumblr.com" style="background-color:transparent; overflow:hidden;" id="ask_form" class="has-border-radius lighter-shadow"></iframe><!--[if IE]><script type="text/javascript">document.getElementById('ask_form').allowTransparency=true;</script><![endif]-->
+              </div>
+            </article><!--ask end-->
+          </div><!--ask article wrapper-->
+        </div><!--ask page-->
+        {/block:AskEnabled}
+
+        {block:SubmissionsEnabled}
+        <!--SUBMISSION PAGE-->
+        <div id="submission" class="page_wrapper sub_page">
+          <div class="article_wrapper">
+            <article class="post flex">
+              <h2 class="headlines">{SubmitLabel}</h2>
+              {block:IfSubmissionPageText}
+              <div class="row caption">
+                {text:Submission page text}
+              </div>
+              {/block:IfSubmissionPageText}
+              <div class="row">
+                  <iframe frameborder="0" scrolling="no" width="100%"
+ height="327" id="submit_form" src="https://www.tumblr.com/submit_form/{Name}.tumblr.com" style="background-color:transparent; overflow:hidden;" class="has-border-radius lighter-shadow"></iframe><!--[if IE]><script type="text/javascript">document.getElementById('submit_form').allowTransparency=true;</script><![endif]-->
+              </div>
+            </article><!--submit end-->
+          </div><!--submit article wrapper-->
+        </div><!--submit page-->
+        {/block:SubmissionsEnabled}
+
+        <!-- SIDEBAR -->
+        <aside class="flex flex-column">
+          <!-- PAGEINATION -->
+          {block:Pagination}
+          <div class="pagelinks">
+          {block:PreviousPage}<a class="previous_page" href="{PreviousPage}"><i class="fas fa-chevron-circle-left"></i></a>{/block:PreviousPage}
+          {block:NextPage}<a class="next_page" href="{NextPage}"><i class="fas fa-chevron-circle-right"></i></a>{/block:NextPage}
+          </div>
+          {/block:Pagination}
+          <!--sidebar image-->
+          {block:ifSidebarPortraitImage}
+          <img src="{image:sidebar portrait}">
+          {/block:ifSidebarPortraitImage}
+          <div class="side-inner flex flex-column">
+
+            <div class="side_head flex">
+              <div class="side_head_left">
+                <div>@{Name}</div>
+                  <h1 class="headlines">{Title}</h1>
+              </div>
+              <div class="side_head-right">
+                <i class="far fa-user-circle"></i>
+              </div>
+            </div>
+            <div class="side_desc">
+              {Description}
+            </div>
+
+            <!--sidebar menu-->
+            <div class="side_menu">
+              <ul class="flex">
+                {block:IfCustomLink1URL}
+                <li><a href="{text:custom link 1 url}">{text:custom link 1}</a></li>
+                {/block:IfCustomLink1URL}
+                {block:IfCustomLink2URL}
+                <li><a href="{text:custom link 2 url}">{text:custom link 2}</a></li>
+                {/block:IfCustomLink2URL}
+                {block:IfCustomLink3URL}
+                <li><a href="{text:custom link 3 url}">{text:custom link 3}</a></li>
+                {/block:IfCustomLink3URL}
+                {block:IfCustomLink4URL}
+                <li><a href="{text:custom link 4 url}">{text:custom link 4}</a></li>
+                {/block:IfCustomLink4URL}
+                {block:HasPages}
+                {block:Pages}
+                <li><a href="{URL}" title="{Label}">{Label}</a></li>
+                {/block:Pages}
+                {/block:HasPages}
+              </ul>
+            </div>
+
+          <!--SOCIAL-->
+          <div class="social flex">
+            {block:IfSocialOneUrl}
+            <a href="{text:social one url}"><i class="{text:social one icon}"></i></a>
+            {/block:IfSocialOneUrl}
+            {block:IfSocialTwoUrl}
+            <a href="{text:social two url}"><i class="{text:social two icon}"></i></a>
+            {/block:IfSocialTwoUrl}
+            {block:IfSocialThreeUrl}
+            <a href="{text:social three url}"><i class="{text:social three icon}"></i></a>
+            {/block:IfSocialThreeUrl}
+          </div>
+          <!--social-->
+          <div>
+        </aside>
+        <!--aside-->
+
+   </div><!--content_wrapper-->
+
+  </div>
+
+<!--CONTAINER END------------------------------------------------------->
+
+<!--MIRAGE SCRIPTS-->
+  <script async src="https://dl.dropbox.com/s/zxias9b2cx1ffrq/mirage.js"></script>
+
+  <!--PINTEREST-->
+  <script async defer src="https://assets.pinterest.com/js/pinit.js"></script>
+  <script>
+  $(document).ready(function() {
+      /*MEDIA QUERIES*/
+	function mediaQs() {
+	  let breakQ = {select:post width} + 180 + 100 + 80 + {text:sidebar width} + 50;
+
+	  if ($(window).width() < breakQ) {
+       $("body").addClass("wrapped");
+      } else {
+       $("body").removeClass("wrapped");
+      }
+	}
+
+	mediaQs()
+
+	window.addEventListener('resize', function(event){
+      mediaQs();
+    });
+  });/*document ready*/
+  </script>
+</body>
+</html>
