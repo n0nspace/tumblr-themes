@@ -31,10 +31,9 @@ $(document).ready(function() {
     var page = $(tab + attr);
 
     if (page.is(":hidden") && attr != "/") {
-      page.siblings(tab).fadeOut(function() {
-        $('#post_wrapper').fadeOut(function() {
-          page.fadeIn(800);
-        });
+      page.siblings(tab).fadeOut();
+      $('#post_wrapper').fadeOut(function() {
+        page.fadeIn(800);
       });
     } else if (attr === "/") {
       $('#post_wrapper').fadeIn();
