@@ -1,0 +1,148 @@
+/* CSS FRAMEWORK by nonspace.dev */
+/* May be used for personal use */
+
+/*TEXT*/
+p {margin: 25px 0;}
+
+/*FLEX*/
+.flex {display: flex;}
+.flex-column {flex-direction: column;}
+.flex-wrap {flex-wrap: wrap;}
+.flex-align-center {align-items: center;}
+.flex-justify-center {justify-content: center;}
+.flex-space-between {justify-content: space-between;}
+
+.full-width {width: 100%; flex: 1; flex-basis: auto;}
+.full-height {height: 100vh}
+
+.inline-list li {display: inline-block;}
+
+.display-block {display: block;}
+
+/*HEADLINES*/
+.headline {color: var(--darkAccent); font-size: 2rem;}
+.col .headline {margin-bottom: 20px;}
+h4 {font-size: 1.5rem;}
+
+/*COLORS*/
+.primary-bg {background: var(--pimBackground);}
+.second-bg {background: var(--secBackground);}
+
+/*ALIGN*/
+.left-align {text-align: left; align-self: left;}
+
+/*LINKS*/
+a {color: var(--linkColor);}
+
+.btn {
+  display: inline-block;
+  background: var(--accentColor);
+  padding: 15px 20px;
+  color: var(--accentText);
+  border: none;
+  font-family: var(--fontFamily);
+  box-shadow: none;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.5s ease, background 0.5s ease;
+}
+.btn-round {
+  border-radius: var(--borderRadius);
+}
+.btn:hover {
+  background: transparent;
+  color: var(--textColor);
+}
+
+/*LISTS*/
+.no-bullet {
+  list-style-type: none;
+}
+
+/*MENU*/
+.menu-bar {list-style-type: none;}
+.menu-bar li {display: inline-block;}
+.menu-bar li:first-of-type {padding-left: 0;}
+.menu-bar a {text-decoration: none;}
+
+/*ROWS*/
+section {
+  position: relative;
+  text-align: center;
+}
+
+.row {
+  flex-direction: row;
+  padding-bottom: 100px;
+}
+.row.padding-top {
+  padding-top: 100px;
+}
+
+.col {
+  min-width: 300px;
+  max-width: 1200px;
+  width: 100%;
+  flex: 1;
+  flex-basis: auto;
+  padding: 0px 20px;
+}
+
+.row > .col-2 {padding-bottom: 50px;}
+.col-2 {max-width: 600px; flex: 1;}
+
+/*forms*/
+form {width: 100%;}
+form .col-2 {width: 50%; flex-basis: auto;}
+form input,
+form textarea {
+  width: 100%;
+  font-family: var(--fontFamily);
+  font-size: 1rem;
+  border: 1px solid var(--textColor);
+  padding: 5px 10px;
+  margin: 20px 5px;
+}
+.form-round input,
+.form-round textarea {
+  border-radius: var(--borderRadius);
+}
+
+form textarea {
+  min-height: 150px;
+  padding: 10px;
+}
+
+form a.submit {
+  margin-top: 25px;
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid var(--textColor);
+  padding: 0px 10px 0 10px;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+  color: var(--textColor);
+}
+
+.form-round select {
+  border-radius: var(--borderRadius);
+}
+
+select option {
+  background-color: var(--primBackground);
+}
+
+@media screen and (min-width: 600px) {
+  .row {
+    padding-bottom: 150px;
+  }
+  .row.padding-top {
+    padding-top: 150px;
+  }
+  .row > .col-2 {padding-bottom: 50px;}
+}
