@@ -141,7 +141,13 @@ nav ul li {
 input {display: none;}                
 nav label {display: block; cursor: pointer;} 
 input ~ .tab {display: none;}
-input:checked + label {
+  
+/*ADD NEW NAVIGATION ITEMS HERE*/
+/*for the bold active navigation style to work*/
+#tab1:checked ~ nav label[for="tab1"],
+#tab2:checked ~ nav label[for="tab2"],
+#tab3:checked ~ nav label[for="tab3"],
+#tab4:checked ~ nav label[for="tab4"] {
   font-weight: bold;
   padding-bottom: 10px;
   font-size: 16px;
@@ -182,6 +188,12 @@ input:checked + label {
       every new tab div needs to have the classes "tab" and e.g. "tabNMBR".
       add this to the last css before the HTML like: #tab2:checked ~ .tab.tab2
       -->
+      
+      <!-- inputs for each above label go here -->
+      <input type="radio" name="tabs" id="tab1" checked />
+      <input type="radio" name="tabs" id="tab2" />
+      <input type="radio" name="tabs" id="tab3" />
+      <input type="radio" name="tabs" id="tab4" />
 
       <nav>
           <label for="tab1">general</label>
@@ -190,11 +202,6 @@ input:checked + label {
           <label for="tab4">topic four</label>
       </nav>
       
-      <!-- inputs for each above label go here -->
-      <input type="radio" name="tabs" id="tab1" checked />
-      <input type="radio" name="tabs" id="tab2" />
-      <input type="radio" name="tabs" id="tab3" />
-      <input type="radio" name="tabs" id="tab4" />
 
       <!--TABS-->
 
