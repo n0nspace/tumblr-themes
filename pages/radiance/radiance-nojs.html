@@ -97,8 +97,8 @@ ul {
   width: auto;
   padding: 0 20px;
   height: 100%;
-  opacity: 1;
-  display: none;
+  display: block;
+  opacity: 0;
   }
 
 
@@ -140,7 +140,7 @@ nav ul li {
 /* no js*/
 input {display: none;}                
 nav label {display: block; cursor: pointer;} 
-input ~ .tab {display: none;}
+input ~ .tab {opacity: 0;}
   
 /*ADD NEW NAVIGATION ITEMS HERE*/
 /*for the bold active navigation style to work*/
@@ -158,7 +158,7 @@ input ~ .tab {display: none;}
 #tab2:checked ~ .tab.tab2,
 #tab3:checked ~ .tab.tab3,
 #tab4:checked ~ .tab.tab4 { 
-  display: block; 
+  opacity: 1; 
 }
 
 </style>
