@@ -51,6 +51,7 @@ h2:first-child {margin-top: 0;}
   padding: 0px 20px;
   width: 700px;
   overflow: auto;
+  max-height: calc(100vh - 100px);
   }
 
 header {
@@ -71,6 +72,7 @@ header p {margin: 10px 0;}
 nav {
   grid-area: nav;
   position: relative;
+  overflow: auto;
   }
 
 nav li {
@@ -99,6 +101,7 @@ ul {
   height: 100%;
   display: block;
   opacity: 0;
+  overflow: hidden;
   }
 
 
@@ -140,7 +143,7 @@ nav ul li {
 /* no js*/
 input {display: none;}                
 nav label {display: block; cursor: pointer;} 
-input ~ .tab {opacity: 0;}
+input ~ .tab {opacity: 0; overflow: hidden;}
   
 /*ADD NEW NAVIGATION ITEMS HERE*/
 /*for the bold active navigation style to work*/
@@ -159,6 +162,7 @@ input ~ .tab {opacity: 0;}
 #tab3:checked ~ .tab.tab3,
 #tab4:checked ~ .tab.tab4 { 
   opacity: 1; 
+  overflow: auto;
 }
 
 </style>
