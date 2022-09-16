@@ -112,7 +112,7 @@
 <style>
 
 @font-face { font-family: "Meyne Textur";
-    src: url("//dl.dropboxusercontent.com/s/qoglj3fm257i7cl/meyne_textur.ttf");
+    src: url("//static.tumblr.com/hohmoxg/l2rribgls/meyne_textur.ttf");
     font-weight: normal;
     font-style: normal;
 }
@@ -610,7 +610,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
   min-width: 250px;
   max-width: var(--postWidth);
   display: block;
-  padding: 50px;
+  padding: 50px 25px;
 }
 
 .page_wrapper {
@@ -668,7 +668,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 
 .article_wrapper {
   width: 100%;
-  padding: 50px 0;
+  padding: 50px 0 25px;
 }
 
 .article_wrapper:first-of-type {
@@ -1806,17 +1806,7 @@ aside {
             {/block:ifSidebarImageImage}
 
           <div id="pag-soc-wrapper" class="flex flex-space-between">
-            <!-- PAGEINATION -->
-          {block:Pagination}
-          <div class="pagination flex">
-          {block:PreviousPage}<a class="page_link previous_page" href="{PreviousPage}"><i data-feather="chevrons-left"></i></a>{/block:PreviousPage}
-          <span>{lang:CurrentPage of TotalPages}</span>{block:NextPage}<a class="page_link next_page" href="{NextPage}"><i data-feather="chevrons-right"></i></a>{/block:NextPage}
-          </div>
-          {/block:Pagination}
-
-          <div class="copyright pagination flex"> &copy; {CopyrightYears}</div>
-
-          <!--SOCIAL-->
+            <!--SOCIAL-->
                 <div class="social flex">
                   {block:IfSocialOneUrl}
                   <a href="{text:social one url}"><i data-feather="{text:social one icon}"></i></a>
@@ -1828,7 +1818,17 @@ aside {
                   <a href="{text:social three url}"><i data-feather="{text:social three icon}"></i></a>
                   {/block:IfSocialThreeUrl}
                 </div>
-                <!--social-->
+            <!--social-->
+
+            <div class="copyright pagination flex"> &copy; {CopyrightYears}</div>
+
+                <!-- PAGEINATION -->
+          {block:Pagination}
+          <div class="pagination flex">
+          {block:PreviousPage}<a class="page_link previous_page" href="{PreviousPage}"><i data-feather="chevrons-left"></i></a>{/block:PreviousPage}
+          <span>{lang:CurrentPage of TotalPages}</span>{block:NextPage}<a class="page_link next_page" href="{NextPage}"><i data-feather="chevrons-right"></i></a>{/block:NextPage}
+          </div>
+          {/block:Pagination}
             </div><!--pac-soc-wrapper-->
 
       </div><!--aside_inner-->
