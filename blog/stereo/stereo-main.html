@@ -570,10 +570,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .post_header {
-  display: none;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .post_author a {
@@ -686,7 +683,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .caption figure img {
-  width: 100%;
+  max-width: 100%;
 }
 
 .caption em {
@@ -779,20 +776,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .post_source {
-  display: inline-flex;
-  margin: 35px 0 0;
-  padding: 15px 15px;
-  background: var(--accentColor);
-}
-
-.post_source a {
-  color: var(--accentText);
-  text-decoration: none;
-}
-
-.post_source svg {
-  color: var(--accentText);
-  margin-right: 10px;
+  margin: 15px 0 0;
 }
 
 /*NPF*/
@@ -880,12 +864,6 @@ input#mobile_button:checked ~ #mobile_controls::before {
 
 #youtube_iframe {
   width: 100%!important;
-}
-
-.video .vid {
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
 }
 
 .video .vid iframe {
@@ -981,10 +959,12 @@ input#mobile_button:checked ~ #mobile_controls::before {
 .asker {
   padding: 5px 0;
   align-items: center;
+  color: var(--accentText);
 }
 
 .asker a {
   margin-right: 5px;
+  color: var(--accentText);
 }
 
 .question + .caption {
@@ -995,6 +975,11 @@ input#mobile_button:checked ~ #mobile_controls::before {
 .question .caption a {
   margin-bottom: 0;
   color: var(--accentText);
+}
+
+.question {
+  background: var(--accentColor);
+  padding: 15px;
 }
 
 .answerer_header .caption {
@@ -1090,25 +1075,16 @@ input#mobile_button:checked ~ #mobile_controls::before {
   font-weight: bold;
 }
 
-.post_icon {
-  margin-right: 15px;
+.pinned {
   color: var(--accentText);
-  font-size: 2rem;
+  text-transform: uppercase;
+  font-family: var(--fontFamilyTertiary);
   line-height: var(--lineHeight);
   background: var(--accentColor);
-  padding: 15px;
-  display: flex;
-}
-
-.post_icon svg {
-  width: 24px;
-  height: 24px;
-}
-
-.post_icon.pinned {
-  font-size: 1rem;
-  margin-left: 15px;
+  padding: 5px;
+  display: inline-block;
   font-weight: bold;
+  font-size: 1.2rem;
 }
 
 .buttons {
@@ -1142,8 +1118,9 @@ input#mobile_button:checked ~ #mobile_controls::before {
 .buttons i,
 .custom_like_button {
   font-size: 20px;
-  line-height: 0;
   font-weight: bold;
+  height: 20px;
+  line-height: 100%;
 }
 
 .buttons a:hover,
@@ -1154,10 +1131,6 @@ input#mobile_button:checked ~ #mobile_controls::before {
 .custom_like_button {
   position: relative;
   margin-left: 10px;
-}
-
-.custom_like_button i {
-  font-weight: 400;
 }
 
 .custom_like_button:hover {cursor: pointer;}
@@ -1174,6 +1147,11 @@ input#mobile_button:checked ~ #mobile_controls::before {
 .like_button.liked + span,
 .custom_like_button:hover {
   text-decoration: none;
+  color: var(--accentColor);
+}
+    
+.like_toggle {
+  width: 26px;
 }
 
 /*tags, search, etc headlines*/
@@ -1290,17 +1268,14 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 li.more_notes_link_container {
-  margin-top: 50px!important;
-  background: var(--accentColor);
+  margin-top: 50px !important;
   padding: 25px 15px !important;
-  text-align: center;
-  justify-content: center;
+  border: var(--borders);
+  color: var(--textColor);
 }
 
 li.more_notes_link_container a {
   font-style: normal!important;
-  color: var(--accentText);
-  text-decoration: none;
 }
 
 .note.like::before,
@@ -1422,7 +1397,9 @@ aside a,
 .post_icon,
 #mobile_controls,
 .caption a:hover,
-aside {
+aside,
+.custom_like_button,
+.buttons a {
   transition: all 0.5s ease;
 }
 
@@ -1585,6 +1562,7 @@ aside {
   width: 100%;
   {/block:IfFullWidthInlineImage}
   height: auto;
+  line-height: 0;
 }
 
 {CustomCSS}
@@ -1694,7 +1672,7 @@ aside {
           {block:Posts}
           <div class="article_wrapper {block:IfWrapPostInfo}wrapped{/block:IfWrapPostInfo}">
             <article id="{PostID}" class="post {PostType} {TagsAsClasses}">
-              <div class="post_header flex flex-column">
+              <div class="post_header">
                 <!--DATE & POST NOTES-->
                   {block:PinnedPostLabel}<div class="post_icon pinned">{PinnedPostLabel}</div>{/block:PinnedPostLabel}
               </div><!--post header end-->
@@ -1721,7 +1699,7 @@ aside {
              </div><!--cpt wrapper end-->
              {block:ContentSource}
              <div class="post_source">
-              <i data-feather="external-link"></i> <a href="{SourceURL}" target="_blank">{block:SourceLogo}<img src="{BlackLogoURL}">{/block:SourceLogo}{SourceTitle}</a>
+              &#8627; <a href="{SourceURL}" target="_blank">{block:SourceLogo}<img src="{BlackLogoURL}">{/block:SourceLogo}{SourceTitle}</a>
              </div>
              {/block:ContentSource}
              {block:IndexPage}
