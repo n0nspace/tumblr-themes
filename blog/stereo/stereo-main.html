@@ -64,6 +64,7 @@
   <meta name="font:Misc Font" content="Helvetica" />
 
   <meta name="text:Font Size" content="15"/>
+  <meta name="text:Title Size" content="56"/>
   <meta name="text:Headline Size" content="45"/>
   <meta name="text:Line Height" content="120%"/>
 
@@ -100,6 +101,7 @@
 
   --fontSize: {text:font size}px;
   --headlineSize: {text:headline size}px;
+  --titleSize: {text:title size}px;
   --lineHeight: {text:line height};
   --textColor: {color:text};
   --headlines: {color:headline background};
@@ -395,7 +397,7 @@ aside .side_head {
 }
 
 aside .side_head .headlines {
-  font-size: 3.5rem;
+  font-size: var(--titleSize);
   line-height: 100%;
   margin-bottom: 15px;
 }
@@ -628,7 +630,6 @@ input#mobile_button:checked ~ #mobile_controls::before {
   text-decoration: none;
   background: var(--accentColor);
   font-weight: bold;
-  font-size: 1.1rem;
 }
 
 .caption figure a {
