@@ -352,6 +352,10 @@ aside#mobile_menu ul li a {
   font-size: var(--headlineSize);
 }
 
+#social a {
+  margin-right: 10px;
+}
+
 /*search*/
 .search {
   width: calc(var(--asideWidth) + var(--barWidth));
@@ -529,41 +533,38 @@ article {
 
 .caption p {}
 
-.caption *, #description p {
-  margin: 15px 0;
-  word-break: break-word;
+.caption > *,
+.caption blockquote > * {
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
 .caption code * {
   margin: 0px 0 !important;
 }
 
-.caption p:empty, #desc p:empty {
-  margin: 0;
-}
-
-.caption p:only-child {
-  margin: 0;
-}
-
-.caption :first-child {
-  margin-top: 0;
-}
-
-.caption :last-child, #desc :last-child {
-  margin-bottom: 0;
-}
-
-.caption > :only-child {
-  margin: 0 auto;
-}
-
-.caption :first-child:not(:empty) {
-  margin-top: 0;
-}
+.caption p:empty {margin: 0; display: none;}
+.post_body .caption p:only-child {margin: 0;}
+.post_body .caption :first-child, .post_body .caption > p:empty ~ * {margin-top: 0;}
+.caption :last-child {margin-bottom: 0;}
+.post_body .caption > :only-child {margin: 0 auto;}
 
 .caption blockquote p {
   margin: 0 auto;
+}
+
+.html_photoset + .caption p,
+.audio_post + .caption p,
+.vid + .caption p {
+  margin-top: 15px !important;
+}
+
+.caption figure img {
+  max-width: 100%;
+}
+
+.caption em {
+  white-space: break-spaces !important;
 }
 
 .caption img {
@@ -691,6 +692,7 @@ iframe.photoset {
 }
 
 /*video*/
+/*video*/
 .tumblr_video_container {
   position: relative;
   overflow: hidden;
@@ -718,13 +720,7 @@ iframe.photoset {
   width: 100%!important;
 }
 
-.vid {
-  position: relative;
-  overflow: hidden;
-  /*padding-top: 56.25%;*/
-}
-
-.vid iframe {
+.video .vid iframe {
   position: absolute;
   top: 0;
   left: 0;
@@ -733,11 +729,20 @@ iframe.photoset {
   border: 0;
 }
 
-.vid iframe.spotify_audio_player {
-  height: 80px;
+.spotify .vid {
+  display: inline;
+  font-size: 0;
 }
 
-video {
+.audio .post_source {
+  display: none;
+}
+
+iframe.spotify_audio_player {
+  width: 100%;
+}
+
+.vid iframe.bandcamp_audio_player {
   width: 100%;
 }
 
