@@ -46,17 +46,19 @@
 
   <meta name="if:Archive Link" content="0"/>
   <meta name="if:Show Tags" content="0"/>
-  <meta name="if:Full Width Inline Images" content="0"/>
+  <meta name="if:Social Links" content="0"/>
 
-  <meta name="color:Text" content="#fff" />
   <meta name="color:Side Title Text" content="#fff" />
+  <meta name="color:Sidebar Text" content="#fff" />
   <meta name="color:Sidebar Background" content="#111" />
   <meta name="color:Sidebar Text" content="#fff" />
+  <meta name="color:Sidebar Borders" content="#fff" />
   <meta name="color:Post Container Background" content="#111" />
+  <meta name="color:Post Text" content="#fff" />
+  <meta name="color:Post Borders" content="#fff" />
   <meta name="color:Menu Text" content="#fff" />
   <meta name="color:Accent" content="#fff" />
   <meta name="color:Accent Text" content="#000" />
-  <meta name="color:Post Borders" content="#fff" />
 
   <meta name="select:Post Width" title="540" content="540" />
   <meta name="select:Post Width" title="700" content="700" />
@@ -126,7 +128,7 @@
   --fontSize: {text:font size}px;
   --headlineSize: {text:headline size}px;
   --lineHeight: {text:line height};
-  --textColor: {color:text};
+  --textColor: {color:sidebar text};
   --headlines: {color:headline background};
   --headlinesText: {color:headline text};
   --fontFamily: '{text:text font}';
@@ -137,14 +139,16 @@
   --background: var(--sidebarBackground);
   --menuBackground: {color:menu background};
   --menuText: {color:menu text};
-  --barBackground: {color: copyright bar background};
-  --barText: {color: side title text};
+  --barBackground: {color:copyright bar background};
+  --barText: {color:side title text};
   --sidebarBackground: {color:sidebar background};
   --sidebarText: {color:sidebar text};
-  --postBackground: {color:post background};
+  --postBackground: {color:post container background};
+  --postText: {color:post text};
 
   --accentColor: {color:accent};
   --accentText: {color:accent text};
+  --sidebarBorders: {color:sidebar borders};
   --postBorders: {color:post borders};
   --tags: {color:tags};
 }
@@ -291,13 +295,18 @@ h3, .npf_quote, .quote blockquote  /*quote*/ {
 .headlines,
 .headlines a,
 .caption h1 {
-  color: var(--textColor);
+  color: var(--postText);
   font-family: var(--fontFamilySecondary);
   font-size: var(--headlineSize);
   font-weight: 500;
   text-decoration: none;
   text-transform: uppercase;
   display: block;
+}
+
+aside .headlines,
+aside .headlines a {
+  color: var(--textColor);
 }
 
 p {
@@ -431,6 +440,10 @@ aside .side_banner {
 
 /*social*/
 aside .social {
+  display: none;
+  {block:IfSocialLinks}
+  display: flex;
+  {/block:IfSocialLinks}
 }
 
 /*subtitle*/
@@ -484,9 +497,9 @@ aside .side_head_left div {
 /*description*/
 aside .side_desc {
   margin: 20px 0;
-  border-top: 2px solid var(--postBorders);
-  border-bottom: 2px solid var(--postBorders);
-  color: var(--sideImageText);
+  border-top: 2px solid var(--sidebarBorders);
+  border-bottom: 2px solid var(--sidebarBorders);
+  color: var(--textColor);
   flex: 1;
   text-align: justify;
 }
@@ -602,11 +615,12 @@ input#mobile_button:checked ~ #mobile_controls::before {
   height: 100%;
   overflow-y: auto;
   background: var(--postBackground);
+  color: var(--postText);
 }
 
 #post_wrapper {
   position: relative;
-  color: var(--textColor);
+  color: var(--postText);
   min-width: 250px;
   max-width: var(--postWidth);
   display: block;
@@ -693,7 +707,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .post_author a {
-  color: var(--textColor);
+  color: var(--postText);
   text-decoration: none;
 }
 
@@ -724,7 +738,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
   line-height: var(--lineHeight);
   text-align: justify;
   font-size: var(--fontSize);
-  color: var(--textColor);
+  color: var(--postText);
 }
 
 /*.photo-slideshow .caption,
@@ -751,7 +765,6 @@ input#mobile_button:checked ~ #mobile_controls::before {
   text-decoration: none;
   background: var(--accentColor);
   font-weight: bold;
-  font-size: 1.1rem;
 }
 
 .caption figure a {
@@ -776,7 +789,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .caption a b:hover {
-  color: var(--textColor);
+  color: var(--postText);
 }
 
 .caption > *,
@@ -933,6 +946,13 @@ input#mobile_button:checked ~ #mobile_controls::before {
 
 .npf_row figure img {
   width: 100%;
+}
+    
+.post_media_photo_anchor {
+  font-size: 0;
+  line-height: 0;
+  width: 100%;
+  display: block;
 }
 
 /*photoset*/
@@ -1165,7 +1185,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
   line-height: 110%;
   width: 100%;
   text-align: justify;
-  display: ;
+  display: none;
   {block:IfShowTags}
   display: block;
   {/block:IfShowTags}
@@ -1192,7 +1212,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .pdate a {
-  color: var(--textColor);
+  color: var(--postText);
   font-family: var(--fontFamilyTertiary);
   display: block;
   text-decoration: none;
@@ -1238,7 +1258,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .pnotes a {
-  color: var(--textColor);
+  color: var(--postText);
 }
 
 .pnotes a {
@@ -1426,7 +1446,7 @@ li.more_notes_link_container a {
 .note.reply::before {
   display: inline-block;
   margin-right: 5px;
-  background-color: var(--textColor);
+  background-color: var(--postText);
   transform: scale(.7);
   height: 23px;
   width: 23px;
@@ -1526,7 +1546,7 @@ li.more_notes_link_container a {
 
 #nnspc a {
   text-decoration: none;
-  color: var(--textColor);
+  color: var(--postText);
 }
 
 
@@ -1807,6 +1827,7 @@ aside {
 
           <div id="pag-soc-wrapper" class="flex flex-space-between">
             <!--SOCIAL-->
+                {block:IfSocialLinks}
                 <div class="social flex">
                   {block:IfSocialOneUrl}
                   <a href="{text:social one url}"><i data-feather="{text:social one icon}"></i></a>
@@ -1818,6 +1839,7 @@ aside {
                   <a href="{text:social three url}"><i data-feather="{text:social three icon}"></i></a>
                   {/block:IfSocialThreeUrl}
                 </div>
+                {/block:IfSocialLinks}
             <!--social-->
 
             <div class="copyright pagination flex"> &copy; {CopyrightYears}</div>
