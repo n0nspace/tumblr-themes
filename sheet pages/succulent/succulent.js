@@ -62,5 +62,5 @@ function resizeGrid() {
 })();
 
 $('body').append(
-  '<div id="nnspc" style="position: fixed; bottom: 0; right: 0; padding: 10px; background: #181818; z-index: 9;"><a style="font-family: helvetica; font-weight: bold; letter-spacing: -1px; color: #fff; text-decoration: none;" href="https://nonspace.tumblr.com">nonspace.</a></div>'
+  '<div id="nnspc" style="position: fixed; bottom: 0; right: 0; padding: 10px; z-index: 9;"><a style="font-family: monospace; font-weight: bold; color: var(--accent);" href="https://nonspace.tumblr.com">:3</a></div>'
 );
