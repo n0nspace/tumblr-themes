@@ -715,7 +715,8 @@ input#mobile_button:checked ~ #mobile_controls::before {
   margin: 15px 0 15px;
   padding: 5px;
   border: var(--borders);
-  color: var(--accentText);
+  color: var(--textColor);
+  font-weight: bold;
   font-weight: 500;
   font-family: var(--fontFamilyTertiary);
 }
@@ -735,9 +736,9 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 /*deactivated user*/
-.reblog_header i {
-  align-items: center;
-  display: flex;
+.reblog_header .user_deact {
+  font-weight: bold;
+  text-decoration: line-through;
 }
 
 .reblog_body {
@@ -1701,7 +1702,7 @@ figure img {
                 <!--VIDEO-->{block:Video}<div class="vid has-border-radius stronger-shadow">{Video-700}</div>{/block:Video}
                 <!--ASK-->{block:Answer}<div class="question has-border-radius lighter-shadow"><div class="asker flex"><img src="{AskerPortraitURL-64}"><b>{lang:Asker asked 2}: </b></div><div class="caption">{Question}</div></div>{block:Answerer}<div class="answerer_header flex"><img src="{AnswererPortraitURL-64}">{Answerer}</div><div class="caption">{Answer}</div>{/block:Answerer}{block:NotReblog}<div class="caption">{Replies}</div>{/block:NotReblog}{/block:Answer}
                 <!--SUBMIT-->{block:Submission}<div class="submit pl via"><span class="tag_label">{lang:Source}:</span> <a href="{SubmitterURL}">@{Submitter}</a></div>{block:Submission}{/block:Answer}
-                <!--CAPTION-->{block:NotReblog}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:NotReblog}{block:Reblogs}<div class="reblog_list"><div class="reblog_parent"><div class="reblog_header flex">{block:IsActive}<img src="{PortraitURL-64}"><a target="_blank" href="{Permalink}">@{Username}</a>{/block:IsActive}{block:IsDeactivated}<svg><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="18" y1="8" x2="23" y2="13" /><line x1="23" y1="8" x2="18" y2="13" /></svg>@{Username}{block:IsDeactivated}</div><div class="reblog_body caption">{Body}</div></div></div>{/block:Reblogs}
+                <!--CAPTION-->{block:NotReblog}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:NotReblog}{block:Reblogs}<div class="reblog_list"><div class="reblog_parent"><div class="reblog_header flex">{block:IsActive}<img src="{PortraitURL-64}"><a target="_blank" href="{Permalink}">@{Username}</a>{/block:IsActive}{block:IsDeactivated}<span class="user_deact">@{Username}</a>{block:IsDeactivated}</div><div class="reblog_body caption">{Body}</div></div></div>{/block:Reblogs}
              </div><!--cpt wrapper end-->
              {block:ContentSource}
              <div class="post_source">
