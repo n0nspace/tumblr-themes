@@ -405,8 +405,21 @@ a:hover {
     padding: 20px 50px
   }
   
-  #abt, nav {
+  #abt, nav li {
     display: none;
+  }
+  
+  nav {
+    padding: 0;
+  }
+  
+  nav li:first-of-type {
+    display: block;
+    margin: 10px 0;
+  }
+  
+  nav li a {
+    font-size: 0.9rem;
   }
   
   #social {
@@ -436,6 +449,10 @@ a:hover {
     display: none;
   }
   
+  aside .portrait {
+    display: none;
+  }
+  
   #social svg {
     height: 15px;
     margin-top: 5px;
@@ -454,7 +471,7 @@ a:hover {
     
     <!--TITLE-->
     <div id='title'>
-      <h1>EXCESS</h1>
+      <h1>Stereo</h1>
       <img class="portrait" src="https://64.media.tumblr.com/51e87f50b603c6212f62ec5d44c19225/7d89ce8f3e3ae845-e5/s512x512u_c1/6cb69167acbf8bc6e87fd84e09d491de03fb2fa4.png" style="margin-top: 15px;" />
     </div>
     
@@ -466,18 +483,20 @@ a:hover {
       You can add several groups to a link: group AND group, group OR group etc. You can
       read more here: https://isotope.metafizzy.co/filtering.html
       Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i
+
+      For more information on how these filters work, please check here: https://isotope.metafizzy.co/filtering.html
     -->    
 
     <nav>
       <ul>
         <li><a href="/">HOME</a></li>
-      <li><a href="/ask">ASK</a></li><!--
+        <li><a href="/ask">ASK</a></li>
         <li>
-          <a href="#" data-filter="*">FILTER All</a>
+          <a href="#" data-filter="*">All</a>
         </li>
         <li>
-          <a href="#" data-filter=".f1">VTM</a>
-        </li>-->
+          <a href="#" data-filter=".f1">Filter f1</a>
+        </li>
       </ul>
     </nav>
     
@@ -486,12 +505,6 @@ a:hover {
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. 
     </div>
     
-    <!--LINKS
-    <ul id="social">
-    <!--To add more copy & paste a line. You can find more icons here: https://feathericons.com/-->
-     <!-- <li><a href="/">HOME</a></li>
-      <li><a href="/ask">ASK</a></li>
-    </ul>-->
   </aside>
   <main>
     <div id="grid">
