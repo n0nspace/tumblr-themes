@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+
+<!--PAGE THEME #11: SUCCULENT 2.0 by @nonspace.
+  Find more of my work at https://nonspace.tumblr.com   
+
+    Don't steal.  
+    Don't claim as your own. 
+    Don't use as base code.
+    Editing for personal use is fine! 
+
+    Need help? Have a look at this themes FAQ:
+    https://nonspace.tumblr.com/tagged/theme-help:+succulent
+    Or my general FAQ: https://nonspace.tumblr.com/help/support
+
+    Please report any bugs to me.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <title>{Title}</title>
+  
+  <!--jQuery-->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  
+  <!--ISOTOPE PLUGIN https://isotope.metafizzy.co/ (for filtering)-->
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+  <!--Icon Fonts-->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+  <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Azeret Mono:400,400i,700,700i|VT323:300,300i,400,400i,700,700i" rel="stylesheet">
+  
+  <!--HANDLEBARS.JS-->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+  
+  <!--PAGE SETTINGS-->
+  <!--The template spreadsheet is here:
+https://docs.google.com/spreadsheets/d/124yZTS885Mx4BYFN4PPxjP450LrRrTMmTubI0MoI4WE/edit?usp=sharing
+Instructions are in the "INSTRUCTIONS" tab.-->
+  
+  <script>
+    /*TO GET THE SHEET ID:
+    1. Go to your spreadsheet > File > Publish to web.
+    2. Click on "Entire Document" and select the speficic sheet (in the
+       example it is called "MAIN") > publish, ignore the URL.
+    3. File > Share > Anyone with link can share. This URL is important.
+    4. Copy the following string from the URL and paste it in sheetID:
+       Example:
+       https://docs.google.com/spreadsheets/d/
+         1jKi9Knw7e5qr4bXr_zQib8FwpGM7E6eqRx1tH3JruIA (this part)
+      /edit?usp=sharing
+      
+    TO GET API KEY:
+    1. Go to https://console.cloud.google.com/projectselector2/apis/dashboard 
+    (of the account the sheet is under)
+    2. Create new project
+    3. Create credentials, choose API key (copy this)
+    4. Restrict application access to HTTP referrer and add the wildcard yoururl.tumblr.com/* (or for multipe sites if needed)
+    5. Libraries > search for Google Sheets > Enable*/
+
+    const sheetID = '124yZTS885Mx4BYFN4PPxjP450LrRrTMmTubI0MoI4WE';
+    const sheetTab = 'DATA';
+    const APIkey = 'AIzaSyDJvrhztfzASekzVzdmCGFbBiZT9yW5bk0';
+
+
+  </script>
+
+  <!--SHEET INTEGRATION-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/n0nspace/tumblr-sheets@main/nnspc-sheets.js"></script>
+
+<style>
+:root {
+  --fontSize: 16px;
+  --cardWidth: 300px; /*entire card*/
+  --imgHeight: 400px;
+  
+  --accent: red;
+  --background:#000;
+  --sidebarBackground: #000;
+  --sidebarText: #fff;
+  --cardBackground: #000;
+  --cardText: #fff;
+  
+  --fontFamily: "Azaret Mono", monospace;
+  --fontFamily2: Helvetica, sans-serif; 
+}
+
+
+/*STYLES*/
+
+/*GENERAL*/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: var(--fontSize);
+  font-family: var(--fontFamily);
+  background: var(--background);
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+} 
+
+
+/*SIDEBAR*/
+
+aside {
+  position: fixed;
+  width: 350px;
+  background: var(--sidebarBackground);
+  color: var(--sidebarText);
+  height: 100%;
+  z-index: 1;
+  font-family: var(--fontFamily);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+aside h1, 
+nav {
+  text-transform: uppercase;
+  font-family: var(--fontFamily2);
+  letter-spacing: 1;
+}
+
+aside h1 {
+  font-size: 1.5rem;
+  font-size: 3.5rem;
+  font-weight: normal;
+}
+
+aside h1 {
+  display: block;
+  position: relative;
+}
+
+aside .portrait {
+  width: 64px;
+  height: 64px;
+  object-fit: cover,
+}
+
+nav {
+  padding: 10px 0 15px;
+}
+
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: var(--sidebarText);
+}
+
+nav ul li {
+  list-style-type: none;
+  margin: 15px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#abt {
+  line-height: 160%;
+}
+
+#social {
+  list-style-type: none;
+  margin-top: auto;
+  align-self: bottom;
+}
+
+#social a {
+  color: var(--sidebarText);
+  font-family: var(--fontFamily2);
+}
+
+#social li {
+  display: inline-block;
+  margin: 0 15px 0 0;
+}
+
+
+/*GRID*/
+
+main {
+  position: relative;
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  height: auto;
+  margin-left: 300px;
+  background: var(--background);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 35px 35px;
+  border-left: 20px solid var(--accent);
+}
+
+#grid {
+  margin: 0 auto;
+  width: calc(var(--cardWidth) + 30px);
+}
+
+
+/*CARDS*/
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: var(--cardWidth);
+  overflow: hidden;
+  margin: 15px;
+  color: var(--cardText);
+  border: 1px solid var(--cardText);
+  padding: 15px;
+}
+
+.card > a {
+  line-height: 0;
+  position: relative;
+  color: #fff;
+}
+
+.card img {
+  width: 100%;
+  height: var(--imgHeight);
+  object-fit: cover;
+  line-height: 0;
+}
+
+.box {
+  position: relative;
+  background: var(--cardBackground);
+  height: auto;
+  padding: 15px 0px 0;
+  line-height: 160%;
+  overflow: hidden;
+}
+
+.box h2 {
+  font-size: 1.5rem;
+  font-family: var(--fontFamily2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: normal;
+}
+
+.box .ctitle {
+  font-family: var(--fontFamily2);
+  font-style: normal;
+  font-size: 0.9;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.box .desc {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.box .desc p:not(first-of-type) {
+  margin-top: 15px;
+}
+
+.box a, #abt a {
+  color: var(--boxText);
+  text-decoration: none;
+  box-shadow: inset 0 -5px var(--accent);
+}
+
+
+/*OVERLAY*/
+
+.overlay {
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.overlay-text {
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  top: 80%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  font-size: 500%;
+}
+
+.card > a:hover .overlay {
+  opacity: 1;
+}
+.card > a:hover .overlay-text {
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+}
+
+
+/*ANIMATION KEYFRAMES*/
+
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+main {
+  -webkit-animation-duration: 0.8s;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+}
+
+
+/*HOVER*/
+
+a {
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  top: 50%;
+  margin-top: -0.5px;
+  background: var(--accent);
+}
+
+nav a:before {
+  left: -2.5px;
+}
+
+nav a:hover:before {
+  background: var(--accent);
+  width: 100%;
+  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+#social a:hover {
+  color: var(--accent);
+}
+
+
+/*MEDIA QUIERIES*/
+
+@media only screen and (max-width: 720px) {
+  body > iframe:first-of-type {
+    top: 80px;
+  }
+  
+  aside {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 50px
+  }
+  
+  #abt, nav {
+    display: none;
+  }
+  
+  #social {
+    margin: inherit;
+    padding-top: 6px;
+  }
+  
+  main {
+    width: 100%;
+    margin-left: 0;
+    border-left: none;
+    padding: 100px 0px;
+  }
+  
+  #grid {
+    width: var(--gridWidth);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  aside h1 {
+    font-size: 1.0rem;
+    padding-top: 10px;
+  }
+  
+  aside .sep {
+    display: none;
+  }
+  
+  #social svg {
+    height: 15px;
+    margin-top: 5px;
+  }
+  
+  #social li {
+    margin: 0 3px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id='wrapper'>
+  <aside>
+    
+    <!--TITLE-->
+    <div id='title'>
+      <h1>EXCESS</h1>
+      <img class="portrait" src="https://64.media.tumblr.com/51e87f50b603c6212f62ec5d44c19225/7d89ce8f3e3ae845-e5/s512x512u_c1/6cb69167acbf8bc6e87fd84e09d491de03fb2fa4.png" style="margin-top: 15px;" />
+    </div>
+    
+    <!--FILTER NAVIGATION-->
+    <!--This is where you set your filter navigation.
+      The filter attributes are added in the spreadsheet and they need to match the ones
+      in this navigation.
+   
+      You can add several groups to a link: group AND group, group OR group etc. You can
+      read more here: https://isotope.metafizzy.co/filtering.html
+      Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i
+    -->    
+
+    <nav>
+      <ul>
+        <li><a href="/">HOME</a></li>
+      <li><a href="/ask">ASK</a></li><!--
+        <li>
+          <a href="#" data-filter="*">FILTER All</a>
+        </li>
+        <li>
+          <a href="#" data-filter=".f1">VTM</a>
+        </li>-->
+      </ul>
+    </nav>
+    
+    <!--DESCRIPTION-->
+    <div id="abt">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. 
+    </div>
+    
+    <!--LINKS
+    <ul id="social">
+    <!--To add more copy & paste a line. You can find more icons here: https://feathericons.com/-->
+     <!-- <li><a href="/">HOME</a></li>
+      <li><a href="/ask">ASK</a></li>
+    </ul>-->
+  </aside>
+  <main>
+    <div id="grid">
+      
+    <!--GRID ITEM TEMPLATE-->
+      <script id="handlebars-template-grid" type="text/x-handlebars-template">
+      {{#each []}}
+      <!--GRID ITEM START-->
+      <div class="card {{this.filters}}">
+      <a href="/tagged/{{this.link}}">
+        <div class="overlay"></div>
+        <img src="{{this.imageurl}}">
+        <div class="overlay-text">
+          <i class="fas fa-hashtag"></i>
+        </div>
+      </a>
+      <div class="box">
+        <h2>{{this.headline}}</h2>
+        <span class="ctitle">{{this.title}}</span>
+        <div class="desc">
+          {{{this.description}}}
+        </div>
+      </div>
+    </div>
+      <!--GRID ITEM END-->
+      {{/each}}
+    </script>
+      
+    <!--TO USE WITHOUT SHEETS-->
+    <!--Delete the above grid templates and uncomment & copy/paste the following:-->
+    <!--<div class="card f2">
+      <a href="#">
+        <div class="overlay"></div>
+        <img src="http://placehold.jp/ddd/666666/250x250.png">
+        <div class="overlay-text">
+          <i class="fas fa-hashtag"></i>
+        </div> 
+      </a>
+      <div class="box">
+        <h2>Headline</h2>
+        <span class="ctitle">Title</span>
+        <div class="desc">Lorem ipsum dolores 
+prosit lorem ipsum dolores pro dolores prosit lorem ipsum dolores prosit
+ lorem ipsum dolores prosit bla ipsum dolor sit amet, consectetur 
+adipiscing elit.
+        </div>
+      </div>
+    </div>-->
+
+    </div>
+  </main>
+</div>
+
+</body>
+  
+  <!--SUCCULENT SCRIPTS-->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/n0nspace/tumblr-themes@latest/sheet%20pages/succulent/succulent.js"></script>
+  
+  <script>
+  //TEMPLATE LIST
+  //id + selector
+  var templateList = [
+    ['#handlebars-template-grid', '#grid'],
+  ];
+  </script>
+
+</html>
