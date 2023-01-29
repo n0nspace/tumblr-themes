@@ -1749,6 +1749,7 @@ figure img {
                     </div>
                   </div><!--date notes wrapper-->
                 </div><!--date wrapper-->
+        {block:HasTags}<div class="ptags pinfo"></span>{block:Tags}</b> <a href="{TagURL}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
         <!--if reblog-->
         {block:RebloggedFrom}<div class="pl via"><span class="tag_label">{lang:Via}</span> <a href="{ReblogParentURL}">{ReblogParentName}</a></i></div>{/block:RebloggedFrom}
         {block:NotReblog}{block:Source}<div class="pl via"><i>{lang:Source}:</i><a href="{Permalink}">{Name}</a></div>{/block:Source}{/block:NotReblog}
