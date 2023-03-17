@@ -809,6 +809,13 @@ iframe.spotify_audio_player {
 .audio_info ul li:last-of-type {padding-bottom: 0;}
 .audio_info ul li:only-of-type {padding: 0;}
 
+/*polls*/   
+a.poll-row {
+  background: var(--accent) !important;
+  color: var(--accentText);
+  border-radius: 0 !important;
+}
+
 /*ask*/
 .asker a {
   padding: 5px;
