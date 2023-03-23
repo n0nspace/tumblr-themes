@@ -45,6 +45,7 @@
   <meta name="if:Archive Link" content="0"/>
   <meta name="if:Show Tags" content="0"/>
   <meta name="if:Social Links" content="0"/>
+  <meta name="if:Full Width Inline Images" content="0"/>
 
   <meta name="color:Side Title Text" content="#fff" />
   <meta name="color:Sidebar Text" content="#fff" />
@@ -1742,10 +1743,12 @@ aside {
 }
 {/block:SubmitPage}
 
+.post-content div.npf_row .npf_col figure img, .post div.npf_row .npf_col figure img, body div.npf_row .npf_col figure img,
 .caption img {
-  {block:IfFullWidthInlineImage}
-  width: 100%;
-  {/block:IfFullWidthInlineImage}
+  width: auto !important;
+  {block:IfFullWidthInlineImages}
+  width: 100% !important;
+  {/block:IfFullWidthInlineImages}
   height: auto;
 }
 
