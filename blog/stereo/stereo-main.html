@@ -47,7 +47,7 @@
   <meta name="color:Text" content="#000" />
   <meta name="color:Background" content="#fff" />
   <meta name="color:Menu Text" content="#ff1e00" />
-  <meta name="color:Accent" content="##ff1e00" />
+  <meta name="color:Accent" content="#ff1e00" />
   <meta name="color:Accent Text" content="#000" />
   <meta name="color:Post Borders" content="#000" />
 
@@ -93,7 +93,7 @@
 
 /*variables*/
 :root {
-  --postWidth: calc({select:post width}px + 50px);
+  --postWidth: calc({select:post width}px + 40px + 6px);
   --sidebarWidth: 300px;
   --barWidth: 0px;
 
@@ -237,7 +237,7 @@ color:#000c1a;
 
 .caption ul,
 .caption ol {
-  margin: 15px 0 15px 25px;
+  margin: 25px 0 15px 25px;
   text-align: justify;
 }
 
@@ -277,6 +277,10 @@ h3, .npf_quote, .quote blockquote  /*quote*/ {
 
 p {
   margin-bottom: 25px;
+}
+
+.caption p {
+  margin: 0;
 }
 
 blockquote {
@@ -499,7 +503,6 @@ input#mobile_button:checked ~ #mobile_controls::before {
   position: relative;
   color: var(--textColor);
   min-width: 250px;
-  max-width: var(--postWidth);
   display: block;
   padding: 50px 25px;
   flex: 1;
@@ -567,6 +570,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
   height: auto;
   margin: auto;
   max-width: var(--postWidth);
+  width: 100%;
 }
 
 .post_header {
@@ -586,8 +590,9 @@ input#mobile_button:checked ~ #mobile_controls::before {
   margin-bottom: 15px;
 }
 
+/*caption container*/
 .cpt {
-  max-width: var(--postWidth);
+  /*max-width: var(--postWidth) + 40px;*/
   border: var(--borders);
   padding: 20px;
 }
@@ -599,7 +604,43 @@ input#mobile_button:checked ~ #mobile_controls::before {
   text-align: justify;
 }
 
-/*CAPTIONS & UNNEST*/
+/*NPF BLOCKS*/
+.post-content .crt-video + div.npf_row, .post-content div.npf_row + .crt-video, .post-content div.npf_row + p, .post-content p + div.npf_row, .post .crt-video + div.npf_row, .post div.npf_row + .crt-video, .post div.npf_row + p, .post p + div.npf_row, body .crt-video + div.npf_row, body div.npf_row + .crt-video, body div.npf_row + p, body p + div.npf_row, .caption h1, 
+.caption h2, 
+.poll-post,
+.npf_quote,
+.npf_quirky,
+.npf_chat,
+.npf-link-block,
+.read_more_container,
+.post_body blockquote {
+  margin-top: 25px!important;
+}
+
+.caption iframe {
+  width: {select:Post Width}px;
+  height: auto;
+  border: none;
+}
+
+.caption figure {
+  height: auto;
+}
+
+/*photo set row margin with sibling empty p*/
+.post-content div.npf_row + p:empty, 
+.post-content p:empty + div.npf_row, 
+.post div.npf_row + p:empty, 
+.post p:empty + div.npf_row,
+body div.npf_row + p:empty, 
+body p:empty + div.npf_row {
+  margin-top: 0!important;
+}
+
+.caption .tmblr-attribution {
+  margin-top: 15px;
+}
+
 .caption {
   margin-top: 0px;
   line-height: var(--lineHeight);
@@ -655,11 +696,11 @@ input#mobile_button:checked ~ #mobile_controls::before {
   color: var(--textColor);
 }
 
-.caption > *,
+/*.caption > *,
 .caption blockquote > * {
   margin-top: 15px;
   margin-bottom: 15px;
-}
+}*/
 
 .caption code * {
   margin: 0px 0 !important;
@@ -667,23 +708,10 @@ input#mobile_button:checked ~ #mobile_controls::before {
 
 .caption p:empty {margin: 0; display: none;}
 .post_body .caption p:only-child {margin: 0;}
-.post_body .caption :first-child, .post_body .caption > p:empty ~ * {margin-top: 0;}
+.post_body .caption :first-child, .post_body .caption > p:empty + * {margin-top: 0!important;}
 .caption :last-child {margin-bottom: 0;}
 .post_body .caption > :only-child {margin: 0 auto;}
 
-.caption blockquote p {
-  margin: 0 auto;
-}
-
-.html_photoset + .caption p,
-.audio_post + .caption p,
-.vid + .caption p {
-  margin-top: 15px !important;
-}
-
-.caption figure img {
-  width: 100%;
-}
 
 .caption em {
   white-space: break-spaces !important;
@@ -779,13 +807,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
   margin: 15px 0 0;
 }
 
-/*NPF*/
-.npf_row {
-  margin-right: 0 !important;
-  margin-left: 0 !important;
-}
-
-/*POST TYPES*/
+/*POST TYPES/BLOCKS*/
 
 /*photo*/
 .post_photo img {
@@ -795,6 +817,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 .npf_row figure img,
+.caption figure img
 .tmblr-full .post_media_photo_anchor {
   width: 100%;
 }
@@ -837,6 +860,10 @@ input#mobile_button:checked ~ #mobile_controls::before {
   background: var(--accentColor);
   color: var(--accentText);
   padding: 15px;
+}
+
+p.npf_chat {
+  font-family: var(--fontFamily) !important;
 }
 
 /*video*/
@@ -970,6 +997,11 @@ a.poll-row {
   background: var(--accentColor) !important;
   color: var(--accentText);
   border-radius: 0 !important;
+}
+
+a.poll-row:hover {
+  background: var(--accentText) !important;
+  color: var(--accentColor) !important;
 }
     
 /*ask*/
@@ -1617,7 +1649,7 @@ figure img {
           <h1 class="headlines">{Title}</h1>
         </div>
 
-        <img class="side_author" src="{PortraitURL-64}" />
+        <img class="side_author" src="{PortraitURL-128}" />
 
             <!--MENU BAR-->
        <nav id="main_menu">
@@ -1746,7 +1778,7 @@ figure img {
                 </div><!--date wrapper-->
                 <!--post buttons-->
                 <div class="buttons flex pinfo">
-                  <a href="{ReblogURL}" title="Reblog this post">\o/</a>
+                  <a href="{ReblogURL}" title="Reblog this post">{ReblogButton}</a>
                   <div class="custom_like_button" title="Like this post">{LikeButton}<span><3</span></div>
                 </div><!--buttons-->
               <!--tags-->{block:HasTags}<div class="ptags pinfo"></span>{block:Tags}</b> <a href="{TagURL}">#{Tag}</a>{/block:Tags}</div>{/block:HasTags}
