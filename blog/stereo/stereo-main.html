@@ -43,9 +43,12 @@
   <meta name="if:Archive Link" content="0"/>
   <meta name="if:Show Tags" content="0"/>
   <meta name="if:Full Width Inline Images" content="0"/>
+  <meta name="if:No Background Repeat" content="0"/>
 
   <meta name="color:Text" content="#000" />
   <meta name="color:Background" content="#fff" />
+  <meta name="image:Background Image" content="" />
+  <meta name="color:Post Background" content="#fff" />
   <meta name="color:Menu Text" content="#ff1e00" />
   <meta name="color:Accent" content="#ff1e00" />
   <meta name="color:Accent Text" content="#000" />
@@ -57,8 +60,8 @@
   <meta name="select:Post Width" title="450" content="450" />
   <meta name="select:Post Width" title="400" content="400" />
 
-  <meta name="text:Text Font" content="Azeret Mono" />
-  <meta name="text:Headline Font" content="VT323" />
+  <meta name="text:Text Google Font" content="Azeret Mono" />
+  <meta name="text:Headline Google Font" content="VT323" />
   <meta name="font:Misc Font" content="Helvetica" />
 
   <meta name="text:Font Size" content="15"/>
@@ -81,7 +84,7 @@
   {/block:Hidden}
 
    <!--FONTS-->
-  <link href="https://fonts.googleapis.com/css?family={text:text font}:400,400i,700,700i|{text:headline font}:300,300i,400,400i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family={text:text google font}:400,400i,700,700i|{text:headline google font}:300,300i,400,400i,700,700i" rel="stylesheet">
 
   <!--jQUERY-->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -104,8 +107,8 @@
   --textColor: {color:text};
   --headlines: {color:headline background};
   --headlinesText: {color:headline text};
-  --fontFamily: '{text:text font}';
-  --fontFamilySecondary: '{text:headline font}';
+  --fontFamily: '{text:text google font}';
+  --fontFamilySecondary: '{text:headline google font}';
   --fontFamilyTertiary: {font:misc font};
   --fontWeight: 500;
 
@@ -144,6 +147,13 @@ body {
   font-family: var(--fontFamily);
   min-height: 100vh;
   background: var(--background);
+  background-image: url('{image:background image}');
+  background-position: center;
+  background-attachment: fixed;
+  {block:IfNoBackgroundRepeat}
+  background-repeat: no-repeat;
+  background-size: cover;
+  {/block:IfNoBackgroundRepeat}
   color: var(--textColor);
   font-weight: var(--fontWeight);
 }
@@ -279,9 +289,9 @@ p {
   margin-bottom: 25px;
 }
 
-.caption p {
+/*.caption p {
   margin: 0;
-}
+}*/
 
 blockquote {
   margin: 15px 0 15px 10px;
@@ -332,7 +342,6 @@ aside {
   top: 0;
   height: 100vh;
   width: calc(var(--sidebarWidth));
-  background: var(--sidebarBackground);
   z-index: 99;
   color: var(--sidebarText);
   justify-content: flex-end;
@@ -345,7 +354,6 @@ aside {
   max-width: 300px;
   right: 0;
   z-index: 1;
-  background: var(--sidebarBackground);
 }
 
 aside a {
@@ -489,14 +497,12 @@ input#mobile_button:checked ~ #mobile_controls::before {
   min-width: 250px;
   margin: auto;
   height: 100%;
-  background: var(--background);
   justify-content: center;
 }
 
 #content_wrapper {
   position: relative;
   max-width: 100%;
-  background: var(--postBackground);
 }
 
 #post_wrapper {
@@ -595,6 +601,7 @@ input#mobile_button:checked ~ #mobile_controls::before {
   /*max-width: var(--postWidth) + 40px;*/
   border: var(--borders);
   padding: 20px;
+  background: var(--postBackground);
 }
 
 .post_footer {
@@ -602,6 +609,11 @@ input#mobile_button:checked ~ #mobile_controls::before {
   padding: 10px 0;
   font-size: 0.9rem;
   text-align: justify;
+}
+
+/*LEGACY*/
+.post_photo + .caption {
+  margin-top: 25px !important;
 }
 
 /*NPF BLOCKS*/
@@ -613,13 +625,15 @@ input#mobile_button:checked ~ #mobile_controls::before {
 .npf_chat,
 .npf-link-block,
 .read_more_container,
-.post_body blockquote {
+.post_body blockquote,
+figure[data-npf*="spotify"],
+.caption > figure
+{
   margin-top: 25px!important;
 }
 
 .caption iframe {
   width: {select:Post Width}px;
-  height: auto;
   border: none;
 }
 
@@ -707,10 +721,10 @@ body p:empty + div.npf_row {
 }
 
 .caption p:empty {margin: 0; display: none;}
-.post_body .caption p:only-child {margin: 0;}
-.post_body .caption :first-child, .post_body .caption > p:empty + * {margin-top: 0!important;}
+.post_body .caption p:only-child {margin: 0 !important;}
+.post_body .caption > :first-child, .post_body .caption > p:empty + * {margin-top: 0!important;}
 .caption :last-child {margin-bottom: 0;}
-.post_body .caption > :only-child {margin: 0 auto;}
+.post_body .caption > :only-child {margin: 0 auto !important;}
 
 
 .caption em {
@@ -791,13 +805,13 @@ body p:empty + div.npf_row {
   content: "@";
 }
 
-.reblog .qh,
+/*.reblog .qh,
 .reblog .lh,
 .reblog .audio_post,
 .reblog .spotify_audio_player,
 .reblog .soundcloud_audio_player  {
   margin-bottom: 20px;
-}
+}*/
 
 .reblog.chat .caption + .reblog_list  {
   display: none;
@@ -914,7 +928,8 @@ p.npf_chat {
   position: relative;
 }
 
-.spotify_audio_player {
+.spotify_audio_player, 
+figure[data-npf*="spotify"] iframe {
   height: 160px;
 }
 
@@ -1002,6 +1017,12 @@ a.poll-row {
 a.poll-row:hover {
   background: var(--accentText) !important;
   color: var(--accentColor) !important;
+}
+
+a.poll-see-results {
+  background: transparent !important;
+  padding: 15px;
+  border: var(--borders);
 }
     
 /*ask*/
@@ -1488,7 +1509,6 @@ aside,
 
   aside {
     left: calc(var(--sidebarWidth) * -1);
-    z-index: 999;
     width: var(--sidebarWidth);
     position: fixed;
   }
@@ -1521,7 +1541,6 @@ aside,
     padding: 15px 50px 15px 15px;
     width: 100vw;
     max-width: 100vw;
-    background: var(--sidebarBackground);
     justify-content: flex-end;
     display: flex;
   }
@@ -1534,6 +1553,8 @@ aside,
 
   input#mobile_button:checked ~ aside  {
     left: 0;
+    z-index: 999;
+    background: var(--background);
   }
 
   input#mobile_button:checked ~ #mobile_controls {
@@ -1624,6 +1645,11 @@ figure img {
    width: 100%;
 }
 {/block:IfFullWidthInlineImage}
+
+/*Random fixes, I guess*/
+.community-label-popup__wrapper {
+  display: none;
+}
 
 {CustomCSS}
 
