@@ -44,6 +44,7 @@
   <meta name="if:Show Tags" content="0"/>
   <meta name="if:Full Width Inline Images" content="0"/>
   <meta name="if:No Background Repeat" content="0"/>
+  <meta name="if:Post Background" content="0"/>
 
   <meta name="color:Text" content="#000" />
   <meta name="color:Background" content="#fff" />
@@ -601,7 +602,9 @@ input#mobile_button:checked ~ #mobile_controls::before {
   /*max-width: var(--postWidth) + 40px;*/
   border: var(--borders);
   padding: 20px;
+  {block:IfPostBackground}
   background: var(--postBackground);
+  {/block:IfPostBackground}
 }
 
 .post_footer {
