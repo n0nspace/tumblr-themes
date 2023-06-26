@@ -624,7 +624,8 @@ input#mobile_button:checked ~ #mobile_controls::before {
   min-width: 250px;
   max-width: var(--postWidth);
   display: block;
-  padding: 50px 25px;
+  padding: 50px 0px;
+  margin: 0 25px;
 }
 
 .page_wrapper {
@@ -996,51 +997,32 @@ input#mobile_button:checked ~ #mobile_controls::before {
 }
 
 /*video*/
-.tumblr_video_container {
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
-  width: 100%!important;
-  height: 100%!important;
-}
-
-.tumblr_video_iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%!important;
-  height: 100%!important;
-  border: 0;
-}
-
-.tumblr_video_container {
-  max-height: 540px!important;
-  overflow: hidden;
-  margin-bottom: 5px;
-}
-
 #youtube_iframe {
   width: 100%!important;
 }
 
-.video .vid {
-  position: relative;
-  overflow: hidden;
-  padding-top: 56.25%;
+.tumblr_video_container {
+  max-width: var(--postWidth);
 }
 
-.video .vid iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+.tumblr_video_container iframe {
   width: 100%;
-  height: 100%;
-  border: 0;
 }
 
 .spotify .vid {
   display: inline;
   font-size: 0;
+}
+
+.spotify_audio_player, 
+figure[data-npf*="spotify"] iframe {
+  height: 160px;
+  width: 100%;
+  border: none;
+}
+
+.vid iframe.bandcamp_audio_player {
+  width: 100%;
 }
 
 .audio .post_source {
@@ -1913,7 +1895,7 @@ aside {
                 <!--CHAT-->{block:Chat}<div class="caption">{block:Lines}<div class="chat_lines {Alt}">{block:Label}<b>{Label}</b>{/block:Label} {Line}</div>{/block:Lines}</div>{/block:Chat}
                 <!--AUDIO-->{block:Audio}<div class="audio_post flex">{block:AudioPlayer}<div class="audio_player">{block:AlbumArt}<img src="{AlbumArtURL}" class="has-border-radius stronger-shadow">{/block:AlbumArt}<div class="play_button">{AudioPlayer}</div></div>{/block:AudioPlayer}<div class="audio_info"><ul><li><span>Name:</span>{block:TrackName}{TrackName}{/block:TrackName}</li><li><span>Artist:</span>{block:Artist}{Artist}{/block:Artist}</li><li><span>Album:</span>{block:Album}{Album}{/block:Album}</li></ul></div></div>{/block:Audio}
                 <!--VIDEO-->{block:Video}<div class="vid has-border-radius stronger-shadow">{Video-700}</div>{/block:Video}
-                <!--ASK-->{block:Answer}<div class="question has-border-radius lighter-shadow"><div class="asker flex"><img src="{AskerPortraitURL-64}"><b>{lang:Asker asked 2}: </b></div><div class="caption">"{Question}"</div></div>{block:Answerer}<div class="answerer_header flex"><img src="{AnswererPortraitURL-64}">{Answerer}</div><div class="caption">{Answer}</div>{/block:Answerer}{block:NotReblog}<div class="caption">{Replies}</div>{/block:NotReblog}{/block:Answer}
+                <!--ASK-->{block:Answer}<div class="question has-border-radius lighter-shadow"><div class="asker flex"><img src="{AskerPortraitURL-64}"><b>{lang:Asker asked 2}: </b></div><div class="caption">{Question}</div></div>{block:Answerer}<div class="answerer_header flex"><img src="{AnswererPortraitURL-64}">{Answerer}</div><div class="caption">{Answer}</div>{/block:Answerer}{block:NotReblog}<div class="caption">{Replies}</div>{/block:NotReblog}{/block:Answer}
                 <!--SUBMIT-->{block:Submission}<div class="submit pl via"><span class="tag_label">{lang:Source}:</span> <a href="{SubmitterURL}">@{Submitter}</a></div>{block:Submission}{/block:Answer}
                 <!--CAPTION-->{block:NotReblog}{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}{/block:NotReblog}{block:Reblogs}<div class="reblog_list"><div class="reblog_parent"><div class="reblog_header flex">{block:IsActive}<img src="{PortraitURL-64}"><a target="_blank" href="{Permalink}">@{Username}</a>{/block:IsActive}{block:IsDeactivated}<svg><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="8.5" cy="7" r="4" /><line x1="18" y1="8" x2="23" y2="13" /><line x1="23" y1="8" x2="18" y2="13" /></svg>@{Username}{block:IsDeactivated}</div><div class="reblog_body caption">{Body}</div></div></div>{/block:Reblogs}
              </div><!--cpt wrapper end-->
