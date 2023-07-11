@@ -503,7 +503,7 @@ article {
 
 .caption p a,
 .caption ul a,
-.caption a,
+.caption a:not(.post_media_photo_anchor),
 .pl a,
 .plnotes ol li a,
 .like_button.liked + span,
