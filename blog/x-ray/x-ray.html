@@ -140,6 +140,8 @@
   --headlineSize: {text:headline size}px;
   --googleFont: '{text:font}';
   --googleFontSecondary: '{text:font two}';
+  {block:ifNotDarkMode}--background: {color:background};{/block:ifNotDarkMode}
+  {block:ifDarkMode}--background: {color:dark background};{/block:ifDarkMode}
 
   --barWidth: 50px;
   --asideWidth: 350px;
