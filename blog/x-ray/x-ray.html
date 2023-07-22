@@ -148,6 +148,7 @@
   --mainWidth: calc(100vw - 420px);
 }
 
+{/block:ifNotDarkMode}
 [data-theme="light"] {
   --textColor: {color:text};
   --barText: {color:bar text};
@@ -156,14 +157,16 @@
   --backgroundImage: url('{image:background}');
   --backgroundBlend: {select:background blend mode};
 
-  --highlight: {color:highlight};
+  --highlight: {color:highlight}; 
   --accent: {color:accent};
   --accentText: {color:accent text};
 
   --border: 1px solid var(--transparentHighlight);
   --boxShadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
 }
+{/block:ifNotDarkMode}
 
+{block:ifDarkMode}
 [data-theme="dark"] {
   --textColor: {color:dark text};
   --barText: {color:dark bar text};
@@ -179,6 +182,7 @@
   --border: 1px solid var(--transparentHighlight);
   --boxShadow: 0px 0px 20px 0px rgba(0,0,0,0.12);
 }
+{/block:ifDarkMode}
 
 nav ul {
   {block:ifDarkMode}
