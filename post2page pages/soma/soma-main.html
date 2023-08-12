@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+
+<!--PAGE THEME: SOMA by @nonspace.
+    Find more of my work at https://nonspace.dev 
+  
+    Don't claim as your own. 
+    Don't use as base code.
+    Editing is fine, just keep the credit! 
+
+    Need help? Have a look at this themes FAQ:
+    https://nonspace.dev/tagged/theme-help:+soma
+    Or my general FAQ: https://nonspace.dev/help/support
+
+    Please report any bugs to me.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <title>{Title}</title>
+  
+  <!--jQUERY-->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+  
+  <!--TUMBLR POSTS JSON-->
+  <!--insert your tag after "?tagged="-->
+  <script src="https://soma-preview.tumblr.com/api/read/json?&tagged=soma page cards"></script>
+  
+  
+  <!--PAGE SETTINGS-->
+  <script>
+    var gridID = "grid";
+    var templateID = "handlebars-template-grid";
+  </script>
+  
+<style>
+:root {
+  --fontSize: 16px;
+  --fontFamily: Helvetica;
+  --cardWidth: 300px; /*entire card*/
+  --imgHeight: 250px;
+  
+  --accent: #e85d33;
+  --background: #fff;
+  --sidebarBackground: #fff;
+  --sidebarText: #000;
+  --cardBackground: #fff;
+  --cardText: #111;
+  --borders: #000;
+}
+
+
+/*STYLES*/
+
+/*GENERAL*/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: var(--fontSize);
+  font-family: var(--fontFamily);
+  background: var(--background);
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+
+/*SIDEBAR*/
+
+aside {
+  position: fixed;
+  width: 300px;
+  background: var(--sidebarBackground);
+  color: var(--sidebarText);
+  height: 100%;
+  z-index: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  border-right: 2px solid var(--borders);
+}
+
+aside h1, 
+nav {
+  text-transform: uppercase;
+}
+
+aside h1 {
+  font-size: 2.8rem;
+  word-wrap: break-word;
+}
+
+aside h1 {
+  display: block;
+  position: relative;
+}
+
+nav {
+  padding: 25px 0 50px;
+}
+
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: var(--sidebarText);
+}
+
+nav ul li {
+  list-style-type: none;
+  margin: 15px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#abt {
+  line-height: 160%;
+}
+
+#social {
+  list-style-type: none;
+  margin-top: auto;
+  align-self: bottom;
+}
+
+#social a {
+  color: var(--sidebarText);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+#social li {
+  display: inline-block;
+  margin: 0 10px 0 0;
+}
+
+
+/*GRID*/
+
+main {
+  position: relative;
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  height: auto;
+  margin-left: 300px;
+  background: var(--background);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 35px 35px;
+}
+
+#grid {
+  margin: 0 auto;
+  width: calc(var(--cardWidth) + 30px);
+}
+
+
+/*CARDS*/
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: var(--cardWidth);
+  overflow: hidden;
+  margin: 15px;
+  color: var(--cardText);
+  border: 2px solid var(--borders);
+}
+
+.card > a {
+  line-height: 0;
+  position: relative;
+  color: #fff;
+}
+
+.card img {
+  width: var(--cardWidth);
+  height: var(--imgHeight);
+  object-fit: cover;
+  line-height: 0;
+}
+
+.box {
+  position: relative;
+  background: var(--cardBackground);
+  height: auto;
+  padding: 15px 20px 0;
+  line-height: 160%;
+  overflow: hidden;
+  border-bottom: 15px solid var(--cardBackground);
+}
+
+.box h2 {
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+  
+.box .info {
+  margin: 15px 0px;
+}
+  
+.box .info,
+.box .info-row,
+.box .info-col {
+  display: flex; 
+  width: 100%;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+  
+.box .info-col {
+  width: calc((var(--cardWidth))/2 - 25px);
+}
+  
+.box .info .info-row span:first-of-type {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.box .desc {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.box .desc p:not(first-of-type) {
+  margin-top: 15px;
+}
+
+.box a, #abt a {
+  color: var(--boxText);
+  text-decoration: none;
+  box-shadow: inset 0 -5px var(--accent);
+}
+
+
+/*OVERLAY*/
+
+.overlay {
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.overlay-text {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  top: 80%;
+  left: 0%;
+  opacity: 0;
+  text-transform: uppercase;  
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  font-size: 4rem;
+}
+
+.card > a:hover .overlay {
+  opacity: 1;
+}
+.card > a:hover .overlay-text {
+  opacity: 1;
+  top: 50%;
+  left: 0%;
+}
+  
+
+/*ANIMATION KEYFRAMES*/
+
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+main {
+  -webkit-animation-duration: 0.8s;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+}
+
+
+/*HOVER*/
+
+a {
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  top: 50%;
+  margin-top: -0.5px;
+  background: var(--accent);
+}
+
+nav a:before {
+  left: -2.5px;
+}
+
+nav a:hover:before {
+  background: var(--accent);
+  width: 100%;
+  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+
+/*MEDIA QUIERIES*/
+
+@media only screen and (max-width: 720px) {
+  body > iframe:first-of-type {
+    top: 80px;
+  }
+  
+  aside {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 50px
+  }
+  
+  #abt, nav {
+    display: none;
+  }
+  
+  #social {
+    margin: inherit;
+    padding-top: 6px;
+  }
+  
+  main {
+    width: 100%;
+    margin-left: 0;
+    border-left: none;
+    padding: 100px 0px;
+  }
+  
+  #grid {
+    width: var(--gridWidth);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  aside h1 {
+    font-size: 1.0rem;
+    padding-top: 10px;
+  }
+  
+  aside .sep {
+    display: none;
+  }
+  
+  #social svg {
+    height: 15px;
+    margin-top: 5px;
+  }
+  
+  #social li {
+    margin: 0 3px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id='wrapper'>
+  <aside>
+    
+    <!--TITLE-->
+    <div id='title'>
+      <h1>Succulent</h1>
+    </div>
+    
+    <!--FILTER NAVIGATION-->
+    <!--This is where you set your filter navigation.
+      The filter attributes are added in the spreadsheet and they need to match the ones
+      in this navigation.
+   
+      You can add several groups to a link: group AND group, group OR group etc. You can
+      read more here: https://isotope.metafizzy.co/filtering.html
+      Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i
+    -->    
+
+    <nav>
+      <ul>
+        <li>
+          <a href="#" data-filter="*">All</a>
+        </li>
+        <li>
+          <a href="#" data-filter=".f1">Filter One</a>
+        </li>
+        <li>
+          <a href="#" data-filter=".f2">Filter One</a>
+        </li>
+        <li>
+          <a href="#" data-filter=".f3">Filter One</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <!--DESCRIPTION-->
+    <div id="abt">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. 
+    </div>
+    
+    <!--LINKS-->
+    <ul id="social">
+    <!--To add more copy & paste a line. You can find more icons here: https://feathericons.com/-->
+      <li><a href="/">Home</a></li>
+      <li><a href="/ask">Ask</a></li>
+      <li><a href="/ABOUTPAGE">Abt</a></li>
+      <li><a href="/URL">Info</a></li>
+    </ul>
+  </aside>
+  <main>
+    <div id="grid">
+      
+    <!--GRID ITEM TEMPLATE-->
+      <script id="handlebars-template-grid" type="text/x-handlebars-template">
+      {{#each []}}
+      <!--GRID ITEM START-->
+      <div class="card {{this.filters}}">
+      <a href="{{this.link}}">
+        <div class="overlay"></div>
+        <img src="{{this.img}}">
+        <div class="overlay-text">
+          Listen
+        </div>
+      </a>
+      <div class="box">
+        <h2>{{this.title}}</h2>
+        <i>{{this.subtitle}}</i>
+        <div class="info">
+          <div class="info-row">
+            <div class="info-col">
+              <span>Title: </span>
+              <span>{{this.title}}</span>
+            </div>
+            <div class="info-col">
+              <span>Duration: </span>
+              <span>{{this.duration}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="desc">
+          {{{this.description}}}
+        </div>
+      </div>
+    </div>
+      <!--GRID ITEM END-->
+      {{/each}}
+    </script>
+      
+    <!--TO USE WITHOUT SHEETS-->
+    <!--Delete the above grid templates and uncomment & copy/paste the following:-->
+    <!--<div class="card f2">
+      <a href="#">
+        <div class="overlay"></div>
+        <img src="http://placehold.jp/ddd/666666/250x250.png">
+        <div class="overlay-text">
+          <i class="fas fa-hashtag"></i>
+        </div>
+      </a>
+      <div class="box">
+        <h2>Headline</h2>
+        <i>Title</i>
+        <div class="sep"></div>
+        <div class="desc">Lorem ipsum dolores 
+prosit lorem ipsum dolores pro dolores prosit lorem ipsum dolores prosit
+ lorem ipsum dolores prosit bla ipsum dolor sit amet, consectetur 
+adipiscing elit.
+        </div>
+      </div>
+    </div>-->
+
+    </div>
+  </main>
+</div>
+  
+  <!--ISOTOPE PLUGIN https://isotope.metafizzy.co/ (for filtering)-->
+  <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+  <!--HANDLEBARS.JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+ 
+  <!--PAGE2POST by nonspace.dev-->
+  <script src="https://cdn.jsdelivr.net/gh/n0nspace/tumblr-post2page@latest/post2page.js"></script>
+ 
+  
+  <script>
+    /*get the array constructed from post content*/
+    var rawr = post2page(tumblr_api_read);
+    
+    /*get the Handlebars template*/
+    var source   = document.getElementById(templateID).innerHTML;
+    
+    /*compile the Handlebars template*/
+    var template = Handlebars.compile(source);
+    
+    /*building HTML based on template and data*/
+    var compiled = template(rawr);
+
+    /*adding HTML inside the grid*/
+    document.getElementById(gridID).innerHTML = compiled;
+  </script>
+  
+  <script>
+const contentLoaded = function() {
+  buildLayout(gridID);
+  resizeGrid();
+} //end contentLoaded
+
+function buildLayout(gridID) {    
+
+    //resizeGrid on load
+    resizeGrid();
+
+    //initialise isotope
+    const $grid = $("#" + gridID).isotope({
+        itemSelector: '.card',
+    });
+
+    $('nav a').on('click', function() {
+        var filterValue = $(this).attr('data-filter');
+        $grid.isotope({
+            filter: filterValue
+        });
+        e.preventDefault();
+    });
+}
+
+function resizeGrid() {
+    const winWidth = $('main').innerWidth() - 70;
+    const cardWidth = $('.card').outerWidth() + 30;
+    const colNum = Math.floor(winWidth / cardWidth);
+
+    if (colNum > 1) {
+        $('#grid').css({
+            'width': cardWidth * colNum
+        });
+        $('.card').css({
+            'margin': '15px'
+        });
+    } else {
+        $('#grid').css({
+            'width': cardWidth - 30
+        });
+        $('.card').css({
+            'margin': '15px 0'
+        });
+    }
+}
+
+//resizeGrid on window resize
+(function() { // closure to avoid global variable
+    var timeoutResize;
+    $(window).on('resize', function() {
+        clearTimeout(timeoutResize);
+        timeoutResize = setTimeout(function() {
+            resizeGrid();
+        }, 100);
+    });
+})();
+    
+    contentLoaded();
+
+  </script>
+  
+  <div id="nnspc" style="position: fixed; bottom: 0; right: 0; padding: 10px; z-index: 9;"><a style="font-family: monospace; font-weight: bold; color: var(--accent);" href="https://nonspace.tumblr.com">:3</a></div>
+
+</body>
+</html>
