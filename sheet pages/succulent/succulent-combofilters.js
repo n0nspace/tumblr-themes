@@ -20,7 +20,7 @@ function buildLayout(content, grid) {
     resizeGrid();
 
     //initialise isotope
-    const $grid = '#grid').isotope({
+    const $grid = ('#grid').isotope({
         itemSelector: '.card',
     });
 
