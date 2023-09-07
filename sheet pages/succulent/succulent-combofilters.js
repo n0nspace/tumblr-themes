@@ -4,7 +4,7 @@ delete and replace succulent.js with this file or copy/paste it in a script tag
 before the body closing tag after removing the succulent.js file link*/
 
 var filters = {};
-let $grid;
+let $grid; 
 
 /*alternative mirror-images script with magnusthemes' isotope combination filtering
 https://magnusthemes.tumblr.com/post/171696773190/isotope-combination-filtering
