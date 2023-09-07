@@ -3,57 +3,73 @@ https://magnusthemes.tumblr.com/post/171696773190/isotope-combination-filtering
 delete and replace succulent.js with this file or copy/paste it in a script tag
 before the body closing tag after removing the succulent.js file link*/
 
-const contentLoaded = function() {
-  buildLayout();
-  resizeGrid();
-  feather.replace();
-} //end contentLoaded
+var filters = {};
+let $grid;
 
-function buildLayout(content, grid) {
+/*alternative mirror-images script with magnusthemes' isotope combination filtering
+https://magnusthemes.tumblr.com/post/171696773190/isotope-combination-filtering
+delete and replace mirror-images.js with this file or copy/paste it in a script tag
+before the body closing tag*/
 
-    $('#grid').hide();
-    $('#grid').append(content);
-
-    $('#grid').fadeIn();
-
-    //resizeGrid on load
+  //after spreadsheet content is generated
+  const contentLoaded = function() {
+    buildLayout();
     resizeGrid();
-
+    feather.replace();
+  }; //end contentLoaded
+  
+  //BUILD LAYOUT FUNCTION
+  function buildLayout() {
+    $('.lds-ring').fadeOut();
+    var filters = {}; //should be outside the scope of the filtering function
     //initialise isotope
-    const $grid = ('#grid').isotope({
-        itemSelector: '.card',
-    });
-
-    $(".option-set a").click(function(e) {
-      var $this = $(this); // cache the clicked link
-      var filterAttr = "data-filter-value";
-      var filterValue = $this.attr(filterAttr); // cache the filter
-      var $optionSet = $this.parents(".option-set"); // cache the parent element
-      var group = $optionSet.attr("data-filter-group"); // cache the parent filter group
-      var filterGroup = filters[group];
-      if (!filterGroup) {
-        filterGroup = filters[group] = [];
+    $grid = $('#grid').isotope({
+      itemSelector: '.grid-item',
+      masonry: {
+        fitWidth: true,
       }
-      var $selectAll = $optionSet.find('a['+filterAttr+'=""]'); // the 'select all' button in the current group
-      var activeClass = "selected", // the class for active links
-      exclClass = "exclusive"; // the class for exclusive groups
-      comboFiltering($this,filters,filterAttr,filterValue,$optionSet,group,$selectAll,activeClass,exclClass);
-      var comboFilter = getComboFilter(filters);
-      $grid.isotope({
-         filter: comboFilter
-      });
-      $this.toggleClass(activeClass);
-      e.preventDefault();
     });
+    
+    showItems();
+  
+  }
 
-    $('nav a').on('click', function() {
-        var filterValue = $(this).attr('data-filter');
-        $grid.isotope({
-            filter: filterValue
-        });
-        e.preventDefault();
+  $(".filter a").on('click', function(e) {
+    console.log("starts");
+    $(".grid-item").removeClass("is-visible");
+    $('.lds-ring').fadeIn();
+
+    var $this = $(this); // cache the clicked link
+    var filterAttr = "data-filter";
+    var filterValue = $this.attr(filterAttr); // cache the filter
+    var $optionSet = $this.parents(".l-level2"); // cache the parent element
+    var group = $optionSet.attr("data-filter-group"); // cache the parent filter group
+    var filterGroup = filters[group];
+    if (!filterGroup) {
+      filterGroup = filters[group] = [];
+    }
+    var $selectAll = $optionSet.find('a['+filterAttr+'=""]'); // the 'select all' button in the current group
+    var activeClass = "selected", // the class for active links
+      exclClass = "exclusive"; // the class for exclusive groups
+    comboFiltering($this,filters,filterAttr,filterValue,$optionSet,group,$selectAll,activeClass,exclClass);
+    var comboFilter = getComboFilter(filters);
+    $grid.isotope({
+      filter: comboFilter
     });
-}
+    $this.toggleClass(activeClass);
+    e.preventDefault();
+
+    $('.lds-ring').fadeOut();
+    showItems();
+  });
+
+  function showItems() {
+    $('.grid-item').each(function(i) {
+     setTimeout(function() {
+        $('.grid-item').eq(i).addClass('is-visible');
+      }, 1 * i);
+    });
+  }
 
 function resizeGrid() {
     const winWidth = $('main').innerWidth() - 70;
