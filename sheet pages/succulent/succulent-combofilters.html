@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<!--PAGE THEME #11: SUCCULENT 2.0 - Combofilters by @nonspace.
+  Find more of my work at https://nonspace.tumblr.com   
+
+    Don't steal.  
+    Don't claim as your own. 
+    Don't use as base code.
+    Editing for personal use is fine! 
+
+    Need help? Have a look at this themes FAQ:
+    https://nonspace.tumblr.com/tagged/theme-help:+succulent
+    Or my general FAQ: https://nonspace.tumblr.com/help/support
+
+    Please report any bugs to me.
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="icon" type="image/png" href="{Favicon}">
+  <title>{Title}</title>
+  
+  <!--jQuery-->
+  <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+  <!--Icon Fonts-->
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.0/css/all.css" integrity="sha384-Mmxa0mLqhmOeaE8vgOSbKacftZcsNYDjQzuCOm6D02luYSzBG8vpaOykv9lFQ51Y" crossorigin="anonymous">
+
+  <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  
+  <!--PAGE SETTINGS-->
+  <!--The template spreadsheet is here:
+https://docs.google.com/spreadsheets/d/124yZTS885Mx4BYFN4PPxjP450LrRrTMmTubI0MoI4WE/edit?usp=sharing
+Instructions are in the "INSTRUCTIONS" tab.-->
+  
+  <script>
+    /*TO GET THE SHEET ID:
+    1. Go to your spreadsheet > File > Publish to web.
+    2. Click on "Entire Document" and select the speficic sheet (in the
+       example it is called "MAIN") > publish, ignore the URL.
+    3. File > Share > Anyone with link can share. This URL is important.
+    4. Copy the following string from the URL and paste it in sheetID:
+       Example:
+       https://docs.google.com/spreadsheets/d/
+         1jKi9Knw7e5qr4bXr_zQib8FwpGM7E6eqRx1tH3JruIA (this part)
+      /edit?usp=sharing
+      
+    TO GET API KEY:
+    1. Go to https://console.cloud.google.com/projectselector2/apis/dashboard 
+    (of the account the sheet is under)
+    2. Create new project
+    3. Create credentials, choose API key (copy this)
+    4. Restrict application access to HTTP referrer and add the wildcard yoururl.tumblr.com/* (or for multipe sites if needed)
+    5. Libraries > search for Google Sheets > Enable*/
+
+    const sheetID = 'SHEET ID';
+    const sheetTab = 'TAB NAME';
+    const APIkey = 'KEY';
+
+  </script>
+
+<style>
+:root {
+  --fontSize: 16px;
+  --cardWidth: 300px; /*entire card*/
+  --imgHeight: 250px;
+  
+  --accent: #B9CCB5;
+  --background: #eee;
+  --sidebarBackground: #111;
+  --sidebarText: #fff;
+  --cardBackground: #fff;
+  --cardText: #111;
+}
+
+
+/*STYLES*/
+
+/*GENERAL*/
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-size: var(--fontSize);
+  font-family: 'Raleway';
+}
+
+#wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+
+/*SIDEBAR*/
+
+aside {
+  position: fixed;
+  width: 300px;
+  background: var(--sidebarBackground);
+  color: var(--sidebarText);
+  height: 100%;
+  z-index: 1;
+  font-family: 'Raleway';
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+aside h1, 
+nav {
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+aside h1 {
+  font-size: 1.5rem;
+}
+
+aside h1 {
+  display: block;
+  position: relative;
+}
+
+.sep {
+  height: 5px;
+  width: 50px;
+  background: var(--accent);
+  margin: 5px 0 13px;
+}
+
+nav {
+  padding: 25px 0 50px;
+}
+
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: var(--sidebarText);
+}
+
+nav ul li {
+  list-style-type: none;
+  margin: 25px 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+nav ul.l-level2 {
+  margin-left: 20px;
+  font-size: 0.8rem;
+}
+
+nav ul.l-level2 li {
+  margin: 15px 0;
+}
+
+#abt {
+  line-height: 160%;
+}
+
+#social {
+  list-style-type: none;
+  margin-top: auto;
+  align-self: bottom;
+}
+
+#social a {
+  color: var(--sidebarText);
+}
+
+#social li {
+  display: inline-block;
+  margin: 0 15px 0 0;
+}
+
+
+/*GRID*/
+
+main {
+  position: relative;
+  width: calc(100% - 300px);
+  min-height: 100vh;
+  height: auto;
+  margin-left: 300px;
+  background: var(--background);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 35px 35px;
+  border-left: 20px solid var(--accent);
+}
+
+#grid {
+  margin: 0 auto;
+  width: calc(var(--cardWidth) + 30px);
+}
+
+
+/*CARDS*/
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: var(--cardWidth);
+  overflow: hidden;
+  margin: 15px;
+  color: var(--cardText);
+}
+
+.card > a {
+  line-height: 0;
+  position: relative;
+  color: #fff;
+}
+
+.card img {
+  width: var(--cardWidth);
+  height: var(--imgHeight);
+  object-fit: cover;
+  line-height: 0;
+}
+
+.box {
+  position: relative;
+  background: var(--cardBackground);
+  height: auto;
+  padding: 15px 20px 0;
+  line-height: 160%;
+  overflow: hidden;
+  border-bottom: 15px solid var(--cardBackground);
+}
+
+.card {
+ -webkit-box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.1);
+}
+
+aside {
+ -webkit-box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.3);
+  -moz-box-shadow: 0px 0px 40px -10px rgba(0,0,0,0.3);
+  box-shadow: 0px 0px 15px -0px rgba(0,0,0,0.5);
+}
+
+.box h2 {
+  font-size: 1.1rem;
+  font-family: 'Raleway';
+  text-transform: uppercase;
+}
+
+.box .desc {
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.box .desc p:not(first-of-type) {
+  margin-top: 15px;
+}
+
+.box a, #abt a {
+  color: var(--boxText);
+  text-decoration: none;
+  box-shadow: inset 0 -5px var(--accent);
+}
+
+
+/*OVERLAY*/
+
+.overlay {
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-in-out 0s;
+  -moz-transition: all 0.4s ease-in-out 0s;
+  transition: all 0.4s ease-in-out 0s;
+}
+
+.overlay-text {
+  position: absolute;
+  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 100%;
+  top: 80%;
+  left: 50%;
+  opacity: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  -moz-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+  font-size: 500%;
+}
+
+.card > a:hover .overlay {
+  opacity: 1;
+}
+.card > a:hover .overlay-text {
+  opacity: 1;
+  top: 50%;
+  left: 50%;
+}
+
+
+/*ANIMATION KEYFRAMES*/
+
+@-webkit-keyframes fadeIn  {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  20% { opacity: 0; }
+  40% { opacity: 0.3; }
+  60% { opacity: 0.5; }
+  80% { opacity: 0.9; }
+  100% { opacity: 1; }
+}
+
+main {
+  -webkit-animation-duration: 0.8s;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+}
+
+
+/*HOVER*/
+
+a {
+  transition: all 0.2s ease-in-out;
+}
+
+nav a:before {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 3px;
+  top: 50%;
+  margin-top: -0.5px;
+  background: var(--accent);
+}
+
+nav a:before {
+  left: -2.5px;
+}
+
+nav a:hover:before {
+  background: var(--accent);
+  width: 100%;
+  transition: width 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+#social a:hover {
+  color: var(--accent);
+}
+
+
+/*MEDIA QUIERIES*/
+
+@media only screen and (max-width: 720px) {
+  body > iframe:first-of-type {
+    top: 80px;
+  }
+  
+  aside {
+    position: fixed;
+    width: 100%;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 50px
+  }
+  
+  #abt, nav {
+    display: none;
+  }
+  
+  #social {
+    margin: inherit;
+    padding-top: 6px;
+  }
+  
+  main {
+    width: 100%;
+    margin-left: 0;
+    border-left: none;
+    padding: 100px 0px;
+  }
+  
+  #grid {
+    width: var(--gridWidth);
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  aside h1 {
+    font-size: 1.0rem;
+    padding-top: 10px;
+  }
+  
+  aside .sep {
+    display: none;
+  }
+  
+  #social svg {
+    height: 15px;
+    margin-top: 5px;
+  }
+  
+  #social li {
+    margin: 0 3px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+  <div id='wrapper'>
+  <aside>
+    
+    <!--TITLE-->
+    <div id='title'>
+      <h1>Succulent</h1>
+      <div class="sep"></div>
+    </div>
+    
+    <!--FILTER NAVIGATION-->
+    <!--This is where you set your filter navigation.
+      The filter attributes are added in the spreadsheet and they need to match the ones
+      in this navigation.
+   
+      You can add several groups to a link: group AND group, group OR group etc. You can
+      read more here: https://isotope.metafizzy.co/filtering.html
+      Adding multiple filters: https://nonspace.tumblr.com/post/166045257594/hi-im-using-your-page-theme-after-image-and-i
+    -->    
+
+    <nav>
+      <ul class="l-level1">
+        <li>Filter Group 1
+          <ul class="l-level2 filter option-set exclusive" data-filter-group="general">
+             <li><a href="#" data-filter="*">all</a></li>
+             <li><a href="#" data-filter=".f1">filter</a></li>
+             <li><a href="#" data-filter=".f2">filter</a></li>
+          </ul>
+        </li>
+    
+        <li>Filter Group 2
+            <ul class="l-level2 filter option-set exclusive" data-filter-group="gender">
+              <li><a href="#" data-filter="*">all</a></li>
+              <li><a href="#" data-filter=".f3">Filter</a></li>
+              <li><a href="#" data-filter=".f4">Filter</a></li>
+           </ul>
+        </li>
+     </ul>
+  </nav>
+    
+    <!--DESCRIPTION-->
+    <div id="abt">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. 
+    </div>
+    
+    <!--LINKS-->
+    <ul id="social">
+    <!--To add more copy & paste a line. You can find more icons here: https://feathericons.com/-->
+      <li><a href="/"><i data-feather="home"></i></a></li>
+      <li><a href="/ask"><i data-feather="mail"></i></a></li>
+      <li><a href="/ABOUTPAGE"><i data-feather="user"></i></a></li>
+      <li><a href="/URL"><i data-feather="info"></i></a></li>
+    </ul>
+  </aside>
+  <main>
+    <div id="grid">
+    
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      
+    <!--GRID ITEM TEMPLATE-->
+      <script id="handlebars-template-grid" type="text/x-handlebars-template">
+      {{#each []}}
+      <!--GRID ITEM START-->
+      <div class="card {{this.filters}}">
+      <a href="{{this.link}}">
+        <div class="overlay"></div>
+        <img src="{{this.imageurl}}">
+        <div class="overlay-text">
+          <i class="fas fa-hashtag"></i>
+        </div>
+      </a>
+      <div class="box">
+        <h2>{{this.headline}}</h2>
+        <i>{{this.title}}</i>
+        <div class="sep"></div>
+        <div class="desc">
+          {{{this.description}}}
+        </div>
+      </div>
+    </div>
+      <!--GRID ITEM END-->
+      {{/each}}
+    </script>
+      
+    <!--TO USE WITHOUT SHEETS-->
+    <!--Delete the above grid templates and uncomment & copy/paste the following:-->
+    <!--<div class="card f2">
+      <a href="#">
+        <div class="overlay"></div>
+        <img src="http://placehold.jp/ddd/666666/250x250.png">
+        <div class="overlay-text">
+          <i class="fas fa-hashtag"></i>
+        </div>
+      </a>
+      <div class="box">
+        <h2>Headline</h2>
+        <i>Title</i>
+        <div class="sep"></div>
+        <div class="desc">Lorem ipsum dolores 
+prosit lorem ipsum dolores pro dolores prosit lorem ipsum dolores prosit
+ lorem ipsum dolores prosit bla ipsum dolor sit amet, consectetur 
+adipiscing elit.
+        </div>
+      </div>
+    </div>-->
+
+    </div>
+  </main>
+</div>
+
+</body>
+  
+  <!--HANDLEBARS.JS-->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+        <!--ISOTOPE PLUGIN https://isotope.metafizzy.co/ (for filtering)-->
+        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
+        <!--COMBO FILTERING by magnusthemes.tumb.r.com-->
+        <script src="https://static.tumblr.com/p0knose/FpAp5c11c/magnusthemes.combofilters.js"></script>
+
+
+        <!--SHEETS.JS-->
+        <script src="https://www.dl.dropboxusercontent.com/s/wlxk3q4wkqxescn/nnspc-sheets.js" async></script>
+    
+        <!--dear-indies JS-->
+        <script>
+            templateList = [
+  ['#handlebars-template-grid', '#grid']
+];
+
+var filters = {};
+let $grid;
+
+/*alternative mirror-images script with magnusthemes' isotope combination filtering
+https://magnusthemes.tumblr.com/post/171696773190/isotope-combination-filtering
+delete and replace mirror-images.js with this file or copy/paste it in a script tag
+before the body closing tag*/
+
+  //after spreadsheet content is generated
+  const contentLoaded = function() {
+    buildLayout();
+  }; //end contentLoaded
+  
+  //BUILD LAYOUT FUNCTION
+  function buildLayout() {
+    $('.lds-ring').fadeOut();
+    var filters = {}; //should be outside the scope of the filtering function
+    //initialise isotope
+    $grid = $('#grid').isotope({
+      itemSelector: '.card',
+      masonry: {
+        fitWidth: true,
+      }
+    });
+    
+    showItems();
+  
+  }
+
+  $(".filter a").on('click', function(e) {
+    console.log("starts");
+    $(".card").removeClass("is-visible");
+    $('.lds-ring').fadeIn();
+
+    var $this = $(this); // cache the clicked link
+    var filterAttr = "data-filter";
+    var filterValue = $this.attr(filterAttr); // cache the filter
+    var $optionSet = $this.parents(".l-level2"); // cache the parent element
+    var group = $optionSet.attr("data-filter-group"); // cache the parent filter group
+    var filterGroup = filters[group];
+    if (!filterGroup) {
+      filterGroup = filters[group] = [];
+    }
+    var $selectAll = $optionSet.find('a['+filterAttr+'=""]'); // the 'select all' button in the current group
+    var activeClass = "selected", // the class for active links
+      exclClass = "exclusive"; // the class for exclusive groups
+    comboFiltering($this,filters,filterAttr,filterValue,$optionSet,group,$selectAll,activeClass,exclClass);
+    var comboFilter = getComboFilter(filters);
+    $grid.isotope({
+      filter: comboFilter
+    });
+    $this.toggleClass(activeClass);
+    e.preventDefault();
+
+    $('.lds-ring').fadeOut();
+    showItems();
+  });
+
+  function showItems() {
+    $('.card').each(function(i) {
+     setTimeout(function() {
+        $('.card').eq(i).addClass('is-visible');
+      }, 1 * i);
+    });
+  } 
+        </script> 
+
+</html>
