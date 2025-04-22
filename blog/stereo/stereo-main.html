@@ -44,6 +44,7 @@
   <meta name="if:Show Tags" content="0"/>
   <meta name="if:Full Width Inline Images" content="0"/>
   <meta name="if:No Background Repeat" content="0"/>
+  <meta name="if:Show Search" content="0"/>
 
   <meta name="color:Text" content="#000" />
   <meta name="color:Background" content="#fff" />
@@ -433,58 +434,58 @@ aside .side_desc p {
 }
 
 .search {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    margin-top: 20px;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
   
-  #search_bar {
-    position: relative;
-  }
+#search_bar {
+  position: relative;
+}
   
-  .search form {
-    flex: 1;
-  }
+.search form {
+  flex: 1;
+}
   
-  .search input, .search select, .search textarea {
-    height: 25px;
-    width: 100%;
-    border: 0;
-    font-size: var(--textSize);
-    background: var(--primBackground);
-    color: var(--textColor);
-    margin: 0;
-    margin-bottom 25px; 
-    padding: 0;
-  }
+.search input, .search select, .search textarea {
+  height: 25px;
+  width: 100%;
+  border: 0;
+  font-size: var(--textSize);
+  background: var(--primBackground);
+  color: var(--textColor);
+  margin: 0;
+  margin-bottom 25px; 
+  padding: 0;
+}
   
-  .search input:focus {
-    border: 0;
-    box-shadow: none;
-    outline: 0;
-  }
+.search input:focus {
+  border: 0;
+  box-shadow: none;
+  outline: 0;
+}
   
-  ::placeholder { /* Chrome/Opera/Safari */
-    font-family: var(--fontFamily);
-    color: var(--textColor);
-  }
-  ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-    font-family: var(--fontFamily);
-    color: var(--textColor);
-  }
-  ::-moz-placeholder { /* Firefox 19+ */
-    font-family: var(--fontFamily);
-    color: var(--textColor);
-  }
-  :-ms-input-placeholder { /* IE 10+ */
-    font-family: var(--fontFamily);
-    color: var(--textColor);
-  }
-  :-moz-placeholder { /* Firefox 18- */
-    font-family: var(--fontFamily);
-    color: var(--textColor);
-  }
+::placeholder { /* Chrome/Opera/Safari */
+  font-family: var(--fontFamily);
+  color: var(--textColor);
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: var(--fontFamily);
+  color: var(--textColor);
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: var(--fontFamily);
+  color: var(--textColor);
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-family: var(--fontFamily);
+  color: var(--textColor);
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family: var(--fontFamily);
+  color: var(--textColor);
+}
 
 /*copyright*/
 #copy_year {
@@ -1775,14 +1776,16 @@ figure img {
 
        <div class="side_desc">
           <p>{Description}</p>
-        </div>
+       </div>
         
-        <div id="search_bar" class="search side_box">
-      <form action="/search" method="get">
-          <input id="search_input" type="text" name="q"
+       {block:IfShowSearch}
+       <div id="search_bar" class="search side_box">
+         <form action="/search" method="get">
+           <input id="search_input" type="text" name="q"
             value="{SearchQuery}" placeholder="{lang:Search}...">
-      </form>
-    </div>
+         </form>
+       </div>
+       {/block:IfShowSearch}
 
           <div id="pag-soc-wrapper" class="flex flex-space-between">
 
